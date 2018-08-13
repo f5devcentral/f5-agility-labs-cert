@@ -64,5 +64,3 @@ The repo includes build scripts for common operations:
 - ``containthedocs-convert.sh``: Convert a Word ``.docx`` file to rST
 - ``containthedocs-pdf.sh``: Build PDF docs using ``make -C docs latexpdf`` to
   ``docs/_build/latex``
-
-making change to test readthedocs
