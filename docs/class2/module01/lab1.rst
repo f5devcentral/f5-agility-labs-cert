@@ -80,9 +80,7 @@ Write your configuration to disk and create an archive::
    save sys config
    save sys ucs lab1-base-config
 
-.. NOTE::
-
-The tmsh commands to build the base configuration can be found in **Module 3.12**.
+.. NOTE:: The tmsh commands to build the base configuration can be found in **Module 3.12**.
 
 Log on to the BIG-IP WebUI and verify your virtual server is **Available** (green circle).
 
