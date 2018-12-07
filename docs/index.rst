@@ -14,73 +14,17 @@ Welcome to the |classbold| updated on 11/30/2018
 |
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Intro:
+   :maxdepth: 1
    :glob:
    
    intro*
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: 101 Certification Exam Resources:
-   :glob:
-   
    class1/class1
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: 201 Certification Exam Resources:
-   :glob:
-   
-   class2/class1
-   class3/class1
-
-.. toctree::
-   :maxdepth: 2
-   :caption: 202 Certification Exam Resources:
-   :glob:
-   
-   class4/class1
-
-.. toctree::
-   :maxdepth: 2
-   :caption: 301A Certification Exam Resources:
-   :glob:
-   
-   class5/class1
-   class6/class1
-
-.. toctree::
-   :maxdepth: 2
-   :caption: 301B Certification Exam Resources:
-   :glob:
-   
-   class7/class1
-
-.. toctree::
-   :maxdepth: 2
-   :caption: 302 Certification Exam Resources:
-   :glob:
-   
-   class9/class1
-
-.. toctree::
-   :maxdepth: 2
-   :caption: 303 Certification Exam Resources:
-   :glob:
-   
-   class11/class1
-
-.. toctree::
-   :maxdepth: 2
-   :caption: 304 Certification Exam Resources:
-   :glob:
-   
-   class13/class1
-
-.. toctree::
-   :maxdepth: 2
-   :caption: 401 Certification Exam Resources:
-   :glob:
-   
-   class15/class1
+   class2/class2
+   class3/class3
+   class4/class4
+   class5/class5
+   class7/class7
+   class9/class9
+   class11/class11
+   class13/class13
+   class15/class15

@@ -1,28 +1,42 @@
-Class - F5 301a - LTM Specialist: Architect, Setup, and Deploy
-==============================================================
+F5 201 - TMOS Administration Study Guide
+========================================
 
-These exercises are design to reinforce the concepts outlined in the **LTM Specialist: Architect, Setup, and Deploy** certification blueprint.  F5 certifications exams are designed to required hands-on experience to pass the test and these exercises will help you deal with exam questions requiring you to interpret configuration and other outputs from the |bip|.
+|
+|
 
-Exam blueprints and study guides can be found on the F5 Support site at:
-https://support.f5.com/csp/article/K29900360
+**Overview  201 - TMOS Administration**
 
-This class covers the following topics:
-	- Basic Setup, TMSH and SNATs
-	- Profiles
-	- Application Visibilty and Reporting (AVR)
-	- Monitors and Status
-	- SSL
-	- Virtual Servers and Packet Processing Review
-	- Load Balancing and Pools
-	- Networking
-	- Roles and Partitions
-	- Device Service Clusters and High Availability
-	- Security and Securing the BIG-IP
 
-Expected time to complete: **6-8 hours**
+Welcome to the TMOS Administration compiled Study Guide. The purpose of this guide is to help you prepare for the F5 201 - TMOS Administration exam. The contents of this document are based on the 201 - TMOS Administration Exam Blueprint for TMOS v11.4. 
+ 
+**This study guide provides students with some of the basic foundational knowledge required to pass the exam.**
+
+Hands on experience with the Big-IP platform will reinforce many of the topics contained in the TMOS Administration exam.  F5 has created a virtual lab environment that can be run on a laptop with VMware Workstation (Fusion for Mac) or in a lab with an ESXi server.  The f5 vLabs can help by providing access to a lab environment in which your knowledge of the Big-IP platform can grow.  For access to the vLab guides and virtual machines please contact your local F5 Sales Engineer.
+
+This study guide is a collection of information and therefore not a completely original work.  The information was found mostly in F5 resources.  All of the information locations are referenced at each topic instead of in an Appendix of this document.  This was done to help the reader access the reference the linked information easier without having to search through a formal appendix. 
+
+The F5 Networks 101 - Application Delivery Fundamentals exam is a pre-requisite to this exam. 
+ 
+This guide was prepared by an F5 employee but is not an official F5 document and is not supported by F5 Networks.
+
+|
+|
+
+**Reading = Knowledge = Power**
+
+|
+|
+
+**Printed References**
+
+
+These referenced books are important and should be considered basic reading material for this exam.
+
+|
+|
 
 .. toctree::
    :maxdepth: 1
    :glob:
-
-   module*/module*
+   
+   modules/module*
