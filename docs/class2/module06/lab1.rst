@@ -63,7 +63,7 @@ prompt to hold the connection open.
 In window 1 you should see something similar to the tcpdump captured
 below.
 
-.. image:: /_static/201ex211t2a-tcpdump.png
+.. image:: /_static/201L/201ex211t2a-tcpdump.png
 
 *Q1. In the tcpdump above, what is client IP address and port and the
 server IP address port?*
@@ -79,7 +79,7 @@ connections from your jumpbox.
 The connection table on window2 will show the client-side and
 server-side connection similar to below:
 
-.. image:: /_static/201ex211t2b-shsysconn.png
+.. image:: /_static/201L/201ex211t2b-shsysconn.png
 
 *Q2. What is source ip and port as seen by ftp server in the example
 above?*

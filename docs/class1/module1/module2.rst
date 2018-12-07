@@ -388,7 +388,7 @@ the connection. (See example below) This was and still is a very simple
 iRule, but it wasn’t at the time a feature available in the standard
 configuration options for BIG-IP.
 
-when HTTP\_REQUEST { 
+when HTTP\_REQUEST {
 
 HTTP::redirect "https://[HTTP::host][HTTP::uri]"
 
@@ -437,22 +437,22 @@ Application Service for SharePoint, for example. iApp Analytics include
 performance metrics on a per-application and location basis. Benefits of
 using iApp:
 
--  User-customizable 
+-  User-customizable
 
--  Easy editing of configurations and cleanup 
+-  Easy editing of configurations and cleanup
 
--  Reentrancy 
+-  Reentrancy
 
--  Configuration encapsulation 
+-  Configuration encapsulation
 
--  Cradle-to-grave configuration management 
+-  Cradle-to-grave configuration management
 
--  Strictness protects against accidental changes to the configuration 
+-  Strictness protects against accidental changes to the configuration
 
 -  Operational tasks and health status for App objects displayed on
    App-specific component view (see right)
 
--  Copy/Import/Export capability 
+-  Copy/Import/Export capability
 
 -  Community support for DevCentral hosted templates
 
@@ -487,10 +487,10 @@ the back-end template implementation section.
 
 Templates have three sections; presentation, implementation, and help.
 
--  The presentation section collects user entries. 
+-  The presentation section collects user entries.
 
 -  The implementation section uses user entries to build a configuration
-   that will control traffic. 
+   that will control traffic.
 
 -  The help section documents the template and its presentation to users
    when creating an application service.
@@ -911,7 +911,7 @@ located in the middle of a stream of communications, but is not an
 endpoint for those communications; it just passes the packets through.
 Often a device that operates on a packet-by-packet basis does have some
 knowledge of the protocols flowing through it, but is far from being a
-real protocol endpoint.  The speed of these devices is primarily based
+real protocol endpoint. The speed of these devices is primarily based
 on not having to understand the entire protocol stack, shortcutting the
 amount of work needed to handle traffic. For example, with TCP/IP, this
 type of device might only understand the protocols well enough to
@@ -1139,7 +1139,7 @@ For example, you can configure unit 1 to process traffic for virtual
 servers A and B. The standby unit monitors the active unit, and if
 communications fail, the standby unit initiates a failover and becomes
 the active unit. The newly-active unit then begins processing traffic
-for both virtual servers. You can see an active/standby configuration,
+for both virtual servers. You can see an active/standby configuration,
 first as it behaves normally, and then after failover has occurred, by
 viewing the figure.
 
@@ -1149,7 +1149,7 @@ As you can see in the figure, unit 1 is in an active state, and unit 2
 is in a standby state. With this configuration, failover causes the
 following to occur:
 
--  Unit 2 switches to an active state. 
+-  Unit 2 switches to an active state.
 
 -  Unit 2 begins processing the connections that would normally be
    processed by its peer.

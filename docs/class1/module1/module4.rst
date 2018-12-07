@@ -822,7 +822,7 @@ Many existing IPSec implementations can continue to work well for these
 use cases for which they were originally deployed. IT might consider
 keeping IPSec in these limited areas and extend remote access to other
 areas, such as trusted partners or extranet users, via a parallel SSL
-VPN solution. While a parallel VPN implementation is a viable choice for
+VPN solution. While a parallel VPN implementation is a viable choice for
 some enterprises, transitioning all access use cases through a single
 SSL VPN gateway might ultimately cost less and be easier to manage.
 

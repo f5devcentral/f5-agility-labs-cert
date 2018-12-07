@@ -1,7 +1,5 @@
 F5 Networks Certification Study Guides and Labs
-=================================================
-
-|
+===============================================
 
 Welcome to the |classbold| updated on 11/30/2018
 
@@ -9,10 +7,11 @@ Welcome to the |classbold| updated on 11/30/2018
 
 **I am still building this Repo, so not all content is available.**
 
-
 |
 
 |repoinfo|
+
+|
 
 .. toctree::
    :maxdepth: 2

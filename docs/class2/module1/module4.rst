@@ -5,7 +5,7 @@ Section 4 – Troubleshoot basic device management connectivity issues
 |
 
 Objective - 4.01 Verify remote connectivity to the box in order to determine the cause of a management connectivity issue
----------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
 
 |
 |
@@ -138,17 +138,17 @@ addresses are allowed from the following protocols and services:
  
 
 You can also determine the default supported protocols and services
-using the following command:   \ *tmsh list net self-allow*
+using the following command: \ *tmsh list net self-allow*
 
 The output will appear similar to the following example:
 
-net self-allow { 
+net self-allow {
 
- defaults { 
+ defaults {
 
   ospf:any
 
-  tcp:domain 
+  tcp:domain
 
   tcp:f5query
 
@@ -217,19 +217,19 @@ Configuration utility
 **Modifying port lockdown settings using the tmsh utility**
 
 1. Log in to the Traffic Management Shell (tmsh) by entering the
-   following command:*tmsh*  NOTE:If you are currently logged in to the tmsh shell, you can skip this step.
+   following command:*tmsh*  NOTE:If you are currently logged in to the tmsh
+   shell, you can skip this step.
 
 2. To modify the port lockdown settings for a self IP address, use the
    following command syntax:*modify /net self <self\_ip> allow-service
-   <option>*  For example, to change the port lockdown setting for self IP
+   <option>* For example, to change the port lockdown setting for self IP
    address 10.10.10.1 to default, you would type the following
    command:modify /net self 10.10.10.1 allow-service default
 
 3. Save the change by typing the following command:
 
--  BIG-IP 10.1.0 and later:save sys config
-
--  BIG-IP 10.0.x:save config
+   - BIG-IP 10.1.0 and later:save sys config
+   - BIG-IP 10.0.x:save config
 
 |
 |
@@ -253,7 +253,7 @@ platforms or other necessary network functions such as DNS servers, etc.
 |
 
 Objective - 4.03 Given the use of a remote authentication server, verify proper DNS and NTP settings in order to diagnose a connectivity issue
-------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
 
 |
 |
@@ -402,22 +402,22 @@ BIG-IP platform.
 
 *nslookup example:*
 
-nslookup www.stonegreyband.com **\ Server: 192.168.69.1 Address:
-192.168.69.1#53 Non-authoritative answer: www.stonegreyband.com
-canonical name = stonegreyband.com. Name:stonegreyband.com Address:
-71.251.96.82 
+nslookup www.stonegreyband.com**\ Server: 192.168.69.1 Address:
+192.168.69.1#53 Non-authoritative answer: www.stonegreyband.com
+canonical name = stonegreyband.com. Name:stonegreyband.com 
+Address: 71.251.96.82
 
 *Dig Example:*
 
-dig www.stonegreyband.com **; <<>> DiG 9.8.3-P1 <<>>
-www.stonegreyband.com ;; global options: +cmd ;; Got answer: ;;
-->>HEADER<<- opcode: QUERY, status: NOERROR, id: 24965 ;; flags: qr rd
+dig www.stonegreyband.com**; <<>> DiG 9.8.3-P1 <<>>
+www.stonegreyband.com;; global options: +cmd;; Got answer:;;
+->>HEADER<<- opcode: QUERY, status: NOERROR, id: 24965;; flags: qr rd
 ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0 ;; QUESTION
-SECTION: ;www.stonegreyband.com. IN A ;; ANSWER
-SECTION: www.stonegreyband.com. 3495 IN CNAME stonegreyband.com.
-stonegreyband.com. 495 IN A 71.251.96.82 ;; Query time: 4 msec ;;
+SECTION:;www.stonegreyband.com. IN A;; ANSWER
+SECTION:www.stonegreyband.com. 3495 IN CNAME stonegreyband.com.
+stonegreyband.com. 495 IN A 71.251.96.82 ;; Query time: 4 msec;;
 SERVER: 192.168.69.1#53(192.168.69.1) ;; WHEN: Thu Jan 9 22:41:06
-2014 ;; MSG SIZE rcvd: 69
+2014;; MSG SIZE rcvd: 69
 
 
 .. toctree::
