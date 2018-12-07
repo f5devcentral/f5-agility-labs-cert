@@ -1,5 +1,5 @@
 F5 101 - App Delivery Fundamentals Study Guide
-================================================
+==============================================
 
 |
 |
@@ -38,9 +38,4 @@ These referenced books are important and should be considered basic reading mate
    :maxdepth: 1
    :glob:
 
-   module1/module1
-   module1/module2
-   module1/module3
-   module1/module4
-   module1/module5
-   
+   modules/module*
