@@ -1,8 +1,8 @@
-F5 303 – BIG-IP ASM Specialist Study Guide
-============================================
+F5 303 - BIG-IP ASM Specialist Study Guide
+==========================================
 
 303 Content Is Under Development
-----------------------------------
+--------------------------------
 
 **Overview 303 – BIG-IP ASM Specialist**
 
