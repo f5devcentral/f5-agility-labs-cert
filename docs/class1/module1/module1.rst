@@ -106,7 +106,7 @@ multiple packets. When this happens, the Network Layer assigns each
 packet a sequence number. When the data is received by the remote host,
 that device’s Network layer examines the sequence numbers of the inbound
 packets, and uses the sequence number to reassemble the data and to
-figure out if any packets are missing. If you are having trouble
+figure out if any packets are missing. If you are having trouble
 understanding this concept, then imagine that you need to mail a large
 document to a friend, but do not have a big enough envelope. You could
 put a few pages into several small envelopes, and then label the
@@ -196,9 +196,11 @@ OSI layers**
 
 **OSI layers functional**
 
-1. Physical - Hubs, Repeaters, Cables, Optical Fiber, SONET/SDN,Coaxial Cable, Twisted Pair Cable and Connectors
+1. Physical - Hubs, Repeaters, Cables, Optical Fiber, SONET/SDN,Coaxial Cable,
+   Twisted Pair Cable and Connectors
 
-2. Data Link - 802.11 (WLAN), Wi-Fi, WiMAX, ATM, Ethernet, Token Ring, Frame Relay, PPTP, L2TP and ISDN
+2. Data Link - 802.11 (WLAN), Wi-Fi, WiMAX, ATM, Ethernet, Token Ring, Frame
+   Relay, PPTP, L2TP and ISDN
 
 3. Network - IPv4, IPV6, IPX, OSPF, ICMP, IGMP and ARP
 
@@ -208,13 +210,14 @@ OSI layers**
 
 6. Presentation layer – SSL, WEP, WPA, Kerberos,
 
-7. Application Layer - DHCP, DNS, FTP, HTTP, IMAP4, NNTP, POP3, SMTP, SNMP, SSH, TELNET and NTP
+7. Application Layer - DHCP, DNS, FTP, HTTP, IMAP4, NNTP, POP3, SMTP, SNMP,
+   SSH, TELNET and NTP
 
 |
 |
 
 Objective - 1.02 Explain Protocols and Technologies Specific to the Data Link Layer
--------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 
 |
 |
@@ -350,7 +353,7 @@ data link layer’s broadcast address.
 
 While any layer 2 device is able to divide the collision domains,
 broadcast domains are only divided by layer 3 network devices such as
-routers or layer 3 switches. Frames are normally addressed to a specific
+routers or layer 3 switches. Frames are normally addressed to a specific
 destination device on the network. While all devices detect the frame
 transmission on the network, only the device to which the frame is
 addressed actually receives it. A special broadcast address consisting
@@ -442,9 +445,9 @@ You need to consider using VLAN’s in any of the following situations:
    has VoIP phones. The users using the phone could be on a different
    VLAN, not with the regular users.
 
--  Or, just to make a single switch into multiple virtual switches.  
+-  Or, just to make a single switch into multiple virtual switches.
 
-**Why not just subnet my network?**  
+**Why not just subnet my network?**
 
 A common question is why not just subnet the network instead of using
 VLAN’s? Each VLAN should be in its own subnet. The benefit that a VLAN
@@ -452,31 +455,31 @@ provides over a subnetted network is that devices in different physical
 locations, not going back to the same router, can be on the same
 network. The limitation of subnetting a network with a router is that
 all devices on that subnet must be connected to the same switch and that
-switch must be connected to a port on the router.  With a VLAN, one
+switch must be connected to a port on the router. With a VLAN, one
 device can be connected to one switch, another device can be connected
 to another switch, and those devices can still be on the same VLAN
-(broadcast domain).  
+(broadcast domain).
 
-**How can devices on different VLAN’s communicate?**  
+**How can devices on different VLAN’s communicate?**
 
 Devices on different VLAN’s can communicate with a router or a Layer 3
 switch. As each VLAN is its own subnet, a router or Layer 3 switch must
-be used to route between the subnets.  
+be used to route between the subnets.
 
-**What is a trunk port?**  
+**What is a trunk port?**
 
 When there is a link between two switches or a router and a switch that
-carries the traffic of more than one VLAN, that port is a trunk port. A
+carries the traffic of more than one VLAN, that port is a trunk port. A
 trunk port must run a special trunking protocol. The protocol used would
 be Cisco’s proprietary Inter- switch link (ISL) or the IEEE standard
 802.1q, which is the protocol F5 devices support.
 
-**What do VLAN’s offer?  **
+**What do VLAN’s offer?**
 
 VLAN’s offer higher performance for medium and large LAN’s because they
 limit broadcasts. As the amount of traffic and the number of devices
 grow, so does the number of broadcast packets. By using VLAN’s you are
-containing broadcasts.  VLAN’s also provide security because you are
+containing broadcasts. VLAN’s also provide security because you are
 essentially putting one group of devices, in one VLAN, on their own
 network.
 
@@ -566,7 +569,7 @@ specify a link control policy.
 |
 
 Objective - 1.03 Explain protocols and apply technologies specific to the network layer
-----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 |
 |
@@ -854,9 +857,9 @@ example is for a computer running Windows Server 2003, Standard Edition
 with one 10 megabit per second (Mbit/s) network adapter and the
 following configuration:
 
-- IP address: 10.0.0.169 
+- IP address: 10.0.0.169
 
-- Subnet mask: 255.0.0.0 
+- Subnet mask: 255.0.0.0
 
 - Default gateway: 10.0.0.1
 
@@ -936,7 +939,7 @@ routers gain insight knowledge of the topology of the network.
 
 Routing protocols perform several activities, including:
 
-- Network discovery 
+- Network discovery
 
 - Updating and maintaining routing tables
 
@@ -983,7 +986,7 @@ more common dynamic routing protocols for routing IP packets:
    initial path becomes unusable or there is a change in the topology.
 
 -  Routers that use dynamic routing protocols automatically share
-   routing information with other routers and  compensate for any
+   routing information with other routers and compensate for any
    topology changes without involving the network administrator.
 
 |
@@ -993,7 +996,7 @@ more common dynamic routing protocols for routing IP packets:
 
 `Link to Online Topic Content <https://en.wikipedia.org/wiki/IP_fragmentation>`__
 
-**Why does fragmentation occur?**  
+**Why does fragmentation occur?**
 
 Fragmentation happens when a large IP datagram has to travel through a
 network with a maximum transmission unit (MTU) that is smaller than the
@@ -1001,7 +1004,7 @@ size of the IP datagram. If an IP datagram that is bigger than 1500
 bytes (typical MTU size) is sent on an Ethernet network, the datagram
 needs to be fragmented prior to being placed on the network. The network
 packets are then assembled at the receiving host. Fragmentation can
-happen at either at the originating host or at an intermediate router.  
+happen at either at the origination host or at an intermediate router.
 
 IP fragmentation can cause excessive retransmissions when fragments
 encounter packet loss and reliable protocols such as TCP must retransmit
@@ -1027,7 +1030,7 @@ Note that with IP fragmentation, packets are not reassembled until they
 reach the final destination. It is reassembled at the IP layer at the
 receiving end. This is make fragmentation and reassembly transparent to
 the protocol layer (TCP and UDP). If one of the packets is lost, the
-whole packets need to be transmitted again.  Packets are reassembled at
+whole packets need to be transmitted again. Packets are reassembled at
 the receiving host by associating each fragment with an identical
 fragment identification number, or frag id for short. The frag ID is
 actually a copy of the ID field (IP identification number) in the IP
@@ -1056,34 +1059,34 @@ packet:
 
 The packet will be fragmented as shown below.
 
-+----------------+----------+-----------+ 
++----------------+----------+-----------+
 
 Packet 1 \| IP header (20) \| ICMP (8) \| Data (12) \| ID=88, Len=20,
 Off=0, MF=1
 
-+----------------+----------+-----------+ 
++----------------+----------+-----------+
 
 Packet 2 \| IP header (20) \| Data (20) \| ID=88, Len=20, Off=20, MF=1
 
-+---------------------------------------+ 
++---------------------------------------+
 
 Packet 3 \| IP header (20) \| Data (20) \| ID=88, Len=20, Off=40, MF=1
 
 +---------------------------------------+
 
- Packet 4 \| IP header (20) \| Data (20) \| ID=88, Len=20, Off=60, MF=1
+Packet 4 \| IP header (20) \| Data (20) \| ID=88, Len=20, Off=60, MF=1
 
 +----------------------------+----------+
 
- Packet 5 \| IP header (20) \| Data (10) \| ID=88, Len=10, Off=80, MF=0
+Packet 5 \| IP header (20) \| Data (10) \| ID=88, Len=10, Off=80, MF=0
 
 +----------------------------+
 
-ID - IP identification number 
+ID - IP identification number
 
 Len - Data Length (data length does not include IP header)
 
-Off - Offset 
+Off - Offset
 
 MF - More Fragment
 
@@ -1345,13 +1348,13 @@ blocks of zeroes can be omitted entirely, so we end up with these:
 
 ::192.168.1.25
 
- ::1
+::1
 
 |
 |
 
 Objective - 1.04 Explain the features and functionality of protocols and technologies specific to the transport layer
-------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
 
 |
 |
@@ -1735,19 +1738,25 @@ options section.
 Some options may only be sent when SYN is set. Option-Kind and standard
 lengths given as (Option-Kind, Option-Length).
 
--  0 (8 bits) – End of options list
+- 0 (8 bits) – End of options list
 
--  1 (8 bits) – No operation (NOP, Padding). This may be used to align option fields on 32-bit boundaries for better performance.
+- 1 (8 bits) – No operation (NOP, Padding). This may be used to align option
+  fields on 32-bit boundaries for better performance.
 
--  2,4,SS (32 bits) – Maximum segment size (see maximum segment size)
+- 2,4,SS (32 bits) – Maximum segment size (see maximum segment size)
 
--  3,3,S (24 bits) – Window scale (see window scaling for details)
+- 3,3,S (24 bits) – Window scale (see window scaling for details)
 
--  4,2 (16 bits) – Selective Acknowledgement permitted. (See selective acknowledgments for details)
+- 4,2 (16 bits) – Selective Acknowledgement permitted. (See selective
+  acknowledgments for details)
 
--  5,N,BBBB,EEEE,... (variable bits, N is either 10, 18, 26, or 34)- Selective ACKnowledgement (SACK). These first two bytes are followed by a list of 1–4 blocks being selectively acknowledged, specified as 32-bit begin/end pointers.
+- 5,N,BBBB,EEEE,... (variable bits, N is either 10, 18, 26, or 34)- Selective
+  ACKnowledgement (SACK). These first two bytes are followed by a list of 1–4
+  blocks being selectively acknowledged, specified as 32-bit begin/end
+  pointers.
 
--  8,10,TTTT,EEEE (80 bits)- Timestamp and echo of previous timestamp (see TCP timestamps for details)
+- 8,10,TTTT,EEEE (80 bits)- Timestamp and echo of previous timestamp (see TCP
+  timestamps for details)
 
 (The remaining options are historical, obsolete, experimental, not yet
 standardized, or unassigned)
@@ -1907,7 +1916,7 @@ of Service attacks.
 |
 
 Objective - 1.05 Explain the features and functionality of protocols and technologies specific to the application layer
-------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 |
 |
@@ -2016,9 +2025,9 @@ English-oriented. Both kinds of messages consist of:
 
 -  an initial line,
 
--  zero or more header lines, 
+-  zero or more header lines,
 
--  a blank line (i.e. a CRLF by itself), and 
+-  a blank line (i.e. a CRLF by itself), and
 
 -  an optional message body (e.g. a file, or query data, or query output).
 
@@ -2026,9 +2035,9 @@ Put another way, the format of an HTTP message is:
 
 <initial line, different for request vs. response>
 
-Header1: value1 
+Header1: value1
 
-Header2: value2 
+Header2: value2
 
 Header3: value3
 
@@ -2049,14 +2058,14 @@ used. A typical request line is:
 
 GET /path/to/file/index.html HTTP/1.0
 
-	-  GET is the most common HTTP method; it says "give me this resource".
-  	 Other methods include POST and HEAD- - more on those later. Method
-  	 names are always uppercase.
-	-  The path is the part of the URL after the host name, also called the
-   	request URI (a URI is like a URL, but more general).
-	-  The HTTP version always takes the form "HTTP/x.x", uppercase.
+   - GET is the most common HTTP method; it says "give me this resource". Other
+     methods include POST and HEAD- - more on those later. Method names are
+     always uppercase.
+   - The path is the part of the URL after the host name, also called the
+     request URI (a URI is like a URL, but more general).
+   - The HTTP version always takes the form "HTTP/x.x", uppercase.
 
-**Initial Response Line (Status Line)**  
+**Initial Response Line (Status Line)**
 
 The initial response line, called the status line, also has three parts
 separated by spaces: the HTTP version, a response status code that gives
@@ -2065,14 +2074,16 @@ status code. Typical status lines are:
 
 HTTP/1.0 200 OK or HTTP/1.0 404 Not Found
 
-	-  The HTTP version is in the same format as in the request line, "HTTP/x.x".  
-	-  The status code is meant to be computer-readable; the reason phrase is meant to be human-readable, and may vary. 
-	-  The status code is a three-digit integer, and the first digit identifies the general category of response:
-	-  1xx indicates an informational message only
-	-  2xx indicates success of some kind 
-	-  3xx redirects the client to another URL
-	-  4xx indicates an error on the client's part
-	-  5xx indicates an error on the server's part
+   - The HTTP version is in the same format as in the request line, "HTTP/x.x".
+   - The status code is meant to be computer-readable; the reason phrase is
+     meant to be human-readable, and may vary.
+   - The status code is a three-digit integer, and the first digit identifies
+     the general category of response:
+   - 1xx indicates an informational message only
+   - 2xx indicates success of some kind
+   - 3xx redirects the client to another URL
+   - 4xx indicates an error on the client's part
+   - 5xx indicates an error on the server's part
 
 The most common status codes are:
 
@@ -2130,11 +2141,12 @@ A POST request is used to send data to the server to be processed in
 some way, like by a CGI script. A POST request is different from a GET
 request in the following ways:
 
-	- There's a block of data sent with the request, in the message body. There are usually extra headers to describe this message body, like Content-Type: and Content-Length:.
-
-	-  The request URI is not a resource to retrieve; it's usually a program to handle the data you're sending.
-
-	-  The HTTP response is normally program output, not a static file.
+   - There's a block of data sent with the request, in the message body. There
+     are usually extra headers to describe this message body, like
+     Content-Type: and Content-Length:.
+   - The request URI is not a resource to retrieve; it's usually a program to
+     handle the data you're sending.
+   - The HTTP response is normally program output, not a static file.
 
 The most common use of POST, by far, is to submit HTML form data to CGI
 scripts. In this case, the Content-Type: header is usually
@@ -2143,11 +2155,11 @@ the length of the URL-encoded form data (here's a note on URL-encoding).
 The CGI script receives the message body through STDIN, and decodes it.
 Here's a typical form submission, using POST:
 
-POST /path/script.cgi HTTP/1.0 
+POST /path/script.cgi HTTP/1.0
 
-From: frog@jmarshall.com 
+From: frog@jmarshall.com
 
-User-Agent: HTTPTool/1.0 
+User-Agent: HTTPTool/1.0
 
 Content-Type: application/x-www-form-urlencoded
 
@@ -2232,10 +2244,10 @@ database that maps domain names to IP addresses.
 
 |
 
-Whether you're accessing a Web site or sending e-mail, your computer
-uses a DNS server to look up the domain name you're trying to
-access. The proper term for this process is DNS name resolution, and you
-would say that the DNS server resolves the domain name to the IP
+Whether you're accessing a Web site or sending e-mail, your computer
+uses a DNS server to lookup the domain name you're trying to
+access. The proper term for this process is DNS name resolution, and you
+would say that the DNS server resolves the domain name to the IP
 address. For example, when you enter "http://www.howstuffworks.com" in
 your browser, part of the network connection includes resolving the
 domain name "howstuffworks.com" into an IP address, like 70.42.251.42,
@@ -2354,13 +2366,13 @@ the following communication channels need to be opened:
 FTP server's port 21 from anywhere (Client initiates connection)
 
 FTP server's port 21 to ports > 1023 (Server responds to client's
-control port) 
+control port)
 
 FTP server's port 20 to ports > 1023 (Server initiates data connection
 to client's data port)
 
 FTP server's port 20 from ports > 1023 (Client sends ACKs to server's
-data port) 
+data port)
 
 When drawn out, the connection appears as follows:
 
@@ -2370,11 +2382,12 @@ When drawn out, the connection appears as follows:
 
 |
 
--  The client's command port contacts the server's command port and
-   sends the command PORT 1027.
--  The server then sends an ACK back to the client's command port 
--  The server initiates a connection on its local data port to the data port the client specified earlier. 
--  Finally, the client sends an ACK.
+- The client's command port contacts the server's command port and
+  sends the command PORT 1027.
+- The server then sends an ACK back to the client's command port
+- The server initiates a connection on its local data port to the data port the
+  client specified earlier.
+- Finally, the client sends an ACK.
 
 The main problem with active mode FTP actually falls on the client side.
 The FTP client doesn't make the actual connection to the data port of
@@ -2405,23 +2418,29 @@ P on the server to transfer data.
 From the server-side firewall's standpoint, to support passive mode FTP
 the following communication channels need to be opened:
 
--  FTP server's port 21 from anywhere (Client initiates connection) 
+- FTP server's port 21 from anywhere (Client initiates connection)
 
--  FTP server's port 21 to ports > 1023 (Server responds to client's control port) 
+- FTP server's port 21 to ports > 1023 (Server responds to client's control
+  port)
 
--  FTP server's ports > 1023 from anywhere (Client initiates data connection to random port specified by server
+- FTP server's ports > 1023 from anywhere (Client initiates data connection to
+  random port specified by server
 
--  FTP server's ports > 1023 to remote ports > 1023 (Server sends ACKs (and data) to client's data port)
+- FTP server's ports > 1023 to remote ports > 1023 (Server sends ACKs (and
+  data) to client's data port)
 
 When drawn, a passive mode FTP connection looks like this:
 
 .. image:: /_static/101/1p17.png
 
--  The client contacts the server on the command port and issues the PASV command.  
+- The client contacts the server on the command port and issues the PASV
+  command. 
 
--  The server then replies with PORT 2024, telling the client which port it is listening to for the data connection.
+- The server then replies with PORT 2024, telling the client which port it is
+  listening to for the data connection.
 
--  The client then initiates the data connection from its data port to the specified server data port.  
+- The client then initiates the data connection from its data port to the
+  specified server data port.
 
 -  Finally, the server sends back an ACK to the client's data port.
 
@@ -2458,15 +2477,32 @@ When I set up my account at HowStuffWorks, I told Outlook Express the
 name of the mail server -- mail.howstuffworks.com. When I compose a
 message and press the Send button, here is what happens:
 
--  Outlook Express connects to the SMTP server at mail.howstuffworks.com using port 25.
+- Outlook Express connects to the SMTP server at mail.howstuffworks.com using
+  port 25.
 
--  Outlook Express has a conversation with the SMTP server, telling the SMTP server the address of the sender and  the address of the recipient, as well as the body of the message.
+- Outlook Express has a conversation with the SMTP server, telling the SMTP
+  server the address of the sender and the address of the recipient, as well as
+  the body of the message.
 
--  The SMTP server takes the "to" address (jsmith@mindspring.com) and breaks it into two parts: the recipient name (jsmith) and the domain name (mindspring.com). If the "to" address had been another user at howstuffworks.com, the SMTP server would simply hand the message to the POP3 server for howstuffworks.com (using a little program called the delivery agent). Since the recipient is at another domain, SMTP needs to communicate with that domain.
+- The SMTP server takes the "to" address (jsmith@mindspring.com) and breaks it
+  into two parts: the recipient name (jsmith) and the domain name
+  (mindspring.com). If the "to" address had been another user at
+  howstuffworks.com, the SMTP server would simply hand the message to the POP3
+  server for howstuffworks.com (using a little program called the delivery
+  agent). Since the recipient is at another domain, SMTP needs to communicate
+  with that domain.
 
--  The SMTP server has a conversation with a Domain Name Server, or DNS. It says, "Can you give me the IP address of the SMTP server for mindspring.com?" The DNS replies with the one or more IP addresses for the SMTP server(s) that Mindspring operates.
+- The SMTP server has a conversation with a Domain Name Server, or DNS. It
+  says, "Can you give me the IP address of the SMTP server for mindspring.com?"
+  The DNS replies with the one or more IP addresses for the SMTP server(s)
+  that Mindspring operates.
 
--  The SMTP server at howstuffworks.com connects with the SMTP server at Mindspring using port 25. It has the same simple text conversation that my e-mail client had with the SMTP server for HowStuffWorks, and gives the message to the Mindspring server. The Mindspring server recognizes that the domain name for jsmith is at Mindspring, so it hands the message to Mindspring's POP3 server, which puts the message in jsmith's mailbox.  
+- The SMTP server at howstuffworks.com connects with the SMTP server at
+  Mindspring using port 25. It has the same simple text conversation that my
+  e-mail client had with the SMTP server for HowStuffWorks, and gives the
+  message to the Mindspring server. The Mindspring server recognizes that the
+  domain name for jsmith is at Mindspring, so it hands the message to
+  Mindspring's POP3 server, which puts the message in jsmith's mailbox.
 
 If, for some reason, the SMTP server at HowStuffWorks cannot connect
 with the SMTP server at Mindspring, then the message goes into a queue.
@@ -2481,27 +2517,28 @@ you undelivered.
 The SMTP server understands very simple text commands like HELO, MAIL,
 RCPT and DATA. The most common commands are:
 
--  HELO - introduce yourself
+- HELO - introduce yourself
 
--  EHLO - introduce yourself and request extended mode
+- EHLO - introduce yourself and request extended mode
 
--  MAIL FROM: - specify the sender
+- MAIL FROM: - specify the sender
 
--  RCPT TO: - specify the recipient
+- RCPT TO: - specify the recipient
 
--  DATA - specify the body of the message (To, From and Subject should be the first three lines.)
+- DATA - specify the body of the message (To, From and Subject should be the
+  first three lines.)
 
--  RSET - reset
+- RSET - reset
 
--  QUIT - quit the session
+- QUIT - quit the session
 
--  HELP - get help on commands
+- HELP - get help on commands
 
--  VRFY - verify an address
+- VRFY - verify an address
 
--  EXPN - expand an address
+- EXPN - expand an address
 
--  VERB – verbose
+- VERB – verbose
 
 .. image:: /_static/101/1p18.png
 
@@ -2588,9 +2625,11 @@ MSN's cookie file:
 
 WEAT CC=NC%5FRaleigh%2DDurham®ION= www.msn.com/
 
--  Since I live in Raleigh, N.C., this makes sense.
+- Since I live in Raleigh, N.C., this makes sense.
 
--  Most sites seem to store preferences like this in the site's database and store nothing but an ID as a cookie, but storing the actual values in name-value pairs is another way to do it.
+- Most sites seem to store preferences like this in the site's database and
+  store nothing but an ID as a cookie, but storing the actual values in
+  name-value pairs is another way to do it.
 
 E-commerce sites can implement things like shopping carts and "quick
 checkout" options. The cookie contains an ID and lets the site keep
@@ -2643,17 +2682,34 @@ browser and types www.google.com in the path bar in the browser. The
 users system doesn’t inherently know the IP address of the website. So
 it does a DNS lookup of the name and the process is basically like this:
 
--  The user system will look in its local host file for a matching entry for www.google.com. If an entry matches it will use that IP address, and the process ends here.
+- The user system will look in its local host file for a matching entry for
+  www.google.com. If an entry matches it will use that IP address, and the
+  process ends here.
 
--  If an entry is not found in the local host file, the user system will look to its local name cache for a matching entry for www.google.com. If an entry exists then it will attempt to connect to that address, and the process ends here.
+- If an entry is not found in the local host file, the user system will look to
+  its local name cache for a matching entry for www.google.com. If an entry
+  exists then it will attempt to connect to that address, and the process ends
+  here.
 
--  If there is no record in the user system’s cache then the system will request the IP address from its local DNS server for www.google.com.
+- If there is no record in the user system’s cache then the system will request
+  the IP address from its local DNS server for www.google.com.
 
--  If the local DNS server has an entry for www.google.com in its cache then it will respond to the user system with that IP address. The system will put the entry in its cache and connect to the address. The process is then complete.
+- If the local DNS server has an entry for www.google.com in its cache then it
+  will respond to the user system with that IP address. The system will put the
+  entry in its cache and connect to the address. The process is then complete.
 
--  If the local DNS server does not have an entry for www.google.com in its cache then the local DNS server will make a call to the root servers in its DNS configuration for the IP address of the Authoritative Name Server for the .com domain. The Local DNS server will then query the Authoritative Name Server of the .com domain for the Authoritative Name Server of the .google.com domain. Once the local DNS server has that IP address, it will query the Authoritative Name Server of the .google.com domain for the A record (IP address) of www.google.com.
+- If the local DNS server does not have an entry for www.google.com in its
+  cache then the local DNS server will make a call to the root servers in its
+  DNS configuration for the IP address of the Authoritative Name Server for the
+  .com domain. The Local DNS server will then query the Authoritative Name
+  Server of the .com domain for the Authoritative Name Server of the
+  .google.com domain. Once the local DNS server has that IP address, it will
+  query the Authoritative Name Server of the .google.com domain for the A
+  record (IP address) of www.google.com.
 
--  The local DNS server will place that response into its cache and then it will respond to the user system with that IP address. The user system will put the entry in its cache and connect to the address. The process is then complete.
+- The local DNS server will place that response into its cache and then it will
+  respond to the user system with that IP address. The user system will put the
+  entry in its cache and connect to the address. The process is then complete.
 
 All of these steps will take place extremely fast and only add
 milliseconds to the process of the connection to the website but for
@@ -2691,27 +2747,46 @@ scheme://[user:password@]domain:port/path?query\_string#fragment\_id
 
 Component details:
 
--  The scheme, which in many cases is the name of a protocol (but not always), defines how the resource will be obtained. Examples include HTTP, HTTPS, FTP, file and many others. Although schemes are case-insensitive, the canonical form is lowercase.
+- The scheme, which in many cases is the name of a protocol (but not always),
+  defines how the resource will be obtained. Examples include HTTP, HTTPS, FTP,
+  file and many others. Although schemes are case-insensitive, the canonical
+  form is lowercase.
 
--  The domain name or literal numeric IP address gives the destination location for the URL. A literal numeric IPv6 address may be given, but must be enclosed in [ ]. e.g. [db8:0cec::99:123a].
-    The domain google.com, or its numeric IP address 173.194.34.5, is
-    the address of Google's website.
+- The domain name or literal numeric IP address gives the destination location
+  for the URL. A literal numeric IPv6 address may be given, but must be
+  enclosed in [ ]. e.g. [db8:0cec::99:123a]. The domain google.com, or its
+  numeric IP address 173.194.34.5, is the address of Google's website.
 
--  The domain name portion of a URL is not case sensitive since DNS ignores case:
-    http://en.example.org/ and HTTP://EN.EXAMPLE.ORG/ both open the same
-    page.
+- The domain name portion of a URL is not case sensitive since DNS ignores
+  case: http://en.example.org/ and HTTP://EN.EXAMPLE.ORG/ both open the same
+  page.
 
--  The port number, given in decimal, is optional; if omitted, the default for the scheme is used.
-    For example, http://vnc.example.com:5800 connects to port 5800 of vnc.example.com, which may be appropriate for a VNC remote control session. If the port number is omitted for an http: URL, the browser will connect on port 80, the default HTTP port. The default port for an https: request is 443.
+- The port number, given in decimal, is optional; if omitted, the default for
+  the scheme is used. For example, http://vnc.example.com:5800 connects to port
+  5800 of vnc.example.com, which may be appropriate for a VNC remote control
+  session. If the port number is omitted for an http: URL, the browser will
+  connect on port 80, the default HTTP port. The default port for an https:
+  request is 443.
 
--  The path is used to specify and perhaps find the resource requested. This path may or may not describe folders on the file system in the web server. It may be very different from the arrangement of folders on the web server. It is case-sensitive, [14] though it may be treated as case-insensitive by some servers, especially those based on Microsoft Windows.
-	If the server is case sensitive and http://en.example.org/wiki/URL is correct, then http://en.example.org/WIKI/URL or http://en.example.org/wiki/url will display an HTTP 404 error page, unless these URLs point to valid resources themselves.
+- The path is used to specify and perhaps find the resource requested. This
+  path may or may not describe folders on the file system in the web server. It
+  may be very different from the arrangement of folders on the web server. It
+  is case-sensitive, [14] though it may be treated as case-insensitive by some
+  servers, especially those based on Microsoft Windows. If the server is case
+  sensitive and http://en.example.org/wiki/URL is correct, then
+  http://en.example.org/WIKI/URL or http://en.example.org/wiki/url will display
+  an HTTP 404 error page, unless these URLs point to valid resources
+  themselves.
 
--  The query string contains data to be passed to software running on the server. It may contain name/value pairs separated by ampersands, for example
-    ?first\_name=John&last\_name=Doe.
+- The query string contains data to be passed to software running on the
+  server. It may contain name/value pairs separated by ampersands, for example:
+  ?first\_name=John&last\_name=Doe.
 
--  The fragment identifier, if present, specifies a part or a position within the overall resource or document.
-    When used with HTML, it usually specifies a section or location within the page, and used in combination with Anchor elements or the "id" attribute of an element, the browser is scrolled to display that part of the page.
+- The fragment identifier, if present, specifies a part or a position within
+  the overall resource or document. When used with HTML, it usually specifies a
+  section or location within the page, and used in combination with Anchor
+  elements or the "id" attribute of an element, the browser is scrolled to
+  display that part of the page.
 
 The scheme name defines the namespace, purpose, and the syntax of the
 remaining part of the URL. Software will try to process a URL according

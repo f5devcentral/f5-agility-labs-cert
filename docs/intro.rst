@@ -279,7 +279,7 @@ Each exam has its own unique blueprint that was developed by subject matter expe
 
 **Exam Study Guides**
 
-Exam-specific study guides are available here on F5 Cloud Docs as well as on AskF5 in PDF format. These study guides feature a collection of information and resources that may be helpful for exam preparation. Study guides have been created by the F5 Certified! community and are not refreshed at the same time as exams.  The content here on F5 Cloud Docs will be the most current study guide content available.
+Exam-specific study guides are available here on F5 Cloud Docs as well as on AskF5 in PDF format. These study guides feature a collection of information and resources that may be helpful for exam preparation. Study guides have been created by the F5 Certified! community and are not refreshed at the same time as exams.  The content here on F5 Cloud Docs will be the most current study guide content available.
 
 |
 

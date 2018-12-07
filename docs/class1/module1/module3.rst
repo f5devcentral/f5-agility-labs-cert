@@ -139,7 +139,7 @@ is called "server affinity". Persistence ensures that once a client has
 made a connection to a specific server that subsequent requests are sent
 to the same server. This is very important to maintain state and
 session-specific information in some application architectures and for
-handling of SSL- enabled applications.  When the first request is seen
+handling of SSL- enabled applications. When the first request is seen
 by the load-balancer it chooses a server. On subsequent requests the
 load balancer will automatically choose the same server to ensure
 continuity of the application or, in the case of SSL, to avoid the

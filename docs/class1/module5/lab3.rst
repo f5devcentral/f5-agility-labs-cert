@@ -18,7 +18,7 @@ various panes.
 
 Select the Backups pane, select (**+**) and the **Add Backup**
 
-.. image:: /_static/201bigiq.png 
+.. image:: /_static/201L/201bigiq.png
 
 Back up **bigip01.f5demo.com**.
 
