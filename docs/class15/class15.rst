@@ -1,4 +1,4 @@
-F5 401 – Security Solution Expert Study Guide
+F5 401 - Security Solution Expert Study Guide
 ===============================================
 
 401 Content Is Under Development

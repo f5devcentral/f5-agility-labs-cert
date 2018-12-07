@@ -1,8 +1,8 @@
-F5 304 – BIG-IP APM Specialist Study Guide
-============================================
+F5 304 - BIG-IP APM Specialist Study Guide
+==========================================
 
 304 Content Is Under Development
-----------------------------------
+--------------------------------
 
 **Overview 304 – BIG-IP APM Specialist**
 
