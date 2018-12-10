@@ -1,14 +1,14 @@
 F5 401 - Security Solution Expert Study Guide
-===============================================
+=============================================
 
 401 Content Is Under Development
-----------------------------------
+--------------------------------
 
 
-**Overview 401 – Security Solution Expert**
+**Overview 401 - Security Solution Expert**
 
 
-Welcome to the 401 – Security Solution Expert compiled Study Guide.  The purpose of this guide is to help you prepare for the F5 401 – Security Solution Expert exam.  The contents of this document are based on the F5 401 – Security Solution Expert Blueprint Guide.
+Welcome to the 401 - Security Solution Expert compiled Study Guide. The purpose of this guide is to help you prepare for the F5 401 - Security Solution Expert exam. The contents of this document are based on the F5 401 - Security Solution Expert Blueprint Guide.
  
 **This study guide provides students with some of the basic foundational knowledge required to pass the exam.**
 
