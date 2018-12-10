@@ -1,4 +1,4 @@
-Section 5 – Open a support ticket with F5
+Section 5 - Open a support ticket with F5
 =========================================
 
 |

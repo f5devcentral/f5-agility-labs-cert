@@ -1,4 +1,4 @@
-Lab 11 – Security and Securing the BIG-IP
+Lab 11 - Security and Securing the BIG-IP
 ===========================================
 
 You have seen numerous security features already, but logging can be

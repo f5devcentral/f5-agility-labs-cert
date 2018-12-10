@@ -1,4 +1,4 @@
-Section 3 – Troubleshoot basic performance issues
+Section 3 - Troubleshoot basic performance issues
 =================================================
 
 |

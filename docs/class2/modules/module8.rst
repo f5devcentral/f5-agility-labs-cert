@@ -1,4 +1,4 @@
-Section 8 – Manage existing system and application services
+Section 8 - Manage existing system and application services
 ===========================================================
 
 |
@@ -187,12 +187,12 @@ Conclusion
 |
 |
 
-This document is intended as a study guide for the F5 201 – TMOS
+This document is intended as a study guide for the F5 201 - TMOS
 Administration exam. This study guide is not an all-inclusive document
 that will guarantee a passing grade on the exam. It is intended to be a
 living doc and will be updated as necessary.
 
-Thank you for using this study guide to prepare the F5 201 – TMOS
+Thank you for using this study guide to prepare the F5 201 - TMOS
 Administration exam and good luck with your certification goals.
 
 Thanks

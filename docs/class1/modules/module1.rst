@@ -10,7 +10,7 @@ Objective - 1.01 Explain, compare, and contrast the OSI layers
 |
 |
 
-**1.01 – Describe the function of each OSI layer**
+**1.01 - Describe the function of each OSI layer**
 
 **Ref: 1, pp. 168-181.**
 
@@ -208,7 +208,7 @@ OSI layers**
 
 5. Session layer - Logical Ports 21, 22, 23, 80 etc.
 
-6. Presentation layer – SSL, WEP, WPA, Kerberos,
+6. Presentation layer - SSL, WEP, WPA, Kerberos,
 
 7. Application Layer - DHCP, DNS, FTP, HTTP, IMAP4, NNTP, POP3, SMTP, SNMP,
    SSH, TELNET and NTP
@@ -285,7 +285,7 @@ address and the IP address. This information is stored in the ARP cache.
 |
 |
 
-**1.02 – Explain the purpose and functionality of MAC addresses**
+**1.02 - Explain the purpose and functionality of MAC addresses**
 
 `Link to Online Topic Content <http://www.tech-faq.com/ethernet-at-the-data-link-layer.html>`__
 
@@ -1246,7 +1246,7 @@ multicast addressing.
 
 **IPv6 Unicast**
 
-This is similar to the unicast address in IPv4 – a single address
+This is similar to the unicast address in IPv4 - a single address
 identifying a single interface. There are four types of unicast
 addresses:
 
@@ -1738,20 +1738,20 @@ options section.
 Some options may only be sent when SYN is set. Option-Kind and standard
 lengths given as (Option-Kind, Option-Length).
 
-- 0 (8 bits) – End of options list
+- 0 (8 bits) - End of options list
 
-- 1 (8 bits) – No operation (NOP, Padding). This may be used to align option
+- 1 (8 bits) - No operation (NOP, Padding). This may be used to align option
   fields on 32-bit boundaries for better performance.
 
-- 2,4,SS (32 bits) – Maximum segment size (see maximum segment size)
+- 2,4,SS (32 bits) - Maximum segment size (see maximum segment size)
 
-- 3,3,S (24 bits) – Window scale (see window scaling for details)
+- 3,3,S (24 bits) - Window scale (see window scaling for details)
 
-- 4,2 (16 bits) – Selective Acknowledgement permitted. (See selective
+- 4,2 (16 bits) - Selective Acknowledgement permitted. (See selective
   acknowledgments for details)
 
 - 5,N,BBBB,EEEE,... (variable bits, N is either 10, 18, 26, or 34)- Selective
-  ACKnowledgement (SACK). These first two bytes are followed by a list of 1–4
+  ACKnowledgement (SACK). These first two bytes are followed by a list of 1-4
   blocks being selectively acknowledged, specified as 32-bit begin/end
   pointers.
 
@@ -2538,7 +2538,7 @@ RCPT and DATA. The most common commands are:
 
 - EXPN - expand an address
 
-- VERB – verbose
+- VERB - verbose
 
 .. image:: /_static/101/1p18.png
 
@@ -2652,7 +2652,7 @@ computer.
 |
 |
 
-**1.05 – Given a situation in which a client connects to a remote host,
+**1.05 - Given a situation in which a client connects to a remote host,
 explain how the name resolution process occurs**
 
 **REF 1 p 970 - 982**

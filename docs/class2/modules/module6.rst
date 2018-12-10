@@ -1,4 +1,4 @@
-Section 6 – Identify and report current device status
+Section 6 - Identify and report current device status
 =====================================================
 
 |
@@ -445,8 +445,8 @@ or understand many of the different issues that may arise around the
 topic and the best practice method of solving the issue. Hands-on study
 is the best way to master these types of topics.
 
-Get familiar with looking at the status information in **Statistics –
-Module Statistics – Local Traffic** under the different **Statistics
+Get familiar with looking at the status information in **Statistics -
+Module Statistics - Local Traffic** under the different **Statistics
 Types** drop menu on the BIG-IP and be able to identify significant
 statistic levels. This may be hard to do in the lab unless you are
 pushing load through the unit. Get used to how the reports look and how

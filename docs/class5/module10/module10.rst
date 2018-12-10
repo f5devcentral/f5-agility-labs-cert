@@ -1,4 +1,4 @@
-Lab 10 – Device Service Clusters and High Availability
+Lab 10 - Device Service Clusters and High Availability
 ========================================================
 
 In this module you will configure BIG-IPs for high availability.  Device Service Clusters (DSCs) are a series of BIG-IPs (up to 8) that and support each other and failover applications.

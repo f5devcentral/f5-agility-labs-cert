@@ -6,15 +6,26 @@ F5 101 - App Delivery Fundamentals Study Guide
 
 **Overview  101 - App Delivery Fundamentals**
 
-Welcome to the F5 Networks 101 - Application Delivery Fundamentals compiled Study Guide.  The purpose of this guide is to help you prepare for the F5 101 - Application Delivery Fundamentals exam.  The contents of this document are based on the 101 - Application Delivery Fundamentals Exam Blueprint for TMOS v11.4.
+Welcome to the F5 Networks 101 - Application Delivery Fundamentals compiled
+Study Guide. The purpose of this guide is to help you prepare for the
+F5 101 - Application Delivery Fundamentals exam. The contents of this document
+are based on the 101 - Application Delivery Fundamentals Exam Blueprint for
+TMOS v11.4.
  
 **This study guide provides students with some of the basic foundational knowledge required to pass the exam.**
 
-*This study guide is a collection of information and therefore not a completely original work.*  The majority of the information is compiled from sources that are located on the Internet.  All of the information locations are referenced at the top of each topic instead of in an Appendix of this document.  This was done to help the reader access the referenced information easier without having to search through a formal appendix.  This guide also references a book that should be basic reading for some of the topics on this exam. 
+*This study guide is a collection of information and therefore not a completely
+original work.* The majority of the information is compiled from sources that
+are located on the Internet. All of the information locations are referenced
+at the top of each topic instead of in an Appendix of this document. This was
+done to help the reader access the referenced information easier without having
+to search through a formal appendix. This guide also references a book that
+should be basic reading for some of the topics on this exam. 
 
 There are not any pre-requisites to this exam. 
  
-This guide was prepared by an F5 employee but is not an official F5 document and is not supported by F5 Networks.
+This guide was prepared by an F5 employee but is not an official F5 document
+and is not supported by F5 Networks.
 
 |
 |
@@ -26,10 +37,11 @@ This guide was prepared by an F5 employee but is not an official F5 document and
 
 **Printed References**
 
+These referenced books are important and should be considered basic reading
+material for this exam.
 
-These referenced books are important and should be considered basic reading material for this exam.
-
-(Ref:1) Kozierok, Charles M. 2005. The TCP/IP Guide. No Starch Press, Inc. San Francisco, CA. 94103. ISBN 1-59327-047-X  pp 947 -1080
+(Ref:1) Kozierok, Charles M. 2005. The TCP/IP Guide. No Starch Press, Inc. San
+Francisco, CA. 94103. ISBN 1-59327-047-X  pp 947 -1080
 
 |
 |

@@ -1,4 +1,4 @@
-Section 3 – Proposal
+Section 3 - Proposal
 =====================
 
 |
@@ -703,7 +703,7 @@ effectively.
 |
 |
 
-Objective – 3.02 Given a scenario, recommend F5 solutions to meet business requirements
+Objective - 3.02 Given a scenario, recommend F5 solutions to meet business requirements
 ---------------------------------------------------------------------------------------------------------
 
 |
@@ -869,7 +869,7 @@ Some question you may want to ponder;
    -  vCMP guest, multiple modules, complex or simple policies, iRules,
       analytics
 
--  Am I leaving enough room for 3–5 years of growth?
+-  Am I leaving enough room for 3-5 years of growth?
 
    -  OpEx vs CapEx
 
@@ -917,8 +917,8 @@ How much memory does a connection take
 
 It depends! Layer 4 state uses much less memory than layer 7. Basic rule
 of thumb is ~750k L4 connections per 1 GB of memory. Basic rule of thumb
-is 100–130k L7 connections per 1 GB of memory (~6X more memory than L4).
-Basic rule of thumb is 50–170k SSL connections per 1 GB of memory. These
+is 100-130k L7 connections per 1 GB of memory (~6X more memory than L4).
+Basic rule of thumb is 50-170k SSL connections per 1 GB of memory. These
 numbers are all for basic BIG-LTM functionality. Memory per connection
 may increase if other advanced services such as BIG-IP ASM, BIG-IP APM,
 and iRules are enabled.

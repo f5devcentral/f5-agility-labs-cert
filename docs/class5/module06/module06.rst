@@ -1,4 +1,4 @@
-Lab 6 – Virtual Servers and Packet Processing Review
+Lab 6 - Virtual Servers and Packet Processing Review
 =======================================================
 
 This is a review (but an important one) of virtual server and packet processing from 

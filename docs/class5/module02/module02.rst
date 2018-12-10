@@ -1,4 +1,4 @@
-Lab 2 – Profiles
+Lab 2 - Profiles
 ===================
 
 <enter description>

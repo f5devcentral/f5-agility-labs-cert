@@ -1,4 +1,4 @@
-Lab 5 – SSL
+Lab 5 - SSL
 ==============
 
 In this module, you will go over the basics of importing/creating certificates and building virtual servers that can encrypt and decrypt traffic.

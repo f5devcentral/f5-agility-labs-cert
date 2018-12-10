@@ -1,4 +1,4 @@
-Section 7 – Maintain system configuration
+Section 7 - Maintain system configuration
 =========================================
 
 |

@@ -1,4 +1,4 @@
-Section 5 – Application Delivery Platforms
+Section 5 - Application Delivery Platforms
 ==========================================
 
 Objective - 5.01 Describe the purpose, advantages, use cases, and challenges associated with hardware based application delivery platforms and virtual machines
@@ -530,8 +530,8 @@ servers open to exploitation.
 **A brief history**
 
 Back in the day when HTTP was still evolving, someone came up with the
-concept of persistent connections. See, in ancient times – when
-administrators still wore togas in the data center – HTTP 1.0 required
+concept of persistent connections. See, in ancient times - when
+administrators still wore togas in the data center - HTTP 1.0 required
 one TCP connection for every object on a page. That was okay, until
 pages started comprising ten, twenty, and more objects. So someone added
 an HTTP header, Keep-Alive, which basically told the server not to close
@@ -546,7 +546,7 @@ This capability is known as a persistent connection, because the
 connection persists across multiple requests. This is not the same as
 pipelining, though the two are closely related. Pipelining takes the
 concept of persistent connections and then ignores the traditional
-request – reply relationship inherent in HTTP and throws it out the
+request - reply relationship inherent in HTTP and throws it out the
 window.
 
 .. image:: /_static/101/1p33.png
@@ -599,7 +599,7 @@ the performance gained by reducing the number of round trips using
 pipelining.
 
 Depending on the order in which requests are sent, if a request
-requiring particularly lengthy processing – say a database query – were
+requiring particularly lengthy processing - say a database query - were
 sent relatively early in the pipeline, this could actually cause a
 degradation in performance because all the other responses have to wait
 for the lengthy one to finish before the others can be sent back.
@@ -642,7 +642,7 @@ someone attempting to consume resources and a legitimate request.
 Consider that the server has no understanding of a “page”. It
 understands individual requests. It has no way of knowing that a “page”
 consists of only 50 objects, and therefore a client pipelining requests
-for the maximum allowed – by default 100 for Apache – may not be seen as
+for the maximum allowed - by default 100 for Apache - may not be seen as
 out of the ordinary. Several clients opening connections and pipelining
 hundreds or thousands of requests every second without caring if they
 receive any of the responses could quickly consume the server’s
@@ -666,14 +666,14 @@ sleeping dogs lie.
 Conclusion
 ==========
 
-This document is intended as a study guide for the F5 101 – Application
+This document is intended as a study guide for the F5 101 - Application
 Delivery Fundamentals exam. This study guide is not an all-inclusive
 document that will guarantee a passing grade on the exam. It is intended
 to be a living doc and any feedback or material that you feel should be
 included, to help exam takers better prepare, can be sent to
 channeleng@f5.com.
 
-Thank you for using this study guide to prepare the 101 – Application
+Thank you for using this study guide to prepare the 101 - Application
 Delivery Fundamentals exam and good luck with your certification goals.
 
 Thanks

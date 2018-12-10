@@ -1,4 +1,4 @@
-Lab 7 – Load Balancing and Pools
+Lab 7 - Load Balancing and Pools
 ===================================
 
 In this module you will look at the effects of load balancing methods and configuration parameters on connection distribution to the pool members.

@@ -1,4 +1,4 @@
-Lab 3 – Application Visibilty and Reporting (AVR)
+Lab 3 - Application Visibilty and Reporting (AVR)
 ====================================================
 
 You will use iApps templates, iRules and an analytics profile to build
