@@ -1,46 +1,24 @@
-F5 202 - Pre-Sales Fundamentals Study Guide
-===========================================
+F5 201 - TMOS Administration Labs
+====================================
 
 |
 |
 
-**Overview  202 - Pre-Sales Fundamentals**
+These exercises are design to reinforced the concepts outlined in the **TMOS Administration** exam blueprint.  F5 certification exams are designed to required hands-on experience to pass the test and these exercises will help you deal with exam questions requiring you to interpret configuration and other outputs from the |bip|.
 
-|
-|
+Exam blueprints can be found on the F5 Support site at:
+https://support.f5.com/csp/article/K29900360#301a
 
-Welcome to the F5 202 - Pre-Sales Fundamentals Study Guide. The purpose
-of this guide is to help you prepare for the F5 202 - Pre-Sales
-Fundamentals exam. The contents of this document are based on the F5 202
-- Pre-Sales Fundamentals Exam Blueprint for TMOS v13.1.
+This class covers the following topics:
 
-**This study guide provides students with some of the basic
-foundational knowledge required to pass the exam.**
+- Packet Processing and Virtual Server Processing Order
+- Virtual Server and Pool Behavior and Status
+- Administrative Troubleshooting of the |bip|
+- Support, Analytics and iApps
+- Managing the BIG-IP
+- Modifying and Managing Pools and Virtual Servers
 
-**This study guide is a collection of information and therefore not a
-completely original work.** 
-
-I would like to give recognition to a group of people that helped with this
-document. A special thank you goes out to Mickey Woods with Ingram Micro,
-Ed Rabago with F5, Leif Rasmussen with F5, Orlando Santiago with F5,
-Patrick Oswalt from F5, Greg Godar with F5 and Mark Diminico with F5.
-
-The majority of the information is compiled from F5 sources that are
-located on the Internet. All of the information locations are referenced
-at the top of each topic instead of in an appendix of this document.
-This was done to help the reader access the referenced information
-easier without having to search through a formal appendix.
-
-The F5 101 - App Delivery Fundamentals exam, stands as a pre-requisite
-to this exam.
-
-This guide was prepared by an F5 employee but is not an official F5
-document and is not supported by F5 Networks.
-
-|
-|
-
-**Reading = Knowledge = Power**
+Expected time to complete: **4 hours**
 
 |
 |
@@ -49,4 +27,4 @@ document and is not supported by F5 Networks.
    :maxdepth: 1
    :glob:
 
-   modules/module*
+   module*/module*
