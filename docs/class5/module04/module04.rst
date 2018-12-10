@@ -1,4 +1,4 @@
-Lab 4 – Monitors and Status
+Lab 4 - Monitors and Status
 ==============================
 
 In this section you will configure and apply monitors and interpret the results.

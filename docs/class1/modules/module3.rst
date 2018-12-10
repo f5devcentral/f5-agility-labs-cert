@@ -1,10 +1,10 @@
-Section 3 – Load Balancing Essentials
+Section 3 - Load Balancing Essentials
 =====================================
 
 Objective - 3.01 Discuss the purpose of, use cases for, and key considerations related to load balancing
 ----------------------------------------------------------------------------------------------------------
 
-**3.01 – Explain the purpose of distribution of load across multiple
+**3.01 - Explain the purpose of distribution of load across multiple
 servers**
 
 **Distribution of Load**
@@ -19,7 +19,7 @@ load balancing solution and then implementing it in the most effective
 manner. While making sure the functions of the applications are not
 being broken as users are sent all across the servers in the group.
 
-**3.01 – Given an environment, determine the appropriate load balancing
+**3.01 - Given an environment, determine the appropriate load balancing
 algorithm that achieves a desired result**
 
 `Link to Online Topic

@@ -101,7 +101,7 @@ The F5 Certified! Program is progressive and builds on the skills and knowledge 
 |                                          |                                                        |
 |                                          |- F5-CTS, BIG-IP APM Certification                      |
 |                                          |                                                        |
-|                                          |- Exam 401 – Security Solution Expert                   |
+|                                          |- Exam 401 - Security Solution Expert                   |
 |                                          |                                                        |
 +------------------------------------------+--------------------------------------------------------+
 	
@@ -170,7 +170,7 @@ Your First F5 Certification
 |
 
 F5 Certified Sales Professional (F5-SP)
-There are two paths to take to for your first F5 certification.  Each path is separate from the other.  The first professional certification in the program is the F5 Certified! Administrator, BIG-IP (F5- CA). This certification consists of two exams: 101 - Application Delivery Fundamentals and 201 – TMOS Administration. Exam 101 is a prerequisite to Exam 201; no certificate is issued after passing Exam 101. 
+There are two paths to take to for your first F5 certification.  Each path is separate from the other.  The first professional certification in the program is the F5 Certified! Administrator, BIG-IP (F5- CA). This certification consists of two exams: 101 - Application Delivery Fundamentals and 201 - TMOS Administration. Exam 101 is a prerequisite to Exam 201; no certificate is issued after passing Exam 101. 
 
 The sections that follow give a brief overview of the first two exams and the skills needed to pass them.
 
@@ -180,7 +180,7 @@ The sections that follow give a brief overview of the first two exams and the sk
 
 This is the first exam required to achieve either F5 Certified BIG-IP Administrator status or F5 Certified Sales Professional. All candidates must take this exam to move forward in the program.
 
-Successful completion of the 101–Application Delivery Fundamentals exam acknowledges the skills and understanding necessary for day-to-day management of Application Delivery Networks (ADNs). This exam identifies candidates that possess the knowledge that is necessary to work with F5 products and technologies.
+Successful completion of the 101-Application Delivery Fundamentals exam acknowledges the skills and understanding necessary for day-to-day management of Application Delivery Networks (ADNs). This exam identifies candidates that possess the knowledge that is necessary to work with F5 products and technologies.
 
 *Summary description of the minimally qualified candidate (MQC)*
 
@@ -204,7 +204,7 @@ The MQC can do the following without assistance:
 
 **Exam 201 - TMOS Administration**
 
-This is the second exam required to achieve Certified F5 BIG-IP Administrator status. Candidates must have passed the 101–Application Delivery Fundamentals exam in order to be eligible for the 201 exam.
+This is the second exam required to achieve Certified F5 BIG-IP Administrator status. Candidates must have passed the 101-Application Delivery Fundamentals exam in order to be eligible for the 201 exam.
 
 Successful completion of the BIG-IP Administrator exam identifies candidates who can independently perform day-to-day operations and basic troubleshooting of TMOS-based devices in various application environments after it has been installed, configured, and implemented.
 
@@ -222,13 +222,13 @@ The MQC can do the following without assistance:
 
 *Prerequisite for exam:*
 
-- Exam 101 – Application Delivery Fundamentals
+- Exam 101 - Application Delivery Fundamentals
 
 |
 
-**Exam 202 – Pre-Sales Fundamentals**
+**Exam 202 - Pre-Sales Fundamentals**
 
-This is the second exam required to achieve F5 Certified Sales Professional status. All candidates must have passed the 101–Application Delivery Fundamentals exam in order to achieve F5 Certified Sales Professional status.
+This is the second exam required to achieve F5 Certified Sales Professional status. All candidates must have passed the 101-Application Delivery Fundamentals exam in order to achieve F5 Certified Sales Professional status.
 
 Successful completion of the 202 Pre-Sales Fundamentals exam acknowledges the skills and understanding necessary for technical selling of F5 solutions.
 
@@ -244,7 +244,7 @@ Understand market awareness that differentiates industry solutions (Security, Cl
 
 *Prerequisite for exam:*
 
-- Exam 101 – Application Delivery Fundamentals
+- Exam 101 - Application Delivery Fundamentals
 
 |
 

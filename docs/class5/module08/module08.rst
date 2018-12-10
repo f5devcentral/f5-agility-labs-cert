@@ -1,4 +1,4 @@
-Lab 8 – Networking
+Lab 8 - Networking
 =====================
 
 You have already done a number of labs around networks and there are

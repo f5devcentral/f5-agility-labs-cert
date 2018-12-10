@@ -1,4 +1,4 @@
-Section 4 – Troubleshoot basic device management connectivity issues
+Section 4 - Troubleshoot basic device management connectivity issues
 ====================================================================
 
 |

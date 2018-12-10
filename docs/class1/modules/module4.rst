@@ -1,4 +1,4 @@
-Section 4 – Security
+Section 4 - Security
 ====================
 
 Objective - 4.01 Compare and contrast positive and negative security models
@@ -64,7 +64,7 @@ You are simply blocking any known bad attacks that could happen. You are
 vulnerable to 0-day attacks of which the pattern of the attack is not
 already known.
 
-**4.01 – Security (Non-Blueprint)**
+**4.01 - Security (Non-Blueprint)**
 
 `Link to Online Topic
 Content <https://f5.com/resources/white-papers/applied-application-security-positive-and-negative>`__
@@ -778,7 +778,7 @@ IPsec**
 
 `Link to Online Topic Content <https://en.wikipedia.org/wiki/IPsec>`__
 
-**IPsec – IP Security**
+**IPsec - IP Security**
 
 Internet Protocol Security (IPsec) is a protocol suite for securing
 Internet Protocol (IP) communications by authenticating and encrypting
@@ -989,7 +989,7 @@ compliance and corporate security mandates.
 
 .. image:: /_static/101/1p32.png
 
-**4.04 – Given a list of environments/situations, determine which is
+**4.04 - Given a list of environments/situations, determine which is
 appropriate for an IPsec solution and which is appropriate for an SSL
 VPN solution**
 

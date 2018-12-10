@@ -45,7 +45,7 @@ initiatives, when no other resource is available.
 |
 |
 
-**1.01 – Visit corporate website to gather information (investor
+**1.01 - Visit corporate website to gather information (investor
 relations, board of directors, press releases, acquisitions, blogs, RSS
 feeds)**
 
@@ -147,7 +147,7 @@ https://angel.co
 |
 |
 
-**1.01 – Locate job postings to identify internal initiatives and
+**1.01 - Locate job postings to identify internal initiatives and
 investments**
 
 Some company initiatives can be seen in the type of job roles they have
@@ -169,7 +169,7 @@ Objective - 1.02 - Given a scenario, prospect customer opportunities
 
 **1.02 - Determine corporate challenges**
 
-Many times, understanding the implications of the challenges that a customer/company is facing will help you pick the correct solution for that customer/company.  Doing research when customer prospecting (hunting!) is very important. Other than having face-to-face meetings where information can be exchanged, understanding the customer’s mission, vision, and value statement will help align your efforts when introducing technology to solve a business problem. Most of the time, attempts to gather key information using email or “cold calling” activities will not be successful – unless you have made a time investment in understanding the corporate and technology infrastructure of the prospect. To earn the trust of a decision maker , you must understand their needs and budget so you can articulate solutions that meets those needs.  Below are two examples of positioning F5 solutions to meet a company’s cloud and compliance challenges:
+Many times, understanding the implications of the challenges that a customer/company is facing will help you pick the correct solution for that customer/company.  Doing research when customer prospecting (hunting!) is very important. Other than having face-to-face meetings where information can be exchanged, understanding the customer’s mission, vision, and value statement will help align your efforts when introducing technology to solve a business problem. Most of the time, attempts to gather key information using email or “cold calling” activities will not be successful - unless you have made a time investment in understanding the corporate and technology infrastructure of the prospect. To earn the trust of a decision maker , you must understand their needs and budget so you can articulate solutions that meets those needs.  Below are two examples of positioning F5 solutions to meet a company’s cloud and compliance challenges:
 
 *Cloud Challenges*
 

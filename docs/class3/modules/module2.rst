@@ -553,7 +553,7 @@ of F5 to a non-technical audience**
 
 https://www.f5.com/products/big-ip-services/local-traffic-manager
 
-**F5 Overview – BIG-IP Local Traffic Manager**
+**F5 Overview - BIG-IP Local Traffic Manager**
 
 BIG-IP Local Traffic Manager enables you to control network traffic,
 selecting the right destination based on server performance, security,
@@ -563,7 +563,7 @@ and availability.
 
 https://www.f5.com/products/big-ip-services/big-ip-dns
 
-**F5 Overview – BIG-IP DNS**
+**F5 Overview - BIG-IP DNS**
 
 BIG-IP DNS improves the performance and availability of your global
 applications by sending users to the closest or best-performing
@@ -577,7 +577,7 @@ protected DNS management.
 
 https://www.f5.com/products/security/access-manager
 
-**F5 Overview – BIG-IP Access Policy Manager (Access Manager)**
+**F5 Overview - BIG-IP Access Policy Manager (Access Manager)**
 
 Access Manager secures, simplifies, and protects user access to apps and
 data, while delivering the most scalable access gateway on the market.
@@ -586,7 +586,7 @@ data, while delivering the most scalable access gateway on the market.
 
 https://www.f5.com/pdf/products/F5_advanced_WAF_overview.pdf
 
-**Value of F5 – BIG-IP Application Security Manager /Advanced WAF**
+**Value of F5 - BIG-IP Application Security Manager /Advanced WAF**
 
 Applications are critical to your business. Without the right
 protection, however, they can become an attack vector that may
@@ -600,7 +600,7 @@ breaches by fixing vulnerabilities and stopping attacks.
 
 https://www.f5.com/products/security/advanced-firewall-manager
 
-**F5 Overview – BIG-IP Advanced Firewall Manager**
+**F5 Overview - BIG-IP Advanced Firewall Manager**
 
 Protect your network against incoming threats, including the most
 massive and complex DDoS attacks. DDoS attacks saturate bandwidth,
@@ -613,7 +613,7 @@ resources.
 
 https://www.f5.com/products/security/ssl-orchestrator
 
-**F5 Overview – SSL Orchestrator**
+**F5 Overview - SSL Orchestrator**
 
 Maximize infrastructure investments, efficiencies, and security with
 dynamic, policy-based decryption, encryption, and traffic steering
@@ -627,7 +627,7 @@ provides robust decryption/encryption of SSL/TLS traffic.
 
 https://www.f5.com/products/security/ddos-hybrid-defender
 
-**F5 Overview – DDoS Hybrid Defender**
+**F5 Overview - DDoS Hybrid Defender**
 
 Get comprehensive DDoS protection for your network and at the
 application layer with flexibility and scale for inline, out-of-band,
@@ -640,7 +640,7 @@ capabilities, and advanced detection methods—all in one appliance.
 
 https://www.f5.com/products/automation-and-orchestration/big-iq
 
-**F5 Overview – BIG-IQ Centralized Manager**
+**F5 Overview - BIG-IQ Centralized Manager**
 
 BIG-IQ Centralized Management provides a central point of control for F5
 physical and virtual devices. It simplifies management, helps ensure
@@ -651,7 +651,7 @@ applications securely and effectively.
 
 https://www.f5.com/products/big-ip-services/local-traffic-manager
 
-**Value of F5 – SSL Performance**
+**Value of F5 - SSL Performance**
 
 The SSL performance of BIG-IP LTM lets you cost-effectively protect the
 end-to-end user experience by encrypting everything from the client to

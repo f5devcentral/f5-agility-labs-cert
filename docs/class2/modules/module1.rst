@@ -1,4 +1,4 @@
-Section 1 – Troubleshoot basic virtual server Connectivity issues
+Section 1 - Troubleshoot basic virtual server Connectivity issues
 =================================================================
 
 |
@@ -128,7 +128,7 @@ such as iRules or session persistence types.
 |
 |
 
-**1.01 – Explain how a packet is processed once it arrives on the device**
+**1.01 - Explain how a packet is processed once it arrives on the device**
 
 In version 4.x, which was just prior to version 9.x (when TMOS was
 created), the BIG-IP system used a virtual server precedence to define
@@ -298,7 +298,7 @@ section.
 |
 |
 
-**1.01 – Explain how a virtual server processes a request**
+**1.01 - Explain how a virtual server processes a request**
 
 `SOL8082: Overview of TCP connection setup for BIG-IP LTM virtual server types <http://support.f5.com/kb/en-us/solutions/public/8000/000/sol8082.html>`__
 
@@ -347,7 +347,7 @@ handshake for a Standard virtual server with a TCP profile:
 |
 |
 
-**1.01 – Given a specific connectivity issue, isolate where the problem might be according to the processing order**
+**1.01 - Given a specific connectivity issue, isolate where the problem might be according to the processing order**
 
 **GUI Study in the vLabs**
 
@@ -1363,7 +1363,7 @@ Objective - 1.07 - Identify a persistence issue
 |
 |
 
-**1.07 – Identify a persistence issue**
+**1.07 - Identify a persistence issue**
 
 **General Network Study and vLabs**
 

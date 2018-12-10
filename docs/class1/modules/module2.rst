@@ -403,7 +403,7 @@ BIG- IP configuration. As such, it is more appropriate and technically
 higher performance, to use that feature in the profile as opposed to
 writing an iRule to perform the same task. A general rule of thumb is:
 Any time you can do something from within the standard config options,
-profiles, GUI or CLI – do it there first. If you’re looking to perform a
+profiles, GUI or CLI - do it there first. If you’re looking to perform a
 task that can’t be accomplished via the “built-in” means of
 configuration, then it is a perfect time to turn to iRules to expand the
 possibilities.
@@ -710,16 +710,16 @@ of recipients.
 
 Networking technologies tend to naturally support certain forwarding
 models. For example, fiber optics and copper cables run directly from
-one machine to another to form a natural unicast media – data
+one machine to another to form a natural unicast media - data
 transmitted at one end is received by only one machine at the other end.
 However, as illustrated in the diagrams, nodes can forward packets to
 create multicast or broadcast distributions from naturally unicast
 media. Likewise, traditional Ethernet (10BASE5 and 10BASE2, but not the
-more modern 10BASE-T) are natural broadcast media – all the nodes are
+more modern 10BASE-T) are natural broadcast media - all the nodes are
 attached to a single long cable and a packet transmitted by one device
 is seen by every other device attached to the cable. Ethernet nodes
 implement unicast by ignoring packets not directly addressed to them. A
-wireless network is naturally multicast – all devices within a reception
+wireless network is naturally multicast - all devices within a reception
 radius of a transmitter can receive its packets. Wireless nodes ignore
 packets addressed to other devices, but require forwarding to reach
 nodes outside their reception radius.
@@ -795,17 +795,17 @@ a full proxy architecture**
 `Link to Online Topic
 Content <https://devcentral.f5.com/articles/the-full-proxy-data-center-architecture>`__
 
-**Full proxy architecture – What do they mean?**
+**Full proxy architecture - What do they mean?**
 
 The reason there is a distinction made between “proxy” and “full-proxy”
 stems from the handling of connections as they flow through the device.
-All proxies sit between two entities – in the Internet age almost always
-“client” and “server” – and mediate connections. While all full-proxies
+All proxies sit between two entities - in the Internet age almost always
+“client” and “server” - and mediate connections. While all full-proxies
 are proxies, the converse is not true. Not all proxies are full-proxies
 and it is this distinction that needs to be made when making decisions
 that will impact the data center architecture.
 
-A full-proxy maintains two separate session tables – one on the
+A full-proxy maintains two separate session tables - one on the
 client-side, one on the server-side. There is effectively an “air gap”
 isolation layer between the two internal to the proxy, one that enables
 focused profiles to be applied specifically to address issues peculiar
@@ -830,7 +830,7 @@ process and potentially into the first few packets of application data,
 but then “stitches” a connection to a given server on the back-end using
 either layer 4 or layer 7 data, perhaps both. The connection is a single
 flow from end-to-end and must choose which characteristics of the
-connection to focus on – client or server – because it cannot
+connection to focus on - client or server - because it cannot
 simultaneously optimize for both.
 
 The second advantage of a full-proxy is its ability to perform more
@@ -868,8 +868,8 @@ in VMware View deployments. Traditional access management technologies,
 for example, are tightly coupled to host names and IP addresses. In a
 highly virtualized or cloud computing environment, this constraint may
 spell disaster for either performance or ability to function, or both.
-By implementing access management in the application delivery tier – on
-a full-proxy device – volatility is managed through virtualization of
+By implementing access management in the application delivery tier - on
+a full-proxy device - volatility is managed through virtualization of
 the resources, allowing the application delivery controller to worry
 about details such as IP address and VLAN segments, freeing the access
 management solution to concern itself with determining whether this user
@@ -994,7 +994,7 @@ packet-based solution.
 Objective - 2.05 Explain the advantages and configurations of high availability (HA)
 -------------------------------------------------------------------------------------
 
-**2.05 – F5 High Availability concepts**
+**2.05 - F5 High Availability concepts**
 
 `Link to Online Topic
 Content <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos_management_guide_10_0_0/tmos_high_avail.html>`__
