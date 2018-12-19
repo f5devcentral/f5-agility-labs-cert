@@ -3,7 +3,7 @@ F5 Networks Certification Study Guides and Labs
 
 |
 
-Welcome to the |classbold| updated on 11/30/2018
+Welcome to the |classbold| updated on 12/21/2018
 
 |
 
