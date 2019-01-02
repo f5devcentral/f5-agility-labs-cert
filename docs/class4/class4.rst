@@ -7,7 +7,6 @@ F5 202 - Pre-Sales Fundamentals Study Guide
 **Overview  202 - Pre-Sales Fundamentals**
 
 |
-|
 
 Welcome to the F5 202 - Pre-Sales Fundamentals Study Guide. The purpose
 of this guide is to help you prepare for the F5 202 - Pre-Sales
