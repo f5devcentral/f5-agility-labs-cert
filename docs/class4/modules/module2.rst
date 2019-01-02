@@ -5,7 +5,7 @@ Section 2 - Education
 |
 
 Objective - 2.01 Educate and present on technical capabilities of F5 solutions
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 |
 |
@@ -663,7 +663,7 @@ block bad traffic and allow good traffic to pass through. 
 |
 
 Objective - 2.02 Gather resources to replicate F5 technical demonstrations
----------------------------------------------------------------------------
+--------------------------------------------------------------------------
 
 |
 |
@@ -728,7 +728,7 @@ their laptop or work/personal lab environment.
 |
 
 Objective - 2.03 Given a scenario, articulate key values of F5 solutions
--------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 |
 |
@@ -789,7 +789,7 @@ with them all.
 |
 
 Objective - 2.04 Given a scenario, distinguish architectural considerations that may affect the F5 solution
------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 
 |
 |

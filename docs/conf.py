@@ -5,7 +5,7 @@
 # ------------
 #
 # REQUIRED: Your class/lab name
-classname = "F5 Certification Labs"
+classname = "F5 Networks Certification Prep"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
 github_repo = "https://github.com/f5devcentral/f5-agility-labs-cert"
@@ -59,9 +59,9 @@ rst_prolog = """
 
 if 'github_repo' in locals() and len(github_repo) > 0:
     rst_prolog += """
-.. |repoinfo| replace:: The content contained here leverages a full DevOps CI/CD
-              pipeline and is sourced from the GitHub repository at %s.
-              Bugs and Requests for enhancements can be made using by
+.. |repoinfo| replace:: The content contained here 
+              is sourced from the GitHub repository at %s.
+              Corrections and Requests for enhancements can be made using by
               opening an Issue within the repository.
 """ % (github_repo)
 else:

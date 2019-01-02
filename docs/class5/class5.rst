@@ -1,10 +1,12 @@
 F5 301A - BIG-IP LTM Specialist: Architect, Set-Up & Deploy Study Guide
-=========================================================================
+=======================================================================
 
-301A Content Is Under Development
-----------------------------------
+|
+|
 
 **Overview 301A - BIG-IP LTM Specialist: Architect, Set-Up & Deploy**
+
+|
 
 Welcome to the 301a - LTM Specialist compiled Study Guide. The purpose of this
 guide is to help you prepare for the F5 301a - LTM Specialist exam. The
@@ -48,9 +50,15 @@ is possible that an ATC for F5 Networks may still offer older 11.5 training but
 this is not guaranteed.
  
 (Ref:1) Configuring BIG-IP Local Traffic Manager v11.5, v11.5.0 Edition.  F5 Networks Training Course Manual.
+
 (Ref:2) Administering BIG-IP v11.5, v11.5.0 Edition.  F5 Networks Training Course Manual.
+
 (Ref:3) Troubleshooting BIG-IP v11.5, v11.5.0 Edition.  F5 Networks Training Course Manual.
+
 (Ref:4) Developing iRules for BIG-IP v11.5, v11.5.0 Edition.  F5 Networks Training Course Manual.
+
+|
+|
 
 .. toctree::
    :maxdepth: 1
