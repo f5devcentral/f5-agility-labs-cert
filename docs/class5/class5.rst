@@ -1,5 +1,5 @@
-F5 301A - BIG-IP LTM Specialist: Architect, Set-Up & Deploy Study Guide
-=======================================================================
+F5 301A - BIG-IP LTM Specialist: Architect, Set-Up & Deploy Study Guide 01/28/19
+================================================================================
 
 |
 |

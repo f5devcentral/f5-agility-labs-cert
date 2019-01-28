@@ -1,5 +1,5 @@
-F5 302 - BIG-IP DNS Specialist Study Guide
-============================================
+F5 302 - BIG-IP DNS Specialist Study Guide 01/28/19
+===================================================
 
 302 Content Is Under Development
 --------------------------------
