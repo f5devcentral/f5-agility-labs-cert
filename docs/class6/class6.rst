@@ -1,5 +1,5 @@
-F5 301A - BIG-IP LTM Specialist Labs
-======================================
+F5 301A - BIG-IP LTM Specialist Labs 01/28/19
+=============================================
 
 These exercises are design to reinforce the concepts outlined in the
 **LTM Specialist: Architect, Setup, and Deploy** certification blueprint. F5

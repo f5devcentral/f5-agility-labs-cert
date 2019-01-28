@@ -1,5 +1,5 @@
-F5 301B - BIG-IP LTM Specialist: Maintain and Troubleshoot Study Guide
-======================================================================
+F5 301B - BIG-IP LTM Specialist: Maintain and Troubleshoot Study Guide 01/28/19
+===============================================================================
 
 301B Content Is Under Development
 ---------------------------------
