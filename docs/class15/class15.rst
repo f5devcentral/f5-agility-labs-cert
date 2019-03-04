@@ -1,8 +1,12 @@
 F5 401 - Security Solution Expert Study Guide 01/28/19
 ======================================================
 
-401 Content Is Under Development
---------------------------------
+|
+
+.. caution::
+	401 CONTENT IS UNDER DEVELOPMENT and will be published when initially complete.
+
+|
 
 **Overview 401 - Security Solution Expert**
 
