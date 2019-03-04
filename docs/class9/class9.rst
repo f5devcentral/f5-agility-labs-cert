@@ -1,8 +1,12 @@
 F5 302 - BIG-IP DNS Specialist Study Guide 01/28/19
 ===================================================
 
-302 Content Is Under Development
---------------------------------
+|
+
+.. caution::
+	302 CONTENT IS UNDER DEVELOPMENT and will be published when initially complete.
+
+|
 
 **Overview 302 - BIG-IP DNS Specialist**
 
