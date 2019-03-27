@@ -2,6 +2,15 @@ Section 2 - Education
 =====================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.01 Educate and present on technical capabilities of F5 solutions
@@ -40,7 +49,7 @@ challenges and leverage additional modules to grow your opportunity as
 customers’ security, performance, global availability, and scaling needs
 change.
 
-|
+----
 
 https://www.f5.com/pdf/products/big-ip-local-traffic-manager-ds.pdf
 
@@ -104,7 +113,7 @@ balancer. You also get granular layer 7 control, SSL offloading and
 acceleration capabilities, and ScaleN technology that delivers
 on-demand scaling.
 
-|
+----
 
 https://www.f5.com/products/big-ip-services/big-ip-dns
 
@@ -140,7 +149,8 @@ back-end infrastructure. That translates into higher productivity,
 server consolidation, faster responses, and protected DNS
 management.
 
-|
+----
+
 
 https://www.f5.com/pdf/products/big-ip-advanced-firewall-manager-datasheet.pdf
 
@@ -188,7 +198,7 @@ Easily understand your security status with rich customizable
 reports, logging, and charts that provide insight to all event types
 and enable effective forensic analysis.
 
-|
+----
 
 https://www.f5.com/pdf/products/big-ip-application-security-manager-ds.pdf
 
@@ -305,7 +315,7 @@ Easily understand your security status with detailed forensic
 analysis, full visibility into HTTP and WebSocket traffic, and rich
 insight into all events and user types.
 
-|
+----
 
 https://www.f5.com/pdf/products/big-ip-access-policy-manager-ds.pdf
 
@@ -351,7 +361,7 @@ Forcepoint technology to defend against highly complex web threats.
 No performance trade-offs for security, even in the most demanding
 environments.
 
-|
+----
 
 https://www.f5.com/products/security/access-manager/secure-web-gateway
 
@@ -430,7 +440,7 @@ well- known security information and event management (SIEM)
 solutions, including ArcSight and Splunk for longer-term storage and
 analytics.
 
-|
+----
 
 https://www.f5.com/pdf/products/ip-intelligence-service-ds.pdf
 
@@ -465,7 +475,7 @@ effective security policies.
 Automatically refresh the threat database as often as every five
 minutes to keep the organization safe.
 
-|
+----
 
 https://www.f5.com/pdf/products/websafe-datasheet.pdf
 
@@ -509,8 +519,7 @@ user experience.
 Monitor the latest and most sophisticated attacks that may
 potentially impact your business.
 
-|
-
+----
 
 https://www.f5.com/services/resources
 
@@ -522,7 +531,7 @@ to recommended practice guides. You will also find reference
 architectures in the white papers section. Below are links to just a
 couple of the reference architectures you should review.
 
-|
+----
 
 https://f5.com/solutions/enterprise/reference-architectures/intelligent-dns-scale
 
@@ -534,7 +543,7 @@ and increases service management, while remaining agile enough to
 support both existing and future network architectures, devices, and
 applications.
 
-|
+----
 
 https://www.f5.com/services/resources/white-papers/the-f5-ssl-reference-architecture
 
@@ -545,7 +554,8 @@ customers. It protects traffic between those customers and the
 organization’s services, whether those services are in the cloud or on
 premise.
 
-|
+----
+
 |
 
 **2.01 - Present F5 overview, key F5 messaging, training options, value
@@ -559,7 +569,7 @@ BIG-IP Local Traffic Manager enables you to control network traffic,
 selecting the right destination based on server performance, security,
 and availability.
 
-|
+----
 
 https://www.f5.com/products/big-ip-services/big-ip-dns
 
@@ -573,7 +583,7 @@ network edge, and mask the DNS back-end infrastructure. That translates
 into higher productivity, server consolidation, faster responses, and
 protected DNS management.
 
-|
+----
 
 https://www.f5.com/products/security/access-manager
 
@@ -582,7 +592,7 @@ https://www.f5.com/products/security/access-manager
 Access Manager secures, simplifies, and protects user access to apps and
 data, while delivering the most scalable access gateway on the market.
 
-|
+----
 
 https://www.f5.com/pdf/products/F5_advanced_WAF_overview.pdf
 
@@ -596,7 +606,7 @@ applications are the initial target of data breaches 53% of the time.
 Web application firewalls (WAF) protect your applications from data
 breaches by fixing vulnerabilities and stopping attacks.
 
-|
+----
 
 https://www.f5.com/products/security/advanced-firewall-manager
 
@@ -609,7 +619,7 @@ infrastructure successfully fend them off? Advanced Firewall Manager
 mitigates network threats before they disrupt critical data center
 resources.
 
-|
+----
 
 https://www.f5.com/products/security/ssl-orchestrator
 
@@ -623,7 +633,7 @@ malicious payloads. If you’re not inspecting SSL/TLS traffic, you will
 miss attacks, and leave your organization vulnerable. SSL Orchestrator
 provides robust decryption/encryption of SSL/TLS traffic.
 
-|
+----
 
 https://www.f5.com/products/security/ddos-hybrid-defender
 
@@ -636,7 +646,7 @@ defense that protects against blended network attacks and sophisticated
 application attacks, while enabling full SSL decryption, anti-bot
 capabilities, and advanced detection methods—all in one appliance.
 
-|
+----
 
 https://www.f5.com/products/automation-and-orchestration/big-iq
 
@@ -647,7 +657,7 @@ physical and virtual devices. It simplifies management, helps ensure
 compliance, and gives you the tools you need to deliver your
 applications securely and effectively.
 
-|
+----
 
 https://www.f5.com/products/big-ip-services/local-traffic-manager
 
@@ -660,6 +670,15 @@ DDoS attacks. BIG-IP LTM includes levels of inspection necessary to
 block bad traffic and allow good traffic to pass through. 
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.02 Gather resources to replicate F5 technical demonstrations
@@ -681,6 +700,8 @@ information and resources.
 Get the detailed information you need on F5 products. Datasheets include
 features, specifications, system requirements, and more.
 
+----
+
 `*https://devcentral.f5.com/* <https://devcentral.f5.com/>`__
 
 **DevCentral**
@@ -690,6 +711,8 @@ Solutions. DevCentral is a source for tools, techniques, and
 collaboration to help you build solutions with iControl, iCall, iApps
 and iRules that enable applications to work in concert.
 
+----
+
 `*https://support.f5.com/* <https://support.f5.com/>`__
 
 **Askf5.com**
@@ -698,6 +721,8 @@ AskF5 is your storehouse for thousands of solutions to help you manage
 your F5 products more effectively. Whether you want to search the
 knowledge base periodically to research a solution, or you need the most
 recent news on your F5 products.
+
+----
 
 `*https://support.f5.com/csp/article/K80012344* <https://support.f5.com/csp/article/K80012344>`__
 
@@ -709,6 +734,8 @@ at \ `*https://github.com/F5Networks* <https://github.com/F5Networks>`__.
 These repositories support Automation and Orchestration efforts for
 BIG-IP in Private and Public clouds.
 
+----
+
 https://partners.f5.com/learning/technicaldemos
 
 **Solution Demos**
@@ -716,6 +743,8 @@ https://partners.f5.com/learning/technicaldemos
 Showing is better than telling, right? Check out these recordings that
 walk you through how to create a live, compelling demo for your
 customers.
+
+----
 
 https://downloads.f5.com/
 
@@ -725,6 +754,15 @@ Partners may download vLab environment to demonstrate BIG-IP features on
 their laptop or work/personal lab environment.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.03 Given a scenario, articulate key values of F5 solutions
@@ -747,6 +785,8 @@ the sales play includes the sales playbook, customer facing deck and
 other associated documentation such as whiteboards, demos and/or
 collateral to help support the sales pitch.
 
+----
+
 https://partners.f5.com/learning/accreditation
 
 **F5 Sales Accreditation**
@@ -762,7 +802,8 @@ available, and secure, anywhere.
 
 Knowledge gained on F5 University will help with the exam.
 
-|
+----
+
 |
 
 **2.03 - Match products, features, solutions, to customer initiatives or
@@ -786,6 +827,15 @@ There are many solutions with our products and you should be familiar
 with them all.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.04 Given a scenario, distinguish architectural considerations that may affect the F5 solution
@@ -806,7 +856,8 @@ enterprise-grade load balancing, DNS services, web application
 firewalls, access control, application-level security, and policy
 management found in on-premises environments.
 
-|
+----
+
 |
 
 **2.04 - Determine security constraints**
@@ -825,7 +876,8 @@ This is a diagram of the AWS shared security model.
 
 .. image:: /_static/202/p1.png
 
-|
+----
+
 |
 
 **2.04 - Determine management and orchestration**
@@ -860,6 +912,8 @@ reporting and alerting on application availability, performance,
 
 and security.
 
+----
+
 https://www.f5.com/solutions/automation-and-orchestration/management-visibility-and-orchestration
 
 **Super-NetOps**
@@ -878,3 +932,15 @@ Super-NetOps self-pace curriculum designed to help previously siloed
 NetOps and DevOps teams to begin to collaborate and teaches BIG-IP
 administrators how to standardize services and provide them through
 automation toolchains, reducing time-to-service from days to minutes.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

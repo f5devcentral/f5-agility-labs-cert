@@ -2,10 +2,19 @@ Section 1 - Troubleshoot basic virtual server Connectivity issues
 =================================================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.01 - Given a connectivity troubleshooting situation, consider the packet and virtual server processing order
----------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 
 |
 |
@@ -16,8 +25,7 @@ Before we get into the study points of this section, there is some basic
 information you should know about virtual servers and the BIG-IP
 platform.
 
-`TMOS Concepts 11-4-0 
-<https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0.html?sr=52981582>`__
+`TMOS Concepts 11-4-0  <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0.html?sr=52981582>`__
 
 `Virtual Server Intro  <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/2.html#conceptid>`__
 
@@ -125,7 +133,8 @@ virtual server. You also configure its general properties, some
 configuration options, and other resources you want to assign to it,
 such as iRules or session persistence types.
 
-|
+----
+
 |
 
 **1.01 - Explain how a packet is processed once it arrives on the device**
@@ -295,7 +304,8 @@ IP:port combination, as long as the source IP filter is different on
 each listener. There is a good example in the linked SOL for this
 section.
 
-|
+----
+
 |
 
 **1.01 - Explain how a virtual server processes a request**
@@ -343,8 +353,10 @@ handshake for a Standard virtual server with a TCP profile:
 
 .. image:: /_static/201/p1.jpeg
 
-
 |
+
+----
+
 |
 
 **1.01 - Given a specific connectivity issue, isolate where the problem might be according to the processing order**
@@ -393,10 +405,19 @@ configuring virtual servers will help you understand how the BIG-IP LTM
 works.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.02 - Identify the reason a virtual server is not working as expected
-------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 
 |
 |
@@ -445,7 +466,8 @@ Explanation of status icons for virtual servers and virtual addresses
 | .. image:: /_static/201/p6.png  | The status of the virtual server or virtual address is **unknown**.                                                                                                                                                                                                                                         |
 +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-|
+----
+
 |
 
 **1.02 - Determine if a virtual server is configured with the proper ip address configuration**
@@ -489,7 +511,8 @@ are connecting to a DNS name make sure that it resolves to the intended
 virtual server IP address or NAT address on the firewall that maps to
 the virtual server IP address.
 
-|
+----
+
 |
 
 **1.02 - Determine if a virtual server is configured for the proper listening port**
@@ -511,7 +534,8 @@ to make, the connection will likely fail. Understanding how your clients
 intend to connect to the virtual server is usually a good sanity check
 on the configuration.
 
-|
+----
+
 |
 
 **1.02 - Determine if the virtual server is configured with the appropriate profiles**
@@ -568,7 +592,7 @@ You can associate multiple profiles with a single virtual server. For
 example, you can associate a TCP profile, an SSL profile, and an HTTP
 profile with the same virtual server.
 
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+----
 
 How profiles are assigned to the virtual server can affect the virtual
 servers ability to process the traffic that is passing through it. For
@@ -585,7 +609,8 @@ virtual server’s configuration it is easier to see what may be needed or
 may be conflicting with each other. This is covered in depth in the F5
 Certified Training course.
 
-|
+----
+
 |
 
 **1.02 - Determine if the pool configuration has an effect on virtual server state**
@@ -607,7 +632,8 @@ look in the GUI under Local Traffic and click on the Network Map/Show
 Map and search for the virtual server in question. If it is down you can
 see in the same pane if the resources are also offline.
 
-|
+----
+
 |
 
 **1.02 - Determine which tools to use in order to diagnose the issue**
@@ -639,7 +665,8 @@ If there is IP connectivity then you can try to use the CURL command to
 see if the BIG-IP can connect to the website on the server or FTP if the
 server is listening for FTP traffic.
 
-|
+----
+
 |
 
 **1.02 - Explain the difference between the virtual servers status definitions**
@@ -683,10 +710,19 @@ theses levels are pretty self explanatory.
    icon would be a black square.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.03 - Identify the reason a pool member has been marked down by health monitors
----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 |
 |
@@ -770,7 +806,8 @@ Explanation of status indicators for pools
 |                                 | The parent node has been disconnected from the network.                                                                                                                                                                                                                                                                                               |
 +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-|
+----
+
 |
 
 **1.03 - Discuss the effects of health monitors on the status of pool members/nodes**
@@ -833,7 +870,8 @@ monitor.
 You can associate multiple monitors with the same pool. For instance,
 you can associate both the http and https monitors with the same pool.
 
-|
+----
+
 |
 
 **1.03 - Determine the state and availability of the pool member/node in question**
@@ -874,7 +912,8 @@ Table 4.5 Explanation of status icons for pool members
 |                                 |                                                                                                                                                                                                                                                 |                                                            |
 +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 
-|
+----
+
 |
 
 **1.03 - Verify the pool member/node Ratio configuration**
@@ -895,7 +934,8 @@ The ratio-based load balancing methods are: Ratio (node, member, and
 sessions), Dynamic Ratio (node and member), and Ratio Least Connections
 (node and member).
 
-|
+----
+
 |
 
 **1.03 - Verify the pool member/node connection configuration and count**
@@ -922,10 +962,19 @@ number of concurrent connections and the rate of new connections to the
 virtual server, pool member, or node.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.04 - Identify a pool member not in the active priority group
-----------------------------------------------------------------------------
+--------------------------------------------------------------------------
 
 |
 |
@@ -1006,10 +1055,19 @@ To see which pool members are not receiving traffic you can look at
 Statistics in the GUI or on console.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 
-Objective - 1.05 Pre - Persistence
-------------------------------------
+====
+
+|
+
+Previous Exam Objective - 1.05 - Persistence
+--------------------------------------------
 
 |
 |
@@ -1017,7 +1075,7 @@ Objective - 1.05 Pre - Persistence
 Due to the 201 Exam Blueprint having an obvious mistake with layout or
 objectives I have added this section.
 
-**1.05 Pre - Explain the concept of “persistence”**
+**Previous Exam Topic 1.05 - Explain the concept of “persistence”**
 
 https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/10.html#unique_1009994785
 
@@ -1060,7 +1118,7 @@ click Persistence.
 |
 |
 
-**1.05 Pre - Verify the type of persistence profile assigned to the virtual server in question**
+**Previous Exam Topic 1.05 - Verify the type of persistence profile assigned to the virtual server in question**
 
 https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/10.html#unique_1009994785
 
@@ -1154,7 +1212,7 @@ the default cookie persistence profile.
 |
 |
 
-**1.05 Pre - Differentiate between fallback and primary persistence**
+**Previous Exam Topic 1.05 - Differentiate between fallback and primary persistence**
 
 **GUI Study in the vLabs**
 
@@ -1185,7 +1243,7 @@ they did not have a cookie when they connected.
 |
 |
 
-**1.05 Pre - Validate the expected persistence behavior**
+**Previous Exam Topic 1.05 - Validate the expected persistence behavior**
 
 **GUI Study in the vLabs - Module 8 Exercises**
 
@@ -1228,7 +1286,7 @@ In version 11.x:
 |
 |
 
-**1.05 Pre - Use the appropriate tool to troubleshoot persistence**
+**Previous Exam Topic 1.05 - Use the appropriate tool to troubleshoot persistence**
 
 **GUI Study in the vLabs**
 
@@ -1259,10 +1317,19 @@ methods:
 In version 9.X and 10.X command line do: B persist show all
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.05 - Identify traffic diverted due to persistence record
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 |
 |
@@ -1290,6 +1357,15 @@ records in the Statistics Type field.
 .. image:: /_static/201/p9.png
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.06 - Identify the current configured state of the pool member
@@ -1355,6 +1431,15 @@ member.
 .. image:: /_static/201/p10.png
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.07 - Identify a persistence issue
@@ -1392,3 +1477,15 @@ servers, we would be able to load balance every connection to the most
 available server. Most of time cost is the issue because it can be
 expensive to run a session state database or to rewrite the application
 to handle it.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

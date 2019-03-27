@@ -1,8 +1,23 @@
 Section 5 - Application Delivery Platforms
 ==========================================
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 5.01 Describe the purpose, advantages, use cases, and challenges associated with hardware based application delivery platforms and virtual machines
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+|
+|
 
 **5.01 - Explain when a hardware based application deliver platform
 solution is appropriate and when a virtual machine solution is
@@ -33,11 +48,14 @@ all other features that may be important to their deployment, such as
 always-on management, certifications, special-purpose FPGAs, and
 improved security.
 
+----
+
+|
+
 **5.01 - Explain the purpose, advantages, and challenges associated with
 hardware based application deliver platform solutions**
 
-`Link to Online Topic
-Content <http://www.f5.com/pdf/products/big-ip-platforms-datasheet.pdf>`__
+`Link to Online Topic Content <http://www.f5.com/pdf/products/big-ip-platforms-datasheet.pdf>`__
 
 **Hardware**
 
@@ -114,22 +132,9 @@ adapt as your business needs change.
    instance looks and acts like a physical BIG-IP device, with a
    dedicated allocation of CPU, memory, and other resources.
 
-    You can further divide each vCMP guest using multi-tenant features
-    such as partitions and route domains, which can isolate
-    configuration and networks on a per-virtual-domain basis. Within
-    each virtual domain, you can further isolate and secure
-    configuration and policies by using a role-based access system for
-    greater administrative control. When combining both route
-    domains/partitions with vCMP guests, F5 provides the highest density
-    multi-tenant virtualization solution that can scale to thousands of
-    virtual ADC (vADC) instances.
+   -  You can further divide each vCMP guest using multi-tenant features such as partitions and route domains, which can isolate configuration and networks on a per-virtual-domain basis. Within each virtual domain, you can further isolate and secure configuration and policies by using a role-based access system for greater administrative control. When combining both route domains/partitions with vCMP guests, F5 provides the highest density multi-tenant virtualization solution that can scale to thousands of virtual ADC (vADC) instances.
 
-    This ability to virtualize BIG-IP ADC services means service
-    providers and enterprise users can isolate based on BIG-IP version,
-    enabling departmental or project-based tenancy as well as
-    performance guarantees, while benefiting from managing a single,
-    consolidated application delivery platform and increased
-    utilization.
+   -  This ability to virtualize BIG-IP ADC services means service providers and enterprise users can isolate based on BIG-IP version, enabling departmental or project-based tenancy as well as performance guarantees, while benefiting from managing a single, consolidated application delivery platform and increased utilization.
 
 -  Application scaling—Increase capacity by adding BIG-IP resources
    through an all-active approach. With application scaling, you can
@@ -140,18 +145,9 @@ adapt as your business needs change.
    availability, and Device Service Clustering, designed to efficiently
    and seamlessly scale BIG-IP application delivery services.
 
-    Application Service Clustering delivers sub-second failover and
-    comprehensive connection mirroring for a highly available cluster of
-    up to eight devices at the application layer, providing highly
-    available multi-tenant deployments. Workloads can be moved across a
-    cluster of devices or virtual instances without interrupting other
-    services and can be scaled to meet the business demand.
+   -  Application Service Clustering delivers sub-second failover and comprehensive connection mirroring for a highly available cluster of up to eight devices at the application layer, providing highly available multi-tenant deployments. Workloads can be moved across a cluster of devices or virtual instances without interrupting other services and can be scaled to meet the business demand.
 
-    Device Service Clustering can synchronize full device configurations
-    in an all-active deployment model, enabling consistent policy
-    deployment and enforcement across devices—up to 32 active nodes.
-    This ensures a consistent device configuration that simplifies
-    operations.
+   -  Device Service Clustering can synchronize full device configurations in an all-active deployment model, enabling consistent policy deployment and enforcement across devices—up to 32 active nodes. This ensures a consistent device configuration that simplifies operations.
 
 **Challenges**
 
@@ -160,8 +156,11 @@ acquire for implementations, which can add to time lines in projects,
 and some public cloud environments do not let you run your own hardware,
 since it is a strictly virtualized environment.
 
-**5.01 - Explain the purpose, advantages, and challenges associated with
-virtual machines**
+----
+
+|
+
+**5.01 - Explain the purpose, advantages, and challenges associated with virtual machines**
 
 `Link to Online Topic Content <http://www.f5.com>`__
 
@@ -217,14 +216,17 @@ compared to what dedicated hardware can do. Throughput speeds and
 volumetric processing of SSL transactions per second does not compare
 with anything above a 4000 series in hardware.
 
+----
+
+|
+
 **5.01 - Explain the advantages of dedicated hardware (SSL card,
 compression card)**
 
 The charts below tell the story of Hardware vs. Software, especially in
 relation to SSL offload with hardware or software.
 
-`Link to Online Topic
-Content <http://www.f5.com/pdf/products/big-ip-virtual-editions-datasheet.pdf>`__
+`Link to Online Topic Content <http://www.f5.com/pdf/products/big-ip-virtual-editions-datasheet.pdf>`__
 
 **Virtual Editions**
 
@@ -255,8 +257,11 @@ resources (number of CPU cores/memory) allocated.
 | Maximum software compression throughput   | 20 Mbps     | 4 Gbps         |
 +-------------------------------------------+-------------+----------------+
 
-`Link to Online Topic
-Content <http://www.f5.com/pdf/products/big-ip-platforms-datasheet.pdf>`__
+----
+
+|
+
+`Link to Online Topic Content <http://www.f5.com/pdf/products/big-ip-platforms-datasheet.pdf>`__
 
 **Appliance Hardware Editions**
 
@@ -285,8 +290,11 @@ be sized and configured to suit the application services required.
 | Maximum compression throughput   | N/A            | 40 Gbps                 |
 +----------------------------------+----------------+-------------------------+
 
-`Link to Online Topic
-Content <http://www.f5.com/pdf/products/viprion-overview-ds.pdf>`__
+----
+
+|
+
+`Link to Online Topic Content <http://www.f5.com/pdf/products/viprion-overview-ds.pdf>`__
 
 **Viprion Hardware Editions**
 
@@ -316,13 +324,27 @@ services required.
 | Maximum compression throughput   | 10 Gbps               | 20 Gbps                 |
 +----------------------------------+-----------------------+-------------------------+
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 5.02 Describe the purpose of the various types of advanced acceleration techniques
 ---------------------------------------------------------------------------------------------------
 
+|
+|
+
 **5.02 - Describe the purpose of TCP optimization**
 
-`Link to Online Topic
-Content <http://www.f5.com/pdf/analyst-reports/acceleration-101-wp.pdf>`__
+`Link to Online Topic Content <http://www.f5.com/pdf/analyst-reports/acceleration-101-wp.pdf>`__
 
 **Optimizing TCP**
 
@@ -411,11 +433,13 @@ different servers, so the web browser opens parallel connections to
 these altered URLs rather than serially downloading the objects from one
 URL.
 
-**5.02 - Describe the purpose of HTTP Keep-alives, caching, compression,
-and pipelining**
+----
 
-`Link to Online Topic
-Content <http://www.f5.com/pdf/analyst-reports/acceleration-101-wp.pdf>`__
+|
+
+**5.02 - Describe the purpose of HTTP Keep-alives, caching, compression, and pipelining**
+
+`Link to Online Topic Content <http://www.f5.com/pdf/analyst-reports/acceleration-101-wp.pdf>`__
 
 **HTTP Protocol and Web Application Optimizations**
 
@@ -515,8 +539,11 @@ user throughput and hence, response times. Fortunately, compression
 hardware assist is now available in some acceleration devices that can
 achieve compression rates in excess of 1 Gbps.
 
-`Link to Online Topic
-Content <https://devcentral.f5.com/Portals/0/Cache/Pdfs/2807/http-pipelining-a-security-risk-without-real-performance-benefits.pdf>`__
+----
+
+|
+
+`Link to Online Topic Content <https://devcentral.f5.com/Portals/0/Cache/Pdfs/2807/http-pipelining-a-security-risk-without-real-performance-benefits.pdf>`__
 
 **Pipelining**
 
@@ -663,6 +690,18 @@ optimizations and acceleration techniques that can be used to improve
 performance that incur no measurable security risk that we simply let
 sleeping dogs lie.
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Conclusion
 ==========
 
@@ -678,6 +717,6 @@ Delivery Fundamentals exam and good luck with your certification goals.
 
 Thanks
 
-Eric Mitchell
+**Eric Mitchell**
 
-Channel FSE, East US and Federal
+Sr. Systems Engineer - Global SI

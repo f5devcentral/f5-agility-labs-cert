@@ -2,6 +2,15 @@ Section 1 - OSI
 ===============
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/wtNQYCq1lxw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.01 Explain, compare, and contrast the OSI layers
@@ -133,7 +142,8 @@ specifications used by network adapters and by the network cables
 (assuming that the connection is not wireless). To put it simply, the
 physical layer defines what it means to transmit and to receive data.
 
-|
+----
+
 |
 
 **1.01 - Differentiate between the OSI layers**
@@ -186,7 +196,8 @@ packet sequencing.
 
 .. image:: /_static/101/1p2.png
 
-|
+----
+
 |
 
 **1.01 - Describe the purpose of the various address types at different
@@ -214,6 +225,15 @@ OSI layers**
    SSH, TELNET and NTP
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/Nm6jOwyG-3k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.02 Explain Protocols and Technologies Specific to the Data Link Layer
@@ -245,7 +265,8 @@ specific Ethernet frame. If the FDB table doesn’t have any information
 on that specific MAC address it will flood the Ethernet frame out to all
 ports in the broadcast domain (VLAN).
 
-|
+----
+
 |
 
 **1.02 - Explain the purpose and functionality of ARP**
@@ -282,7 +303,8 @@ address.
 Once the requestor receives the response packet, it associates the MAC
 address and the IP address. This information is stored in the ARP cache.
 
-|
+----
+
 |
 
 **1.02 - Explain the purpose and functionality of MAC addresses**
@@ -329,7 +351,8 @@ Ethernet and Fast Ethernet.
 
 .. image:: /_static/101/1p3.png
 
-|
+----
+
 |
 
 **1.02 - Explain the purpose and functionality of a broadcast domain**
@@ -392,7 +415,8 @@ bypassed by connecting the two networks with a well-configured,
 Linux-based, purpose oriented software router. That will handle the job
 properly and prevent further issues.
 
-|
+----
+
 |
 
 **1.02 - Explain the purpose and functionality of VLANs**
@@ -483,7 +507,8 @@ containing broadcasts. VLAN’s also provide security because you are
 essentially putting one group of devices, in one VLAN, on their own
 network.
 
-|
+----
+
 |
 
 **1.02 - Explain the purpose and functionality of link aggregation**
@@ -566,6 +591,15 @@ that the BIG-IP system chooses links for link aggregation, you can
 specify a link control policy.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/PGsDio29xA0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.03 Explain protocols and apply technologies specific to the network layer
@@ -617,7 +651,7 @@ decimal.
 +-------------+-------------+-------------+------------+-----------+
 | 10.         | 1.          | 23.         | 19         | decimal   |
 +=============+=============+=============+============+===========+
-| 00001010.   | 00000001.   | 00010111.   | 00010011   | binary    |
+| 00001010 .  | 00000001 .  | 00010111 .  | 00010011 . | binary    |
 +-------------+-------------+-------------+------------+-----------+
 
 These octets are broken down to provide an addressing scheme that can
@@ -632,7 +666,8 @@ scope of this document.
 
 .. image:: /_static/101/1p6.png
 
-|
+----
+
 |
 
 **1.03 - Given an IP address and net mask, determine the network IP and
@@ -837,7 +872,8 @@ will be 1, otherwise the result is 0.
 Convert the binary value back to octal and the resulting value is
 192.168.12.255.
 
-|
+----
+
 |
 
 **1.03 - Given a routing table and a destination IP address, identify
@@ -920,7 +956,8 @@ one hop, and each router crossed after that is an additional hop. If
 there are multiple routes to the same destination with different
 metrics, the route with the lowest metric is selected.
 
-|
+----
+
 |
 
 **1.03 - Explain the purpose and functionality of Routing protocols**
@@ -989,7 +1026,8 @@ more common dynamic routing protocols for routing IP packets:
    routing information with other routers and compensate for any
    topology changes without involving the network administrator.
 
-|
+----
+
 |
 
 **1.03 - Explain the purpose of fragmentation**
@@ -1016,7 +1054,8 @@ first hop of the source destination pair. The second is to run the path
 MTU discovery algorithm,[5] described in RFC 1191, to determine the path
 MTU between two IP hosts, so that IP fragmentation can be avoided.
 
-|
+----
+
 |
 
 **1.03 - Given a fragment, identify what information is needed for
@@ -1097,7 +1136,8 @@ into 5 packet, with total lengths of 40, 40, 40, 40 and 30 bytes each.
 The ICMP data is broken into lengths of 12, 20, 20, 20, and 10 bytes
 each.
 
-|
+----
+
 |
 
 **1.03 - Explain the purpose of TTL functionality**
@@ -1132,7 +1172,8 @@ every host that passes the datagram must reduce the TTL by at least one
 unit. In practice, the TTL field is reduced by one with every hop. To
 reflect this practice, the field is renamed hop limit in IPv6.
 
-|
+----
+
 |
 
 **1.03 - Given a packet traversing a topology, document the
@@ -1215,7 +1256,8 @@ Src IP = Host A
 
 Dest IP = Host B
 
-|
+----
+
 |
 
 **1.03 - IP version 6 (not in depth on exam)**
@@ -1351,6 +1393,15 @@ blocks of zeroes can be omitted entirely, so we end up with these:
 ::1
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/nUlDPUleL-U?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.04 Explain the features and functionality of protocols and technologies specific to the transport layer
@@ -1434,7 +1485,8 @@ of the packet.
 To diminish the likelihood of fragmentation and to protect against
 packet loss, you can decrease the TCP MSS.
 
-|
+----
+
 |
 
 **1.04 - Explain the purpose and functionality of TCP**
@@ -1546,7 +1598,8 @@ acknowledged, that the data is sent, and that the data is acknowledged.
 
 *Note - A similar three-way process is used to terminate a TCP session between two hosts. Using the same type of handshake to end the connection ensures that the hosts have completed their transactions and that all data is accounted for.*
 
-|
+----
+
 |
 
 **1.04 - Explain the purpose and functionality of UDP**
@@ -1588,7 +1641,8 @@ received. If you send a second letter one day after the first, the
 second one may be received before the first. Or, the second one may
 never be received.
 
-|
+----
+
 |
 
 **1.04 - Explain the purpose and functionality of ports in general**
@@ -1616,7 +1670,8 @@ and simply describe how the client and server will have their
 conversation. Every Web server on the Internet conforms to the hypertext
 transfer protocol (HTTP).
 
-|
+----
+
 |
 
 **1.04 - Explain how retransmissions occur**
@@ -1671,7 +1726,8 @@ them, the TCP layer (Transport Layer) reassembles the individual
 segments and ensures they are correctly ordered and error free as it
 streams them to an application.
 
-|
+----
+
 |
 
 **1.04 - Explain the purpose and process of a reset**
@@ -1706,7 +1762,8 @@ causing it to send the RST? Does this happen right away in the TCP
 setup, or is it later in the session? If later, is there any reason that
 the station would abort the session in the middle of the data transfer?
 
-|
+----
+
 |
 
 **1.04 - Describe various TCP options**
@@ -1761,7 +1818,8 @@ lengths given as (Option-Kind, Option-Length).
 (The remaining options are historical, obsolete, experimental, not yet
 standardized, or unassigned)
 
-|
+----
+
 |
 
 **1.04 - Describe a TCP checksum error**
@@ -1798,7 +1856,8 @@ errors in any of those fields. The designers of TCP wanted this bit
 error protection, but also desired to protect against other type of
 problems.
 
-|
+----
+
 |
 
 **1.04 - Describe how TCP addresses error correction**
@@ -1824,7 +1883,8 @@ CRC-protected hops is common, but the end-to-end 16-bit TCP checksum
 catches most of these simple errors. This is the end-to-end principle at
 work.
 
-|
+----
+
 |
 
 **1.04 - Describe how the flow control process occurs**
@@ -1913,6 +1973,15 @@ server until the proper handshakes are complete so as to prevent Denial
 of Service attacks.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/xXrbTgvd58A?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.05 Explain the features and functionality of protocols and technologies specific to the application layer
@@ -1964,7 +2033,8 @@ Locators (URLs)—using the http or https URI schemes. URIs and hyperlinks
 in Hypertext Markup Language (HTML) documents form webs of inter-linked
 hypertext documents.
 
-|
+----
+
 |
 
 **1.05 - Differentiate between HTTP versions**
@@ -2004,7 +2074,8 @@ executable residing on the server. The HTTP/1.0 specification defined
 the GET, POST and HEAD methods and the HTTP/1.1 specification added 5
 new methods: OPTIONS, PUT, DELETE, TRACE and CONNECT.
 
-|
+----
+
 |
 
 **1.05 - Interpret HTTP status codes**
@@ -2113,7 +2184,8 @@ text header format, which is: one line per header, of the form
 "Header-Name: value", ending with CRLF. It's the same format used for
 email and news postings.
 
-|
+----
+
 |
 
 **1.05 - Determine an HTTP request method for a given use case**
@@ -2174,7 +2246,8 @@ on the format.
 The GET method can also be used to submit forms. The form data is
 URL-encoded and appended to the request URI.
 
-|
+----
+
 |
 
 **1.05 - Explain the purpose and functionality of HTTP Keep-alives, HTTP
@@ -2328,7 +2401,8 @@ for desktops, servers, mobile devices, and hardware, and FTP has been
 incorporated into hundreds of productivity applications, such as Web
 page editors.
 
-|
+----
+
 |
 
 **1.05 - Differentiate between passive and active FTP**
@@ -2456,7 +2530,8 @@ do (or do not) support passive mode. As an example, the command line FTP
 utility provided with Solaris does not support passive mode,
 necessitating a third-party FTP client, such as ncftp.
 
-|
+----
+
 |
 
 **1.05 - Explain the purpose and functionality of SMTP**
@@ -2542,7 +2617,8 @@ RCPT and DATA. The most common commands are:
 
 .. image:: /_static/101/1p18.png
 
-|
+----
+
 |
 
 **1.05 - Explain the purpose and functionality of a cookie**
@@ -2649,7 +2725,8 @@ All of the information is stored in the site's database, and in most
 cases, a cookie containing your unique ID is all that is stored on your
 computer.
 
-|
+----
+
 |
 
 **1.05 - Given a situation in which a client connects to a remote host,
@@ -2716,7 +2793,8 @@ milliseconds to the process of the connection to the website but for
 every name that the user system is told to connect to, this process
 takes place.
 
-|
+----
+
 |
 
 **1.05 - Explain the purpose and functionality of a URL**
@@ -2800,3 +2878,17 @@ application, the URL mailto:bob@example.com may start an e-mail composer
 with the address bob@example.com in the To field. The tel scheme is even
 more different; it uses the public switched telephone network for
 addressing, instead of domain names representing Internet hosts.
+
+
+|
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/Qu76hL2mA9Q?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

@@ -2,10 +2,19 @@ Section 5 - Open a support ticket with F5
 =========================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 5.01 Identify the appropriate supporting components and severity levels for an F5 support ticket
--------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 
 |
 |
@@ -42,7 +51,7 @@ Support:
 
 -  Any steps you have attempted to resolve the issue
 
-1) **A description of the impact the issue is having on your site, using
+2) **A description of the impact the issue is having on your site, using
    the following definitions:**
 
 -  Site Down - All network traffic has ceased, causing a critical impact
@@ -54,11 +63,11 @@ Support:
 -  Performance Degraded - Network traffic is partially functional
    causing some applications to be unreachable.
 
-1) **The hours that you are available to work on the issue and any
+3) **The hours that you are available to work on the issue and any
    alternative contacts that can work on the issue if you are not
    available.**
 
-2) **Remote access information, if possible.**
+4) **Remote access information, if possible.**
 
 -  Remote access to your network environment is important, because it is
    the most effective method for collecting information and
@@ -137,7 +146,8 @@ the information when you open the case.
     to F5, refer to SOL10062: Submitting core files for analysis to F5
     Technical Support.*
 
-|
+----
+
 |
 
 **5.01 - Identify severity levels and the associated response times**
@@ -185,10 +195,19 @@ appropriate timeframe to an appropriately skilled Network Support
 Engineer.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 5.02 Given an issue, determine the appropriate severity according to F5 guidelines
--------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 
 `https://www.f5.com/pdf/customer-support/guidelines-and-policies-ds.pdf <https://www.f5.com/pdf/customer-support/guidelines-and-policies-ds.pdf>`__
 
@@ -216,10 +235,19 @@ Objective - 5.02 Given an issue, determine the appropriate severity according to
     not part of the current product feature set.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 5.03 Provide quantitative and relevant information appropriate for a given issue
-----------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 |
 |
@@ -244,7 +272,8 @@ Qualitative observations have more to do with characteristics of what is
 being observed. (i.e. It seems to be taking longer to connect than it
 did this morning.)
 
-|
+----
+
 |
 
 **5.03 - Distinguish between relevant/irrelevant information in order to
@@ -262,3 +291,15 @@ is the best way to master these types of topics.
 Is the information that you are gathering relative to the issue you are
 experiencing? Troubleshooting can lead to many rat holes where you can
 get lost from the real issues.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

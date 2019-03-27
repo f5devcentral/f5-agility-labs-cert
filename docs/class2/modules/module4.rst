@@ -2,6 +2,15 @@ Section 4 - Troubleshoot basic device management connectivity issues
 ====================================================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 4.01 Verify remote connectivity to the box in order to determine the cause of a management connectivity issue
@@ -75,6 +84,15 @@ sends a sequence of three Internet Control Message Protocol (ICMP) Echo
 Request packets addressed to a destination host.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 4.02 Check and interpret port lockdown settings and packet filters in order to determine the cause of a management connectivity issue to a Self-IP
@@ -231,7 +249,8 @@ Configuration utility
    - BIG-IP 10.1.0 and later:save sys config
    - BIG-IP 10.0.x:save config
 
-|
+----
+
 |
 
 **4.02 - Describe appropriate use cases for the use of port lockdown**
@@ -250,6 +269,15 @@ for the BIG-IP platform to communicate to other necessary BIG-IP
 platforms or other necessary network functions such as DNS servers, etc.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 4.03 Given the use of a remote authentication server, verify proper DNS and NTP settings in order to diagnose a connectivity issue
@@ -339,11 +367,11 @@ revocation status.
 Local Traffic Manager can authenticate application traffic when you are
 using Microsoft Windows Integrated Authentication.
 
-|
+----
+
 |
 
-**4.03 - Given a suspected DNS issue, use appropriate tools to verify
-proper settings**
+**4.03 - Given a suspected DNS issue, use appropriate tools to verify proper settings**
 
 **GUI Study in the vLabs**
 
@@ -387,7 +415,8 @@ resolving a DNS name from the BIG-IP platform will fail, including
 resolving the name of the remote authentication server for remote
 authentication.
 
-|
+----
+
 |
 
 **4.03 - Given a suspected DNS issue, use appropriate tools to verify DNS response**
@@ -418,3 +447,15 @@ SECTION:www.stonegreyband.com. 3495 IN CNAME stonegreyband.com.
 stonegreyband.com. 495 IN A 71.251.96.82 ;; Query time: 4 msec;;
 SERVER: 192.168.69.1#53(192.168.69.1) ;; WHEN: Thu Jan 9 22:41:06
 2014;; MSG SIZE rcvd: 69
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

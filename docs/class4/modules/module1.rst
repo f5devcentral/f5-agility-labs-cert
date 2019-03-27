@@ -2,6 +2,15 @@ F5 202 Introduction
 ===================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 **The 202 Pre-Sales Fundamentals Exam**
@@ -144,7 +153,8 @@ founders; products and launches; open jobs; and more.
 
 https://angel.co
 
-|
+----
+
 |
 
 **1.01 - Locate job postings to identify internal initiatives and
@@ -159,6 +169,15 @@ Careers page to see what job role is in high demand.
 Example: https://f5.com/careers
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.02 - Given a scenario, prospect customer opportunities
@@ -201,7 +220,8 @@ the challenges they face as a company. Certain business verticals
 come with compliance regulations such as PCI and HIPPA that can
 require more strict security policies.
 
-|
+----
+
 |
 
 **1.02 - Correlate business and technical initiatives**
@@ -211,7 +231,8 @@ areas and which types of technical initiatives can meet those needs.
 Sometimes, when you meet with different business areas within a
 customer’s organization, you can gain a broader understanding of the organizations future needs across the entire company.  This information can allow you to see a clearer picture of what your customer needs and understand if you should perhaps position products that can grow their Data Center or if you should focus on Cloud enablement products.   You will need to know all F5 products and the problems they can solve to prepare for this section of the exam.
 
-|
+----
+
 |
 
 **1.02 - Determine technical organizational structure**
@@ -239,6 +260,15 @@ in a centralized structure, decisions flow from the top down, while in a
 decentralized structure, the decisions are made at various levels.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.03 - Given a scenario, correlate which F5 products could solve issues or meet customer needs
@@ -267,7 +297,8 @@ the problems our products can solve will allow you to go deeper in the
 account with F5 products. You will need to know all of our products and
 the problems they can solve to prepare for this section of the exam.
 
-|
+----
+
 |
 
 **1.03 - Align potential F5 solutions to business and technical
@@ -287,3 +318,15 @@ but multiple projects needs potentially expanding budget once multiple
 projects are involved. Once again, you will need to know all of our
 products and the problems they can solve to prepare for this section of
 the exam.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

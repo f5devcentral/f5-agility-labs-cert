@@ -2,10 +2,19 @@ Section 6 - Identify and report current device status
 =====================================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 6.01 Review the network map in order to determine the status of objects
--------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 
 |
 |
@@ -118,14 +127,13 @@ pool depend on the offline pool member.
 .. image:: /_static/201/p15.png
 
 
-|
+----
+
 |
 
 **6.01 - Explain what virtual servers, pools, nodes and pool members are**
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/ltm-concepts-11-4-0/2.html
--
-conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/2.html#conceptid>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/ltm-concepts-11-4-0/2.html - conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/2.html#conceptid>`__
 
 **Virtual Server**
 
@@ -167,9 +175,7 @@ To summarize, a virtual server can do the following:
 
 -  Direct traffic according to user-written iRules
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/ltm-concepts-11-4-0/5.html
--
-conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/5.html#conceptid>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/ltm-concepts-11-4-0/5.html - conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/5.html#conceptid>`__
 
 **Pool and Pool Members**
 
@@ -201,9 +207,7 @@ across the servers in the pool.
 To configure and manage pools, log in to the BIG-IP Configuration
 utility, and on the Main tab, expand Local Traffic, and click Pools.
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/ltm-concepts-11-4-0/4.html
--
-conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/4.html#conceptid>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/ltm-concepts-11-4-0/4.html - conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/4.html#conceptid>`__
 
 **Nodes**
 
@@ -243,16 +247,24 @@ To configure and manage nodes, log in to the BIG-IP Configuration
 utility, and on the Main tab, expand Local Traffic, and click Nodes.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 6.02 Use the dashboard to gauge the current running status of the system
---------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
 |
 |
 
-**6.02 - Interpret each of the statistic types displayed by the
-dashboard**
+**6.02 - Interpret each of the statistic types displayed by the dashboard**
 
 **GUI Study in the vLabs**
 
@@ -265,11 +277,11 @@ utilization, Connections and Throughput of the system.
 .. image:: /_static/201/p16.png
 
 
-|
+----
+
 |
 
-**6.02 - Given a situation, predict the appropriate dashboard
-statistics**
+**6.02 - Given a situation, predict the appropriate dashboard statistics**
 
 **GUI Study in the vLabs**
 
@@ -281,6 +293,15 @@ CPU utilization my get higher as additional policies are added to the
 configuration under load.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 6.03 Review log files and identify possible events
@@ -303,7 +324,8 @@ is the best way to master these types of topics.
 Get familiar with looking at the event logs on the BIG-IP and learn to
 reconstruct what has happened recently based on the events in the logs.
 
-|
+----
+
 |
 
 **6.03 - Given log file snippets, identify critical events**
@@ -324,10 +346,19 @@ used to seeing what is there when all is good and then the errors will
 stand out.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 6.04 Use iApps Analytics to gauge the current running status of application services
---------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 
 |
 |
@@ -390,7 +421,8 @@ the information, for example, by application or URL. You can also drill
 down into the specifics on the charts, and click the tabs to further
 refine the information in the charts.
 
-|
+----
+
 |
 
 **6.04 - Describe how to capture application statistics**
@@ -430,11 +462,11 @@ exceeded, and when they cross back into the normal range. You can
 customize the threshold values for transactions per second, latency,
 page load time, and throughput.
 
-|
+----
+
 |
 
-**6.04 - Given a current running status, recognize significant
-statistics**
+**6.04 - Given a current running status, recognize significant statistics**
 
 **GUI Study in the vLabs**
 
@@ -451,3 +483,15 @@ Types** drop menu on the BIG-IP and be able to identify significant
 statistic levels. This may be hard to do in the lab unless you are
 pushing load through the unit. Get used to how the reports look and how
 to read them.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

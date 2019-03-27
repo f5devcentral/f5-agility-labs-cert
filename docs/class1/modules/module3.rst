@@ -1,11 +1,25 @@
 Section 3 - Load Balancing Essentials
 =====================================
 
-Objective - 3.01 Discuss the purpose of, use cases for, and key considerations related to load balancing
-----------------------------------------------------------------------------------------------------------
+|
 
-**3.01 - Explain the purpose of distribution of load across multiple
-servers**
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
+Objective - 3.01 Discuss the purpose of, use cases for, and key considerations related to load balancing
+--------------------------------------------------------------------------------------------------------
+
+|
+|
+
+**3.01 - Explain the purpose of distribution of load across multiple servers**
 
 **Distribution of Load**
 
@@ -19,11 +33,13 @@ load balancing solution and then implementing it in the most effective
 manner. While making sure the functions of the applications are not
 being broken as users are sent all across the servers in the group.
 
-**3.01 - Given an environment, determine the appropriate load balancing
-algorithm that achieves a desired result**
+----
 
-`Link to Online Topic
-Content <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/5.html?sr=46848886>`__
+|
+
+**3.01 - Given an environment, determine the appropriate load balancing algorithm that achieves a desired result**
+
+`Link to Online Topic Content <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/5.html?sr=46848886>`__
 
 **Local Traffic Manager load balancing methods**
 
@@ -64,10 +80,13 @@ system for load balancing traffic to pool members.
 | Ratio Least Connections                                                 | The Ratio Least Connections methods cause the system to select the pool member according to the ratio of the number of connections that each pool member has active.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 +-------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+----
+
+|
+
 **3.01 - Explain the concept of persistence**
 
-`Link to Online Topic
-Content <https://devcentral.f5.com/articles/persistent-and-persistence-whats-the-difference>`__
+`Link to Online Topic Content <https://devcentral.f5.com/articles/persistent-and-persistence-whats-the-difference>`__
 
 **Persistent and Persistence, What's the Difference?**
 
@@ -151,7 +170,7 @@ based on any piece of data in the application message (payload),
 headers, or at in the transport protocol (TCP) and network protocol (IP)
 layers.
 
- 
+|
 
 Some advantages of persistence are:
 
@@ -182,13 +201,27 @@ mediators like load-balancers, and increase the overall performance and
 efficiency of the infrastructure as well as improving the end-user
 experience.
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 3.02 Differentiate between a client and server
-------------------------------------------------------------
+----------------------------------------------------------
+
+|
+|
 
 **3.02 - Given a scenario, identify the client/server**
 
-`Link to Online Topic
-Content <http://www.differencebetween.com/difference-between-client-and-server-systems/>`__
+`Link to Online Topic Content <http://www.differencebetween.com/difference-between-client-and-server-systems/>`__
 
 **Differences between Server and Client**
 
@@ -199,10 +232,13 @@ client- server architecture or two-tier architecture. The main purpose
 of this architecture is the division of labor, which is required in
 large organizations.
 
+----
+
+|
+
 **3.02 - Explain the role of a client**
 
-`Link to Online Topic
-Content <http://www.differencebetween.com/difference-between-client-and-server-systems/>`__
+`Link to Online Topic Content <http://www.differencebetween.com/difference-between-client-and-server-systems/>`__
 
 **Client**
 
@@ -227,10 +263,13 @@ Web. Here the client is the browser installed on each computer and the
 information about different pages is stored on the server side from
 which the client or the user can access it.
 
+----
+
+|
+
 **3.02 - Explain the role of a server**
 
-`Link to Online Topic
-Content <http://www.differencebetween.com/difference-between-client-and-server-systems/>`__
+`Link to Online Topic Content <http://www.differencebetween.com/difference-between-client-and-server-systems/>`__
 
 **Server**
 
@@ -263,5 +302,16 @@ and it utilizes greater processing power of the server.
 | • Client is a smaller computer through which the user accesses the information or application stored on the server whereas server is a powerful computer that stores the data files and applications.   |
 | • In some cases, the client may utilize the greater processing power of the server machine.                                                                                                             |
 | • In some cases, the client side may have a better graphical user interface or GUI as compared to the server side.                                                                                      |
-+=========================================================================================================================================================================================================+
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
