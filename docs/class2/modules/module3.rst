@@ -2,10 +2,19 @@ Section 3 - Troubleshoot basic performance issues
 =================================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 3.01 Recognize when a packet capture is needed within the context of a performance issue
------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 |
 |
@@ -82,16 +91,24 @@ settings and client access restrictions before moving on to a capture of
 the network traffic.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 3.02 Use BIG-IP tools in order to identify potential performance issues
--------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 
 |
 |
 
-**3.02 - Differentiate between performance issue types (i.e. Latency,
-Congestion, broken content)**
+**3.02 - Differentiate between performance issue types (i.e. Latency, Congestion, broken content)**
 
 **General Network Study**
 
@@ -122,11 +139,11 @@ has a setting to enable Nagles algorithm. Nagles algorithm attempts to
 reduce network congestion by aggregating smaller TCP packets into larger
 ones.
 
-|
+----
+
 |
 
-**3.02 - Establish the frequency of a given issue (random, continuous,
-isolated, intermittent, repetitive intervals)**
+**3.02 - Establish the frequency of a given issue (random, continuous, isolated, intermittent, repetitive intervals)**
 
 **General Network Study**
 
@@ -163,7 +180,8 @@ lookup and it was timing out. The firewall admin had not added the new
 network to the DNS rule on the firewall rule set to allow the network
 nodes to query their DNS servers.
 
-|
+----
+
 |
 
 **3.02 - Explain how to get performance statistics in addition to the
@@ -188,3 +206,15 @@ In version 10.x of the BIG-IP Configuration Utility:
 
 All categories are shown under the **All** tab or you can see the break
 outs of **System**, **Connections**, **Throughput** and **Cache**.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

@@ -1,13 +1,27 @@
 Section 4 - Security
 ====================
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 4.01 Compare and contrast positive and negative security models
-----------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+|
+|
 
 **4.01 - Describe the concept of a positive security model**
 
-`Link to Online Topic
-Content <https://www.owasp.org/index.php/Positive_security_model>`__
+`Link to Online Topic Content <https://www.owasp.org/index.php/Positive_security_model>`__
 
 **Positive Security Model**
 
@@ -24,10 +38,13 @@ authorized resources or functions. If you've ever had to deal with a
 network firewall, then you've probably encountered this application of
 the positive model.
 
+----
+
+|
+
 **4.01 - Describe the concept of a negative security model**
 
-`Link to Online Topic
-Content <http://www.xiom.com/waf-negative-model>`__
+`Link to Online Topic Content <http://www.xiom.com/waf-negative-model>`__
 
 **Negative Security Model**
 
@@ -42,6 +59,10 @@ Prevention systems (IDPS). Therefore it is very important to understand
 what the differences are between the negative security model provided by
 an IDPS and the negative security model provided by a WAF.
 
+----
+
+|
+
 **4.01 - Describe the benefits of a positive security model**
 
 **Benefits of a Positive Security Model**
@@ -52,6 +73,10 @@ positive model is susceptible to false positives in that if you don’t
 account for everything that the application needs to function in the
 policy you will block it. Also if the application changes you will need
 to build a new custom policy to match the new changes.
+
+----
+
+|
 
 **4.01 - Describe the benefits of a negative security model**
 
@@ -64,10 +89,13 @@ You are simply blocking any known bad attacks that could happen. You are
 vulnerable to 0-day attacks of which the pattern of the attack is not
 already known.
 
+----
+
+|
+
 **4.01 - Security (Non-Blueprint)**
 
-`Link to Online Topic
-Content <https://f5.com/resources/white-papers/applied-application-security-positive-and-negative>`__
+`Link to Online Topic Content <https://f5.com/resources/white-papers/applied-application-security-positive-and-negative>`__
 
 **Positive & Negative Security model**
 
@@ -387,13 +415,27 @@ delineate between theoretical security and applied security, enabling
 businesses to realize the greatest ROI from any security policy
 implementation.
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 4.02 Explain the purpose of cryptographic services
-----------------------------------------------------------------
+--------------------------------------------------------------
+
+|
+|
 
 **4.02 - Describe the purpose of signing**
 
-`Link to Online Topic
-Content <https://en.wikipedia.org/wiki/Digital_signature>`__
+`Link to Online Topic Content <https://en.wikipedia.org/wiki/Digital_signature>`__
 
 **Purpose of Signing**
 
@@ -423,10 +465,13 @@ Digitally signed messages may be anything representable as a bitstring:
 examples include electronic mail, contracts, or a message sent via some
 other cryptographic protocol.
 
+----
+
+|
+
 **4.02 - Describe the purpose of encryption**
 
-`Link to Online Topic
-Content <http://www.garykessler.net/library/crypto.html#purpose>`__
+`Link to Online Topic Content <http://www.garykessler.net/library/crypto.html#purpose>`__
 
 **Topic**
 
@@ -459,11 +504,14 @@ all cases, the initial unencrypted data is referred to as plaintext. It
 is encrypted into ciphertext, which will in turn (usually) be decrypted
 into usable plaintext.
 
+----
+
+|
+
 **4.02 - Describe the purpose of certificates and the certificate
 chains**
 
-`Link to Online Topic
-Content <http://www.entrust.com/chain-certificates/>`__
+`Link to Online Topic Content <http://www.entrust.com/chain-certificates/>`__
 
 **Certificates and Certificate Chains**
 
@@ -510,10 +558,13 @@ directly from the root CA. This is an outdated practice; issuing
 directly from the root increases risk and limits how certificate policy
 can be managed and enforced.
 
+----
+
+|
+
 **4.02 - Distinguish between private/public keys**
 
-`Link to Online Topic
-Content <http://www.tldp.org/REF/INTRO/SecuringData-INTRO/encryption.html>`__
+`Link to Online Topic Content <http://www.tldp.org/REF/INTRO/SecuringData-INTRO/encryption.html>`__
 
 **Private Key Encryption**
 
@@ -553,6 +604,10 @@ The thing that makes public key encryption work is that Alice very
 closely guards her private key and freely distributes her public key.
 She knows that it will unlock any message encrypted with her public key.
 
+----
+
+|
+
 **4.02 - Compare and contrast symmetric/asymmetric encryption**
 
 `Link to Online Topic Content <http://www.f5.com>`__
@@ -583,8 +638,23 @@ private key. Likewise, if she sends a message to you, she uses your
 public key to encrypt the message and you would use your private key to
 decrypt it.
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 4.03 Describe the purpose and advantages of authentication
-------------------------------------------------------------------------
+----------------------------------------------------------------------
+
+|
+|
 
 **4.03 - Explain the purpose of authentication**
 
@@ -624,6 +694,10 @@ acting as Jane will be positively authenticated every time, even though
 she is not the real Jane Doe. Authentication security therefore is only
 as good as the weakest link in the chain.
 
+----
+
+|
+
 **4.03 - Explain the advantages of single sign on**
 
 `Link to Online Topic Content <http://www.authenticationworld.com>`__
@@ -658,10 +732,13 @@ sign on software will require the identity to input stronger
 authentication such as a security token, a digital certificate and/or a
 biometric.
 
+----
+
+|
+
 **4.03 - Explain the concepts of multifactor authentication**
 
-`Link to Online Topic
-Content <http://searchsecurity.techtarget.com/definition/multifactor-authentication-MFA>`__
+`Link to Online Topic Content <http://searchsecurity.techtarget.com/definition/multifactor-authentication-MFA>`__
 
 **Multi-factor Authentication**
 
@@ -679,10 +756,13 @@ what the user is (biometric verification). Single-factor authentication
 password-based authentication is well suited for website or application
 access, it is not secure enough for online financial transactions.
 
+----
+
+|
+
 **4.03 - Describe the role authentication plays in AAA**
 
-`Link to Online Topic
-Content <http://searchsecurity.techtarget.com/definition/authentication-authorization-and-accounting>`__
+`Link to Online Topic Content <http://searchsecurity.techtarget.com/definition/authentication-authorization-and-accounting>`__
 
 **Authentication, Authorization, and Accounting (AAA)**
 
@@ -724,10 +804,13 @@ functions. A current standard by which network access servers interface
 with the AAA server is the Remote Authentication Dial-In User Service
 (RADIUS).
 
+----
+
+|
+
 **4.03 - SAML Authentication Not on Blueprint**
 
-`Link to Online Topic
-Content <https://www.skydesk.jp/en/help/portal/saml/SAML-Authentication.html>`__
+`Link to Online Topic Content <https://www.skydesk.jp/en/help/portal/saml/SAML-Authentication.html>`__
 
 **SAML Authentication - What is SAML?**
 
@@ -770,11 +853,25 @@ Federation: The need to simplify identity management across
 organizational boundaries, allowing users to consolidate many local
 identities into a single (or at least a reduced set).
 
-Objective - 4.04 Describe the purpose, advantages, and use cases of IPsec and SSL VPN
----------------------------------------------------------------------------------------
+|
 
-**4.04 - Explain the purpose, advantages, and challenges associated with
-IPsec**
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
+Objective - 4.04 Describe the purpose, advantages, and use cases of IPsec and SSL VPN
+-------------------------------------------------------------------------------------
+
+|
+|
+
+**4.04 - Explain the purpose, advantages, and challenges associated with IPsec**
 
 `Link to Online Topic Content <https://en.wikipedia.org/wiki/IPsec>`__
 
@@ -804,8 +901,9 @@ Hence, only IPsec protects any application traffic over an IP network.
 IPsec can automatically secure applications at the IP layer.point
 environments.
 
-`Link to Online Topic
-Content <https://www.sonicwall.com/downloads/WP_SSLVPN_vs_IPSec_102907.pdf>`__
+----
+
+`Link to Online Topic Content <https://www.sonicwall.com/downloads/WP_SSLVPN_vs_IPSec_102907.pdf>`__
 
 **Why should you use IPsec?**
 
@@ -880,14 +978,15 @@ increased productivity. But it has also greatly increased the complexity
 for IT in controlling remote access, thereby minimizing the viability of
 distributed-client IPSec VPNs as an efficient remote access solution.
 
-*But still IPsec tunnels are still commonly used in site-to-site
-communications.*
+*But still IPsec tunnels are still commonly used in site-to-site communications.*
 
-**4.04 - Explain the purpose, advantages, and challenges associated with
-SSL VPN**
+----
 
-`Link to Online Topic
-Content <https://www.sonicwall.com/downloads/WP_SSLVPN_vs_IPSec_102907.pdf>`__
+|
+
+**4.04 - Explain the purpose, advantages, and challenges associated with SSL VPN**
+
+`Link to Online Topic Content <https://www.sonicwall.com/downloads/WP_SSLVPN_vs_IPSec_102907.pdf>`__
 
 **SSL VPN**
 
@@ -989,6 +1088,10 @@ compliance and corporate security mandates.
 
 .. image:: /_static/101/1p32.png
 
+----
+
+|
+
 **4.04 - Given a list of environments/situations, determine which is
 appropriate for an IPsec solution and which is appropriate for an SSL
 VPN solution**
@@ -1000,3 +1103,16 @@ appropriate IPSec or SSL VPN. Just remember that SSL VPN is the best
 solution for remote users to access business resources remotely and
 IPSec is the best solution for tunneling traffic between two business
 locations.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+

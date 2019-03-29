@@ -3957,8 +3957,9 @@ Specialist exam and good luck with your certification goals.
 
 Thanks
 
+
 **Eric Mitchell**
 
-Channel FSE, East US and Federal
+Sr. Systems Engineer - Global SI
 
 

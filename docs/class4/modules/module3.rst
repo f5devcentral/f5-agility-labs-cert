@@ -1,11 +1,20 @@
 Section 3 - Proposal
-=====================
+====================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 3.01 Given a scenario, recommend F5 solutions to meet technical requirements
------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 
 |
 |
@@ -21,7 +30,7 @@ available through licensing on the platforms with Good, Better, Best
 
 .. image:: /_static/202/p2.png
 
-|
+----
 
 https://www.f5.com/solutions/application-security/ddos-protection
 
@@ -216,7 +225,7 @@ denied.
 
 F5 delivers complete DDoS coverage with our BIG-IP appliances in the datacenter and Silverline DDoS Protection managed services.  Silverline DDoS Protection provides a flexible, hybrid, solution combining granular threat detection with always-on or on-demand high mitigation capacity in the cloud.  Companies also benefit from 24x7x365 expert monitoring and support to augment resources when under a volumetric attack.
 
-|
+----
 
 https://www.f5.com/products/big-ip-services/big-ip-dns
 
@@ -244,7 +253,7 @@ increase DNS performance at the network edge, and mask the DNS back-end
 infrastructure. That translates into higher productivity, server
 consolidation, faster responses, and protected DNS management
 
-|
+----
 
 https://www.f5.com/pdf/products/big-ip-advanced-firewall-manager-datasheet.pdf
 
@@ -300,7 +309,7 @@ security rules are simultaneously deprovisioned. BIG-IP AFM helps ensure
 the effectiveness of application deployment and simplifies policy
 assurance above rigid zone-based or segment-based constructs.
 
-|
+----
 
 https://www.f5.com/pdf/products/big-ip-local-traffic-manager-ds.pdf
 
@@ -345,7 +354,7 @@ Key benefits:
 -  Protect the apps that run your business with industry‐leading SSL
    performance and visibility.
 
-|
+----
 
 **SSL Visibility / Inspection / Analytics**
 
@@ -376,7 +385,7 @@ TLS configuration which enables better application performance and
 allows seamless flexibility in updating your TLS configurations as
 needed.
 
-|
+----
 
 https://www.f5.com/pdf/products/big-ip-access-policy-manager-ds.pdf
 
@@ -464,7 +473,7 @@ RSA PIN and seamlessly authenticating that user. BIG-IP APM also
 supports Google reCAPTCHA V2 for authentication and contextual
 authentication.
 
-|
+----
 
 https://en.wikipedia.org/wiki/Web_application_firewall
 
@@ -490,7 +499,8 @@ or it was insufficiently coded by design. The WAF addresses these code
 shortcomings by special configurations of rule-sets, also known as
 policies.
 
-|
+----
+
 |
 
 **3.01 - Determine which technical solutions are needed**
@@ -506,7 +516,8 @@ sizing and building the sales solution. Once again, you will need to
 know all of our products and the problems they can solve to prepare for
 this section of the exam.
 
-|
+----
+
 |
 
 **3.01 - Determine licensing needs to meet customer requirements**
@@ -622,17 +633,16 @@ There are other add-on licensable features beyond GBB. Knowing all the
 products we offer beyond GBB will help you understand how to best solve
 customer issues. The list below is just a few.
 
-|
+----
 
-`https://f5.com/products/modules/ip-intelligence-services for
-information <https://f5.com/products/modules/ip-intelligence-services%20for%20information>`__
+`https://f5.com/products/modules/ip-intelligence-services for information <https://f5.com/products/modules/ip-intelligence-services%20for%20information>`__
 
 **IP Intelligence Services**
 
 IP Intelligence Services increases data center efficiency by
 blocking malicious activity at the earliest point.
 
-|
+----
 
 https://www.f5.com/products/security/access-manager/secure-web-gateway
 
@@ -642,7 +652,7 @@ Paired with F5 Access Policy Manager, our Secure Web Gateway
 Services give you insight and tools to take action and ensure your
 network is safe from malicious threats.
 
-|
+----
 
 https://www.f5.com/products/security/websafe-and-mobilesafe
 
@@ -650,7 +660,7 @@ https://www.f5.com/products/security/websafe-and-mobilesafe
 
 WebSafe is a web fraud solution that provides clientless protection by leveraging advanced encryption capabilities, malware detection and session behavioral analysis.
 
-|
+----
 
 https://www.f5.com/products/big-ip-services/carrier-grade-nat
 
@@ -663,7 +673,7 @@ interoperate with existing iPv4 devices and content.
 There are also other stand-alone products that allow F5 to solve
 customer problems.
 
-|
+----
 
 https://www.f5.com/products/security/ssl-orchestrator
 
@@ -675,7 +685,7 @@ SSL/TLS traffic, you will miss attacks, and leave your organization
 vulnerable. SSL Orchestrator provides robust decryption/encryption of
 SSL/TLS traffic.
 
-|
+----
 
 https://www.f5.com/products/security/ddos-hybrid-defender
 
@@ -688,7 +698,7 @@ anti-bot capabilities, and advanced detection methods—all in one
 appliance. It also delivers the highest performance with line-rate
 capabilities and without impacting legitimate traffic.
 
-|
+----
 
 https://www.f5.com/products/automation-and-orchestration/big-iq
 
@@ -701,10 +711,19 @@ gives you the tools you need to deliver your applications securely and
 effectively.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 3.02 Given a scenario, recommend F5 solutions to meet business requirements
----------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 |
 |
@@ -718,18 +737,23 @@ Reviewing some of our customer success stories will help you understand
 the issues and challenges and restrictions our customers use F5 to
 solve.
 
+----
+
 `*https://www.f5.com/services/resources/solution-profiles* <https://www.f5.com/services/resources/solution-profiles>`__
 
 F5 solution profiles provide a high-level overview of how F5 products
 and features work together to deliver a complete solution for a
 particular technology or for a specific vertical market.
 
+----
+
 `*https://partners.f5.com/solutions/f5-sales-plays* <https://partners.f5.com/solutions/f5-sales-plays>`__
 
 F5 partner Sales Plays can provide background on how to position F5
 products to solve customer issues.
 
-|
+----
+
 |
 
 **3.02 - Determine ROI needs, depreciation needs, CapEx, OpEx, payment
@@ -749,6 +773,8 @@ measuring results in Return On Investment (ROI). Effective organizations
 have a positive Return on Investment, or ROI, for individual technology
 choices as well as their overall investment in technology.
 
+----
+
 `*https://en.wikipedia.org/wiki/Depreciation* <https://en.wikipedia.org/wiki/Depreciation>`__
 
 *Depreciation*
@@ -762,6 +788,8 @@ affects the net income that they report. Generally, the cost is
 allocated, as depreciation expense, among the periods in which the asset
 is expected to be used.
 
+----
+
 `*https://en.wikipedia.org/wiki/Capital\_expenditure* <https://en.wikipedia.org/wiki/Capital_expenditure>`__
 
 *CapEx (Capital Expenditure)*
@@ -771,6 +799,8 @@ its fixed assets, such as buildings, vehicles, equipment, or land. For
 tax purposes, capex is a cost that cannot be deducted in the year in
 which it is paid or incurred and must be capitalized. This is the driver
 that motivates most companies to try to reduce CapEx and increase OpEx.
+
+----
 
 `*https://en.wikipedia.org/wiki/Operating\_expense* <https://en.wikipedia.org/wiki/Operating_expense>`__
 
@@ -789,6 +819,8 @@ into the operating budget may be preferable. BIG-IP VEs licensed under
 an Enterprise License Agreement (ELA) or Subscription licensing
 agreement.
 
+----
+
 `*https://due.com/blog/10-invoicing-terms-need-know/* <https://due.com/blog/10-invoicing-terms-need-know/>`__
 
 *Payment delivery timeframe*
@@ -801,10 +833,19 @@ services rendered or products sold, which in turn means that you won’t
 be able to handle your expenses.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 3.03 Given a scenario, answer technical queries regarding a proposed F5 solution
----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 |
 |
@@ -822,6 +863,8 @@ solve the problems the most cost-effective way is a very important part.
 Understanding that bundling products via licensing or even deploying a
 product as a stand-alone instance may be the best for the customer’s
 scenario.
+
+----
 
 |
 
@@ -947,6 +990,8 @@ the datasheet numbers. Plan for growth in any sizing exercise. You never
 know what resources you’ll need a couple of years down the road. Ensure
 you plan for the lifetime of the projected install.
 
+----
+
 |
 
 **3.03 - Distinguish F5 products from competition**
@@ -969,3 +1014,15 @@ information.
 #1 most deployed WAF worldwide!!
 
 .. image:: /_static/202/p4.png
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

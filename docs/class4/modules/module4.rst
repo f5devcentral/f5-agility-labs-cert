@@ -2,10 +2,19 @@ Section 4 - Supporting the Close
 ================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 4.01 Gather appropriate information to size F5 solutions
----------------------------------------------------------------------
+--------------------------------------------------------------------
 
 |
 |
@@ -29,6 +38,8 @@ Active/Active. Neither of these redundancy modes allows for more
 capacity. It is simply a different means of failover management. The F5
 ScaleN redundancy deployment model will allow for redundancy as well as
 capacity management and is discussed in more detail in this document.
+
+----
 
 |
 
@@ -154,6 +165,8 @@ and enforcement across devices—up to 32 active nodes. This ensures a
 consistent device configuration, with syncing of hardened firewall and
 access policies to simplify operations and reduce attack surfaces.
 
+----
+
 |
 
 **4.01 - Determine virtual environment details**
@@ -182,6 +195,8 @@ deployment flexibility and their ability to get maximum ROI from both
 CapEx and short-term OpEx, these strategies have failed to provide the
 same kind of high-reliability, high-performance solutions as traditional
 purpose-built systems.
+
+----
 
 `*https://www.f5.com/pdf/products/big-ip-virtual-editions-datasheet.pdf* <https://www.f5.com/pdf/products/big-ip-virtual-editions-datasheet.pdf>`__
 
@@ -237,6 +252,8 @@ their data centers, private cloud or even different pubic clouds which
 each have their own hypervisors. F5 virtual editions can run on many
 different versions of hypervisors. The link below shows the full matrix
 of hypervisors our VE can run on. You should be aware of our flexibility.
+
+----
 
 https://www.f5.com/services/resources/white-papers/virtual-clustered-multiprocessing-vcmp
 
@@ -305,6 +322,8 @@ business agility in addressing growth and scale, as well as support
 additional or new application delivery services that may require more
 CPU resources. Administrators can size guests according to what's
 required for each deployment—and modify when those requirements change.
+
+----
 
 |
 
@@ -377,16 +396,24 @@ functionality of the i5800 (e.g. vCMP) is possible on their existing
 hardware.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 4.02 Given a scenario, determine the appropriate F5 licensing requirements
----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
 |
 |
 
-**4.02 - Determine appropriate licensing solution (Perpetual, Utility,
-ELA, Subscription, BYOL)**
+**4.02 - Determine appropriate licensing solution (Perpetual, Utility, ELA, Subscription, BYOL)**
 
 **F5 Consumption Models**
 
@@ -396,6 +423,8 @@ protection, etc.) using Good, Better, Best (GBB) (discussed in Section
 3) and add-on licenses, they still have licensing options on how they
 consume the F5 products in their environments (Perpetual, Utility,
 Subscription or ELA).
+
+----
 
 https://www.f5.com/products/get-f5/perpetual-licensing-gbb
 
@@ -409,6 +438,8 @@ public cloud using a perpetual license key, it is considered a BYOL in
 the Cloud. There are other licensing models for cloud environments that
 we will cover below.
 
+----
+
 https://f5.com/products/platforms/f5-ready-cloud-program
 
 **Utility/PAYG**
@@ -417,6 +448,7 @@ Utility (pay-as-you-go) using GBB enables an hourly, daily, or monthly
 billing model to support temporal deployments like dev & test or for
 customers who prefer the OpEx model.
 
+----
 
 https://www.f5.com/pdf/licensing/big-ip-virtual-edition-subscription-licensing-overview.pdf
 
@@ -436,6 +468,8 @@ reports are provided monthly to F5 via BIG-IQ API upload or email. F5
 Premium 24x7 support and software updates are included in the
 subscription.
 
+----
+
 https://www.f5.com/pdf/licensing/big-ip-virtual-edition-enterprise-licensing-agreement-overview.pdf
 
 **Enterprise License Agreement (ELA)**
@@ -449,10 +483,19 @@ predictable yearly cost.
 .. image:: /_static/202/p5.png
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 4.03 Given a scenario, identify line items to build an F5 bill of materials (BOM)
------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 
 |
 |
@@ -467,22 +510,14 @@ power supplies, support options, product SKUs, Professional Services)**
 `*https://support.f5.com/csp/article/K15045* <https://support.f5.com/csp/article/K15045>`__
 - QSFP+ Breakout Cable Options
 
- 
-
 `*https://support.f5.com/csp/article/K8153* <https://support.f5.com/csp/article/K8153>`__
 - F5 Support of Third Party Hardware Components
-
- 
 
 `*https://support.f5.com/csp/article/K4309* <https://support.f5.com/csp/article/K4309>`__
 - F5 Support Lifecycle
 
- 
-
 `*https://support.f5.com/csp/article/K13435* <https://support.f5.com/csp/article/K13435>`__
 - BIG-IP Power Cabling
-
- 
 
 As a sales engineer you will often need to create a Bill of Materials
 (BoM). You can take all of the sizing information that determined what
@@ -524,3 +559,15 @@ for the QSFP+ breakout cable, one meter, three meters, and 10 meters. If
 you require QSFP+ breakout cable length other than the three lengths
 offered by F5, you may be able to purchase QSFP+ breakout cables of
 equivalent specifications from third-party vendors.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

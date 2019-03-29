@@ -2,10 +2,19 @@ Section 5 - Ongoing support/maintenance
 =======================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 5.01 Given a scenario, understand organizational personas to best position F5 solutions
------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 
 |
 |
@@ -21,6 +30,8 @@ products located on the Sales Play link on the partners site. These
 battle cards contain information on how to identify your target customer
 and stake holders for specific F5 products.
 
+----
+
 https://partners.f5.com/solutions/f5-sales-plays
 
 **Partners Sales Play Site**
@@ -32,6 +43,8 @@ position F5 solutions that will drive an end-to-end sale. The content of
 the sales play includes the sales playbook, customer facing deck and
 other associated documentation such as whiteboards, demos and/or
 collateral to help support the sales pitch.
+
+----
 
 https://partners.f5.com/Portals/4/Partner%20Central%20Assets/Solutions/Sales%20Plays/Solutions_Sales%20Plays_DDoS%20Protection_Battlecard.pdf
 
@@ -48,6 +61,8 @@ support to augment resources when under a volumetric attack. Discover
 and leverage the tools for selling F5 DDoS solutions and help your
 customers stay ahead of the fight against DDoS.
 
+----
+
 https://partners.f5.com/Portals/4/Partner%20Central%20Assets/Solutions/Sales%20Plays/Solutions_Sales%20Plays_WAF_battlecard.pdf
 
 **Web Application Firewall Battlecard**
@@ -60,6 +75,10 @@ applications, share Silverline Web Application Firewall designed on
 BIG-IP ASM for complete app protection managed by a 24x7x365 SOC team
 for prospects without IT resources. Share the combined F5 Hybrid WAF
 solution offerings to cover all apps enabling no app left unprotected.
+
+----
+
+|
 
 **5.01 - Distinguish needs of buying powers and influencers**
 
@@ -143,6 +162,8 @@ influencers work together.
 This approach empowers you to make the most of influence arriving from
 any direction.
 
+----
+
 |
 
 **5.01 - Recommend training/enablement based on operational needs**
@@ -201,6 +222,15 @@ to the solution and what it feels like to configure and operate it in
 the real-world.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 5.02 Given a scenario, determine when to engage appropriate F5 employees
@@ -219,6 +249,8 @@ work with the F5 account team and local Systems Engineer. If you are a
 partner trying to gain knowledge about how an F5 product or function
 works you can engage the Channel SE in your region for more information
 or enablement training.
+
+----
 
 |
 
@@ -342,10 +374,11 @@ immediately notified to ensure the case is assigned within the
 appropriate timeframe to an appropriately skilled Network Support
 Engineer.
 
+----
+
 |
 
-**5.02 - Locate and determine appropriate resource for account/customer
-escalations**
+**5.02 - Locate and determine appropriate resource for account/customer escalations**
 
 https://www.f5.com/services/support/support-offerings/support-policies
 
@@ -436,10 +469,19 @@ status of an existing case:
 +---------------------+----------------------------+-----------------------------+------------------------------------------------------------------------------------+
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 5.03 Identify F5 enablement resources and tools
-------------------------------------------------------------
+-----------------------------------------------------------
 
 |
 |
@@ -471,6 +513,8 @@ Strong box evaluation site https://strongbox.f5.com/strongbox/eval.jsp
 
 .. image:: /_static/202/p7.png
 
+----
+
 https://downloads.f5.com (requires login credentials)
 
 **F5 Partner vLabs**
@@ -484,12 +528,16 @@ the download**
 
 .. image:: /_static/202/p8.png
 
+----
+
 https://devcentral.f5.com/d/irule-editor
 
 **iRule Editor**
 
 You can now develop iRules with full syntax highlighting, colorization,
 textual auto-complete, integrated help, etc.
+
+----
 
 |
 
@@ -506,6 +554,8 @@ http://university.f5.com (requires login credentials)
 The Presales engineer can leverage F5 University for online learning
 courses on F5 products.
 
+----
+
 **F5 Sales Accreditations**
 
 The F5 Sales Accreditation helps sales and technical roles identify F5
@@ -517,6 +567,8 @@ technical knowledge.
 
 .. image:: /_static/202/p9.png
 
+----
+
 https://partners.f5.com (requires login credentials)
 
 **F5 Partner Central Site**
@@ -524,6 +576,8 @@ https://partners.f5.com (requires login credentials)
 F5 Partner Central site provides Presales engineer with knowledge and
 resources on F5 sales plays, technical reference architectures,
 marketing and sales related materials.
+
+----
 
 `*https://devcentral.f5.com/* <https://devcentral.f5.com/>`__
 
@@ -533,6 +587,8 @@ Learn F5 Technologies, Get Answers & Share Community
 Solutions. DevCentral is a source for tools, techniques, and
 collaboration to help you build solutions with iControl, iCall, iApps
 and iRules that enable applications to work in concert.
+
+----
 
 https://downloads.f5.com (requires login credentials)
 
@@ -545,6 +601,7 @@ found at the bottom of the download product line page. *Note: the
 engineer’s login account must be associated to a partner account to view
 the download*
 
+----
 
 https://f5.com/education
 
@@ -555,6 +612,8 @@ continents. Each one combines instructor presentations, classroom
 discussions and interactive labs. The hands-on learning environment
 helps provide a fast track to accomplishing your goals. Presales
 partners can attend free courses are F5 facilities across the country.
+
+----
 
 |
 
@@ -586,6 +645,8 @@ partners can attend free courses are F5 facilities across the country.
 
 -  Closing
 
+----
+
 https://partners.f5.com (requires login credentials)
 
 **F5 Partner Central Site**
@@ -593,6 +654,16 @@ https://partners.f5.com (requires login credentials)
 F5 Partner Central site provides Presales engineer with knowledge and
 resources on F5 sales plays, technical reference architectures,
 marketing and sales related materials.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
 
 |
 |
@@ -615,5 +686,6 @@ Fundamentals exam and good luck with your certification goals.
 
 Thanks,
 
-Eric Mitchell
-Channel FSE, East US and Federal
+**Eric Mitchell**
+
+Sr. Systems Engineer - Global SI

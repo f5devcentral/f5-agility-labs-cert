@@ -2,10 +2,19 @@ Section 8 - Manage existing system and application services
 ===========================================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 8.01 Modify and manage virtual servers
-----------------------------------------------------
+--------------------------------------------------
 
 |
 |
@@ -31,7 +40,8 @@ new client connections.
 Build out a basic virtual server on the LTM and see what different
 profile changes do to client connections.
 
-|
+----
+
 |
 
 **8.01 - Given a description of an application, identify the correct
@@ -55,7 +65,8 @@ terminate the SSL traffic with a Clientside SSL profile, to be able to
 apply the http profile, so that you can process the http traffic to
 insert a cookie into the header.
 
-|
+----
+
 |
 
 **8.01 - Given a situation where a virtual server configuration change
@@ -79,10 +90,19 @@ Some changes do not affect existing connections only the new connections
 after the change is made will be affected.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 8.02 Modify and manage pools
-------------------------------------------
+----------------------------------------
 
 |
 |
@@ -119,7 +139,8 @@ the connections belong to an existing persistence session.
 When set to Forced Offline, a node or pool member allows existing
 connections to time out, but no new connections are allowed.
 
-|
+----
+
 |
 
 **8.02 - Determine use cases for disabling a member**
@@ -131,7 +152,8 @@ maintenance, to a server, that is the resource of a pool, but wants to
 gracefully allow users to finish what they are doing, Then they should
 sett the pool resource to Disabled.
 
-|
+----
+
 |
 
 **8.02 - Determine use cases for forcing down a member**
@@ -142,7 +164,8 @@ If the administrator needs take a resource out of a pool immediately due
 to a critical misconfiguration or system error that is impacting
 business, they can set the resource to Forced Offline.
 
-|
+----
+
 |
 
 **8.02 - Given a situation where a pool member has been disabled but
@@ -158,7 +181,8 @@ expires. Thus the administrator could disable a pool member and that
 member can still receive new connections from the existing persisted
 clients.
 
-|
+----
+
 |
 
 **8.02 - Articulate the characteristics of a pool member that has been
@@ -179,6 +203,16 @@ will kill all connections immediately. This is not recommended for
 day-to-day maintenance but is an option for emergencies.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
 |
 
 Conclusion
@@ -197,6 +231,7 @@ Administration exam and good luck with your certification goals.
 
 Thanks
 
+
 **Eric Mitchell**
 
-Channel FSE, East US and Federal
+Sr. Systems Engineer - Global SI

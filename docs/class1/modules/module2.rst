@@ -1,8 +1,23 @@
 Section 2 - F5 Solutions and Technology
 =======================================
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 2.01 Articulate the role of F5 products
------------------------------------------------------
+---------------------------------------------------
+
+|
+|
 
 **2.01 - Explain the purpose, use, and benefits of APM, LTM, ASM, GTM**
 
@@ -51,9 +66,12 @@ Microsoft Remote Desktop Protocol (RDP), and Java RDP, all in one
 WebTop. With BIG-IP APM, you can consolidate and unify elements such as
 access, security, and policy management to help further reduce costs.
 
-***The purpose of the Access Policy Manager is to create a secure access
+**The purpose of the Access Policy Manager is to create a secure access
 to internal applications by using a single authentication and provide
-control using a single management interface.***
+control using a single management interface.**
+
+----
+
 
 `Link to Online Topic Content <http://www.f5.com>`__
 
@@ -106,12 +124,15 @@ easy-to-manage platform. By using fewer servers, less bandwidth, less
 power, and less cooling, while reducing the time spent managing your
 infrastructure, you can significantly reduce your operational costs.
 
-***The purpose of the Local Traffic Manager is to load balance
+**The purpose of the Local Traffic Manager is to load balance
 applications in your environment by using advanced TCP connection
 management, TCP optimization and server offloading and also provides a
 high security solution. The LTMs iApps functionality is a powerful set
 of features that enable you to manage application services rather than
-individual devices and objects.***
+individual devices and objects.**
+
+----
+
 
 `Link to Online Topic Content <http://www.f5.com>`__
 
@@ -138,9 +159,12 @@ vulnerabilities in minutes to help protect against web threats. BIG-IP
 ASM stops hackers and attacks from any location and ensures that
 legitimate users can access applications.
 
-***The purpose of the Application Security Manager is to secure web
+**The purpose of the Application Security Manager is to secure web
 applications using a certified web application firewall and offer threat
-assessment and visibility.***
+assessment and visibility.**
+
+----
+
 
 `Link to Online Topic Content <http://www.f5.com>`__
 
@@ -175,10 +199,20 @@ on the user’s location. By providing persistence for stateful
 applications, BIG-IP GTM helps you eliminate broken sessions and
 corrupted data.
 
-***The purpose of the Global Traffic Manager is to ensure availability
+**The purpose of the Global Traffic Manager is to ensure availability
 and access to the applications in your environment by using
 comprehensive health checks and load balancing methods to determine what
-site the user should access to get the best application experience.***
+site the user should access to get the best application experience.**
+
+|
+
+----
+
+|
+
+**These products are also in TMOS version 11.4 but not mentioned in the blueprint**
+
+|
 
 `Link to Online Topic
 Content <http://www.f5.com/pdf/products/big-ip-application-acceleration-manager-datasheet.pdf>`__
@@ -201,11 +235,14 @@ optimizations, including server and network optimizations, transport
 optimizations, and application delivery optimizations, including
 application protocol and web performance optimizations.
 
-***The purpose of the Application Acceleration Manager is to overcome
+**The purpose of the Application Acceleration Manager is to overcome
 WAN latency, maximizes server capacity, and speeds application response
 times. AAM decreases the need for additional bandwidth and hardware so
 users get fast access to applications, while you gain greater revenue
-and free up IT resources.***
+and free up IT resources.**
+
+----
+
 
 `Link to Online Topic
 Content <http://www.f5.com/pdf/products/big-ip-advanced-firewall-manager-datasheet.pdf>`__
@@ -233,20 +270,34 @@ firewall has deep application fluency in the most widely deployed
 enterprise applications. This makes it ideal for protecting
 Internet-facing data center applications, wherever they reside.
 
-***The purpose of the Application Delivery Firewall is to combine the
+**The purpose of the Application Delivery Firewall is to combine the
 network firewall with anti-DDoS, traffic management, application
 security, user access management, and DNS security. By integrating these
 core datacenter features, F5 application delivery firewall reduces
 management complexity and overhead and is ideal for protecting
-internet-facing data centers wherever they reside.***
+internet-facing data centers wherever they reside.**
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
 
 Objective - 2.02 Explain the purpose, use, and advantages of iRules
---------------------------------------------------------------------
+-------------------------------------------------------------------
+
+|
+|
 
 **2.02 - Explain the purpose of iRules**
 
-`Link to Online Topic
-Content <https://devcentral.f5.com/wiki/iRules.HomePage.ashx>`__
+`Link to Online Topic Content <https://devcentral.f5.com/wiki/iRules.HomePage.ashx>`__
 
 **What is an iRule?**
 
@@ -288,10 +339,13 @@ system provides to help you further increase load balancing efficiency.
 The advantage of iRules is that you extend the capabilities of the
 BIG-IP that is not available through the CLI or the GUI.
 
+----
+
+|
+
 **2.02 - Explain the advantages of iRules**
 
-`Link to Online Topic
-Content <https://devcentral.f5.com/articles/-the101-irules-ndash-introduction-to-irules>`__
+`Link to Online Topic Content <https://devcentral.f5.com/articles/-the101-irules-ndash-introduction-to-irules>`__
 
 **How does an iRule work?**
 
@@ -359,11 +413,13 @@ iRules largely comes into play thanks to the massive array of custom
 commands that we’ve built into the language, allowing you to leverage
 your BIG-IP to the fullest.
 
-**2.02 - Given a list of situations, determine which would be
-appropriate for the use of iRules**
+----
 
-`Link to Online Topic
-Content <https://devcentral.f5.com/articles/-the101-irules-ndash-introduction-to-irules>`__
+|
+
+**2.02 - Given a list of situations, determine which would be appropriate for the use of iRules**
+
+`Link to Online Topic Content <https://devcentral.f5.com/articles/-the101-irules-ndash-introduction-to-irules>`__
 
 **When would I use an iRule?**
 
@@ -416,13 +472,27 @@ iRule. Also, though, it is easier to maintain a feature built into the
 product through upgrades, rather than re-testing and managing an iRule
 that could be easily replaced with a few configuration options.
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 2.03 Explain the purpose, use, and advantages of iApps
---------------------------------------------------------------------
+------------------------------------------------------------------
+
+|
+|
 
 **2.03 - Explain the purpose of iApps**
 
-`Link to Online Topic
-Content <https://devcentral.f5.com/articles/managing-iapp-template-files-with-icontrol>`__
+`Link to Online Topic Content <https://devcentral.f5.com/articles/managing-iapp-template-files-with-icontrol>`__
 
 **What's an iApp?**
 
@@ -458,10 +528,13 @@ using iApp:
 
 .. image:: /_static/101/1p19.png
 
+----
+
+|
+
 **2.03 - Explain the advantages of iApps**
 
-`Link to Online Topic
-Content <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip_iapps_developer_11_0_0/2.html>`__
+`Link to Online Topic Content <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip_iapps_developer_11_0_0/2.html>`__
 
 **About iApp Templates**
 
@@ -497,11 +570,14 @@ Templates have three sections; presentation, implementation, and help.
 
 .. image:: /_static/101/1p20.png
 
+----
+
+|
+
 **2.03 - Given a list of situations, determine which would be
 appropriate for the use of iApps**
 
-`Link to Online Topic
-Content <https://www.motiv.nl/documenten/whitepapers/f5-iapp-wp>`__
+`Link to Online Topic Content <https://www.motiv.nl/documenten/whitepapers/f5-iapp-wp>`__
 
 **When do you use an iApp?**
 
@@ -537,13 +613,27 @@ devices in the network, but of the mission-critical applications running
 the business. In this way, iApps create a truly unified Application
 Delivery Network.
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 2.04 Explain the purpose of and use cases for full proxy and packet forwarding/packet based architectures
-----------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+
+|
+|
 
 **2.04 - Describe a full proxy architecture**
 
-`Link to Online Topic
-Content <https://devcentral.f5.com/Portals/0/Cache/Pdfs/2807/the-concise-guide-to-proxies.pdf>`__
+`Link to Online Topic Content <https://devcentral.f5.com/Portals/0/Cache/Pdfs/2807/the-concise-guide-to-proxies.pdf>`__
 
 We often mention that the benefits derived from some application
 delivery controllers are due to the nature of being a full proxy. And in
@@ -591,6 +681,10 @@ probably used a forward proxy.
 
 .. image:: /_static/101/1p21.png
 
+----
+
+|
+
 `Link to Online Topic Content <http://www.f5.com>`__
 
 **Reverse Proxies**
@@ -611,6 +705,10 @@ generally any application protocol capable of being delivered via UDP or
 TCP.
 
 .. image:: /_static/101/1p22.png
+
+----
+
+|
 
 `Link to Online Topic Content <http://www.f5.com>`__
 
@@ -650,6 +748,10 @@ layer 7 inspection, but they are rarely capable of examining the
 responses. Almost all half-proxies fall into the category of reverse
 proxies.
 
+----
+
+|
+
 `Link to Online Topic Content <http://www.f5.com>`__
 
 **Full Proxies**
@@ -680,10 +782,13 @@ is a full proxy.
 
 .. image:: /_static/101/1p25.png
 
+----
+
+|
+
 **2.04 - Describe a packet forwarding/packet based architecture**
 
-`Link to Online Topic
-Content <https://en.wikipedia.org/wiki/Packet_forwarding>`__
+`Link to Online Topic Content <https://en.wikipedia.org/wiki/Packet_forwarding>`__
 
 **Packet Forwarding**
 
@@ -748,8 +853,11 @@ its use is localized.
 A network can use one of two different methods to forward packets:
 store-and-forward or cut through.
 
-`Link to Online Topic
-Content <https://f5.com/resources/white-papers/tmos-redefining-the-solution>`__
+----
+
+|
+
+`Link to Online Topic Content <https://f5.com/resources/white-papers/tmos-redefining-the-solution>`__
 
 **Packet-based Design**
 
@@ -789,11 +897,14 @@ complex and faster than traditional proxy-based designs, as they have
 the advantage of only requiring a small percentage of the logic required
 for a full proxy.
 
+----
+
+|
+
 **2.04 - Given a list of situations, determine which is appropriate for
 a full proxy architecture**
 
-`Link to Online Topic
-Content <https://devcentral.f5.com/articles/the-full-proxy-data-center-architecture>`__
+`Link to Online Topic Content <https://devcentral.f5.com/articles/the-full-proxy-data-center-architecture>`__
 
 **Full proxy architecture - What do they mean?**
 
@@ -898,11 +1009,14 @@ outside the data center.
 
 .. image:: /_static/101/1p28.png
 
+----
+
+|
+
 **2.04 - Given a list of situations, determine which is appropriate for
 a packet based architecture**
 
-`Link to Online Topic
-Content <https://f5.com/resources/white-papers/tmos-redefining-the-solution>`__
+`Link to Online Topic Content <https://f5.com/resources/white-papers/tmos-redefining-the-solution>`__
 
 **What is a packet-based design?**
 
@@ -991,13 +1105,27 @@ performance did not adequately provide a viable solution. The real
 solution is to build a proxy-based solution with the performance of the
 packet-based solution.
 
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
 Objective - 2.05 Explain the advantages and configurations of high availability (HA)
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+|
+|
 
 **2.05 - F5 High Availability concepts**
 
-`Link to Online Topic
-Content <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos_management_guide_10_0_0/tmos_high_avail.html>`__
+`Link to Online Topic Content <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos_management_guide_10_0_0/tmos_high_avail.html>`__
 
 **Single device**
 
@@ -1043,10 +1171,13 @@ connection between the two BIG-IP units. With proper configuration,
 however, you can cause each BIG-IP unit to monitor peer status by way of
 a TCP/IP network connection instead.
 
+----
+
+|
+
 **2.05 - Explain active/active**
 
-`Link to Online Topic
-Content <https://support.f5.com/kb/en-us/solutions/public/15000/000/sol15002.html?sr=46848622>`__
+`Link to Online Topic Content <https://support.f5.com/kb/en-us/solutions/public/15000/000/sol15002.html?sr=46848622>`__
 
 **Understanding active-active redundancy**
 
@@ -1089,10 +1220,13 @@ allows you to configure more than two BIG-IP systems in an HA
 configuration. The DSC feature also allows you to configure multiple
 devices as active and one or more devices as standby.
 
+----
+
+|
+
 **2.05 - Explain active/standby**
 
-`Link to Online Topic
-Content <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-implementations-11-4-0/2.html>`__
+`Link to Online Topic Content <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-implementations-11-4-0/2.html>`__
 
 **Understanding active-standby redundancy**
 
@@ -1160,3 +1294,15 @@ thereby initiating failback. Failback on an active/standby system causes
 a unit to relinquish any processing that it is doing on behalf of its
 peer, and return to a standby state. A redundant system in
 active/standby mode is the most common type of redundant system.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

@@ -2,19 +2,26 @@ Section 7 - Maintain system configuration
 =========================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 7.01 Create and restore a UCS archive under the appropriate circumstances
----------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
 
 |
 |
 
 **7.01 - Discuss scenarios in which restoring a UCS archive is appropriate**
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/6.html
--
-conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/6.html#conceptid>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/6.html - conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/6.html#conceptid>`__
 
 Once you have created the configuration data for the BIG-IP system, you
 can replicate all of this set of data in a separate file. You can then
@@ -31,7 +38,8 @@ file known as a user configuration set, or UCS file. You can then use
 the UCS file to recover from any loss of data, in the unlikely event
 that you need to do so.
 
-|
+----
+
 |
 
 **7.01 - Discuss the tasks involved in successfully restoring a UCS archive**
@@ -257,7 +265,8 @@ release notes for your specific software version.
    configuration data from the command line by using the tmsh utility”
    procedure.
 
-|
+----
+
 |
 
 **7.01 - Given a scenario, discuss when it is appropriate to create a
@@ -272,19 +281,26 @@ change and also provides a backup of the new current state. This should
 be done on both the Active and stand by systems in an HA pair.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 7.02 Identify which high-level tasks can be automated using BIG-IQ
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 |
 |
 
 **7.02 - Identify which high-level tasks can be automated using BIG-IQ**
 
-`https://support.f5.com/kb/en-us/products/big-iq-adc/manuals/product/bigiq-adc-administration-4-5-0/1.html
--
-unique\_1381791279 <https://support.f5.com/kb/en-us/products/big-iq-adc/manuals/product/bigiq-adc-administration-4-5-0/1.html#unique_1381791279>`__
+`https://support.f5.com/kb/en-us/products/big-iq-adc/manuals/product/bigiq-adc-administration-4-5-0/1.html - unique\_1381791279 <https://support.f5.com/kb/en-us/products/big-iq-adc/manuals/product/bigiq-adc-administration-4-5-0/1.html#unique_1381791279>`__
 
 BIG-IQ Application Delivery Controller (ADC) makes it possible for you
 to monitor and manage the Local Traffic Manager (LTM) configuration on
@@ -323,10 +339,19 @@ To get familiar with BIG-IQ for the exam you should download the VE of
 BIG-IQ and set it up in your vLAB environment.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 7.03 Manage software images
------------------------------------------
+---------------------------------------
 
 https://support.f5.com/kb/en-us/solutions/public/k/34/sol34745165.html?sr=54637095
 
@@ -336,13 +361,13 @@ boot the BIG-IP system to a specific volume and begin processing traffic
 using that specific software version. By default, the BIG-IP system has
 three volumes that appear similar to the following example:
 
----------------------------------------------------
+----
 
 Sys::Software Status
 
 Volume Product Version Build Active Status
 
----------------------------------------------------
+----
 
 HD1.1 BIG-IP 11.5.2 0.0.141 no complete
 
@@ -414,6 +439,15 @@ migration path for the version on the Ask F5 site.
 http://support.f5.com/kb/en-us.html
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 7.04 Given an HA pair, describe the appropriate strategy for deploying a new software image
@@ -422,12 +456,9 @@ Objective - 7.04 Given an HA pair, describe the appropriate strategy for deployi
 |
 |
 
-**7.04 - Given an HA pair, describe the appropriate strategy for
-deploying a new software image**
+**7.04 - Given an HA pair, describe the appropriate strategy for deploying a new software image**
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/bigip-upgrade-active-standby-11-4-0/1.html
--
-unique\_305366860 <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-upgrade-active-standby-11-4-0/1.html#unique_305366860>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/bigip-upgrade-active-standby-11-4-0/1.html - unique\_305366860 <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-upgrade-active-standby-11-4-0/1.html#unique_305366860>`__
 
 The upgrade process involves preparation of the two BIG-IP devices
 (Device A and Device B) configured in an active-standby implementation,
@@ -443,6 +474,15 @@ upgrade to be hitless to the extent of nothing greater than a failover
 between functioning units in the HA pair.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 7.05 Understand the processes of licensing, license reactivation, and license modification (add-ons)
@@ -499,10 +539,19 @@ derived from.
 For step-by-step procedures please review the content via the hyperlink.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 7.06 Identify which modules are licensed and/or provisioned
--------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 |
 |
@@ -522,10 +571,19 @@ current configuration.
 
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 7.07 Explain how to create a user
------------------------------------------------
+---------------------------------------------
 
 |
 |
@@ -825,10 +883,19 @@ permission to use all BIG-IP system command line utilities, as well as
 any Linux commands. Default Value Disabled
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 7.08 Explain how to modify user properties
---------------------------------------------------------
+------------------------------------------------------
 
 |
 |
@@ -988,3 +1055,15 @@ perform the server-side SSL handshake that the remote server would
 normally perform when authenticating client traffic. In this case, there
 are some preliminary steps you must perform to prepare for remote
 authentication using SSL.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|

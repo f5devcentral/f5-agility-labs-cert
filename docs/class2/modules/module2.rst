@@ -2,10 +2,19 @@ Section 2 - Troubleshoot basic hardware issues
 ==============================================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.01 Perform an End User Diagnostic per F5 documentation and collect the output
----------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 
 |
 |
@@ -33,7 +42,8 @@ exit the EUD and reboot the system. You must use this option to exit the
 EUD. Using other methods, such as rebooting or using the command menu,
 can destabilize the system.
 
-|
+----
+
 |
 
 **2.01 - Download output from the unit an EUD was run on**
@@ -48,7 +58,8 @@ location. You can connect to the console IP address of the BIG-IP system
 and use and SCP tool to get the file off of the system, to upload to the
 F5 Support case.
 
-|
+----
+
 |
 
 **2.01 - Interpret the output from an EUD and determine if the test
@@ -61,10 +72,19 @@ When all tests complete correctly, the following message displays:
 *Completed test with 0 errors*.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.02 Interpret the LCD Warning Messages
------------------------------------------------------
+---------------------------------------------------
 
 |
 |
@@ -120,7 +140,8 @@ The LCD panel is located on the front of all F5 hardware except for the
 Viprion 2400 Series Chassis. A separate USB attachable LCD panel is
 available for the Viprion 2400 Series Chassis.
 
-|
+----
+
 |
 
 **2.02 - Correlate the LCD message to message in the corresponding log
@@ -173,14 +194,12 @@ For example, the BIG-IP system may generate an error messages to the
 -  emerg system\_check[11277]: 010d0010:0: Power supply #2 fan-1: fan
    speed (0) is too low.
 
-|
-|
+----
 
+|
 **2.02 - Identify which tasks the buttons on the LCD perform**
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/pg-10200v/2.html
--
-c\_reuse\_about\_lcd\_panel <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/pg-10200v/2.html#c_reuse_about_lcd_panel>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/pg-10200v/2.html - c\_reuse\_about\_lcd\_panel <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/pg-10200v/2.html#c_reuse_about_lcd_panel>`__
 
 Pressing the X button puts the LCD panel in Menu. The buttons Left
 Arrow, Right Arrow, Up Arrow, and Down Arrow are only functional when
@@ -191,10 +210,19 @@ Please refer to the Hyperlink to review the menu options available on
 the LCD Panel
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.03 Identify a possible hardware issue within the log files
---------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 |
 |
@@ -237,7 +265,8 @@ contain debug info relative to that product. If you are logging from an
 irule you can define what log file you want to write your debug info
 into by specifying the local facility you chose.
 
-|
+----
+
 |
 
 **2.03 - Given a log file, determine the nature of a hardware issue**
@@ -256,8 +285,7 @@ is the best way to master these types of topics.
 You may look in the logs and see there are may events. Perhaps you
 notice an event like this:
 
-Mon Feb 14 o4:36:06 PST 2005 bigip2 bcm56xxd(785) 00010012 Link 2.5 is
-up
+Mon Feb 14 o4:36:06 PST 2005 bigip2 bcm56xxd(785) 00010012 Link 2.5 is up
 
 This could have been caused by the administrator turning up a new
 interface or because the interface lost connectivity to the upstream
@@ -318,15 +346,13 @@ Log information categories and their descriptions
 | Event              | A description of the configuration change that caused the system to log the message.                                                                                                  | Audit           |
 +--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
 
-|
+----
+
 |
 
-**2.03 - Given a possible issue, determine which log file entries to
-review**
+**2.03 - Given a possible issue, determine which log file entries to review**
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/11.html
--
-conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/11.html#conceptid>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/11.html - conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/11.html#conceptid>`__
 
 Viewing and managing log messages are an important part of maintaining a
 BIG-IP system. Log messages inform you on a regular basis of the events
@@ -429,8 +455,9 @@ Sample local-traffic log entries
 | Mon Feb 14 o4:36:06 PST 2005   | bigip2   | bcm56xxd(785)   | 00010012      | Link 2.5 is up                                 |
 +--------------------------------+----------+-----------------+---------------+------------------------------------------------+
 
-**Some of the specific types of events that the BIG-IP system displays
-on the Local Traffic logging screen are:**
+|
+
+**Some of the specific types of events that the BIG-IP system displays on the Local Traffic logging screen are:**
 
 +---------------------------------------------------------------------------------------------------------------+
 | -  Address Resolution Protocol (ARP) packet and ARP cache events                                              |
@@ -461,10 +488,19 @@ on the Local Traffic logging screen are:**
 +---------------------------------------------------------------------------------------------------------------+
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.04 Force an active unit to standby under the appropriate circumstances
---------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
 |
 |
@@ -513,10 +549,19 @@ systems must be configured to mirror the current connection table,
 persistence records and SNAT table to the standby unit.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.05 Understand the relationship between interfaces, trunks, VLANs and their status/statistics
-------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 
 |
 |
@@ -524,9 +569,7 @@ Objective - 2.05 Understand the relationship between interfaces, trunks, VLANs a
 **2.05 - Understand the relationship between interfaces, trunks, VLANs
 and their status/statistics**
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/12.html
--
-conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/12.html#conceptid>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/12.html - conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/12.html#conceptid>`__
 
 **Introduction to BIG-IP system interfaces**
 
@@ -596,9 +639,7 @@ VLAN. In this way, any host that sends traffic to a BIG-IP system
 interface is logically a member of the VLAN or VLANs to which that
 interface belongs.
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/18.html
--
-unique\_599320773 <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/18.html#unique_599320773>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/18.html - unique\_599320773 <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/18.html#unique_599320773>`__
 
 **VLANs on a BIG-IP system**
 
@@ -623,9 +664,7 @@ With a VLAN group, a host in one VLAN can communicate with a host in
 another VLAN using a combination of Layer 2 forwarding and IP routing.
 This offers both performance and reliability benefits.
 
-`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/17.html
--
-conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/17.html#conceptid>`__
+`https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/tmos-concepts-11-4-0/17.html - conceptid <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0/17.html#conceptid>`__
 
 **Introduction to trunks**
 
@@ -706,3 +745,15 @@ to a peer system. You can also specify the rate at which the peer system
 sends LACP packets to the BIG-IP system. If you want to affect the way
 that the BIG-IP system chooses links for link aggregation, you can
 specify a link control policy.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
