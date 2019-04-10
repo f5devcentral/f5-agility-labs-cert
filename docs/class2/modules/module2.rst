@@ -197,6 +197,7 @@ For example, the BIG-IP system may generate an error messages to the
 ----
 
 |
+
 **2.02 - Identify which tasks the buttons on the LCD perform**
 
 `https://support.f5.com/kb/en-us/products/big-ip\_ltm/manuals/product/pg-10200v/2.html - c\_reuse\_about\_lcd\_panel <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/pg-10200v/2.html#c_reuse_about_lcd_panel>`__
