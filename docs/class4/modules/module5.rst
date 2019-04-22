@@ -679,7 +679,7 @@ Fundamentals exam. This study guide is **NOT** an all-inclusive
 document that will guarantee a passing grade on the exam. It is intended
 to be a living doc and any feedback or material that you feel should be
 included, to help exam takers better prepare, can be sent to
-channeleng@f5.com.
+F5CertGuides@f5.com.
 
 Thank you for using this study guide to prepare the F5 202 - Pre-Sales
 Fundamentals exam and good luck with your certification goals.

@@ -3948,9 +3948,8 @@ Conclusion
 This document is intended as a study guide for the F5 301a – LTM
 Specialist: Architect, Set-Up & Deploy exam version 2 - TMOS v11.5.0.
 This study guide is not an all-inclusive document that will guarantee a
-passing grade on the exam. It is intended to be a living doc and any
-feedback or material that you feel should be included, to help exam
-takers better prepare, can be sent to channeleng@f5.com.
+passing grade on the exam. It is intended to be a living doc and any feedback or material that you feel should be included, to help exam takers better prepare, can be sent to
+F5CertGuides@f5.com.
 
 Thank you for using this study guide to prepare the 301a – LTM
 Specialist exam and good luck with your certification goals.
