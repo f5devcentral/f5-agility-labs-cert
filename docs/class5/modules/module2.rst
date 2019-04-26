@@ -55,7 +55,8 @@ in which network connectivity is lost temporarily.
 Note: If you cannot see or read output on the serial console, make sure
 that the baud rate is set to 19200.
 
-|
+----
+
 |
 
 **2.01 - Explain the differences between the flow of management and application traffic**
@@ -89,7 +90,8 @@ network, F5 recommends that you do not use the management interface and
 that you grant administrative access through the TMM switch interfaces
 or the local serial console.
 
-|
+----
+
 |
 
 **2.01 - Explain how to configure management connectivity options: AOM, serial console, USB & Management Ethernet Port**
@@ -423,6 +425,15 @@ To disable the network configuration, re-run the N ---Configure AOM
 network option, and enter 0.0.0.0 for the IP address.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.02 Given a network diagram, determine the appropriate network and system settings (i.e., VLANs, selfIPs, trunks, routes, NTP servers, DNS servers, SNMP receivers and syslog servers)
@@ -529,7 +540,8 @@ to the default VLAN named HA, which is used strictly to process failover
 communications between BIG-IP devices, instead of processing application
 traffic.
 
-|
+----
+
 |
 
 **2.02 - Explain routing requirements for management and application traffic (including route domains and IPv6)**
@@ -711,7 +723,8 @@ of the IPv6 gateway must exist to create the IPv6 route gateway.
 
     quit
 
-|
+----
+
 |
 
 **2.02 - Explain the effect of system time on LTM devices**
@@ -744,6 +757,15 @@ BIG-IP system will use to update its system time, it is also possible to
 define more advanced NTP configurations on the BIG-IP system.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.03 Explain how to configure remote authentication and multiple administration roles on the LTM device
@@ -785,7 +807,8 @@ The BIG-IP system includes a tool for propagating BIG-IP system
 configuration data to multiple BIG-IP devices on the network. This tool
 is known as the Single Configuration File (SCF) feature.
 
-|
+----
+
 |
 
 **2.03 - Explain the options for partition access and terminal access**
@@ -825,6 +848,15 @@ use all BIG-IP system command line utilities, as well as any Linux
 commands.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.04 Explain the uses of administrative partitions
@@ -914,7 +946,8 @@ Grants the ability to enable or disable an object.
 
 Grants the ability to view an object.
 
-|
+----
+
 |
 
 **2.04 - Explain the options for partition access and terminal access**
@@ -954,6 +987,15 @@ use all BIG-IP system command line utilities, as well as any Linux
 commands.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.05 Given a scenario, determine an appropriate high availability configuration (i.e., failsafe, failover and timers)
@@ -1094,7 +1136,8 @@ groups, the device has the most available resource due to having the
 lowest utilization score of .15. In this case, Bigip_C is most likely
 the next-active device for the other two devices in the device group.
 
-|
+----
+
 |
 
 **2.05 - Explain the required objects on an HA pair**
@@ -1128,7 +1171,8 @@ On either device in the device group, you can create additional
 configuration objects, such as virtual IP addresses and SNATs. The
 system automatically adds these objects to Traffic-Group-1.
 
-|
+----
+
 |
 
 **2.05 - Explain how to configure device trust**
@@ -1188,6 +1232,15 @@ Repeat this task for each device that you want to add to the local trust
 domain.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.06 Given a scenario, describe the steps necessary to set up a device group, traffic group and HA group
@@ -1464,7 +1517,8 @@ synchronized to the device on which the nodes' pool members reside,
 Device C. When an object is not synchronized to the device on which its
 referenced objects reside, an invalid configuration results.
 
-|
+----
+
 |
 
 **2.06 - Explain how to configure HA groups**
@@ -1550,7 +1604,8 @@ After you perform this task for this traffic group on each device group
 member, the BIG-IP system ensures that this traffic group is always
 active on the device with the highest HA score.
 
-|
+----
+
 |
 
 **2.06 - Explain how to assign virtual servers to traffic groups**
@@ -1577,7 +1632,8 @@ traffic group.
 Repeat this task for each BIG-IP object that you want to be a member of
 the traffic group.
 
-|
+----
+
 |
 
 **2.06 - (Supplemental Example) Explain use cases for MAC masquerading**
@@ -1601,6 +1657,15 @@ Network (VLAN) can potentially carry traffic and services for multiple
 traffic groups, with each service having its own MAC masquerade address.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.07 Predict the behavior of an LTM device group or traffic groups in a given failure scenario
@@ -1687,7 +1752,8 @@ in the local trust domain. The BIG-IP device for which a certificate
 signing authority device signs its certificate is known as a subordinate
 non-authority device.
 
-|
+----
+
 |
 
 **2.07 - Compare and contrast network and serial failover**
@@ -1786,7 +1852,8 @@ updates to peers for connection mirroring. To enable proper state
 reporting and mirroring, F5 recommends that you configure network
 failover in addition to hardwired failover.
 
-|
+----
+
 |
 
 **2.07 - Compare and contrast failover unicast and multicast**
@@ -1807,6 +1874,15 @@ multicast failover option, you can define a unicast mesh using the
 management port for each VIPRION system.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.08 Determine the effect of LTM features and/or modules on LTM device performance and/or memory
@@ -2042,7 +2118,8 @@ The use of the session table is recommended for sharing dynamic global
 variable data (data that will be updated within the iRule) among
 CMP-enabled virtual servers.
 
-|
+----
+
 |
 
 **2.08 - Determine the effect of RAM cache on performance and memory**
@@ -2119,7 +2196,8 @@ You can use the RAM Cache to cache both the GET and other methods,
 including non-HTTP methods, by specifying a URI in the URI Include list
 or writing an iRule.
 
-|
+----
+
 |
 
 **2.08 - Determine the effect of compression on performance**
@@ -2193,7 +2271,8 @@ memory, but results in a faster and higher compression ratio.
 Conversely, a lower value causes Local Traffic Manager to use less
 memory, but results in a slower and lower compression ratio.
 
-|
+----
+
 |
 
 **2.08 - Determine the effect of modules on performance and memory**
@@ -2275,6 +2354,15 @@ use the Configuration utility to provision the licensed modules.
    -  Click Reboot.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.09 Determine the effect of traffic flow on LTM device performance and/or utilization
@@ -2433,6 +2521,15 @@ number reflects the device's relative capacity compared to the other
 devices in the device group.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.10 Determine the effect of virtual server settings on LTM device performance and/or utilization
@@ -2537,6 +2634,15 @@ This would allow an alternate mirroring path and ensure reliable
 mirroring in the event of equipment or cable failure.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.11 Describe how to deploy vCMP guests and how the resources are distributed
@@ -2935,7 +3041,8 @@ and you reconfigure the properties of a guest after its initial
 deployment, the host immediately propagates the changes to all of the
 guest VMs and also propagates the list of allowed VLANs.
 
-|
+----
+
 |
 
 **2.11 - Understand that the vCMP guest license is inherited from the host**
@@ -2964,7 +3071,8 @@ applies to all guests and cannot be disabled.
 You activate the BIG-IP system license when you initially set up the
 vCMP host.
 
-|
+----
+
 |
 
 **2.11 - Describe how to deploy and/or upgrade vCMP guests and related dependency on host version**
@@ -3020,6 +3128,15 @@ multiple versions of BIG-IP code simultaneously for testing, migration
 staging, or environment consolidation.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 2.12 Determine the appropriate LTM device security configuration to protect against a security threat
@@ -3046,7 +3163,8 @@ since with SNAT all traffic seems to have a source IP address of the
 BIG-IP system, or with NAT the destination IP address is not the same on
 each side of the communications of the BIG-IP.
 
-|
+----
+
 |
 
 **2.12 - Explain the implications of forwarding virtual servers on the environment security**
@@ -3189,7 +3307,8 @@ specific pool resource traffic can be destined for any IP address in the
 subnet that the BIG-IP system is listening on. This may allow traffic to
 systems that you did not intend to pass.
 
-|
+----
+
 |
 
 **2.12 - Explain how to set up and enable SNMP device traps on the LTM device**
@@ -3317,7 +3436,8 @@ the /config/user_alert.conf file:
    
    }
 
-|
+----
+
 |
 
 **2.12 - Describe the implications of port lockdown settings**
@@ -3531,7 +3651,8 @@ For optimal security, F5 recommends that you use the port lockdown
 feature to allow only the protocols or services required for a self IP
 address.
 
-|
+----
+
 |
 
 **2.12 - (Supplemental Example) Describe how to disable services**
@@ -3562,7 +3683,8 @@ relevant BIG-IP LTM object address or self IP address for which the
 packet was destined. If TM.RejectUnmatched is set to false, the system
 silently drops unmatched packets.
 
-|
+----
+
 |
 
 **2.12 - (Supplemental Example) Describe how to disable ARP**
@@ -3615,7 +3737,8 @@ activity for virtual addresses, in the rare case that ARP activity
 affects system performance. This most likely occurs only when you have a
 large number of virtual addresses defined on the system.
 
-|
+----
+
 |
 
 **2.12 - (Supplemental Example) Explain how to set up logging for security events on the LTM device**
@@ -3853,7 +3976,8 @@ the resources to which this profile is assigned.
 You now have an implementation in which the BIG-IP system logs specific
 DoS Protection events and sends the logs to a specific location.
 
-|
+----
+
 |
 
 **2.12 - (Supplemental Example) Explain how route domains can be used to enforce network segmentation**
@@ -3937,6 +4061,15 @@ and the target route domain (that is, the route domain to which the
 traffic is being forwarded).
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Conclusion
