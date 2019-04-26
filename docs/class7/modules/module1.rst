@@ -910,7 +910,7 @@ list image BIGIP-10.0.0.5376.0.iso
 Displays information about the specified image, build 5376.0 of BIG-IP
 version 10.0.0.
 
-list image */1
+list image \*/1
 
 Displays information about all of the images located on the first slot.
 
@@ -994,52 +994,56 @@ a negative impact on your system.
 Using tmsh
 
 1. Log in to tmsh by typing the following command:
-::
 
-    tmsh
+   .. code-block:: bash
+   
+      tmsh
 
 2. To install a software image, point release, or software hotfix, use
    the following command syntax:
-::
 
-    install /sys software <hotfix | image> <software>.iso volume
-    <volume_number>
+   .. code-block:: bash
 
-For example, to install BIG-IP 12.0.0 to new volume HD1.5, type the following command:
-::
+      install /sys software <hotfix | image> <software>.iso volume <volume_number>
 
-    install /sys software image BIGIP-12.0.0.0.0.606.iso volume HD1.5 create-volume
+   For example, to install BIG-IP 12.0.0 to new volume HD1.5, type the following command:
+   
+   .. code-block:: bash
 
-    Note: You can use tab completion in tmsh. To see the available
-    images for installation, press the Tab key after you type the
-    install sys software image command.
+      install /sys software image BIGIP-12.0.0.0.0.606.iso volume HD1.5 create-volume
+
+   .. note:: You can use tab completion in tmsh. To see the available
+      images for installation, press the Tab key after you type the
+      install sys software image command.
 
 3. To verify the software installation progress, type the following
    command:
-::
 
-    show /sys software status
+   .. code-block:: bash
 
-The command output appears similar to the following example:
-::
+      show /sys software status
 
-    ---------------------------------------------------
+   The command output appears similar to the following example:
 
-    Sys::Software Status
+   .. code-block:: bash
+  
+      ---------------------------------------------------
 
-    Volume Product Version Build Active Status
+      Sys::Software Status
 
-    ---------------------------------------------------
+      Volume Product Version Build Active Status
 
-    HD1.1 BIG-IP 10.2.4 577.0 no complete
+      ---------------------------------------------------
 
-    HD1.2 BIG-IP 11.5.2 0.0.141 no complete
+      HD1.1 BIG-IP 10.2.4 577.0 no complete
+ 
+      HD1.2 BIG-IP 11.5.2 0.0.141 no complete
 
-    HD1.3 BIG-IP 11.5.3 0.0.163 no complete
+      HD1.3 BIG-IP 11.5.3 0.0.163 no complete
+ 
+      HD1.4 BIG-IP 12.0.0 0.0.606 yes complete
 
-    HD1.4 BIG-IP 12.0.0 0.0.606 yes complete
-
-    HD1.5 BIG-IP 12.0.0 0.0.606 no installing 10.000 pct
+      HD1.5 BIG-IP 12.0.0 0.0.606 no installing 10.000 pct
 
 ----
 
@@ -1078,9 +1082,10 @@ the following preparations:
 
    For example, the command and output on a system running BIG-IP
    12.1.2 appears similar to the following example:
-::
 
-	 tmsh show /sys software status
+   .. code-block:: bash
+
+      tmsh show /sys software status
 
 	 -------------------------------------------------------
 	 Sys::Software Status
@@ -1250,44 +1255,49 @@ source boot location.
 1. Log in to the BIG-IP command line.
 
 2. Display the available boot locations by typing the following command:
-::
+   
+   .. code-block:: bash
+      
+      tmsh show sys software
 
-	 tmsh show sys software
+   The command output appears similar to the following example:
 
-The command output appears similar to the following example:
-::
+   .. code-block:: bash
 
-	 --------------------------------------------------
+      --------------------------------------------------
 	 
-	 Sys::Software Status
+      Sys::Software Status
 	 
-	 Volume Product Version Build Active Status
+      Volume Product Version Build Active Status
 	 
-	 --------------------------------------------------
+      --------------------------------------------------
 	 
-	 HD1.1 BIG-IP 10.2.4 577.0 no complete
+      HD1.1 BIG-IP 10.2.4 577.0 no complete
 	 
-	 HD1.2 BIG-IP 11.3.0 2806.0 yes complete
+      HD1.2 BIG-IP 11.3.0 2806.0 yes complete
 	 
-	 HD1.3 BIG-IP 11.4.0 2384.0 no complete
+      HD1.3 BIG-IP 11.4.0 2384.0 no complete
 
 3. Copy the configuration from the source boot location to the target
    boot location using the following command syntax:
-::
 
-	 cpcfg --source=SLOT <destination_location>
+   .. code-block:: bash
 
-For example, to copy the configuration from boot location HD1.2 (11.3.0) to boot location HD1.3 (11.4.0) you would type the following command:
-::
+      cpcfg --source=SLOT <destination_location>
 
-	 cpcfg --source=HD1.2 HD1.3
+   For example, to copy the configuration from boot location HD1.2 (11.3.0) to boot location HD1.3 (11.4.0) you would type the following command:
 
-On a VIPRION system, ensure that each blade receives the updated configuration by running the cpcfg command with the cluster shell (clsh) utility on the primary blade.
+   .. code-block:: bash
 
-For example:
-::
+      cpcfg --source=HD1.2 HD1.3
 
-	 clsh cpcfg --source=HD1.2 HD1.3
+   On a VIPRION system, ensure that each blade receives the updated configuration by running the cpcfg command with the cluster shell (clsh) utility on the primary blade.
+
+   For example:
+   
+   .. code-block:: bash
+
+      clsh cpcfg --source=HD1.2 HD1.3
 
 ----
 
@@ -1340,17 +1350,19 @@ Rebooting from the command line
 1. Log in to the command line.
 
 2. To reboot to the previous software version, use the following command syntax:
-::
 
-	 tmsh reboot volume <volume name>
+   .. code-block:: bash
 
-For example, to reboot to volume HD1.1, type the following command:
-::
+   tmsh reboot volume <volume name>
 
-	 tmsh reboot volume HD1.1
+   For example, to reboot to volume HD1.1, type the following command:
 
-Note: The previously described backout procedures do not apply if you
-have already reset the BIG-IP system to its default settings.
+   .. code-block:: bash
+
+      tmsh reboot volume HD1.1
+
+.. note:: The previously described backout procedures do not apply if you
+   have already reset the BIG-IP system to its default settings.
 
 |
 
@@ -3001,31 +3013,33 @@ To create a custom SNMP trap, perform the following procedure:
 1. Log in to the command line.
 
 2. To back up your /config/user_alert.conf file, type the following command:
-::
+
+   .. code-block:: bash
 
    cp /config/user_alert.conf /config/user_alert.conf.SOL3727
 
 3. Edit the /config/user_alert.conf file.
 
 4. Add a new SNMP trap using the following format:
-::
 
-   alert <alert_name> "<matched message>" {
+   .. code-block:: bash
+      
+      alert <alert_name> "<matched message>" {
 
-   snmptrap OID=".1.3.6.1.4.1.3375.2.4.0.XXX"
+      snmptrap OID=".1.3.6.1.4.1.3375.2.4.0.XXX"
 
-   }
+      }
 
-   Note: Replace <alert_name> with a descriptive name. Do not use an alert name that 
-   exactly matches one already used in the /etc/alertd/alert.conf file or the 
-   /config/user_alert.conf file. Replace <matched_message> with text that matches the 
-   syslog messagethat triggers the custom trap. You can specify a portion of the syslog 
-   message text or use a regular expression. F5 recommends that you do not include the 
-   syslog prefix information, such as the date stamp and process ID, in the match string. 
-   Including information of a variable nature in the match string or regular expression 
-   may result in unexpected false positives or result in no matches at all. The syslog 
-   message you want to trap must not match the matched_message value of any other SNMP 
-   trap defined in the /etc/alertd/alert.conf file or the /config/user_alert.conf file.
+   .. note:: Replace <alert_name> with a descriptive name. Do not use an alert name that 
+      exactly matches one already used in the /etc/alertd/alert.conf file or the 
+      /config/user_alert.conf file. Replace <matched_message> with text that matches the 
+      syslog messagethat triggers the custom trap. You can specify a portion of the syslog 
+      message text or use a regular expression. F5 recommends that you do not include the 
+      syslog prefix information, such as the date stamp and process ID, in the match string. 
+      Including information of a variable nature in the match string or regular expression 
+      may result in unexpected false positives or result in no matches at all. The syslog 
+      message you want to trap must not match the matched_message value of any other SNMP 
+      trap defined in the /etc/alertd/alert.conf file or the /config/user_alert.conf file.
 
 5. Replace XXX with a number unique to this object ID.
 
@@ -3033,13 +3047,14 @@ To create a custom SNMP trap, perform the following procedure:
 
    - The object ID is in standard object identifier (OID) format, and
      within the following range:
-::
 
-    .1.3.6.1.4.1.3375.2.4.0.300 through .1.3.6.1.4.1.3375.2.4.0.999
+   .. code-block:: bash
 
-    Note: If the OID value is outside the range listed above, a trap
-    will be sent with the OID specified, but it will not contain any
-    text within the trap body.
+      .1.3.6.1.4.1.3375.2.4.0.300 through .1.3.6.1.4.1.3375.2.4.0.999
+
+   .. note:: If the OID value is outside the range listed above, a trap
+      will be sent with the OID specified, but it will not contain any
+      text within the trap body.
 
    - The object ID is in a numeric range that can be processed by your
      trap receiving tool.
@@ -3052,18 +3067,19 @@ To create a custom SNMP trap, perform the following procedure:
 
 6. Save the file and exit the editor.
 
-Note: If the alertd process fails to start, examine the newly added
-entry to ensure it contains all of the required elements and
-punctuation.
+   .. note:: If the alertd process fails to start, examine the newly added
+      entry to ensure it contains all of the required elements and
+      punctuation.
 
-Note: To test the newly created trap, refer to K11127: Testing SNMP
-traps on the BIG-IP system (9.4.x - 13.x).
+   .. note:: Note: To test the newly created trap, refer to K11127: Testing SNMP
+      traps on the BIG-IP system (9.4.x - 13.x).
 
 **Custom SNMP trap example**
 
 A message that appears similar to the following example is logged to the
 /var/log/ltm file when switchboard failsafe is enabled:
-::
+
+.. code-block:: bash
 
    Sep 23 11:51:40 bigip1.askf5.com lacpd[27753]: 01160016:6: Switchboard
    Failsafe enabled
@@ -3071,7 +3087,8 @@ A message that appears similar to the following example is logged to the
 To create a custom SNMP trap that is triggered whenever switchboard
 failsafe status changes are logged, add the following trap definition to
 the /config/user_alert.conf file:
-::
+
+.. code-block:: bash
 
    alert SWITCHBOARD_FAILSAFE_STATUS "Switchboard Failsafe (.*)" {
 
@@ -3132,30 +3149,33 @@ Management events
 Using tmsh to configure log levels for Traffic Management events
 
 1. Log in to tmsh by typing the following command:
-::
 
-    tmsh
+   .. code-block:: bash
+
+      tmsh
 
 2. To modify the log level of the desired event, use the following
    command syntax:
-::
 
-    modify /sys db <name> <string>
+   .. code-block:: bash
 
-    For example, to set the log level for MCP events to debug, you would
-    type the following command:
+      modify /sys db <name> <string>
 
-    modify /sys db log.mcpd.level value debug
+      For example, to set the log level for MCP events to debug, you would
+      type the following command:
 
-    To enable audit logging for user-initiated configuration changes and
-    configuration loads, you would type the following command:
+      modify /sys db log.mcpd.level value debug
 
-    modify /sys db config.auditing value verbose
+      To enable audit logging for user-initiated configuration changes and
+      configuration loads, you would type the following command:
+
+      modify /sys db config.auditing value verbose
 
 3. Save the change by typing the following command:
-::
 
-    save sys config
+   .. code-block:: bash
+
+      save sys config
 
 ----
 
@@ -3176,58 +3196,59 @@ a negative impact on your system.
 1. While remaining logged in to the BIG-IP command line, construct your
    logger command with the information you extracted using the following
    syntax:
-::
 
-    logger -p <facility>.<level> "<alert code>:<log level>: <descriptive
-    message>"
+   .. code-block:: bash
 
-    In the previous syntax, note the following:
+      logger -p <facility>.<level> "<alert code>:<log level>: <descriptive message>"
 
-    -  <facility> is the syslog-ng facility as listed in the
-       /var/run/bigip_error_maps.dat file.
+   In the previous syntax, note the following:
 
-    -  <level> is the facility log level, which can include one of any eight
-       available log levels.
+   - <facility> is the syslog-ng facility as listed in the
+     /var/run/bigip_error_maps.dat file.
 
-    -  <alert code> is the alert code as indicated in the *_maps.h file
-       entry.
+   - <level> is the facility log level, which can include one of any eight
+     available log levels.
 
-    -  <log level> is the alert log level. This level corresponds with the
-       following values:
+   - <alert code> is the alert code as indicated in the \*_maps.h file
+     entry.
 
-       +-----------------+------------------------------------+----------------------------------+
-       | **Log level**   | **Description**                    | **Corresponding syslog level**   |
-       +=================+====================================+==================================+
-       | 0               | System is unusable                 | emerg                            |
-       +-----------------+------------------------------------+----------------------------------+
-       | 1               | Action must be taken immediately   | alert                            |
-       +-----------------+------------------------------------+----------------------------------+
-       | 2               | Critical conditions                | crit                             |
-       +-----------------+------------------------------------+----------------------------------+
-       | 3               | Error conditions                   | err                              |
-       +-----------------+------------------------------------+----------------------------------+
-       | 4               | Warning conditions                 | warning                          |
-       +-----------------+------------------------------------+----------------------------------+
-       | 5               | Normal but significant condition   | notice                           |
-       +-----------------+------------------------------------+----------------------------------+
-       | 6               | Informational                      | info                             |
-       +-----------------+------------------------------------+----------------------------------+
-       | 7               | Debug-level messages               | debug                            |
-       +-----------------+------------------------------------+----------------------------------+
+   - <log level> is the alert log level. This level corresponds with the
+     following values:
 
-    -  <descriptive message> is the descriptive message string format used
-       to describe the alert. Note that %s in the example will match any
-       string.
+     +-----------------+------------------------------------+----------------------------------+
+     | **Log level**   | **Description**                    | **Corresponding syslog level**   |
+     +=================+====================================+==================================+
+     | 0               | System is unusable                 | emerg                            |
+     +-----------------+------------------------------------+----------------------------------+
+     | 1               | Action must be taken immediately   | alert                            |
+     +-----------------+------------------------------------+----------------------------------+
+     | 2               | Critical conditions                | crit                             |
+     +-----------------+------------------------------------+----------------------------------+
+     | 3               | Error conditions                   | err                              |
+     +-----------------+------------------------------------+----------------------------------+
+     | 4               | Warning conditions                 | warning                          |
+     +-----------------+------------------------------------+----------------------------------+
+     | 5               | Normal but significant condition   | notice                           |
+     +-----------------+------------------------------------+----------------------------------+
+     | 6               | Informational                      | info                             |
+     +-----------------+------------------------------------+----------------------------------+
+     | 7               | Debug-level messages               | debug                            |
+     +-----------------+------------------------------------+----------------------------------+
 
-For example, using the information extracted in step 6 of the
-previous procedure, you could create the following logger command:
-::
+   - <descriptive message> is the descriptive message string format used
+     to describe the alert. Note that %s in the example will match any
+     string.
 
-    logger -p local0.notice "01070640:5: Node 10.10.64.14 monitor status down."
+   For example, using the information extracted in step 6 of the
+   previous procedure, you could create the following logger command:
 
-    This command will output a syslog-ng message to the local0.notice
-    facility (the default destination of which is the /var/log/ltm file)
-    and generate an SNMP trap for this message.
+   .. code-block:: bash
+
+      logger -p local0.notice "01070640:5: Node 10.10.64.14 monitor status down."
+
+   This command will output a syslog-ng message to the local0.notice
+   facility (the default destination of which is the /var/log/ltm file)
+   and generate an SNMP trap for this message.
 
 |
 
@@ -3277,107 +3298,120 @@ a negative impact on your system.
 
 2. To back up the /config/user_alert.conf file, type the following
    command:
-::
 
-    cp /config/user_alert.conf /config/user_alert.conf.SOL3667
+   .. code-block:: bash
+
+      cp /config/user_alert.conf /config/user_alert.conf.SOL3667
 
 3. To modify the permissions on the user_alert.conf file to include
    write access, type the following command:
-::
 
-    chmod 644 /config/user_alert.conf
+   .. code-block:: bash
+
+      chmod 644 /config/user_alert.conf
 
 4. Using a text editor, edit the /config/user_alert.conf file to create
    a custom alert definition according to the following format:
 
-   Note: For more information about configuring custom alerts, refer to
-   K3727: Configuring custom SNMP traps.
-::
+   .. note:: For more information about configuring custom alerts, refer to
+      K3727: Configuring custom SNMP traps.
 
-    alert <ALERT_NAME> {
+   .. code-block:: bash
 
-    snmptrap OID="<OID>"
+      alert <ALERT_NAME> {
 
-    }
+      snmptrap OID="<OID>"
 
-    The alert definitions may appear similar to the following example:
+      }
 
-    alert BIGIP_SHELL_BP_CONFIGURATION_LOADED {
+   The alert definitions may appear similar to the following example:
 
-    snmptrap OID=".1.3.6.1.4.1.3375.2.4.0.28"
+   .. code-block:: bash
 
-    }
+      alert BIGIP_SHELL_BP_CONFIGURATION_LOADED {
 
-    For each alert definition for which you want to receive email
-    notification, add a semicolon (;) to the end of the existing
-    snmptrap line, and then add the following lines between the snmptrap
-    line and the terminating curly brace:
+      snmptrap OID=".1.3.6.1.4.1.3375.2.4.0.28"
 
-    email toaddress=""
+      }
 
-    fromaddress=""
+   For each alert definition for which you want to receive email
+   notification, add a semicolon (;) to the end of the existing
+   snmptrap line, and then add the following lines between the snmptrap
+   line and the terminating curly brace:
 
-    body=""
+   .. code-block:: bash
 
-    For example, the following alert definition sends an email
-    notification using the configured email toaddress, fromaddress, and
-    body options:
+      email toaddress=""
 
-    alert BIGIP_SHELL_BP_CONFIGURATION_LOADED {
+      fromaddress=""
 
-    snmptrap OID=".1.3.6.1.4.1.3375.2.4.0.28";
+      body=""
 
-    email toaddress="demo@askf5.com"
+   For example, the following alert definition sends an email
+   notification using the configured email toaddress, fromaddress, and
+   body options:
 
-    fromaddress="root"
+   .. code-block:: bash
 
-    body="The test of this Solution worked!"
+      alert BIGIP_SHELL_BP_CONFIGURATION_LOADED {
 
-    }
+      snmptrap OID=".1.3.6.1.4.1.3375.2.4.0.28";
 
-   Important: To configure the "fromaddress" to use a custom address,
-   refer to K27540405: The tmsh command now supports the RewriteDomain
-   and FromLineOverride SSMTP configuration and K13180: Configuring the
-   BIG-IP system to deliver locally generated email messages (11.x -
-   13.x).
+      email toaddress="demo@askf5.com"
 
-   Note: You can send the email notifications to multiple recipients by
-   separating the email addresses specified in the email toaddress
-   option with a comma (,), as shown in the following example:
-::
+      fromaddress="root"
 
-    email toaddress="demo@askf5.com,demo2@askf5.com"
+      body="The test of this Solution worked!"
+
+      }
+
+   .. important:: To configure the "fromaddress" to use a custom address,
+      refer to K27540405: The tmsh command now supports the RewriteDomain
+      and FromLineOverride SSMTP configuration and K13180: Configuring the
+      BIG-IP system to deliver locally generated email messages (11.x -
+      13.x).
+
+   .. note:: You can send the email notifications to multiple recipients by
+      separating the email addresses specified in the email toaddress
+      option with a comma (,), as shown in the following example:
+
+      .. code-block:: bash
+
+         email toaddress="demo@askf5.com,demo2@askf5.com"
 
 5. Save and exit the file.
 
 6. To restore the permissions on the user_alert.conf file, type the
    following command:
-::
 
-    chmod 444 /config/user_alert.conf
+   .. code-block:: bash
+
+      chmod 444 /config/user_alert.conf
 
 7. To restart the alertd process, type the following command:
-::
 
-    tmsh restart /sys service alertd
+   .. code-block:: bash
 
-When the alert is triggered, the BIG-IP system will send an email
-notification that appears similar to the following example:
-::
+      tmsh restart /sys service alertd
 
-   -----Original Message-----
+   When the alert is triggered, the BIG-IP system will send an email
+   notification that appears similar to the following example:
 
-   From: root@bigip1.askf5.com
+   .. code-block:: bash
+      
+      -----Original Message-----
 
-   Sent: Monday, December 25, 2007 12:10 PM
+      From: root@bigip1.askf5.com
+   
+      Sent: Monday, December 25, 2007 12:10 PM
 
-   To: demo@askf5.com
+      To: demo@askf5.com
 
-   Subject: 010a0043:5: The configuration was successfully loaded.
+      Subject: 010a0043:5: The configuration was successfully loaded.
 
-   The test of this Solution worked!
+      The test of this Solution worked!
 
-   ---END---
+      ---END---
 
 ----
 
@@ -3440,27 +3474,30 @@ Impact of procedure: Performing the following procedure should not have
 a negative impact on your system.
 
 1. Log in to the TMOS Shell (tmsh) by typing the following command:
-::
 
-    tmsh
+   .. code-block:: bash
+
+      tmsh
 
 2. To add a single remote syslog server, use the following command
    syntax:
-::
 
-    modify /sys syslog remote-servers add { <name> { host <IP address>
-    remote-port <port> }}
+   .. code-block:: bash
+      
+      modify /sys syslog remote-servers add { <name> { host <IP address> remote-port <port> }}
 
-    For example, to add remote syslog server 172.28.31.40 with port 514
-    and name mysyslog, type the following command:
+   For example, to add remote syslog server 172.28.31.40 with port 514
+   and name mysyslog, type the following command:
 
-    modify /sys syslog remote-servers add { mysyslog { host 172.28.31.40
-    remote-port 514 }}
+   .. code-block:: bash
+
+      modify /sys syslog remote-servers add { mysyslog { host 172.28.31.40 remote-port 514 }}
 
 3. To save the configuration, type the following command:
-::
+   
+   .. code-block:: bash
 
-    save /sys config
+      save /sys config
 
 4. For BIG-IP systems in a HA configuration, repeat all previous steps
    for each device in the device group.
@@ -3554,15 +3591,17 @@ a negative impact on your system.
 
 1. Log in to the Traffic Management Shell (tmsh) by typing the following
    command:
-::
 
-    tmsh
+   .. code-block:: bash
+
+      tmsh
 
 2. To configure the system to send locally generated email messages, use
    the following command syntax:
-::
 
-    modify /sys outbound-smtp mailhub <mail_server>:<port>
+   .. code-block:: bash
+
+      modify /sys outbound-smtp mailhub <mail_server>:<port>
 
     For example, to configure the system to send locally generated email
     messages to host mail.mydomain.com using port 587, you type the
@@ -3571,9 +3610,10 @@ a negative impact on your system.
     modify /sys outbound-smtp mailhub mail.mydomain.com:587
 
 3. To save the configuration, type the following command:
-::
 
-    save /sys config
+   .. code-block:: bash
+
+      save /sys config
 
 ----
 

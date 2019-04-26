@@ -69,13 +69,14 @@ declaration CLIENT\_ACCEPTED, then the iRule is triggered whenever Local
 Traffic Manager accepts a client connection. Local Traffic Manager then
 follows the directions in the remainder of the iRule to determine the
 destination of the packet.
-::
 
-    when CLIENT\_ACCEPTED {
-    if { [IP::addr [IP::client\_addr] equals 10.10.10.10] } {
-    pool my\_pool
-    }
-    }
+.. code-block:: bash
+
+   when CLIENT\_ACCEPTED {
+     if { [IP::addr [IP::client\_addr] equals 10.10.10.10] } {
+       pool my\_pool
+     }
+   }
 
 This iRule is triggered when a client-side connection has been accepted,
 causing Local Traffic Manager to send the packet to the pool my\_pool,
@@ -152,13 +153,14 @@ https://devcentral.f5.com/articles/irules-101-09-debugging
 
 The first tool you will want to arm yourself with is the iRules "log" command. 
 The syntax for the log is
-::
 
-    log [<facility>.<level>] <message>
-    facility : "local0", "local1", "local2", "local3", "local4", "local5",
-    "local6", "local7"
-    level: "alert", "crit", "debug", "emerg", "err", "error", "info",
-    "none", "notice", "panic", "warn", "warning"
+.. code-block:: bash
+
+   log [<facility>.<level>] <message>
+   facility : "local0", "local1", "local2", "local3", "local4", "local5",
+   "local6", "local7"
+   level: "alert", "crit", "debug", "emerg", "err", "error", "info",
+   "none", "notice", "panic", "warn", "warning"
 
 While the facility and level parameters are optional, it is good to know
 that there is a significant behavioral difference when the optional
@@ -176,9 +178,10 @@ which are the defaults. Actually, we've made it even easier than that
 for you, in that you can omit the level parameter and we'll default it
 for you. In almost every iRule you will see on DevCentral, the following
 syntax is used and in 99% of the cases, it will be all that you need.
-::
 
-    log local0. "message goes here"
+.. code-block:: bash
+
+   log local0. "message goes here"
 
 This will ensure that the log messages are not rate limited and go
 directly to the log files and that they will be stored in the system log
@@ -191,21 +194,22 @@ trying to accomplish with it. If you are trying to process a HTTP
 request, it's probably a good idea to log the inputs to your iRule such
 as HTTP::host and HTTP::uri, as well as any temporary variables you are
 using if processing those string values. Let's look at the following iRule.
-::
 
+.. code-block:: bash
+   
    when HTTP\_REQUEST {
-     switch -glob [HTTP::uri] {
-       "/app1\*" {
-         pool app1\_pool
-       }
-       "\*.gif" -
-       "\*.jpg" {
-         pool images\_pool
-       }
-       default {
-        pool def\_pool
-       }
-     }
+     switch -glob [HTTP::uri] {
+       "/app1\*" {
+         pool app1\_pool
+       }
+       "\*.gif" -
+       "\*.jpg" {
+         pool images\_pool
+       }
+       default {
+         pool def\_pool
+       }
+     }
    }
 
 This seems fairly straight forward. All requests to the "/app1"
@@ -221,30 +225,33 @@ Your first thought is to go to the webserver logs for the image servers
 and see why the requests are not being honored. To your surpise, the
 logs show no requests on the image servers. Your next obvious step is to
 put some debugging in your iRule to see exactly what's going on.
-::
 
- when HTTP\_REQUEST {
-   log local0. "Request: [HTTP::uri]"
-   switch -glob [HTTP::uri] {
-     "/app1\*" {
-       log local0. "Sending request to app1\_pool"
-       pool app1\_pool
-     }
-     "\*.gif" -
-     "\*.jpg" {
-       log local0. "Sending request to images\_pool"
-       pool images\_pool
-     }
-     default {
-       log local0. "Sending request to def\_pool"
-       pool def\_pool
-     }
-   }
- }
+.. code-block:: bash
+
+   when HTTP\_REQUEST {
+     log local0. "Request: [HTTP::uri]"
+     switch -glob [HTTP::uri] {
+       "/app1\*" {
+         log local0. "Sending request to app1\_pool"
+         pool app1\_pool
+       }
+       "\*.gif" -
+       "\*.jpg" {
+         log local0. "Sending request to images\_pool"
+         pool images\_pool
+       }
+       default {
+         log local0. "Sending request to def\_pool"
+         pool def\_pool
+       }
+     }
+   }
+   
 
 Then when you run your traffic, you will see something like this in the
 logs
-::
+
+.. code-block:: bash
 
    Request: /app1/index.html
    Sending request to app1\_pool
@@ -260,30 +267,33 @@ it matched and requests were sent to the app1\_pool pool of servers. Now
 that you have this information, it's fairly easy to reorder the
 conditions in the switch statement to ensure all image request go to the
 images\_pool pool.
-::
 
- when HTTP\_REQUEST {
-   log local0. "Request: [HTTP::uri]"
-   switch -glob [HTTP::uri] {
-     "\*.gif" -
-     "\*.jpg" {
-       log local0. "Sending request to images\_pool"
-       pool images\_pool
-     }
-     "/app1\*" {
-       log local0. "Sending request to app1\_pool"
-       pool app1\_pool
-     }
-     default {
-       log local0. "Sending request to def\_pool"
-       pool def\_pool
-     }
-   }
- }
+.. code-block:: bash
+
+   when HTTP\_REQUEST {
+     log local0. "Request: [HTTP::uri]"
+     switch -glob [HTTP::uri] {
+       "\*.gif" -
+       "\*.jpg" {
+         log local0. "Sending request to images\_pool"
+         pool images\_pool
+       }
+       "/app1\*" {
+         log local0. "Sending request to app1\_pool"
+         pool app1\_pool
+       }
+       default {
+         log local0. "Sending request to def\_pool"
+         pool def\_pool
+       }
+     }
+   }
+
 Now to your pleasure, the images are displaying in your application.
 Just for kicks you look at the logs and see something like the
 following:
-::
+
+.. code-block::  bash
 
    Request: /app1/index.html
    Sending request to app1\_pool
@@ -316,36 +326,38 @@ worked out. This can be done in several ways:
    log statements with an if statement testing the value of a variable,
    you can make turning on and off logging as simple as changing a
    variable. The above iRule could be written like this.
-::
 
-       when HTTP\_REQUEST {
-         set DEBUG 1
-         if { $DEBUG } { log local0. "Request: [HTTP::uri]" }
-         switch -glob [HTTP::uri] {
-           "\*.gif" -
-           "\*.jpg" {
-          if { $DEBUG } { log local0. "Sending request to images\_pool"
-       }
-             pool images\_pool
-           }
-           "/app1\*" {
-             if { $DEBUG } { log local0. "Sending request to app1\_pool" }
-             pool app1\_pool
-           }
-           default {
-            if { $DEBUG } { log local0. "Sending request to def\_pool" }
-             pool def\_pool
-           }
-         }
-       }
+   .. code-block:: bash
+      
+      when HTTP\_REQUEST {
+        set DEBUG 1
+        if { $DEBUG } { log local0. "Request: [HTTP::uri]" }
+        switch -glob [HTTP::uri] {
+          "\*.gif" -
+          "\*.jpg" {
+            if { $DEBUG } { log local0. "Sending request to images\_pool"
+            }
+            pool images\_pool
+          }
+          "/app1\*" {
+            if { $DEBUG } { log local0. "Sending request to app1\_pool" }
+            pool app1\_pool
+          }
+          default {
+            if { $DEBUG } { log local0. "Sending request to def\_pool" }
+            pool def\_pool
+          }
+        }
+      }
 
-Then by setting DEBUG to 1 will enable logging and setting it to 0 will
-turn logging off. The method you use will solely depend on your own
-situation. Options 1 and 2 take no CPU overhead in the log processing,
-while option 3 still requires performing a Boolean test on a variable.
-For hundreds of thousands of requests, this can add up.
+   Then by setting DEBUG to 1 will enable logging and setting it to 0 will
+   turn logging off. The method you use will solely depend on your own
+   situation. Options 1 and 2 take no CPU overhead in the log processing,
+   while option 3 still requires performing a Boolean test on a variable.
+   For hundreds of thousands of requests, this can add up.
 
 Wrapping it up
+--------------
 
 First thing to know and imprint in your mind is that logging is your
 friend. You should get in the habit of including some form of logging in
@@ -382,12 +394,14 @@ portion of the iRule syntax (such as an iRule command) was deprecated or
 changed.
 
 **Error Message**
-::
+
+.. code-block:: console
 
    *Error Message: 01220001:3: TCL error*
 
 For example:
-::
+
+.. code-block:: console
 
    *01220001:3: TCL error: /Common/broken <RULE\_INIT> - can't read "b": no
    such variable while executing "set a $b"*
@@ -451,16 +465,17 @@ traffic is sent to a specific server? Well, you guessed it...the
 ubiquitous and loveable iRule! Everyone had a pretty good idea an iRule
 would be used to solve this problem, but what does that iRule look like?
 Well, here it is!!
-::
 
-    when HTTP\_REQUEST {
-    if { [string tolower [HTTP::path]] starts\_with "/path/" } {
-    persist none
-    set pm [lsearch -inline [active\_members -list <pool name>]
-    x.x.x.x\*]
-    catch { pool <pool name> member [lindex $pm 0] [lindex $pm 1] }
-    }
-    }
+.. code-block:: bash
+   
+   when HTTP\_REQUEST {
+     if { [string tolower [HTTP::path]] starts\_with "/path/" } {
+       persist none
+       set pm [lsearch -inline [active\_members -list <pool name>]
+       x.x.x.x\*]
+       catch { pool <pool name> member [lindex $pm 0] [lindex $pm 1] }
+     }
+   }
 
 Let's talk through the specifics of this solution...
 
@@ -1847,14 +1862,15 @@ For example, the following iRule sets the cache behavior based on the
 information that the User-Agent has on the customer's initial request,
 not on honoring User-Agent or Accept-Encoding when found in the server's
 Vary header:
-::
 
- when HTTP\_REQUEST { set user\_key "[HTTP::header User-Agent]"
- CACHE::userkey $user\_key }
+.. code-block:: bash
 
-Note: The user\_key can be defined as any string found in the HTTP
-request that the administrator wants to use to build cache
-responses.
+   when HTTP\_REQUEST { set user\_key "[HTTP::header User-Agent]"
+   CACHE::userkey $user\_key }
+
+.. note:: The user\_key can be defined as any string found in the HTTP
+   request that the administrator wants to use to build cache
+   responses.
 
 You can use the previously listed iRule commands, even when the server
 does not set a Vary header, which allows the administrator to control
@@ -2209,21 +2225,22 @@ Negotiation phase handshake examples
    (version 3.3) and the server downgraded the protocol to TLSv1.0
    (version 3.1). The server also chose the preferred cipher from the
    client's list:
-::
 
-    1 1 0.0003 (0.0003) C>SV3.3(79) Handshake
-    ClientHello
-    Version 3.3
-    cipher suites
-    TLS\_RSA\_WITH\_RC4\_128\_SHA
-    TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA
-    TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA
-    TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA256
-    TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA256
-    1 2 0.0008 (0.0005) S>CV3.1(74) Handshake
-    ServerHello
-    Version 3.1
-    cipherSuite TLS\_RSA\_WITH\_RC4\_128\_SHA
+   .. code-block:: bash
+
+      1 1 0.0003 (0.0003) C>SV3.3(79) Handshake
+      ClientHello
+      Version 3.3
+      cipher suites
+      TLS\_RSA\_WITH\_RC4\_128\_SHA
+      TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA
+      TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA
+      TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA256
+      TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA256
+      1 2 0.0008 (0.0005) S>CV3.1(74) Handshake
+      ServerHello
+      Version 3.1
+      cipherSuite TLS\_RSA\_WITH\_RC4\_128\_SHA
 
 -  Unsuccessful negotiation
 
@@ -2235,35 +2252,37 @@ Example 1: The client and server unsuccessfully negotiate the protocol.
 The server does not support protocol version below TLS1 (version 3.1)
 and the client does not support protocol versions above SSLv3 (version
 3.0):
-::
 
-    1 1 0.0012 (0.0012) C>SV3.0(47) Handshake
-    ClientHello
-    Version 3.0
-    cipher suites
-    SSL\_RSA\_WITH\_AES\_256\_CBC\_SHA
-    1 2 0.0013 (0.0000) S>CV0.0(2) Alert
-    level fatal
-    value handshake\_failure
+.. code-block:: bash
+
+   1 1 0.0012 (0.0012) C>SV3.0(47) Handshake
+   ClientHello
+   Version 3.0
+   cipher suites
+   SSL\_RSA\_WITH\_AES\_256\_CBC\_SHA
+   1 2 0.0013 (0.0000) S>CV0.0(2) Alert
+   level fatal
+   value handshake\_failure
 
 Example 2: The client and server unsuccessfully negotiate a cipher; the
 server does not support any of the client's ciphers. This is a common
 failure:
-::
 
-    1 1 0.0012 (0.0012) C>SV3.1(58) Handshake
-    ClientHello
-    Version 3.2
-    cipher suites
-    TLS\_DH\_anon\_WITH\_RC4\_128\_MD5
-    1 2 0.0013 (0.0000) S>CV3.2(2) Alert
-    level fatal
-    value handshake\_failure
+.. code-block:: bash
 
-Note: The SSL alert message (Alert 2 level fatal) is marginally
-useful and means an unrecoverable error has occurred. If the virtual
-server is using a Client SSL profile, you may be able to enable
-useful message logging by modifying the SSL logging level to debug.
+   1 1 0.0012 (0.0012) C>SV3.1(58) Handshake
+   ClientHello
+   Version 3.2
+   cipher suites
+   TLS\_DH\_anon\_WITH\_RC4\_128\_MD5
+   1 2 0.0013 (0.0000) S>CV3.2(2) Alert
+   level fatal
+   value handshake\_failure
+
+.. note:: The SSL alert message (Alert 2 level fatal) is marginally
+   useful and means an unrecoverable error has occurred. If the virtual
+   server is using a Client SSL profile, you may be able to enable
+   useful message logging by modifying the SSL logging level to debug.
 
 ChangeCipherSpec (client)
 
@@ -2324,21 +2343,24 @@ debug logging enabled when the system is in normal production mode may
 generate excessive logging and cause poor performance.
 
 1. Log in to the TMOS Shell (tmsh) by typing the following command:
-::
 
-  tmsh
+   .. code-block:: bash
+
+      tmsh
 
 2. To enable SSL debug logging, type the following command:
-::
 
-   modify /sys db log.ssl.level value Debug
+   .. code-block:: bash
 
-Important: After you test SSL connections for the virtual server using a
-web browser or OpenSSL client, you should disable SSL debug logging by
-typing the following command:
-::
+      modify /sys db log.ssl.level value Debug
 
-   modify /sys db log.ssl.level value Warning
+   .. important:: After you test SSL connections for the virtual server using a
+      web browser or OpenSSL client, you should disable SSL debug logging by
+      typing the following command:
+
+      .. code-block:: bash
+
+         modify /sys db log.ssl.level value Warning
 
 Testing SSL connections (using s\_client)
 
@@ -2358,21 +2380,25 @@ a negative impact on your system.
 
 2. To test SSL connections for the virtual server, use the following
    command syntax:
-::
 
-    openssl s\_client -connect <virtual\_server>:<port>
+   .. code-block:: bash
+
+      openssl s\_client -connect <virtual\_server>:<port>
 
     For example:
 
-    openssl s\_client -connect 10.12.23.115:443
+    .. code-block:: bash
+
+       openssl s\_client -connect 10.12.23.115:443
 
 3. If the handshake attempt fails, take note of SSL errors returned by
    the s\_client utility.
 
 4. If the handshake succeeds, type the following at the prompt:
-::
 
-    GET / HTTP/1.0
+   .. code-block:: bash
+
+      GET / HTTP/1.0
 
 5. Press Enter twice.
 
@@ -2389,17 +2415,18 @@ a negative impact on your system.
 
 1. Log in to the BIG-IP command line.
 
-2. Use a Linux text utility to review the /var/log/ltm file.
-::
+2. Use a Linux text utility to review the /var/log/ltm file. For example:
 
-    For example:
+   .. code-block:: bash
+      
+      tail -f /var/log/ltm
 
-    tail -f /var/log/ltm
+   .. note:: To filter the log information for SSL errors only, use the
+      grep command. For example:
 
-    Note: To filter the log information for SSL errors only, use the
-    grep command. For example:
+      .. code-block:: bash
 
-    cat /var/log/ltm \|grep -i 'ssl'
+         cat /var/log/ltm \|grep -i 'ssl'
 
 3. Review the debug logs for SSL handshake failure or SSL alert codes.
 
@@ -2411,8 +2438,9 @@ To display log messages related to cipher or profile, use the grep or
 egrep commands to search for certain patterns in the /var/log/ltm file.
 
 For example:
-::
 
+.. code-block:: bash
+   
    egrep -i 'cipher \| profile' /var/log/ltm
 
 You may observe messages similar to the following examples.
@@ -2429,7 +2457,8 @@ To display log messages related to ssl and tps, use the grep or egrep
 commands to search for certain patterns in the /var/log/ltm file.
 
 For example:
-::
+
+.. code-block:: bash
 
    egrep -i 'ssl.\*tps' /var/log/ltm
 
@@ -2517,7 +2546,8 @@ The inclusion of just an Expires header with no Cache-Control header
 indicates that the content can be cached by both browsers and
 public/shared caches and is considered stale after the specified date
 and time as shown below:
-::
+
+.. code-block:: bash
 
    (Status-Line) HTTP/1.1 200 OK
    Content-Length 4722
@@ -2535,7 +2565,8 @@ and time as shown below:
 
 If no Cache-Control or Expires headers are present, the browser will
 cache the content with no expiration date as illustrated below:
-::
+
+.. code-block:: bash
 
    Headers:
    (Status-Line) HTTP/1.1 200 OK
@@ -2744,7 +2775,8 @@ Successful negotiation
 In the following example, the client offered protocol TLSv1.2 (version
 3.3) and the server downgraded the protocol to TLSv1.0 (version 3.1).
 The server also chose the preferred cipher from the client's list:
-::
+
+.. code-block:: bash
 
    1 1 0.0003 (0.0003) C>SV3.3(79) Handshake
    ClientHello
@@ -2769,7 +2801,8 @@ Example 1: The client and server unsuccessfully negotiate the protocol.
 The server does not support protocol version below TLS1 (version 3.1)
 and the client does not support protocol versions above SSLv3 (version
 3.0):
-::
+
+.. code-block:: bash
 
    1 1 0.0012 (0.0012) C>SV3.0(47) Handshake
    ClientHello
@@ -2783,7 +2816,8 @@ and the client does not support protocol versions above SSLv3 (version
 Example 2: The client and server unsuccessfully negotiate a cipher; the
 server does not support any of the client's ciphers. This is a common
 failure:
-::
+
+.. code-block:: bash
 
    1 1 0.0012 (0.0012) C>SV3.1(58) Handshake
    ClientHello
@@ -2927,17 +2961,19 @@ both sides of the proxy. This can be done in a few different ways.
 You can do a separate capture on each side of the proxy by defining the
 interface on which the traffic is received and egresses. Here we did it
 based on VLAN names:
-::
 
-    tcpdump -i external -s0 -w/var/tmp/extcap.cap
+.. code-block:: bash
 
-    tcpdump -i internal -s0 -w/var/tmp/intcap.cap
+   tcpdump -i external -s0 -w/var/tmp/extcap.cap
+
+   tcpdump -i internal -s0 -w/var/tmp/intcap.cap
 
 This will give you two separate files to parse through side-by-side and
 try to follow the conversation.
 
 You can do a single capture of all traffic using the loopback interface:
-::
+
+.. code-block:: bash
 
     tcpdump -i 0.0 -s0 -w/var/tmp/fullcap.cap
 
@@ -3003,7 +3039,8 @@ specific traffic flow through the BIG-IP system from end to end, even
 when the configuration uses a secure network address translation (SNAT)
 or OneConnect. For example, the following command searches for traffic
 to or from client 10.0.0.1 on interface 0.0:
-::
+
+.. code-block:: bash
 
    tcpdump -ni 0.0:nnnp -s0 -c 100000 -w /var/tmp/capture.dmp host 10.0.0.1
 
@@ -3408,7 +3445,8 @@ show ltm virtual <virtual\_server\_name> command reports none, disable,
 or single to indicate that CMP has been demoted for the virtual server.
 
 The command output would appear similar to the following example:
-::
+
+.. code-block:: console
 
    ---------------------------------------------------------
    Ltm::Virtual Server: CMP_vip
@@ -3939,7 +3977,8 @@ show ltm virtual <virtual_server_name> command reports none, disable,
 or single to indicate that CMP has been demoted for the virtual server.
 
 The command output would appear similar to the following example:
-::
+
+.. code-block:: console
 
    ---------------------------------------------------------
    Ltm::Virtual Server: CMP\_vip
@@ -4022,7 +4061,8 @@ specific traffic flow through the BIG-IP system from end to end, even
 when the configuration uses a secure network address translation (SNAT)
 or OneConnect. For example, the following command searches for traffic
 to or from client 10.0.0.1 on interface 0.0:
-::
+
+.. code-block:: bash
 
    tcpdump -ni 0.0:nnnp -s0 -c 100000 -w /var/tmp/capture.dmp host 10.0.0.1
 
@@ -4076,7 +4116,8 @@ capture monitor traffic from a BIG-IP to another device you will need to
 filter for traffic originating from the non-floating self IP addresses.
 
 The following capture would gather http based monitor traffic:
-::
+
+.. code-block:: bash
 
    tcpdump -s0 src host <non-floating self IP address> and dst port 80
 
@@ -4092,7 +4133,8 @@ make a http based URL request to a server and will display the requested
 webpage data in text format. This way you know the http request string
 to use in the monitor and know what comes back and can choose what part
 of the response to put in the receive string of the monitor.
-::
+
+.. code-block:: bash
 
    curl http://www.f5.com
 
@@ -4157,7 +4199,8 @@ respectively.
 The most common Send String value is GET /, which retrieves a default
 HTML page for a web site. To retrieve a specific page from a web site,
 you can enter a Send String value that is a fully qualified path name:
-::
+
+.. code-block:: bash
 
    "GET /www/support/customer\_info\_form.html"
 
@@ -4167,7 +4210,8 @@ a text string that is included in a particular HTML page on your site.
 The text string can be regular text, HTML tags, or image names.
 
 The sample Receive String value below searches for a standard HTML tag:
-::
+
+.. code-block:: bash
 
    "<HEAD>"
 
@@ -4378,17 +4422,17 @@ opening a connection to an IP address and port.
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **Diameter**                | Monitors servers running the Diameter authentication service. After configuring a Diameter monitor, associate the monitor with a load balancing pool. The BIG-IP system then attempts to establish a TCP connection with a server in the pool. After successfully establishing a connection, the Diameter monitor sends a Capabilities-Exchanging-Request (CER) message to the server. The monitor then waits to receive a Capabilities-Exchanging-Answer (CEA) message, as well as a result code of DIAMETER\_SUCCESS (2001).                                                                                                    |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **FirePass**                | Checks the health of FirePass systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **FirePass**                | Checks the health of FirePass systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **Inband**                  | Performs passive monitoring as part of client requests. This monitor, when acting as a client, attempts to connect to a pool member. If the pool member does not respond to a connection request after a user-specified number of tries within a user-specified period, the monitor marks the pool member as down. After the monitor has marked the pool member as down, and after a user-specified period has passed, the monitor again tries to connect to the pool member (if so configured).                                                                                                                                  |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **NNTP**                    | Checks the status of Usenet News traffic. The check is successful if the monitor retrieves a newsgroup identification line from the server. An **NNTP** monitor requires a newsgroup name (for example, alt.cars.mercedes) and, if necessary, a user name and password.                                                                                                                                                                                                                                                                                                                                                           |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **MSSQL**                   | Performs service checks on Microsoft® SQL Server-based services such as Microsoft® SQL Server versions 6.5 and 7.0.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **MSSQL**                   | Performs service checks on Microsoft SQL Server-based services such as Microsoft SQL Server versions 6.5 and 7.0.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **MySQL**                   | Checks the status of a MySQL™ database server. The check is successful if the monitor is able to connect to the server, log in as the indicated user, and log out.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **MySQL**                   | Checks the status of a MySQL database server. The check is successful if the monitor is able to connect to the server, log in as the indicated user, and log out.                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Oracle**                  | Checks the status of an Oracle® database server. The check is successful if the monitor is able to connect to the server, log in as the indicated user, and log out.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Oracle**                  | Checks the status of an Oracle database server. The check is successful if the monitor is able to connect to the server, log in as the indicated user, and log out.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **POP3**                    | Checks the status of Post Office Protocol (POP) traffic. The check is successful if the monitor is able to connect to the server, log in as the indicated user, and log out. A **POP3** monitor requires a user name and password.                                                                                                                                                                                                                                                                                                                                                                                                |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -4400,7 +4444,7 @@ opening a connection to an IP address and port.
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **RPC**                     | Checks the availability of specific programs that reside on a remote procedure call (RPC) server. This monitor uses the **rpcinfo** command to query the RPC server and verify the availability of a given program.                                                                                                                                                                                                                                                                                                                                                                                                               |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SASP**                    | Verifies the availability of a IBM® Group Workload Manager. This monitor uses the Server/Application State Protocol (SASP) to communicate with the Group Workload Manager. The monitor queries the Group Workload Manager for information on the current weights of each managed resource. These weights determine which resource currently provides the best response time. When the monitor receives this information from the Group Workload Manager (GWM), it configures the dynamic ratio option for the resources, allowing the BIG-IP system to select the most appropriate resource to respond to a connection request.   |
+| **SASP**                    | Verifies the availability of a IBM Group Workload Manager. This monitor uses the Server/Application State Protocol (SASP) to communicate with the Group Workload Manager. The monitor queries the Group Workload Manager for information on the current weights of each managed resource. These weights determine which resource currently provides the best response time. When the monitor receives this information from the Group Workload Manager (GWM), it configures the dynamic ratio option for the resources, allowing the BIG-IP system to select the most appropriate resource to respond to a connection request.    |
 |                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |                             | Note: When you assign an **SASP** monitor, the monitor initially marks the resources as down. This change in status occurs because the GWM might not yet have information pertaining to its resources. As soon as the monitor receives the results of its query, it changes the status as needed. In most configurations, the monitor receives these results within a few seconds.                                                                                                                                                                                                                                                |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

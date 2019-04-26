@@ -39,26 +39,29 @@ the pendsect messages to the /var/log/user.log file.
 
 When the pendsect process runs and no errors are detected or corrected,
 the system logs messages that appear similar to the following example:
-::
 
- warning pendsect[21788]: pendsect: /dev/sdb no Pending Sectors detected
+.. code-block:: console
+   
+    warning pendsect[21788]: pendsect: /dev/sdb no Pending Sectors detected
 
 When the pendsect process detects and corrects an error, the system logs
 messages that appear similar to the following example:
-::
 
- warning pendsect[19772]: Recovered LBA:230000007
- warning pendsect[19772]: Drive /dev/sda partition UNKNOWN
- warning pendsect[19772]: File affected NONE
+.. code-block:: console
+
+   warning pendsect[19772]: Recovered LBA:230000007
+   warning pendsect[19772]: Drive /dev/sda partition UNKNOWN
+   warning pendsect[19772]: File affected NONE
 
 When the pendsect process detects an error and is unable to correct the
 error, the system logs messages that appear similar to the following
 example:
-::
 
- warning pendsect[20702]: seek(1) error[25] recovery of LBA:226300793 not complete
- warning pendsect[20702]: Drive: /dev/sda filesystem type: Undetermined
- warning pendsect[20702]: File affected: NONE
+.. code-block:: console
+
+   warning pendsect[20702]: seek(1) error[25] recovery of LBA:226300793 not complete
+   warning pendsect[20702]: Drive: /dev/sda filesystem type: Undetermined
+   warning pendsect[20702]: File affected: NONE
 
 Recommended Actions
 
@@ -192,15 +195,18 @@ https://support.f5.com/kb/en-us/products/big-ip_ltm/releasenotes/related/log-mes
 
 **Licensing based log messages**
 
-There a multiple types of log messages that could occur around
+There are multiple types of log messages that could occur around
 licensing.
-::
 
- 01010044 : "%s feature %s licensed"
+.. code-block:: console
+
+   01010044 : "%s feature %s licensed"
 
 *Location:*
 
-/var/log/ltm
+.. code-block:: console
+
+   /var/log/ltm
 
 *Conditions:*
 
@@ -208,14 +214,16 @@ This message does not necessarily denote a problem. It displays the
 license status of BIG-IP device's component.
 
 When status for component X is "licensed", this log displays the message:
-::
 
- Component X is licensed.
+.. code-block:: console
+
+   Component X is licensed.
 
 When the component is not licensed, the message is:
-::
 
- Component X is NOT licensed.
+.. code-block:: console
+
+   Component X is NOT licensed.
 
 *Impact:*
 
@@ -235,9 +243,10 @@ need to activate the license.
 When the system statistics show bandwidth of the licensed feature is
 running at the max level you may see logs reflecting that the system is
 exceeding the licensed limit.
-::
 
- 01010045 : Bandwidth utilization is %d Mbps, exceeded %d%% of Licensed %d Mbps
+.. code-block:: console
+
+   01010045 : Bandwidth utilization is %d Mbps, exceeded %d%% of Licensed %d Mbps
 
 *Location:*
 
@@ -289,9 +298,10 @@ important. You will find many hardware related log messages in
 echo to the LCD screen of the device.
 
 **Log Message Example**
-::
 
- 012a0028 : %s
+.. code-block:: console
+
+   012a0028 : %s
 
 *Location:*
 
@@ -353,24 +363,27 @@ cookie protection appear similar to the following examples:
 
 -  When the virtual server exceeds the SYN Check Activation Threshold,
    the system logs an error message similar to the following example:
-::
 
-    warning tmm5[18388]: 01010038:4: Syncookie threshold 0 exceeded,
-    virtual = 10.11.16.238:80
+   .. code-block:: console
+
+      warning tmm5[18388]: 01010038:4: Syncookie threshold 0 exceeded,
+      virtual = 10.11.16.238:80
 
 -  When hardware SYN cookie mode is active for a virtual server, the
    system logs an error message similar to the following example:
-::
 
-    notice tmm5[18388]: 01010240:5: Syncookie HW mode activated, server
-    = 10.11.16.238:80, HSB modId = 1
+   .. code-block:: console
+
+      notice tmm5[18388]: 01010240:5: Syncookie HW mode activated, server
+      = 10.11.16.238:80, HSB modId = 1
 
 -  When hardware SYN cookie mode is not active for a virtual server, the
    system logs an error message similar to the following example:
-::
 
-    notice tmm5[18388]: 01010241:5: Syncookie HW mode exited, server =
-    10.11.16.238:80, HSB modId = 1 from HSB
+   .. code-block:: console
+
+      notice tmm5[18388]: 01010241:5: Syncookie HW mode exited, server =
+      10.11.16.238:80, HSB modId = 1 from HSB
 
 Reviewing maximum reject rate log messages
 
@@ -386,27 +399,29 @@ The BIG-IP system may log error messages that relate to SYN cookie
 protection to the /var/log/ltm file. Messages that relate to SYN cookie
 protection appear similar to the following examples:
 
--  When the number of packets that match a virtual IP address or a self
-   IP address exceeds the tm.maxrejectrate threshold, but the packets
-   specify an invalid port, the system stops sending RST packets in
-   response to the unmatched packets and logs an error message to the
-   /var/log/ltm file that appears similar to the following example:
-::
+- When the number of packets that match a virtual IP address or a self
+  IP address exceeds the tm.maxrejectrate threshold, but the packets
+  specify an invalid port, the system stops sending RST packets in
+  response to the unmatched packets and logs an error message to the
+  /var/log/ltm file that appears similar to the following example:
 
-   011e0001:4: Limiting closed port RST response from 299 to 250
-   packets/sec
+  .. code-block:: console
 
--  When the number of packets that match a virtual address and port, or
-   a self IP address and port, exceeds the tm.maxrejectrate threshold,
-   but the packet is not a TCP SYN packet and does not match an
-   established connection, the system stops sending RST packets in
-   response to the unmatched packets. The system also logs an error
-   message to the /var/log/ltm file that appears similar to the
-   following example:
-::
+     011e0001:4: Limiting closed port RST response from 299 to 250
+     packets/sec
 
-   011e0001:4: Limiting open port RST response from 251 to 250
-   packets/sec
+- When the number of packets that match a virtual address and port, or
+  a self IP address and port, exceeds the tm.maxrejectrate threshold,
+  but the packet is not a TCP SYN packet and does not match an
+  established connection, the system stops sending RST packets in
+  response to the unmatched packets. The system also logs an error
+  message to the /var/log/ltm file that appears similar to the
+  following example:
+
+  .. code-block:: console
+
+     011e0001:4: Limiting open port RST response from 251 to 250
+     packets/sec
 
 ----
 
@@ -423,9 +438,10 @@ Error Message example is based on connectivity failure between an HA
 pair. Your exam may contain other types.
 
 Error Message
-::
 
- 01071431:5: Attempting to connect to CMI peer <IP address> port <port>
+.. code-block:: console
+
+   01071431:5: Attempting to connect to CMI peer <IP address> port <port>
 
 In this error message, note the following:
 
@@ -436,9 +452,10 @@ In this error message, note the following:
    port, used for failover operations.
 
 For example:
-::
 
- 01071431:5: Attempting to connect to CMI peer 192.168.10.100 port 6699
+.. code-block:: console
+   
+   01071431:5: Attempting to connect to CMI peer 192.168.10.100 port 6699
 
 Message Location
 
@@ -471,11 +488,12 @@ troubleshoot the impact on the BIG-IP system. For example, if a general
 network issue occurs and the local BIG-IP system is unable to connect to
 a remote peer BIG-IP system, a message appearing similar to the
 following example is logged:
-::
 
- 01071431:5: Attempting to connect to CMI peer 192.168.10.100 port 6699
+.. code-block:: console
 
- 0107142f:3: Can't connect to CMI peer 192.168.10.100, port:6699, Transport endpoint is not connected
+   01071431:5: Attempting to connect to CMI peer 192.168.10.100 port 6699
+
+   0107142f:3: Can't connect to CMI peer 192.168.10.100, port:6699, Transport endpoint is not connected
 
 Recommended Actions
 
@@ -583,9 +601,10 @@ Local traffic log message format
 
 The local traffic (ltm) log messages generated by the BIG-IP system
 include the following types of information:
-::
 
- <time stamp> <host name> <level> <service[pid]> <message code> <message text>
+.. code-block:: console
+
+   <time stamp> <host name> <level> <service[pid]> <message code> <message text>
 
 -  Time stamp: The time/date that the system logged the message
 
@@ -626,9 +645,10 @@ Audit log message format
 
 The audit log messages generated by the BIG-IP system include the
 following types of information:
-::
 
- <time stamp> <host name> <level> <service[pid]> <message code> <user> <event>
+.. code-block:: console
+   
+   <time stamp> <host name> <level> <service[pid]> <message code> <user> <event>
 
 -  Time stamp: The time/date that the system logged the message
 
@@ -723,27 +743,30 @@ processes.
 Using the tmsh utility to view TMM CPU usage
 
 1. Log in to the TMOS Shell (tmsh) by typing the following command:
-::
 
-    tmsh
+   .. code-block:: bash
+      
+      tmsh
 
 2. To display TMM CPU utilization and other statistical information for
    TMM instances, type the following tmsh command:
-::
 
-    show /sys tmm-info
+   .. code-block:: bash
 
-For example, the following tmsh command is showing CPU usage for TMM 0.0 (Output truncated):
-::
+      show /sys tmm-info
 
-    Sys::TMM: 0.0
-    --------------------------
-    CPU Usage Ratio (%)
-    Last 5 Seconds 3
-    Last 1 Minute 3
-    Last 5 Minutes 2
+   For example, the following tmsh command is showing CPU usage for TMM 0.0 (Output truncated):
 
-Note: System CPU utilization is calculated by the following sets of values:
+   .. code-block:: console
+
+      Sys::TMM: 0.0
+      --------------------------
+      CPU Usage Ratio (%)
+      Last 5 Seconds 3
+      Last 1 Minute 3
+      Last 5 Minutes 2
+
+   .. note:: System CPU utilization is calculated by the following sets of values:
 
 3. Average over all TMM CPUs (all even CPUs)
 
@@ -1000,9 +1023,10 @@ Failover.NetTimeoutSec timeout value is exceeded. The default value of
 Failover.NetTimeoutSec is three seconds, after which the standby unit
 attempts to switch to an active state. The following database entry
 represents the default settings for the failover time configuration:
-::
 
- Failover.NetTimeoutSec = 3
+.. code-block:: console
+
+   Failover.NetTimeoutSec = 3
 
 Device Service Clustering (DSC) was introduced in BIG-IP 11.0.0 and
 allows many new features such as synchronization and failover between
@@ -1149,22 +1173,25 @@ negative impact on your system.
 
 To display the /var/log/ltm file, use a Linux command similar to the
 following example:
-::
 
- less /var/log/ltm
+.. code-block:: bash
+
+   less /var/log/ltm
 
 To display log messages related to the system transitioning to an active
 or standby state, use the grep or egrep commands to search for certain
 patterns in the /var/log/ltm file similar to the following example:
-::
 
- egrep -i 'active|standby' /var/log/ltm
+.. code-block:: bash
+
+   egrep -i 'active|standby' /var/log/ltm
 
 To display the /var/log/audit log file, use a Linux command similar to
 the following example:
-::
 
- less /var/log/audit
+.. code-block:: bash
+
+   less /var/log/audit
 
 To display log messages related to the system administratively
 transitioning to a standby state, use the following egrep command to
@@ -1172,9 +1199,10 @@ search for patterns related to the device being placed in the standby
 state in the /var/log/audit file.
 
 For example:
-::
 
- egrep -i 'cmd_sod go standby|sys failover standby' /var/log/audit
+.. code-block:: bash
+
+   egrep -i 'cmd_sod go standby|sys failover standby' /var/log/audit
 
 You may observe messages similar to the following:
 
@@ -1199,9 +1227,10 @@ You may observe messages similar to the following:
 To display log messages related to failover or fail-safe, use the grep
 or egrep commands to search for certain patterns in the /var/log/ltm
 file. For example:
-::
 
- egrep -i 'failover|failsafe' /var/log/ltm
+.. code-block:: bash
+
+   egrep -i 'failover|failsafe' /var/log/ltm
 
 You may observe messages similar to the following:
 
@@ -1225,9 +1254,10 @@ To display log messages related to watchdog or overdog, use the grep or
 egrep commands to search for certain patterns in the /var/log/ltm file.
 
 For example:
-::
 
- egrep -i 'watchdog|overdog' /var/log/ltm
+.. code-block:: bash
+
+   egrep -i 'watchdog|overdog' /var/log/ltm
 
 You may observe messages similar to the following:
 
@@ -1508,10 +1538,11 @@ reasons for ConfigSync failure:
    will fail to detect the active or next-active device. BIG-IP systems
    experiencing an IP address conflict log error messages to the
    /var/log/ltm file that appear similar to the following example:
-::
 
-    warning tmm[11178]: 01190004:4: address conflict detected for
-    10.0.0.1 (00:0c:29:16:33:f6) on vlan 4093
+   .. code-block:: console
+
+      warning tmm[11178]: 01190004:4: address conflict detected for
+      10.0.0.1 (00:0c:29:16:33:f6) on vlan 4093
 
 -  One or more devices are not reachable on the network
 
@@ -1538,9 +1569,10 @@ reasons for ConfigSync failure:
    file on a device, verify whether the configuration failed to load.
    To do so, type the following command from the command line, correct
    reported validation errors, and attempt to reload the configuration:
-::
 
-   tmsh load sys config verify
+   .. code-block:: bash
+
+      tmsh load sys config verify
 
 **Viewing the commit ID updates**
 
@@ -1561,9 +1593,10 @@ a negative impact on your system.
 
 2. To display the commit IDs for the device group, type the following
    command:
-::
 
-   tmsh run /cm watch-devicegroup-device
+   .. code-block:: bash
+
+      tmsh run /cm watch-devicegroup-device
 
 3. Locate the relevant device group and review the cid.id and cid.time
    columns.
@@ -1572,12 +1605,13 @@ a negative impact on your system.
    group has three members, and device bigip_a has the latest
    configuration as indicated by the cid.id (commit ID number) and
    cid.time (commit ID timestamp) columns:
-::
 
- devices <devgroup  [device   cid.id  cid.orig   cid.time   last_sync
- 20 21 sync_test    bigip_a   32731   bigip_a    14:27:00  : :
- 20 21 sync_test    bigip_b   1745    bigip_a    13:39:24  13:42:04
- 20 21 sync_test    bigip_c   1745    bigip_a    13:39:24  13:42:04
+   .. code-block:: console
+
+       devices <devgroup [device   cid.id   cid.orig   cid.time   last_sync
+       20 21 sync_test   bigip_a   32731    bigip_a    14:27:00   : :
+       20 21 sync_test   bigip_b   1745     bigip_a    13:39:24   13:42:04
+       20 21 sync_test   bigip_c   1745     bigip_a    13:39:24   13:42:04
 
 Note: Multiple devices with identical information are collapsed into
 a single row that displays in green.
@@ -1625,21 +1659,24 @@ Impact of procedure: Performing the following procedure should not have
 a negative impact on your system.
 
 1. Log in to tmsh by typing the following command:
-::
 
-   tmsh
+   .. code-block:: bash
+
+      tmsh
 
 2. To synchronize the configuration to the device group, use the
    following command syntax:
-::
 
-   run /cm config-sync <option> <device_group>
+   .. code-block:: bash
 
-For example, to synchronize the local device configuration to the
-device group, type the following command:
-::
+      run /cm config-sync <option> <device_group>
 
-   run /cm config-sync to-group <device_group>
+   For example, to synchronize the local device configuration to the
+   device group, type the following command:
+
+   .. code-block:: bash
+
+      run /cm config-sync to-group <device_group>
 
 |
 
@@ -1719,9 +1756,9 @@ troubleshoot messages that you might encounter.
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Does not have the last synced configuration, and has changes pending   | The device received at least one synchronization previously, but did not receive the last synchronized configuration, and the configuration on the device has changed since the last sync.                        | Determine the device with the latest configuration and perform a ConfigSync operation from the device.                                                                                                |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Disconnected                                                           | The iQuery communication channel between the devices was terminated or disrupted. This may be a result of one of the following:                                                                                   | *Join the disconnected device to the local trust domain.                                                                                                                                              |
-|                                                                        | *The disconnected device is not a member of the local trust domain.                                                                                                                                               | *Verify that the devices have network access using the ConfigSync IP addresses.                                                                                                                       |
-|                                                                        | *The disconnected device does not have network access to one or more device group members.                                                                                                                        |                                                                                                                                                                                                       |
+| Disconnected                                                           | The iQuery communication channel between the devices was terminated or disrupted. This may be a result of one of the following:                                                                                   | Join the disconnected device to the local trust domain.                                                                                                                                               |
+|                                                                        | The disconnected device is not a member of the local trust domain.                                                                                                                                                | Verify that the devices have network access using the ConfigSync IP addresses.                                                                                                                        |
+|                                                                        | The disconnected device does not have network access to one or more device group members.                                                                                                                         |                                                                                                                                                                                                       |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Device does not recognize membership in this group                     | The local device does not recognize that it is a member of the device group.                                                                                                                                      | Add the device to the device group.                                                                                                                                                                   |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1729,12 +1766,12 @@ troubleshoot messages that you might encounter.
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Does not have the last synced configuration                            | The device previously received the configuration from other device group members, but did not receive the last synced configuration.                                                                              | Perform a ConfigSync operation to sync the device group to the local device.                                                                                                                          |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| In Sync periodically changes to Changes Pending                        | If the device Sync status changes without notice, determine whether a third party script or device is making the changes.                                                                                         | Review the  **/var/log/audit** file to see if a third party script or device made configuration changes. Look for  **create**,  **modify** or **delete** commands in the audit log. For example:      |
+| In Sync periodically changes to Changes Pending                        | If the device Sync status changes without notice, determine whether a third party script or device is making the changes.                                                                                         | Review the **/var/log/audit** file to see if a third party script or device made configuration changes. Look for **create**, **modify** or **delete** commands in the audit log. For example:         |
 |                                                                        |                                                                                                                                                                                                                   |                                                                                                                                                                                                       |
-|                                                                        |                                                                                                                                                                                                                   |  list cli preference pager                                                                                                                                                                            |
-|                                                                        |                                                                                                                                                                                                                   |  create_if { cli_preference { cli_preference_user_name ...                                                                                                                                            |
-|                                                                        |                                                                                                                                                                                                                   |  modify cli preference pager disabled                                                                                                                                                                 |
-|                                                                        |                                                                                                                                                                                                                   |  quit                                                                                                                                                                                                 |
+|                                                                        |                                                                                                                                                                                                                   | list cli preference pager                                                                                                                                                                             |
+|                                                                        |                                                                                                                                                                                                                   | create_if { cli_preference { cli_preference_user_name ...                                                                                                                                             |
+|                                                                        |                                                                                                                                                                                                                   | modify cli preference pager disabled                                                                                                                                                                  |
+|                                                                        |                                                                                                                                                                                                                   | quit                                                                                                                                                                                                  |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 |
@@ -1747,21 +1784,24 @@ issues, refer to the following commands:
 
 -  To display the /var/log/ltm file, use a Linux command similar to the
    following example:
-::
 
-   cat /var/log/ltm
+   .. code-block:: bash
+
+      cat /var/log/ltm
 
 -  To display log messages related to DSC or CMI, use a command similar
    to the following example:
-::
+   
+   .. code-block:: bash
 
-   grep -i cmi /var/log/ltm
+      grep -i cmi /var/log/ltm
 
 -  To display log messages related to ConfigSync, use a command similar
    to the following example:
-::
+   
+   .. code-block:: bash
 
-   grep -i configsync /var/log/ltm
+      grep -i configsync /var/log/ltm
 
 ----
 
@@ -1791,9 +1831,10 @@ https://support.f5.com/csp/article/K47046731
 
 You will need to be familiar with reviewing logs and recognizing HA
 errors. The following is an example of an error you may see in the logs:
-::
 
- 0107142f:3: Can't connect to CMI peer <ip_address>, <reason>
+.. code-block:: console
+
+   0107142f:3: Can't connect to CMI peer <ip_address>, <reason>
 
 In this error message, note the following:
 
@@ -1803,16 +1844,17 @@ In this error message, note the following:
    BIG-IP system are failing.
 
 For example:
-::
 
-    0107142f:3: Can't connect to CMI peer 10.11.23.140, TMM outbound
-    listener not yet created
+.. code-block:: console
 
-    0107142f:3: Can't connect to CMI peer 192.168.10.100, port:6699,
-    Transport endpoint is not connected
+   0107142f:3: Can't connect to CMI peer 10.11.23.140, TMM outbound
+   listener not yet created
 
-Note: The BIG-IP system will continue connection attempts until
-successfully connected.
+   0107142f:3: Can't connect to CMI peer 192.168.10.100, port:6699,
+   Transport endpoint is not connected
+
+.. note:: The BIG-IP system will continue connection attempts until
+   successfully connected.
 
 Message Location:
 
