@@ -223,8 +223,10 @@ Conclusion
 
 This document is intended as a study guide for the F5 201 - TMOS
 Administration exam. This study guide is not an all-inclusive document
-that will guarantee a passing grade on the exam. It is intended to be a
-living doc and will be updated as necessary.
+that will guarantee a passing grade on the exam. It is intended
+to be a living doc and any feedback or material that you feel should be
+included, to help exam takers better prepare, can be sent to
+F5CertGuides@f5.com.
 
 Thank you for using this study guide to prepare the F5 201 - TMOS
 Administration exam and good luck with your certification goals.
