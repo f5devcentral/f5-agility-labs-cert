@@ -2,6 +2,15 @@ F5 301a Introduction
 ====================
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 **F5 - 301a Local Traffic Manager Specialist Exam**
@@ -138,7 +147,8 @@ address. *If you think more than 65535 connections may require
 translation, you should configure more SNAT addresses (for example,
 using a SNAT pool).*
 
-|
+----
+
 |
 
 **1.01 – Describe the benefit of using SNAT pools**
@@ -173,7 +183,8 @@ scenario; a SNAT pool can contain addresses from more than one egress
 network. This will allow you to build less SNAT pools by allowing you to
 mix the egress network addresses in one pool if you desire.
 
-|
+----
+
 |
 
 **1.01 – Describe the difference of SNAT object types**
@@ -367,6 +378,15 @@ data groups, and forward all other connections:
    }
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.02 - Given a scenario, determine the minimum profiles for an application
@@ -437,7 +457,8 @@ configuration of the virtual server’s protocol setting. For example, if
 the protocol setting is set to UDP, Local Traffic Manager adds the udp
 profile to its profile list.
 
-|
+----
+
 |
 
 **1.02 - Explain security options available for the application**
@@ -530,7 +551,8 @@ of. You can set an iRule to keep connections from happening when coming
 from a certain IP address range or to a certain URI path in the HTTP
 request.
 
-|
+----
+
 |
 
 **1.02 - Explain how to use LTM as a service proxy**
@@ -631,7 +653,8 @@ Layer 7 functionality:
 
 .. image:: /_static/301a/p2.jpeg
 
-|
+----
+
 |
 
 **1.02 - Describe how a given service is deployed on an LTM**
@@ -828,6 +851,15 @@ required for the virtual server.
 -  No support for HTTP pipelining
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.03 - Given an application configuration, determine which functions can be offloaded to the LTM device
@@ -1058,7 +1090,8 @@ database. The two ways to view BIG-IP AAM caching behavior are by using
 X-WA-Info debug headers and through the dashboard in the Configuration
 utility.
 
-|
+----
+
 |
 
 **1.03 – Explain how to configure LTM to handle SSL offload**
@@ -1233,6 +1266,15 @@ After you perform this task, you must assign the profile to a virtual
 server.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.04 - Given an iRule functionality, determine the profiles and configuration options necessary to implement the iRule
@@ -1332,7 +1374,8 @@ To do this, follow these steps:
 You could do further rule work to track info about the server when the
 errors happen but it is not necessary to solve the problem.
 
-|
+----
+
 |
 
 **1.04 - (Supplemental Example) Given an iRule functionality, determine the profiles and configuration options necessary to implement the iRule**
@@ -1365,6 +1408,15 @@ visible to the LTM and an iRule using the HTTP\_REQUEST even to trigger
 could not run.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.05 - Given application requirements, determine the appropriate profile and persistence settings
@@ -1511,7 +1563,8 @@ the HTTP\_REQUEST to determine the browser type to be mobile based and
 thus send their connection to a Pool resource that may be built or tuned
 for mobile based browsers.
 
-|
+----
+
 |
 
 **1.05 - Explain how to create an HTTP configuration to optimize WAN connectivity**
@@ -1547,7 +1600,8 @@ You can use the tcp-wan-optimized profile as is, or you can create
 another custom profile, specifying the tcp-wan-optimized profile as the
 parent profile.
 
-|
+----
+
 |
 
 **1.05 - Determine when connection mirroring is required**
@@ -1610,7 +1664,8 @@ performance. In addition, mirroring HTTP and UDP connections is
 typically not necessary, as those protocols allow for failure of
 individual requests without loss of the entire session.
 
-|
+----
+
 |
 
 **1.05 - (Supplemental Example) Describe the persistence across pools and services (e.g., Match Across Services, Match Across vs Match Across Pools)**
@@ -1796,7 +1851,8 @@ that contains a persistence record for that specific client. You must
 proceed cautiously when using this option, as it can direct a client's
 request to a pool that is not specified by the virtual server.
 
-|
+----
+
 |
 
 **1.05 - (Supplemental Example) Describe the cookie persistence options**
@@ -1935,6 +1991,15 @@ profile, or create a custom profile.
 +--------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------+
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.06 - Explain the steps necessary to configure AVR
@@ -2020,7 +2085,8 @@ exceeded, and when they cross back into the normal range. You can
 customize the threshold values for transactions per second, latency,
 page load time, and throughput.
 
-|
+----
+
 |
 
 **1.06 - Explain how to create an AVR profile and options**
@@ -2123,6 +2189,15 @@ server to ensure that the charts show accurate statistics.
 11. Click Finished.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.07 - Given a set of reporting requirements, determine the AVR metrics and entities to collect
@@ -2144,7 +2219,8 @@ that information for, such as URLs, Countries, Client IP Addresses,
 Response Codes, User Agents and Methods. You should also know what each
 of those mean (defined in the last section).
 
-|
+----
+
 |
 
 **1.07 - Explain the sizing implications of AVR on the LTM device**
@@ -2161,7 +2237,8 @@ environment you should consider the resource impact when you are doing
 platform sizing, as if it were any other heavy impact licensable
 software for the system.
 
-|
+----
+
 |
 
 **1.07 - Explain the logging and notifications options of AVR**
@@ -2205,7 +2282,8 @@ Analytics profile or in the virtual server). If you created an iApp
 application service, you can use the provided template to associate the
 virtual server.
 
-|
+----
+
 |
 
 **1.07 - Explain the uses of the collected metrics and entities**
@@ -2249,6 +2327,15 @@ Collected Metrics
 +--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.08 - Given a scenario, determine the appropriate monitor type and parameters to use
@@ -2498,7 +2585,8 @@ pool, pool member, or node Down when the test is successful.
 
 The HTTP monitor is configured to monitor HTTP traffic.
 
-|
+----
+
 |
 
 **1.08 - Given a desired outcome, determine where to apply health monitors**
@@ -2579,7 +2667,8 @@ is correct functionality, the user might not expect this behavior. You
 can prevent this unexpected behavior by ensuring that all pools and pool
 members associated with monitor instances reside in the same partition.
 
-|
+----
+
 |
 
 **1.08 - Determine under which circumstances an external monitor is required**
@@ -2622,6 +2711,15 @@ script below would be much better implemented using the built-in basic
 HTTP monitor.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.09 - Given a set of parameters, predict an outcome of a monitor status on other LTM device objects
@@ -2662,7 +2760,8 @@ When the failing health monitor starts to succeed again and at least one
 pool member is able to respond, then pool will be marked available and
 thus the virtual server will also become available.
 
-|
+----
+
 |
 
 **1.09 - Determine the effect of active versus inline monitors on the
@@ -2713,6 +2812,15 @@ Note: A passive monitor cannot check for specific responses and can
 potentially be slow to mark a pool member as up.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.10 - Given a health monitor configuration and pool member response predict the resulting status of the pool member
@@ -2745,7 +2853,8 @@ pool member will be marked up immediately. If the expected response did
 NOT contain the value of the RECV string, the pool member will be marked
 down when the timeout expires.
 
-|
+----
+
 |
 
 **1.10 - Given a set of parameters, predict an outcome of a monitor status on other LTM objects**
@@ -2780,7 +2889,8 @@ When the failing health monitor starts to succeed again and at least one
 pool member is able to respond, then pool will be marked available and
 thus the virtual server will also become available.
 
-|
+----
+
 |
 
 **1.10 - Determine the effect of a monitor on the status of a node, pool member, pool, and/or virtual server**
@@ -2815,7 +2925,8 @@ When the failing health monitor starts to succeed again and at least one
 pool member is able to respond, then pool will be marked available and
 thus the virtual server will also become available.
 
-|
+----
+
 |
 
 **1.10 - (Supplemental Example) Describe the functionality of Action On Service Down**
@@ -2918,6 +3029,15 @@ Generation. This link takes you to a resource outside of AskF5. The
 third party could remove the document without our knowledge.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.11 - Given a set of SSL requirements, determine the appropriate profile options
@@ -3015,7 +3135,8 @@ you can configure for an SSL profile.
 | TLS rollback bug workaround                   | This option disables version rollback attack detection. During the client key exchange, the client must send the same information about acceptable SSL/TLS protocol levels as it sends during the first hello. Some clients violate this rule by adapting to the server's answer. For example, the client sends an SSLv2 hello and accepts up to SSLv3.1 (TLSv1), but the server only understands up to SSLv3. In this case, the client must still use the same SSLv3.1 (TLSv1) announcement. Some clients step down to SSLv3 with respect to the server's answer and violate the version rollback protection. This option is ignored for server-side SSL.                                                                                                                        |
 +-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-|
+----
+
 |
 
 **1.11 - Describe the difference between client and server SSL profiles and functionality**
@@ -3067,7 +3188,8 @@ the destination server. When the server returns an encrypted response,
 the BIG-IP system decrypts and then re-encrypts the response, before
 sending the response back to the client.
 
-|
+----
+
 |
 
 **1.11 - (Supplemental Example) Describe the difference between client and server SSL processing**
@@ -3102,7 +3224,8 @@ the destination server. When the server returns an encrypted response,
 the BIG-IP system decrypts and then re-encrypts the response, before
 sending the response back to the client.
 
-|
+----
+
 |
 
 **1.11 - Explain how to configure the different SSL profile settings**
@@ -3455,7 +3578,8 @@ proceeding with the SSL session.
 | Allow Expired CRL                        | Instructs the system to use the specified CRL file, even if it has expired. The default is disabled. The \ **Allow Expired CLR** option was introduced in BIG-IP 12.0.0.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 +------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-|
+----
+
 |
 
 **1.11 - Describe the process to update expired SSL certificates**
@@ -3585,6 +3709,15 @@ have a negative impact on your system.
 8. Click Import.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.12 - Given a scenario determine the steps required to maintain SSL certificates
@@ -3720,7 +3853,8 @@ have a negative impact on your system.
 
 8. Click Import.
 
-|
+----
+
 |
 
 **1.12 - Explain how to implement SSL chain certificate**
@@ -4071,6 +4205,15 @@ a negative impact on your system.
 8. To save the modifications, click Update.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.13 - Given a set of application requirements, determine the appropriate virtual server type to use
@@ -4130,7 +4273,8 @@ configuration of the virtual server’s protocol setting. For example, if
 the protocol setting is set to UDP, Local Traffic Manager adds the udp
 profile to its profile list.
 
-|
+----
+
 |
 
 **1.13 - Describe which steps are necessary to complete prior to
@@ -4169,7 +4313,8 @@ The objects you should create are as follows:
 
 6. Pool and pool members
 
-|
+----
+
 |
 
 **1.13 - Describe the security features when creating a virtual server (i.e., VLAN limitation, route domains, packet filters, iRules)**
@@ -4281,7 +4426,8 @@ of. You can set an iRule to keep connections from happening when coming
 from a certain IP address range or to a certain URI path in the HTTP
 request.
 
-|
+----
+
 |
 
 **1.13 - Explain the effect of changing different virtual server types**
@@ -4324,6 +4470,15 @@ the virtual server type options and defines each virtual server type:
 +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.14 - Given a set of application requirements, determine the appropriate virtual server configuration settings
@@ -4585,7 +4740,8 @@ monitoring and detection of session loss. For such applications, the
 SCTP mechanisms to detect session failure actively monitor the
 connectivity of a session.
 
-|
+----
+
 |
 
 **1.14 - Differentiate between client side and server side settings**
@@ -4610,6 +4766,15 @@ as TCP express and is a very powerful function that the BIG-IP can
 perform.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.15 - Explain the matching order of multiple virtual servers
@@ -4712,6 +4877,15 @@ source 192.168.20.0/24 will have a higher precedence than virtual server
 listener destination 192.168.10.0/24 and source 192.168.20.1.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.16 - Given a scenario, determine the appropriate load balancing method(s)
@@ -4747,7 +4921,8 @@ of different factors, it is recommended that you experiment with
 different load balancing methods and select the one that offers the best
 performance in your particular application.
 
-|
+----
+
 |
 
 **1.16 - Differentiate different load balancing methods**
@@ -4826,7 +5001,8 @@ amount.
 |                                               | Note: The Least Sessions methods are incompatible with cookie persistence.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-|
+----
+
 |
 
 **1.16 - Explain how to perform outbound load balancing**
@@ -5001,6 +5177,15 @@ same pool member based on the persistence type’s criteria regardless of
 the algorithm.
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.17 - Given a scenario, describe how to configure or modify pool settings
@@ -5064,7 +5249,8 @@ BIG-IP system continuously monitors the priority groups, and whenever a
 higher priority group once again has the minimum number of available
 members, the BIG-IP system limits traffic to that group.
 
-|
+----
+
 |
 
 **1.17 - Describe the effects of Slow Ramp Time**
@@ -5151,7 +5337,8 @@ Recommendations
    setting may improve how quickly active priority groups are adjusted
    when a pool member's availability changes.
 
-|
+----
+
 |
 
 **1.17 - Describe how an iRule can effect the persistence behavior**
@@ -5211,7 +5398,8 @@ Note: F5 Networks recommends that you configure a OneConnect profile in
 addition to the Universal profile, to ensure that Local Traffic Manager
 load balances HTTP requests correctly.
 
-|
+----
+
 |
 
 **1.17 - Explain how load balancing decisions are impacted by the statistics of nodes or pool members**
@@ -5334,7 +5522,8 @@ ongoing performance trend, Predictive mode more aggressively adjusts the
 pool member ratios. As a result, Predictive mode may result in better
 performance than Observed mode for some applications.
 
-|
+----
+
 |
 
 **1.17 - Explain the effects of action on service down**
@@ -5383,6 +5572,15 @@ The following table describes the available settings for this feature.
 +----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.18 - Explain the effect of configuration options and resource health on load balancing decisions
@@ -5498,7 +5696,8 @@ mask setting manages connection reuse, and is applied to the server-side
 source IP address of a request to determine its eligibility for
 connection reuse.
 
-|
+----
+
 |
 
 **1.18 - Determine the effect that virtual server traffic and/or resource status will have on load balancing decisions**
@@ -5568,7 +5767,8 @@ Traffic Manager can report the pool member as being in an up state, this
 number of monitors, at a minimum, must report a pool member as being
 available to receive traffic.
 
-|
+----
+
 |
 
 **1.18 - Given a scenario, determine the appropriate load balancing methods**
@@ -5615,6 +5815,15 @@ system for load balancing traffic to pool members.
 +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 |
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
 |
 
 Objective - 1.19 - Describe how to deploy and modify applications using existing and/or updated iApp application templates
@@ -5674,7 +5883,8 @@ service.
 The system saves the application service modifications and they are
 ready to use.
 
-|
+----
+
 |
 
 **1.19 - Identify use cases for deploying application templates**
@@ -5732,7 +5942,8 @@ The HTTP iApp template is common for most websites and web applications.
 Note: F5 also supports all iApp templates that ship, by default, with
 the BIG-IP system.
 
-|
+----
+
 |
 
 **1.19 - Describe how to locate, retrieve, and import new updated application templates**
@@ -5831,7 +6042,8 @@ codeshare.
 
 Note: A DevCentral login is required to access this content.
 
-|
+----
+
 |
 
 **1.19 - Describe how to update an existing application that was created from an iApp**
@@ -5906,4 +6118,16 @@ service.
 
 The system saves the application service modifications and they are
 ready to use.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
 

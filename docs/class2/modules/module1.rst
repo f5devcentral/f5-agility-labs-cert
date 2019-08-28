@@ -25,9 +25,9 @@ Before we get into the study points of this section, there is some basic
 information you should know about virtual servers and the BIG-IP
 platform.
 
-`TMOS Concepts 11-4-0  <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-4-0.html?sr=52981582>`__
+`TMOS Concepts 11-5-0 (the 11-4-0 Docs no longer exist but concepts are the same) <https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-5-0/1.html#conceptid>`__
 
-`Virtual Server Intro  <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-4-0/2.html#conceptid>`__
+`Virtual Server Intro <https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-5-0/2.html#conceptid>`__
 
 A BIG-IP platform is a default deny device. This means that the device
 will not accept traffic and process it unless you have configured it to
