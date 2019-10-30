@@ -1,5 +1,19 @@
-F5 101 - App Delivery Fundamentals Study Guide 03/29/19
+F5 101 - App Delivery Fundamentals Study Guide 10/30/19
 =======================================================
+
+|
+|
+
+**The 101 Exam was updated to a new version (v3) based on TMOS v13.1 on 10/1/19 without notification.**
+
+**The release of the new exam version has placed this content out of date.**
+
+**You can find the new blueprint published here:**
+`https://support.f5.com/csp/article/K29900360 <https://support.f5.com/csp/article/K29900360>`__
+
+**Although the content does not follow the new 101 Exam Bluepint, the material is still revelavent to the knowledge level of the exam.**
+
+**I will be working to get this doc updated as soon as possible.**
 
 |
 |
