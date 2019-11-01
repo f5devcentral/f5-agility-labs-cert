@@ -22,8 +22,8 @@ done to help the reader access the reference the linked information easier
 without having to search through a formal appendix.
 
 The F5 Certified BIG-IP Administrator (F5-CA), F5 Certified Technology
-Speciallist LTM (F5-CTS, LTM), F5 Certified Technology Speciallist ASM 
-(F5-CTS, ASM) and the F5 Certified Technology Speciallist APM (F5-CTS, APM) 
+Specialist LTM (F5-CTS, LTM), F5 Certified Technology Specialist ASM 
+(F5-CTS, ASM) and the F5 Certified Technology Specialist APM (F5-CTS, APM) 
 stand as a pre-requisite to this exam. 
 
 Field experience with everything F5 is essential to passing this exam, as well
