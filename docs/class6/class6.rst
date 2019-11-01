@@ -1,4 +1,4 @@
-F5 301A - BIG-IP LTM Specialist Labs 01/28/19
+F5 301A - BIG-IP LTM Specialist Labs 11/01/19
 =============================================
 
 These exercises are design to reinforce the concepts outlined in the
