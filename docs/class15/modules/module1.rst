@@ -298,7 +298,7 @@ Source - https://www.cloudlinux.com/forum/forum18/topic273 (Read thread
 
 Internet Content Adaptation Protocol
 
-| F5 University has quite useful ICAP video training available.
+| The Learn F5 website has quite useful ICAP video training available.
 | ICAP is HTTP like protocol and follow (almost) the same response
   status code. **ICAP Methods** (RFC 3507)
 
@@ -1625,7 +1625,7 @@ APPLICATION FIREWALL MODULE (AFM)
 
 |
 
-Reference - F5 University AFM getting started training.
+Reference - Learn F5 AFM getting started training.
 
 Brief Features:
 
@@ -1896,7 +1896,7 @@ A quick read on malicious creatures.
 
 |
 
-*Reference: Websafe training from F5 University*
+*Reference: Websafe training from Learn F5*
 
 How Web browser renders and interpret the code normally.
 
@@ -1906,7 +1906,7 @@ How Web browser renders and interpret the code normally.
 
 |
 
-*Reference: Web based Websafe training from F5 University*
+*Reference: Web based Websafe training from Learn F5*
 
 The DOM / Elements and Scripts
 
@@ -1916,7 +1916,7 @@ The DOM / Elements and Scripts
 
 |
 
-*Reference: Websafe training from F5 University*
+*Reference: Websafe training from Learn F5*
 
 The Document and its child elements contains sub-child elements. All the
 HTML elements i.e. Body / Head can be modified by the “script” in run
@@ -1942,8 +1942,7 @@ DOM Vulnerabilities and Security Concerns
 
 |
 
-*Reference: Web based Websafe training from F5 University*
-
+*Reference: Web based Websafe training from Learn F5*
 Websafe General workflow
 
 |
@@ -1952,7 +1951,7 @@ Websafe General workflow
 
 |
 
-*Reference: Web based Websafe training from F5 University*
+*Reference: Web based Websafe training from Learn F5*
 
 License Activation for FPS (Fraud Protection Module)
 
@@ -1970,7 +1969,7 @@ WebSafe License Bundle Activation Example:
 
 |
 
-*Reference: Websafe training from F5 University*
+*Reference: Websafe training from Learn F5*
 
 However activating Websafe license only from tmsh, you can receive the
 demo license key by contacting F5 concern team, a valid key will have 8
@@ -1984,7 +1983,7 @@ WebSafe License Example:
 
 |
 
-*Reference: Web based Websafe training from F5 University*
+*Reference: Web based Websafe training from Learn F5*
 
 You can subscribe for the license as per your requirement.
 Once the license is activated, you would see the following options 
@@ -1996,7 +1995,7 @@ available in the Configuration Utility.
 
 |
 
-*Reference: Web based Websafe training from F5 University*
+*Reference: Web based Websafe training from Learn F5*
 
 |
 |
