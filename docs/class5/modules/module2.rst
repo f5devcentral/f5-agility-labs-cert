@@ -910,7 +910,7 @@ In this example, the BIG-IP system objects reside in multiple
 partitions. Note that user accounts are also a type of BIG-IP system
 object, and as such, reside in a partition named Users. (Although you
 are not required to group user accounts together in a separate
-partition, for security purposes F5 Networks highly recommends that you
+partition, for security purposes F5 highly recommends that you
 do so.)
 
 To continue with the example, each user account in partition Users has
@@ -1454,7 +1454,7 @@ domain.
    data whenever the data changes on any device in the device group.
 
 -  Clear the check box when you want to manually initiate each config
-   sync operation. In this case, F5 networks recommends that you perform
+   sync operation. In this case, F5 recommends that you perform
    a config sync operation whenever configuration data changes on one of
    the devices in the device group.
 
@@ -2838,7 +2838,7 @@ allocated a single core to one of the guests.
 A vCMP configuration with a single-core guest
 
 Because a single-core guest has a relatively small amount of CPU and
-memory allocated to it, F5 Networks supports only these products or
+memory allocated to it, F5 supports only these products or
 product combinations for a single-core guest:
 
 -  BIG-IP Local Traffic Manager (LTM) only
@@ -2914,7 +2914,7 @@ as many slots as possible for a guest, you should at least allow the
 guest to run on enough slots to account for an increase in load per
 blade if the number of blades is reduced for any reason.
 
-In general, F5 Networks strongly recommends that when you create a
+In general, F5 strongly recommends that when you create a
 guest, you assign the maximum number of available slots to the guest to
 ensure that as few additional connections as possible are redistributed
 to each blade, therefore resulting in as little increase in memory use

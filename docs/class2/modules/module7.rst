@@ -654,7 +654,7 @@ BIG-IP system resources. A special standard user account is the admin
 account, which automatically exists on any BIG-IP system.
 
 You are not required to have any user accounts other than the root and
-admin accounts, but F5 Networks recommends that you create other user
+admin accounts, but F5 recommends that you create other user
 accounts, as a way to intelligently control administrator access to
 system resources.
 
@@ -701,7 +701,7 @@ In this example, the BIG-IP system objects reside in multiple
 partitions. Note that user accounts are also a type of BIG-IP system
 object, and as such, reside in a partition named Users. (Although you
 are not required to group user accounts together in a separate
-partition, for security purposes F5 Networks highly recommends that you
+partition, for security purposes F5 highly recommends that you
 do so.)
 
 To continue with the example, each user account in partition Users has

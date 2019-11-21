@@ -17,7 +17,7 @@ Study Guide, and should NOT be used as replacement to hands on experience with
 F5 Security products or official F5 trainings. Also this document is not 
 intended to guarantee a passing grade on the exam. 
 
-Notice that this is NOT an official F5 document and as such not supported by F5 Networks. 
+Notice that this is NOT an official F5 document and as such *not* supported by F5. 
 
 Introduction 
 This Independent Study Guide is prepared using public F5 resources and other 
@@ -2018,7 +2018,7 @@ sensitive information by masking the data (this is also known as
 response scrubbing).
 
 **Note:** When you mask the data, the system replaces the sensitive data
-with asterisks (\*\*\*\*). F5 Networks recommends that you enable this
+with asterisks (\*\*\*\*). F5 recommends that you enable this
 setting especially when the security policy enforcement mode is
 transparent. Otherwise, when the system returns a response, sensitive
 data could be exposed to the client.

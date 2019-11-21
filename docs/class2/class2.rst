@@ -30,11 +30,11 @@ information locations are referenced at each topic instead of in an Appendix
 of this document. This was done to help the reader access the reference the
 linked information easier without having to search through a formal appendix. 
 
-The F5 Networks 101 - Application Delivery Fundamentals exam is a pre-requisite
+The F5 101 - Application Delivery Fundamentals exam is a pre-requisite
 to this exam. 
  
 This guide was prepared by an F5 employee but is not an official F5 document
-and is not supported by F5 Networks.
+and is *not* supported by F5.
 
 |
 |

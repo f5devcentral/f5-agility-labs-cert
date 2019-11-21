@@ -52,7 +52,7 @@ capacity management and is discussed in more detail in this document.
 **High Availability**
 
 Device service clustering, or DSC, is an underlying architecture within
-BIG-IP Traffic Management Operation System (TMOS), based on F5 Networks'
+BIG-IP Traffic Management Operation System (TMOS), based on the F5
 ScaleN technology. The DSC architecture allows you to create a redundant
 system configuration for multiple BIG-IP devices on a network. System
 redundancy includes the ability to mirror connection and persistence

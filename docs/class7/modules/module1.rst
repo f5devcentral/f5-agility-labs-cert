@@ -950,7 +950,7 @@ Specifies the name of the image that you want to install or delete.
 
 -  product
 
-Displays the F5 Networks product the image contains.
+Displays the F5 product the image contains.
 
 -  reboot
 
@@ -2341,7 +2341,7 @@ upgrade to the new version software.
 
 **HTTP Class profiles**
 
-F5 Networks replaced the HTTP Class profile in BIG-IP version 11.4.0,
+F5 replaced the HTTP Class profile in BIG-IP version 11.4.0,
 and later, with the introduction of the Local Traffic Policies feature.
 During an upgrade to BIG-IP version 11.4.0, if your configuration
 contains an HTTP Class profile, the BIG-IP system attempts to migrate

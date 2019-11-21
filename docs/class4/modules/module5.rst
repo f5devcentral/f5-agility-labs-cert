@@ -264,7 +264,7 @@ implemented F5 solution and they are experiencing an issue, the sales
 engineer will need to understand how to advise the customer to open a
 support ticket with F5.
 
-There are multiple ways to open a support case with F5 Networks. You can
+There are multiple ways to open a support case with F5. You can
 review them here in this link: https://support.f5.com/csp/article/K2633
 
 https://www.f5.com/pdf/customer-support/guidelines-and-policies-ds.pdf
@@ -447,7 +447,7 @@ and senior management.
 *Severity Levels*
 
 Outlined below are the Severity classifications and definitions that the
-F5 Networks NSC refers to when logging a new case or changing severity
+F5 NSC refers to when logging a new case or changing severity
 status of an existing case:
 
 +---------------------+----------------------------+-----------------------------+------------------------------------------------------------------------------------+
