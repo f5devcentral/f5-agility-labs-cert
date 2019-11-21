@@ -34,7 +34,7 @@ The F5 101 - App Delivery Fundamentals exam, stands as a pre-requisite
 to this exam.
 
 This guide was prepared by an F5 employee but is not an official F5
-document and is not supported by F5 Networks.
+document and is *not* supported by F5.
 
 |
 |

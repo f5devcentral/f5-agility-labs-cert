@@ -33,7 +33,7 @@ Field experience with everything F5 in the public and private cloud is essential
 to passing this exam, as well as a strong working knowledge of cloud architecture principles.
  
 This guide was prepared by an F5 employee but is not an official F5 document
-and is not supported by F5 Networks.
+and is *not* supported by F5.
 
 **Reading = Knowledge = Power**
 

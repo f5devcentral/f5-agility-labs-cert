@@ -3075,7 +3075,7 @@ You can declare up to two of the three protocol versions to be invalid:
 SSLv2 , SSLv3, and TLSv1. If no protocol versions are specified, Local
 Traffic Manager allows all SSL protocol versions.
 
-Note: F5 Networks recommends that, at a minimum, you specify protocol
+Note: F5 recommends that, at a minimum, you specify protocol
 version SSLv2 as invalid.
 
 **Workarounds and other SSL options**
@@ -5394,7 +5394,7 @@ Unlike hash persistence, which uses a hash of the data as the
 persistence key, universal persistence uses the data itself as the
 persistence key.
 
-Note: F5 Networks recommends that you configure a OneConnect profile in
+Note: F5 recommends that you configure a OneConnect profile in
 addition to the Universal profile, to ensure that Local Traffic Manager
 load balances HTTP requests correctly.
 

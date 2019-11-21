@@ -20,7 +20,7 @@ F5 101 - App Delivery Fundamentals Study Guide 11/01/19
 
 **Overview  101 - App Delivery Fundamentals**
 
-Welcome to the F5 Networks 101 - Application Delivery Fundamentals compiled
+Welcome to the F5 101 - Application Delivery Fundamentals compiled
 Study Guide. The purpose of this guide is to help you prepare for the
 F5 101 - Application Delivery Fundamentals exam. The contents of this document
 are based on the 101 - Application Delivery Fundamentals Exam Blueprint for
@@ -39,7 +39,7 @@ should be basic reading for some of the topics on this exam.
 There are not any pre-requisites to this exam. 
  
 This guide was prepared by an F5 employee but is not an official F5 document
-and is not supported by F5 Networks.
+and is *not* supported by F5.
 
 |
 |

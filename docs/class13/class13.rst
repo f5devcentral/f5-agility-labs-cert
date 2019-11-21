@@ -36,7 +36,7 @@ licensed with BIG-IP APM will reinforce many of the topics contained in the 304
 - BIG-IP APM Specialist exam.
  
 This guide was prepared by an F5 employee but is not an official F5 document
-and is not supported by F5 Networks.
+and is *not* supported by F5.
 
 **Reading = Knowledge = Power**
 

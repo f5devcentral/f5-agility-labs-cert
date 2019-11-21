@@ -34,7 +34,7 @@ with the Big-IP platform licensed with LTM will reinforce many of the topics
 contained in the 301a - LTM Specialist exam.
  
 This guide was prepared by an F5 employee but is not an official F5 document
-and is not supported by F5 Networks.
+and is *not* supported by F5.
 
 **Reading = Knowledge = Power**
 
@@ -43,19 +43,19 @@ and is not supported by F5 Networks.
 These referenced books are important and should be considered basic reading
 material for this exam.  However these reading materials are not available for
 purchase. You can only gain access to the books by attending the associated F5
-training class. These official F5 Networks classes are now being offered in v12
+training class. These official F5 classes are now being offered in v12
 and v13. So, if you have the newer copy of the material that is fine, be aware
 that the exam is based on the 11.5 version and content could have changed. It
-is possible that an ATC for F5 Networks may still offer older 11.5 training but
+is possible that an ATC for F5 may still offer older 11.5 training but
 this is not guaranteed.
  
-(Ref:1) Configuring BIG-IP Local Traffic Manager v11.5, v11.5.0 Edition.  F5 Networks Training Course Manual.
+(Ref:1) Configuring BIG-IP Local Traffic Manager v11.5, v11.5.0 Edition.  F5 Training Course Manual.
 
-(Ref:2) Administering BIG-IP v11.5, v11.5.0 Edition.  F5 Networks Training Course Manual.
+(Ref:2) Administering BIG-IP v11.5, v11.5.0 Edition.  F5 Training Course Manual.
 
-(Ref:3) Troubleshooting BIG-IP v11.5, v11.5.0 Edition.  F5 Networks Training Course Manual.
+(Ref:3) Troubleshooting BIG-IP v11.5, v11.5.0 Edition.  F5 Training Course Manual.
 
-(Ref:4) Developing iRules for BIG-IP v11.5, v11.5.0 Edition.  F5 Networks Training Course Manual.
+(Ref:4) Developing iRules for BIG-IP v11.5, v11.5.0 Edition.  F5 Training Course Manual.
 
 |
 |
