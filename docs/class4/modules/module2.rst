@@ -794,13 +794,13 @@ https://partners.f5.com/learning/accreditation
 The F5 Sales Accreditation for technical and sales roles is the first
 step in becoming fluent in F5 solutions and technologies and
 understanding how to bring them to your customers. The accreditation is
-offered online through `F5 University <https://university.f5.com/>`__.
+offered online through `Learn F5 <https://account.f5.com/learnf5/signin>`__.
 Through the accreditation, you will learn how to address customers’
 current business initiatives and future business challenges with F5’s
 emphasis on making sure that customers’ applications are always fast,
 available, and secure, anywhere.
 
-Knowledge gained on F5 University will help with the exam.
+Knowledge gained on Learn F5 will help with the exam.
 
 ----
 

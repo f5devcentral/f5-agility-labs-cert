@@ -283,9 +283,9 @@ Exam-specific study guides are available here on F5 Cloud Docs as well as on Ask
 
 |
 
-**F5 University**
+**Learn F5**
 
-`F5 University  <https://university.f5.com>`__ provides several free web-based trainings appropriate to use to prepare for Exam 101. A good place to start with F5 web-based training is the “Getting Started” series.
+`Learn F5  <https://account.f5.com/learnf5/signin>`__ provides several free web-based trainings appropriate to use to prepare for Exam 101. A good place to start with F5 web-based training is the “Getting Started” series.
 
 |
 

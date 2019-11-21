@@ -547,11 +547,11 @@ The presales SE has access to various recourses F5 technical enablement
 content to support their on-going education on F5 Network’s product
 offerings.
 
-http://university.f5.com (requires login credentials)
+`Learn F5 <https://account.f5.com/learnf5/signin>`__ (requires login credentials)
 
-**F5 University**
+**Learn F5 Website**
 
-The Presales engineer can leverage F5 University for online learning
+The Presales engineer can leverage Learn F5 for online learning
 courses on F5 products.
 
 ----
