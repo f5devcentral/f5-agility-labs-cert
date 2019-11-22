@@ -4,7 +4,7 @@ F5 302 - BIG-IP DNS Specialist Study Guide 11/01/19
 |
 
 .. caution::
-  302 CONTENT IS UNDER DEVELOPMENT and will be published when initially complete.
+  302 CONTENT IS NOT YET DEVELOPMENT and will be published when complete.
 
 |
 
