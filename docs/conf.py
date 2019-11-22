@@ -5,7 +5,7 @@
 # ------------
 #
 # REQUIRED: Your class/lab name
-classname = "Unofficial - F5 Networks Certification Exam Prep Material"
+classname = "Unofficial - F5 Certification Exam Prep Material"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
 github_repo = "https://github.com/f5devcentral/f5-agility-labs-cert"
@@ -49,8 +49,8 @@ rst_prolog = """
 .. |ve|  replace:: Virtual Edition
 .. |icr| replace:: iControl REST API
 .. |ics| replace:: iControl SOAP API
-.. |f5|  replace:: F5 Networks
-.. |f5i| replace:: F5 Networks, Inc.
+.. |f5|  replace:: F5
+.. |f5i| replace:: F5
 .. |year| replace:: %s
 .. |github_repo| replace:: %s
 """ % (classname,

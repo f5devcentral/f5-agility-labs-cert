@@ -1086,14 +1086,10 @@ the following preparations:
    .. code-block:: bash
 
       tmsh show /sys software status
+      Sys::Software Status
 
-	 -------------------------------------------------------
-	 Sys::Software Status
-	 	
-	 Volume Product Version Build Active Status
-	 -------------------------------------------------------
-	 	
-	 HD1.1 BIG-IP 12.1.2 0.0.249 yes complete
+      Volume Product Version Build Active Status	 	
+      HD1.1 BIG-IP 12.1.2 0.0.249 yes complete
 
 -  For BIG-IP 10.x systems, confirm that you are using the volume’s
    disk-formatting scheme. For more information, refer to the following
@@ -1265,17 +1261,17 @@ source boot location.
    .. code-block:: bash
 
       --------------------------------------------------
-	 
+
       Sys::Software Status
-	 
+
       Volume Product Version Build Active Status
-	 
+
       --------------------------------------------------
-	 
+
       HD1.1 BIG-IP 10.2.4 577.0 no complete
-	 
+
       HD1.2 BIG-IP 11.3.0 2806.0 yes complete
-	 
+
       HD1.3 BIG-IP 11.4.0 2384.0 no complete
 
 3. Copy the configuration from the source boot location to the target
@@ -1353,7 +1349,7 @@ Rebooting from the command line
 
    .. code-block:: bash
 
-   tmsh reboot volume <volume name>
+      tmsh reboot volume <volume name>
 
    For example, to reboot to volume HD1.1, type the following command:
 
@@ -1361,7 +1357,7 @@ Rebooting from the command line
 
       tmsh reboot volume HD1.1
 
-.. note:: The previously described backout procedures do not apply if you
+   note:: The previously described backout procedures do not apply if you
    have already reset the BIG-IP system to its default settings.
 
 |
@@ -3016,7 +3012,7 @@ To create a custom SNMP trap, perform the following procedure:
 
    .. code-block:: bash
 
-   cp /config/user_alert.conf /config/user_alert.conf.SOL3727
+      cp /config/user_alert.conf /config/user_alert.conf.SOL3727
 
 3. Edit the /config/user_alert.conf file.
 
