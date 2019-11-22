@@ -4,7 +4,7 @@ F5 402 - Cloud Solutions Study Guide 11/01/19
 |
 
 .. caution::
-  402 CONTENT IS UNDER DEVELOPMENT and will be published when initially complete.
+  402 CONTENT IS NOT YET DEVELOPMENT and will be published when complete.
 
 |
 

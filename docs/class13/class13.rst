@@ -4,7 +4,7 @@ F5 304 - BIG-IP APM Specialist Study Guide 11/01/19
 |
 
 .. caution::
-  304 CONTENT IS UNDER DEVELOPMENT and will be published when initially complete.
+  304 CONTENT IS NOT YET DEVELOPMENT and will be published when complete.
 
 |
 
