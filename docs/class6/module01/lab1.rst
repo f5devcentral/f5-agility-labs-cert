@@ -8,7 +8,7 @@ Access your BIG-IP, perform a basic build of networking, pool and
 virtual server and establish that your environment is working. **If you
 are unfamiliar with TMSH this is a good opportunity to get a feel for it.**
 
-For BIG-IP WebUI access open a browser and access **https://10.1.1.245**. Log into the BIG-IP VE system using the following credentials::
+For BIG-IP WebUI access open a browser and access **https://10.1.1.4**. Log into the BIG-IP VE system using the following credentials::
 
     Username: admin
     Password: admin
@@ -18,7 +18,7 @@ For BIG-IP terminal access, you have two options:
 -  SSH Access from a Linux terminal window. Open a terminal window and
    type the following::
 
-    ssh root@10.1.1.245
+    ssh root@10.1.1.4
     Password: default
 
 -  Select the PuTTY icon on the bottom task bar and select **bigip01**
