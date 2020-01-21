@@ -11,7 +11,7 @@ are unfamiliar with TMSH this is a good opportunity to get a feel for it.**
 For BIG-IP WebUI access open a browser and access **https://10.1.1.4**. Log into the BIG-IP VE system using the following credentials::
 
     Username: admin
-    Password: admin
+    Password: admin.F5demo.com
 
 For BIG-IP terminal access, you have two options:
 
