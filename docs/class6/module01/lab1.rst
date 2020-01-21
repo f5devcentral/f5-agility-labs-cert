@@ -23,11 +23,6 @@ For BIG-IP terminal access, you have two options:
 
 -  Select the PuTTY icon on the bottom task bar and select **bigip01**
 
-.. NOTE::
-
-   If you use PuTTY, your MIDDLE mouse button or **<shift> insert** allows you to paste into
-   the window
-
 Given the following information, network the BIG-IP and build a basic pool and
 virtual server using SNAT automap.
 
