@@ -107,7 +107,7 @@ Go to **Local Traffic > Pools** and create a new pool.
    *  - Health Monitor 
       - **tcp**
    *  - Address 
-      - **10.1.20.11**
+      - **10.1.20.15**
    *  - Service Port 
       - **21**
 
@@ -133,7 +133,7 @@ Verify your FTP virtual server and pool are **Available**.
 
 Open up a terminal window and SSH to the BIG-IP::
 
-   ssh root@10.1.1.245 
+   ssh root@10.1.1.4 
    Password: default
 
 Or use PuTTY::
@@ -144,7 +144,7 @@ Or use PuTTY::
 At the BIG-IP CLI prompt do a tcpdump of the server-side traffic and
 watch the FTP pool member::
 
-  tcpdump -nni server_vlan host 10.1.20.11
+  tcpdump -nni server_vlan host 10.1.20.15
 
 From a Linux terminal window FTP to 10.1.10.100. The logon credentials
 are **root/default**. It may take 15-20 to connect.
