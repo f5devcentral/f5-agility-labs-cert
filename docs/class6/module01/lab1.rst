@@ -202,7 +202,12 @@ to it via the out-of-band management network at **10.1.1.252**.
 On the BIG-IP, add a new self IP address named **server\_gw** to the VLAN
 **server\_vlan**, with an IP address of **10.1.20.240** and netmask of **255.255.255.0**
 
-From the jumpbox, SSH to the LAMP server at **10.1.1.252**. You can open PuTTY, load the LAMP (10.1.1.252) server profile and SSH to the LAMP server or open a terminal window and **ssh root@10.1.1.252**.  The user credentials are **root/default**.
+From the jumpbox, SSH to the LAMP server at **10.1.1.252**. You can open PuTTY, load the LAMP (10.1.1.252) server profile and SSH to the LAMP server or open a terminal window and **ssh root@10.1.1.252**.  The username is **f5** no other credentials are required, it may take up to 30 seconds to login.
+
+Once logged in, change yourself to root::
+
+   su root
+   Password: default
 
 At the command prompt, attempt to hit the Google open DNS server::
 
@@ -217,7 +222,7 @@ address **10.1.10.248** for the Translation and limit the allowed
 ingress traffic to VLAN **server\_vlan**.
 
 In a BIG-IP terminal window, do a **tcpdump** on the **client\_vlan**,
-limited to the **10.1.20.248** and **8.8.4.4**.
+limited to the **10.1.10.248** and **8.8.4.4**.
 
 From the LAMP server try the **dig** command again and the try to **ping
 8.8.4.4** from the LAMP server.
