@@ -195,8 +195,8 @@ Let's take a look at using SNATs to allow internal resources to access
 external resources more securely and the difference between a SNAT and
 a NAT.
 
-The LAMP server used for the internal server farm has a default gateway
-of 10.1.20.240 and has no external access at this time, but you can SSH
+The **LAMP** server used for the internal server farm has a default gateway
+of **10.1.20.240** and has no external access at this time, but you can SSH
 to it via the out-of-band management network at **10.1.1.252**.
 
 On the BIG-IP, add a new self IP address named **server\_gw** to the VLAN
