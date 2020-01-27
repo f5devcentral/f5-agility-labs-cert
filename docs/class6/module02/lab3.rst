@@ -117,7 +117,7 @@ Hit **Finished**
 
 WOW! That didn't go too far did it. You just got an error. If you are
 going to redirect the HTTP request you need the HOST and URI information
-and that requires the HTTP protocol.
+and that requires looking into the HTTP protocol.
 
 Test your new virtual by going to **http://10.1.10.115**.
 
