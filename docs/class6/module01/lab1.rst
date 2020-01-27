@@ -207,7 +207,7 @@ to it via the out-of-band management network at **10.1.1.252**.
 On the BIG-IP, add a new self IP address named **server\_gw** to the VLAN
 **server\_vlan**, with an IP address of **10.1.20.240** and netmask of **255.255.255.0**
 
-From the jumpbox, SSH to the LAMP server at **10.1.1.252**. You can open PuTTY, load the LAMP (10.1.1.252) server profile and SSH to the LAMP server or open a terminal window and **ssh root@10.1.1.252**.  The user credentials are **root/default**.
+From the jumpbox, SSH to the LAMP server at **10.1.1.252**. You can open PuTTY, load the **LAMP** Server profile and SSH to the LAMP server or open a terminal window and **ssh root@10.1.1.252**.  The user credentials are **root/default**.
 
 At the command prompt, attempt to hit the Google open DNS server::
 
@@ -224,24 +224,27 @@ ingress traffic to VLAN **server\_vlan**.
 In a BIG-IP terminal window, do a **tcpdump** on the **client\_vlan**,
 limited to the **10.1.20.248** and **8.8.4.4**.
 
-From the LAMP server try the **dig** command again and the try to **ping
-8.8.4.4** from the LAMP server.
+From the LAMP server try the **dig** command again from the LAMP server.
 
 *Q2. Did the dig work? What was the source IP?. Did the ping work? What
 was the result?*
 
-From the Linux prompt attempt to FTP to **10.1.10.248**.
+Stop the **tcpdump** and start a new one limited to the FTP port 21::
 
-*Q3. What happened when you try to FTP to the SNAT address?*
+ tcpdump -i client_vlan port 21
+
+From from a command prompt on the jumpbox attempt to FTP to **10.1.10.248**.  Oh the Windows jumpbox hit **Start** and the select ** Command Prompt ** from the pop-up.
+
+*Q3. What happened when you try to FTP to the SNAT address? What did the tcpdump show?*
 
 Go to **Statistics >> Module Statistics >> Local Traffic** and select
 **Statistics Type: SNAT Translations** and review the information.
 
 Under **Address Translation** go to the **NAT List** and create a NAT
-named **server\_15\_nat** with a **NAT Address** of **10.1.10.15** and
-an **Origin Address** of **10.1.20.15**.
+named **server\_15\_nat** with a **NAT Address** of **10.1.10.15** (outside) and
+an **Origin Address** of **10.1.20.15** (inside).
 
-Attempt to FTP to 10.1.10.15. Attempt to ping 10.1.10.15.
+ Attempt to ping 10.1.10.15.Attempt to FTP to 10.1.10.15.
 
 *Q4. When you attempted to FTP and ping 10.1.10.15 and access 10.1.20.15
 behind the BIG-IP were you successful?*
