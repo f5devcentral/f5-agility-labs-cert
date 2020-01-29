@@ -78,6 +78,10 @@ HTTP monitor called **www_test**.
 
 .. NOTE:: In case you were wondering, the receive string is NOT case sensitive.
  
+   By default, in v11.x (which you are being tested on) the default HTTP monitor uses HTTP v1.0.  
+   If you application required HTTP 1.1 you would require a different send string, something like
+   **GET /basic/ HTTP/1.1 \\r\\n Host: <host name>\\r\\n\\r\\n**.
+   
    An excellent reference for crafting HTTP monitors can be found on ASK F5 at https://support.f5.com/csp/article/K2167. 
    
 
