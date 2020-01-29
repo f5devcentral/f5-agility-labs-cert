@@ -68,7 +68,7 @@ HTTP monitor called **www_test**.
    *  - Type
       - **http**
    *  - Send String
-      - **GET /basic/ HTTP/1.1 \\r\\n\\r\\n**
+      - **GET /basic/ \\r\\n**
    *  - Receive String
       - **200 OK**
    *  - User Name
