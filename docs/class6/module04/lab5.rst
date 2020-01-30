@@ -15,7 +15,7 @@ Note the 300 second retry timer, after 3 failures in a 30 second period the
 BIG-IP will mark the member down and will not check the member again for
 5 minutes.
 
-Create a new custom monitor as the active monitor. Make the monitor an **http** monitor called **active\_http**, with an **Up Interval** of **60** seconds and a **Time Until Up** of **30** second and a **Receive String** of **200 OK**.
+Create a new custom monitor as the active monitor. Make the monitor an **http** monitor called **active\_http**, with an **Up Interval** of **60** seconds and a **Time Until Up** of **30** second.
 
 Assign the Inband monitor to a pool and test
 --------------------------------------------
@@ -69,7 +69,7 @@ pool.
 
 Open a terminal window to BIG-IP and run the following tcpdump::
 
-   tcpdump -nni 1.2 -X -s0 port 80
+   tcpdump -nni server_vlan -X -s0 port 80
 
 *Q6. How often to you see monitor traffic to the* **www\_pool**?
 
