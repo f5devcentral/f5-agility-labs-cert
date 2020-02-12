@@ -46,15 +46,21 @@ be of value.
 
 Configure DNS and NTP.
 
-Go to **System > Configuration > Device > General**
+.. NOTE::
 
-Configure DNS to use **8.8.8.8** Google open DNS server and verify it
-works. In BIG-IP command line terminal window test DNS from the CLI or
-TMSH enter::
+   The BIG-IP DNS has been preconfigured in the UDF environment
+
+Go to **System > Configuration > Device > DNS**
+
+Configure BIG-IP to use **8.8.8.8** as the first DNS server in the **DNS Lookup Server List**.
+Use the **Up** and **Down** buttons to set the priority.  In BIG-IP command line terminal 
+window test DNS from the CLI or TMSH enter::
 
    dig pool.ntp.org
 
-Now that you've configure DNS, configure NTP using **pool.ntp.org**.
+Note the IP addresses returned and the DNS server used.
+
+Now that you've configured DNS, configure NTP using **pool.ntp.org**.
 
 VLAN Tagging
 ------------
