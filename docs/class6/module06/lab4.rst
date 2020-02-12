@@ -37,11 +37,11 @@ Verifiy your route has been added (works for Windows and Linux)::
    netstat -r
 
 Open up statistics for **forward-to-servernet** and from the jumpbox terminal window test access to the
-10.1.20.0/24 subnet::
+10.1.20.0/24 subnet:
 
-   ping 10.1.20.11
-   dig @10.1.20.12 hackazon.f5demo.com
-   http://10.1.20.13 or curl 10.1.20.13
+  - ping 10.1.20.11
+  - nslookup hackzon.f5demo.com 10.1.20.12 (windows) or dig @10.1.20.12 hackazon.f5demo.com (linux)
+  - http://10.1.20.13 (from a browser) or curl 10.1.20.13 (linux)
 
 By the way, if you take a look at the iApp templates you will find one
 for building IP Forwarding virtual servers.
