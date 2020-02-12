@@ -15,14 +15,14 @@ following
 +-------------------------++-----------------------+
 | Remote Directory Tree   | dc=f5demo,dc=com       |
 +-------------------------+------------------------+
-| Bind DN:                | Cn=Directory Manager   |
+| Bind DN:                | cn=Directory Manager   |
 +-------------------------+------------------------+
-| Bind Password/Confirm   | Default                |
+| Bind Password/Confirm   | default                |
 +-------------------------+------------------------+
 | Role                    | Administrator          |
 +-------------------------+------------------------+
 
-Open a new private browser window to **bigip01** at **https://10.1.1.245** and
+Open a new private browser window to **bigip01** at **https://10.1.1.4** and
 logon using the LDAP account **adminuser/password**.
 
 *Q1. Were you successful?*
