@@ -244,7 +244,7 @@ Under **Address Translation** go to the **NAT List** and create a NAT
 named **server\_15\_nat** with a **NAT Address** of **10.1.10.15** (outside) and
 an **Origin Address** of **10.1.20.15** (inside).
 
- Attempt to ping 10.1.10.15.Attempt to FTP to 10.1.10.15.
+Attempt to ping 10.1.10.15.Attempt to FTP to 10.1.10.15.
 
 *Q4. When you attempted to FTP and ping 10.1.10.15 and access 10.1.20.15
 behind the BIG-IP were you successful?*
