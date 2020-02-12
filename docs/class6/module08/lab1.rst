@@ -71,15 +71,13 @@ Availability lab.
 
 Go to **VLANs** and create two **tagged** VLANs on interface **1.3**.
 
-The first VLAN will be named **vlan-30** on interface **1.3** and have a
-tagged of **30**.
+The first VLAN will be named **vlan-30** have a
+tag of **30** and on interface **1.3** will be placed in the **Tagged** box.
 
-The second VLAN will be named **vlan-40** on interface **1.3** and have
-a tagged of **40**.
+The second tagged VLAN will be named **vlan-40** on interface **1.3** and have
+a tag of **40**.
 
-Watch the box you push the interface into.
-
-
+Make sure you place the interface into correct box.
 
 Create a new self IP named **HA-IP** and **10.1.30.245/24** and assign
 it to vlan **vlan-30**.
