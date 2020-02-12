@@ -12,7 +12,7 @@ the following:
 
 +--------------------------------------+---------------+
 | **Name**                             | Block\_ftp    |
-+======================================+===============+
++--------------------------------------+---------------+
 | **Order**                            | First         |
 +--------------------------------------+---------------+
 | **Action**                           | Discard       |
@@ -24,7 +24,7 @@ the following:
 | **Logging**                          | Enabled       |
 +--------------------------------------+---------------+
 
-Make sure you select **Add** after entering a host/network or a port.
+Make sure you select **Finish** after entering a host/network or a port.
 
 Test the FTP packet filter
 --------------------------
