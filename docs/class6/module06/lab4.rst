@@ -20,12 +20,21 @@ ports should be allowed and all protocols should be allowed.
 *Q2. What is the status of your new virtual server? Why?*
 
 Of course we are not going anywhere unless we install a route to the
-**10.1.20.0/24** network. From a terminal window on your jumpbox enter the
-command::
+**10.1.20.0/24** network. From a command/terminal window on your jumpbox enter the
+add route command. 
+
+Windows requires elevated priveleges, click on **Start**, right click on **Command Prompt**,
+select **Run as Administrator**, select **Yes** at the pop-up::
+
+   route add 10.1.20.0 mask 255.255.255.0 10.1.10.245
+   
+Linux (enter the user password when prompted)::
 
    sudo route add -net 10.1.20.0/24 gw 10.1.10.245
 
-Enter **f5DEMOs4u** when prompted for a password.
+Verifiy your route has been added (works for Windows and Linux)::
+
+   netstat -r
 
 Open up statistics for **forward-to-servernet** and from the jumpbox terminal window test access to the
 10.1.20.0/24 subnet::
