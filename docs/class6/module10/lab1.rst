@@ -31,7 +31,7 @@ Defaults**. This will ensure the ports we require are open.
 Go to **https://10.1.1.246** which is **bigip02.f5demo.com** and login with
 **admin/admin**.
 
-Prepare bigip01
+Prepare bigip02
 ~~~~~~~~~~~~~~~
 
 Your second BIG-IP, **bigip02,** has already been licensed and the basic
@@ -79,6 +79,11 @@ Under **System > Device Certificate > Device Certificate** select the
    Lifetime is important, when your certificate expires your HA setup will FAIL.
    You should always make sure you device certificate has a long lifetime.
 
+.. Note::
+
+   Because you have changed the device certificate you may be required to log back
+   into the BIG-IP to establish a secure connection with the new certificate.
+
 Select **Finished**. Your browser will ask to exchange certs with the BIG-IP again.
 
 Under **Device Management > Device Trust > Local Domain** select **Reset Device Trust**
@@ -90,15 +95,15 @@ BIG-IP will send to other BIG-IPs that want to be a part of a sync-only
 or sync-failover group.
 
 Under **Device Management > Device**, select the local BIG-IP. It will
-have the (Self) suffix.
+have the **(Self)** suffix.
 
 Under **Device Connectivity**:
    - On the top bar select **ConfigSync** and use the **HA-IP** for your **Local Address**.
 
 Under **Network Failover**:
    - In the **Failover Unicast Configuration** section select the **Add** button
-
-Use the Self IP address the **HA VLAN** for your Address and leave the **Port** at the default setting of **1026**.
+   - Use the Self IP address the **HA VLAN** for your Address
+   - Leave the **Port** at the default setting of **1026**.
 
 *Q1. If you were to add multiple IP address to the Failover Unicast, when
 would the BIG-IP failover?*
@@ -144,11 +149,12 @@ On each BIG-IP check the other BIG-IP in the Peer Authorities list.
 
 .. WARNING::
 
-   Occasionally some of the information is missing due to configuration errors or other failures.  If any of the information is missing delete the trust, correct the problem and try again.
+   Occasionally some of the information is missing due to configuration errors or other failures.  If any of the  
+   information is missing delete the trust, correct the problem and try again.
 
 *Q2. What are the statuses of your BIG-IPs now?*
 
-They should be **In Sync**. ``But wait!`` We haven't even created a device
+You might think they should be **In Sync**. ``But wait!`` We haven't even created a device
 group! Remember the Device Trust creates a **Sync-Only** group for the
 certificates under the covers (device-trust-group) for the trust.  It is the **device-trust-group** that is in sync.
 
