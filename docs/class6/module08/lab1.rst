@@ -52,7 +52,7 @@ Configure DNS and NTP.
 
 Go to **System > Configuration > Device > General**
 
-Using the **Device** dropdown on the top-bar you can select DNS and NTP configurations. 
+Using the **Device** dropdown on the top-bar you can select DNS and NTP configuration UIs. 
 
 Configure DNS to use **8.8.8.8** Google open DNS server and verify it
 works. In BIG-IP command line terminal window test DNS from the CLI or
