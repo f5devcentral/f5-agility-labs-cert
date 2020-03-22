@@ -8,25 +8,20 @@ Access your BIG-IP, perform a basic build of networking, pool and
 virtual server and establish that your environment is working. **If you
 are unfamiliar with TMSH this is a good opportunity to get a feel for it.**
 
-For BIG-IP WebUI access open a browser and access **https://10.1.1.245**. Log into the BIG-IP VE system using the following credentials::
+For BIG-IP WebUI access open a browser and access **https://10.1.1.4**. Log into the BIG-IP VE system using the following credentials::
 
     Username: admin
-    Password: admin
+    Password: admin.F5demo.com
 
 For BIG-IP terminal access, you have two options:
 
 -  SSH Access from a Linux terminal window. Open a terminal window and
    type the following::
 
-    ssh root@10.1.1.245
+    ssh root@10.1.1.4
     Password: default
 
 -  Select the PuTTY icon on the bottom task bar and select **bigip01**
-
-.. NOTE::
-
-   If you use PuTTY, your MIDDLE mouse button or **<shift> insert** allows you to paste into
-   the window
 
 Given the following information, network the BIG-IP and build a basic pool and
 virtual server using SNAT automap.
@@ -112,7 +107,7 @@ Go to **Local Traffic > Pools** and create a new pool.
    *  - Health Monitor 
       - **tcp**
    *  - Address 
-      - **10.1.20.11**
+      - **10.1.20.15**
    *  - Service Port 
       - **21**
 
@@ -138,7 +133,7 @@ Verify your FTP virtual server and pool are **Available**.
 
 Open up a terminal window and SSH to the BIG-IP::
 
-   ssh root@10.1.1.245 
+   ssh root@10.1.1.4 
    Password: default
 
 Or use PuTTY::
@@ -149,7 +144,7 @@ Or use PuTTY::
 At the BIG-IP CLI prompt do a tcpdump of the server-side traffic and
 watch the FTP pool member::
 
-  tcpdump -nni server_vlan host 10.1.20.11
+  tcpdump -nni server_vlan host 10.1.20.15
 
 From a Linux terminal window FTP to 10.1.10.100. The logon credentials
 are **root/default**. It may take 15-20 to connect.
@@ -200,14 +195,19 @@ Let's take a look at using SNATs to allow internal resources to access
 external resources more securely and the difference between a SNAT and
 a NAT.
 
-The LAMP server used for the internal server farm has a default gateway
-of 10.1.20.240 and has no external access at this time, but you can SSH
+The **LAMP** server used for the internal server farm has a default gateway
+of **10.1.20.240** and has no external access at this time, but you can SSH
 to it via the out-of-band management network at **10.1.1.252**.
 
 On the BIG-IP, add a new self IP address named **server\_gw** to the VLAN
 **server\_vlan**, with an IP address of **10.1.20.240** and netmask of **255.255.255.0**
 
-From the jumpbox, SSH to the LAMP server at **10.1.1.252**. You can open PuTTY, load the LAMP (10.1.1.252) server profile and SSH to the LAMP server or open a terminal window and **ssh root@10.1.1.252**.  The user credentials are **root/default**.
+From the jumpbox, SSH to the LAMP server at **10.1.1.252**. You can open PuTTY, load the LAMP (10.1.1.252) server profile and SSH to the LAMP server or open a terminal window and **ssh root@10.1.1.252**.  The username is **f5** no other credentials are required, it may take up to 30 seconds to login.
+
+Once logged in, change yourself to root::
+
+   su root
+   Password: default
 
 At the command prompt, attempt to hit the Google open DNS server::
 
@@ -222,7 +222,7 @@ address **10.1.10.248** for the Translation and limit the allowed
 ingress traffic to VLAN **server\_vlan**.
 
 In a BIG-IP terminal window, do a **tcpdump** on the **client\_vlan**,
-limited to the **10.1.20.248** and **8.8.4.4**.
+limited to the **10.1.10.248** and **8.8.4.4**.
 
 From the LAMP server try the **dig** command again and the try to **ping
 8.8.4.4** from the LAMP server.

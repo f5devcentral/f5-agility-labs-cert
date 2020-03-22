@@ -7,7 +7,7 @@ Open BIG-IP TMSH and TCPDump session
 In this task, you will open two SSH sessions to the BIG-IP. One for TMSH
 commands and the other for tcpdump of the client-side network.
 
-Open command/terminal window (window1) from the shortcut bar at the
+Open PuTTY/terminal window (window1) to BIG-IP from the shortcut bar at the
 bottom of the jumpbox.
 
 .. code-block:: bash
@@ -22,7 +22,7 @@ Use tcpdump to monitor traffic from the client (10.1.10.51) destined to
 
    tcpdump -nni client_vlan host 10.1.10.51 and 10.1.10.100
 
-Open command/terminal window (window2) and use **tmsh** to display the
+Open a second PuTTY/terminal window (window2) to BIG-IP and use **tmsh** to display the
 connection table.
 
 .. code-block:: bash

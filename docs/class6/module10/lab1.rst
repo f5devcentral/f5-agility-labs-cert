@@ -36,7 +36,7 @@ Prepare bigip01
 
 Your second BIG-IP, **bigip02,** has already been licensed and the basic
 setup completed. You need to make sure the BIG-IPs are provisioned the
-same (LTM and AVR) and set up the base networking on **bigip02**.
+same **(LTM and AVR)** and set up the base networking on **bigip02**.
 
 +-------------+----------------+------------------------+----------------+---------------+-----------------+------------------+----+
 | Interface   | VLAN name      | Tag (blank untagged)   | Self IP Name   | Self IP       | Mask            | Port Lockdown    |    |

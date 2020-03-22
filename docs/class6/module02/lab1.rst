@@ -12,15 +12,15 @@ Create new virtual server **secure\_vs** at **10.1.10.115:443** with
 **TCP** the profile using your new **secure\_pool**.
 
 Open two separate PuTTy/Terminal windows to the BIG-IP and run the following
-tcpdumps.
+tcpdumps using the jumpbox 10.1.10.x IP address.
 
 Window 1::
 
-   tcpdump -nni client_vlan -X -s0 host 10.1.10.51 and 10.1.10.115
+   tcpdump -nni client_vlan -X -s0 host 10.1.10.199 and 10.1.10.115
 
 Window 2::
 
-   tcpdump -nni server_vlan -X -s0 host 10.1.10.51
+   tcpdump -nni server_vlan -X -s0 host 10.1.10.199
 
 Verify your virtual server is available and then browse to
 **https://10.1.10.115**. View the TCPDUMPs.
@@ -31,11 +31,10 @@ profiles?*
 *Q2. Could you use L7 iRules or profiles to view or modify the request or
 response? Why or why not?*
 
-Modify **secure\_vs** to use the HTTP (80) **www\_pool**. View the
-TCPdumps
+Modify **secure\_vs** to use the HTTP (80) **www\_pool**. 
 
 Verify your virtual server is available and then browse to
-**https://10.1.10.115**.
+**https://10.1.10.115**.  View the TCPdumps.
 
 *Q3. Did site work? Why or not?*
 

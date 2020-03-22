@@ -11,7 +11,7 @@ Go to **Network > Packet Filters > Rules** and **Create** a filter using
 the following:
 
 +--------------------------------------+---------------+
-| **Name**                             | Block\_ftp    |
+| **Name**                             | block\_ftp    |
 +======================================+===============+
 | **Order**                            | First         |
 +--------------------------------------+---------------+
