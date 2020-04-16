@@ -1,5 +1,4 @@
-Section 3 - Review Event Logs and Mitigate Attacks
-==================================================
-
+Section 3 - Test and Troubleshoot
+=================================
 
 

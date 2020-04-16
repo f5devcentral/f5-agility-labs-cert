@@ -1,4 +1,3 @@
-Section 1 - Design and Architect
+Section 3 - Visual Policy Editor
 ================================
-
 

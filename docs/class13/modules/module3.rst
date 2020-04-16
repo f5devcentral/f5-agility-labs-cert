@@ -1,3 +1,5 @@
-Section 3 - Visual Policy Editor
-================================
+Section 3 - Review Event Logs and Mitigate Attacks
+==================================================
+
+
 

@@ -1,19 +1,20 @@
-F5 402 - Cloud Solutions Study Guide 11/01/19
-=============================================
+F5 401 - Security Solution Expert Study Guide - Created 09/26/18
+================================================================
 
 |
 
-.. caution::
-  402 CONTENT IS NOT YET DEVELOPMENT and will be published when complete.
+**You can find the current exam blueprint published here:**
+`https://support.f5.com/csp/article/K29900360 <https://support.f5.com/csp/article/K29900360>`__
 
 |
+|
 
-**Overview 402 - Cloud Solutions**
+**Overview 401 - Security Solution Expert**
 
-Welcome to the 402 - Cloud Solutions compiled Study Guide. The purpose of
-this guide is to help you prepare for the F5 402 - Cloud Solutions exam.
-The contents of this document are based on the F5 402 - Cloud Solutions
-Exam Blueprint version 1 for TMOS v12.1.
+Welcome to the 401 - Security Solution Expert compiled Study Guide. The purpose
+of this guide is to help you prepare for the F5 401 - Security Solution Expert
+exam. The contents of this document are based on the F5 401 - Security Solution
+Expert Blueprint Guide.
  
 **This study guide provides students with some of the basic foundational
 knowledge required to pass the exam.**
@@ -26,21 +27,17 @@ done to help the reader access the reference the linked information easier
 without having to search through a formal appendix.
 
 The F5 Certified BIG-IP Administrator (F5-CA), F5 Certified Technology
-Specialist LTM (F5-CTS, LTM), F5 Certified Technology Specialist DNS 
-(F5-CTS, DNS) stand as a pre-requisite to this exam. 
+Specialist LTM (F5-CTS, LTM), F5 Certified Technology Specialist ASM 
+(F5-CTS, ASM) and the F5 Certified Technology Specialist APM (F5-CTS, APM) 
+stand as a pre-requisite to this exam. 
 
-Field experience with everything F5 in the public and private cloud is essential 
-to passing this exam, as well as a strong working knowledge of cloud architecture principles.
+Field experience with everything F5 is essential to passing this exam, as well
+as a strong working knowledge of IT security principles.
  
 This guide was prepared by an F5 employee but is not an official F5 document
 and is *not* supported by F5.
 
 **Reading = Knowledge = Power**
-
-**Printed References**
-
-These referenced books are and important and should be considered basic reading
-material for this exam.
 
 .. toctree::
    :maxdepth: 1

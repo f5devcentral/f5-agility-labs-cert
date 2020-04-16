@@ -1,5 +1,5 @@
-F5 304 - BIG-IP APM Specialist Study Guide - NOT CREATED
-========================================================
+F5 402 - Cloud Solutions Study Guide - NOT CREATED
+==================================================
 
 |
 
@@ -9,16 +9,16 @@ F5 304 - BIG-IP APM Specialist Study Guide - NOT CREATED
 |
 
 .. caution::
-  304 CONTENT IS NOT YET DEVELOPED and will be published if and when completed.
+  402 CONTENT IS NOT YET DEVELOPED and will be published if and when completed.
 
 |
 
-**Overview 304 - BIG-IP APM Specialist**
+**Overview 402 - Cloud Solutions**
 
-Welcome to the 304 - BIG-IP APM Specialist compiled Study Guide. The purpose of
-this guide is to help you prepare for the F5 304 - BIG-IP APM Specialist exam.
-The contents of this document are based on the F5 304 - BIG-IP APM Specialist
-Exam Blueprint for TMOS v12.1.
+Welcome to the 402 - Cloud Solutions compiled Study Guide. The purpose of
+this guide is to help you prepare for the F5 402 - Cloud Solutions exam.
+The contents of this document are based on the F5 402 - Cloud Solutions
+Exam Blueprint version 1 for TMOS v12.1.
  
 **This study guide provides students with some of the basic foundational
 knowledge required to pass the exam.**
@@ -30,15 +30,12 @@ at the top of each topic instead of in an Appendix of this document. This was
 done to help the reader access the reference the linked information easier
 without having to search through a formal appendix.
 
-The F5 Certified BIG-IP Administrator (F5-CA), which is made up of the 101 -
-App Delivery Fundamentals and 201 - TMOS Administration exams, stand as a
-pre-requisite to this exam. 
+The F5 Certified BIG-IP Administrator (F5-CA), F5 Certified Technology
+Specialist LTM (F5-CTS, LTM), F5 Certified Technology Specialist DNS 
+(F5-CTS, DNS) stand as a pre-requisite to this exam. 
 
-Taking certified F5 BIG-IP APM training, such as Configuring BIG-IP APM v12,
-will surely help with the topics of this exam but does not teach directly to
-the exam content. Hands on administrative experience with the BIG-IP platform
-licensed with BIG-IP APM will reinforce many of the topics contained in the 304
-- BIG-IP APM Specialist exam.
+Field experience with everything F5 in the public and private cloud is essential 
+to passing this exam, as well as a strong working knowledge of cloud architecture principles.
  
 This guide was prepared by an F5 employee but is not an official F5 document
 and is *not* supported by F5.
