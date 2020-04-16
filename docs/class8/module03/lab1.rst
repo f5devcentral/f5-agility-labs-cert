@@ -76,9 +76,9 @@ the data group you built::
    when LB_SELECTED {
    # After a member has been selected by the load balancing algorithm introduce delay
    # (in milliseconds) on the specified URL or server
-      if {([LB::server addr] equals "10.128.20.13") and ([HTTP::uri] equals "/welcome.php")} { after 10}
+      if {([LB::server addr] equals "10.1.20.13") and ([HTTP::uri] equals "/welcome.php")} { after 10}
 	
-      if {[LB::server addr] equals "10.128.20.13"} {after 20}
+      if {[LB::server addr] equals "10.1.20.13"} {after 20}
    }
 
 *Q3. Review the iRule, what profiles are required on the virtual server?*
@@ -97,9 +97,7 @@ click **Finished**.
 +--------------------------+-----------------------------------------+
 | **Profile Name**         | custom_analytics                        |
 +==========================+=========================================+
-| **Collected Metrics**    | Max TPS                                 |
-|                          |                                         |
-|                          | Throughput                              |
+| **Collected Metrics**    | Max TPS Throughput                      |
 |                          |                                         |
 |                          | Page Load Time                          |
 +--------------------------+-----------------------------------------+
