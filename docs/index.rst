@@ -42,7 +42,6 @@ Welcome to the |classbold| last updated on 04/15/20
    :glob:
 
    class3/class3
-   class4/class4
 
 .. toctree::
    :maxdepth: 1
