@@ -7,8 +7,7 @@ items process or block the traffic under various circumstances.
 
 201 Objectives covered:
    - 1.01
-      - Given a connectivity-troubleshooting situation, consider the packet and virtual
-        server processing order
+      - Explain the relationship between interfaces, trunks, VLANs, self-IPs, routes and their status/statistics
 
 Estimated completion time: **30 minutes**
 
