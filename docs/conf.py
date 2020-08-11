@@ -8,7 +8,7 @@
 classname = "Unofficial - F5 Certification Exam Prep Material"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
-github_repo = "https://github.com/f5devcentral/f5-agility-labs-cert"
+github_repo = "https://github.com/leifbr/f5-agility-labs-cert"
 
 # OPTIONAL: Google Analytics
 # googleanalytics_id = 'UA-85156643-4'
