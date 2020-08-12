@@ -1,8 +1,7 @@
-Lab 1 – Packet Processing and Virtual Server Processing Order
-=================================================================
+Lab 1 – Accessing the Lab, Networking and BIG-IP Traffic Flow
+==========================================================================
 
-In this module you will configure packet filters and virtual servers.
-You will pass traffic through the |bip| and observe which configuration
+In this module you will access the configure networking, packet filters and virtual servers to help you understand how BIG-IP processes traffic.  You will pass traffic through the BIG-IP and observe which objects
 items process or block the traffic under various circumstances.
 
 Overview of the lab environment

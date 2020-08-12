@@ -1,41 +1,9 @@
-Networking the BIG-IP
-=====================
+Review Setup and Packet Processing Lab
+======================================
 
-You should be familiar with networking on the BIG-IP.  BIG-IP has a L3 switching architecture built in to the appliances and VEs.  For the 201 certification test you should understand how, interfaces, trunks, VLANs (tagged and untagged) and self IPs work together on a BIG-IP.
+BIG-IP VE System Configuration 
+------------------------------
 
-In this lab you will review the interfaces, create a tagged VLAN and add a self IP to the VLAN to give you a feel for how these object are configured.  You will configure the objects using TMUI (BIG-IP GUI interface), but you will also see the TMSH commands.  
-
-Review the BIG-IP Interfaces 
-----------------------------
-
-On the sidebar expand the **Network** tab.  Here you will see all the networking selections for the BIG-IP.
-
-Click on **Interfaces** or click on **Interface List** on the pop out menu.  Here you will see the status and configuration of the interfaces.  For statistical information you would click on the **Statistics** tab on the top bar.  
-
-Create a Tagged VLAN
---------------------
-
-VLANs on the BIG-IP can be tagged (802.1q) or untagged.  VLANs are required to have an interface assigned to them and a tag (if the Interfaces is Tagged).
-
-On the **Network** sidebar click on **VLANs** or select **VLAN List** from the pop out menu.  Here you will see a list of the currently configured VLANs and the interfaces assigned to them.
-- Create a new VLAN by selecting the **Create** to the upper right of the list.
-- Give the new VLAN a name:   **test-vlan**
-- Assign the VLAN a tag:      **40**
-- In the Resources section select the Interface: **1.3**
-- In the Resources section select the Tagging: **Tagged**
-- **Add** the interface.
-- Hit **Finished** at the bottom.
-
-.. admonition:: TMSH
-
-   tmsh create net vlan test_vlan tag 40 interfaces add { 1.3 { tagged } }
-
-Once complete you should see the following:
-
-.. image:: /_static/201L/vlan-list.png
-
-
-DELETE BELOW
 Access your BIG-IP and verify it is configured properly.
 
 Open a new Web browser and access https://10.1.1.245. Log into the BIG-IP VE
