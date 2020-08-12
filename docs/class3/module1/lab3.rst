@@ -1,93 +1,67 @@
-Virtual Server Packet Processing
-================================
+Packet Filter Lab
+=================
 
-Create additional Virtual Servers
-----------------------------------
+You are going to test how packet filters impact packet processing by
+creating a packet filter to block ftp connections to 10.1.10.100.
 
-Create a wildcard virtual server and pool, test and observe various
-traffic under different configurations to determine how virtual servers
-process new inbound connections. You will be using tcpdump from window1,
-virtual server statistics, as well as a browser to determine behavior.
+Create a packet filter
+----------------------
 
-Create **wildcard\_vs** **10.1.10.100:\*** with a **TCP** profile, **Automap** and a
-pool named **wildcard\_pool** with the following member **10.1.20.11:\***
+Go to **Network > Packet Filters > Rules** and **Create** a filter using
+the following:
 
-To create the wildcard pool, go to **Local Traffic > Pools > Pool List**
-and select **Create**.
++--------------------------------------+---------------+
+| **Name**                             | Block\_ftp    |
++--------------------------------------+---------------+
+| **Order**                            | First         |
++--------------------------------------+---------------+
+| **Action**                           | Discard       |
++--------------------------------------+---------------+
+| **Destination Hosts and Networks**   | 10.1.10.100   |
++--------------------------------------+---------------+
+| **Destination Port List**            | 21 (FTP)      |
++--------------------------------------+---------------+
+| **Logging**                          | Enabled       |
++--------------------------------------+---------------+
 
-+---------------+------------------+
-| **Name**      | wildcard\_pool   |
-+---------------+------------------+
-| **Address**   | 10.1.20.11       |
-+---------------+------------------+
-| **Port**      | \*               |
-+---------------+------------------+
+Make sure you select **Add** after entering a host/network or a port.
 
-.. HINT::
+Test the FTP packet filter
+--------------------------
 
-   Don't forget to **Add** the pool member to the **New Members** box
-   before you hit **Finished.**
+Ensure ftp connection is currently established to **10.1.10.100**.
 
-To create the wildcard virtual server, go to **Local Traffic > Virtual
-Server** and select **Create**.
+Go to **Network > Packet Filters > General** and select **Enable** and
+then **Update**.
 
-+----------------------------------+--------------------+
-| **Name**                         | **wildcard\_vs**   |
-+==================================+====================+
-| **Destination**                  | 10.1.10.100        |
-+----------------------------------+--------------------+
-| **Service Port**                 | \*                 |
-+----------------------------------+--------------------+
-| **Source Address Translation**   | Automap            |
-+----------------------------------+--------------------+
-| **Default Pool**                 | wildcard\_pool     |
-+----------------------------------+--------------------+
+*Q1. Was the existing ftp connection in the connection table affected?   Why?*
 
-Don't forget to hit **Finished.**
+Quit ftp and clear virtual server statistics by going to **Local Traffic
+> Virtual Servers > Statistic**, select the virtual server and hit
+**Reset**.
 
-You didn't need to enter the source addresses allowed. Go to your new virtual
-server and look at the **Source** to see what the default default is source addresses
-allowed.
+Attempt to establish an ftp connection to 10.1.10.100.
+Watch tcpdump capture you built in window1.
 
-Testing Virtual Server Packet Processing Behavior
--------------------------------------------------
+*Q2. Was ftp connection successful? Why?*
 
-Many of your virtual servers have the same virtual address. You will now
-test various behaviors.
+*Q3. What did tcpdump reveal? Did the connection timeout or reset?*
 
-Clear virtual server stats.
+*Q4. What did virtual server statistics for* **ftp_vs** *reveal? Why are
+counters not incrementing?*
 
-Observe connection statistics (VS stats) after each of the following tasks.
+*Q5. Prioritize the packet processing order below from 1-7:*
 
-Browse to http://10.1.10.100:8080
+Virtual Server\_\_\_ SNAT\_\_\_ AFM/Pkt Filter\_\_\_ NAT\_\_\_ Existing
+Connections\_\_\_ Self IP\_\_\_ Drop \_\_\_
 
-*Q1. Which VS is used for web traffic over port 8080?*
+Review the Packet Filter Logs and Packet Filter Statistics, then disable
+the Packet Filters.
 
-FTP to 10.1.10.100
+Go to **Network > Packet Filters > Statistics** and review the
+information.
 
-*Q2. Which VS is used for FTP traffic?*
+Go to **System > Logs > Packet Filters** and review the information.
 
-Browse to http://10.1.10.100
-
-*Q3. Which VS is used for this web traffic the default HTTP port? What
-port was used?*
-
-Clear virtual server stats.
-
-Modify the **wildcard\_vs** to only allow connections from a **Source**
-of 10.1.10.0/24.
-
-.. NOTE::
-   The source address your jumpbox shoud be connecting from is 10.1.10.51
-
-Browse to http://10.1.10.100
-
-Observe connection statistics (VS stats)
-
-*Q4. Which VS is used for web traffic?*
-
-Clean up your modifications
-
-Clear virtual server stats.
-
-Modify **wildcard\_vs** to include the default **Source** of 0.0.0.0/0.
+Go to **Network > Packet Filters > General** and select **Disable** and
+then **Update**

@@ -1,67 +1,122 @@
-Packet Filter Lab
-=================
+Review Setup and Packet Processing Lab
+======================================
 
-You are going to test how packet filters impact packet processing by
-creating a packet filter to block ftp connections to 10.1.10.100.
+BIG-IP VE System Configuration 
+------------------------------
 
-Create a packet filter
-----------------------
+Access your BIG-IP and verify it is configured properly.
 
-Go to **Network > Packet Filters > Rules** and **Create** a filter using
-the following:
+Open a new Web browser and access https://10.1.1.245. Log into the BIG-IP VE
+system using the following credentials:
 
-+--------------------------------------+---------------+
-| **Name**                             | Block\_ftp    |
-+--------------------------------------+---------------+
-| **Order**                            | First         |
-+--------------------------------------+---------------+
-| **Action**                           | Discard       |
-+--------------------------------------+---------------+
-| **Destination Hosts and Networks**   | 10.1.10.100   |
-+--------------------------------------+---------------+
-| **Destination Port List**            | 21 (FTP)      |
-+--------------------------------------+---------------+
-| **Logging**                          | Enabled       |
-+--------------------------------------+---------------+
+.. code-block:: bash
 
-Make sure you select **Add** after entering a host/network or a port.
+   Username: admin
+   Password: admin
 
-Test the FTP packet filter
---------------------------
+Check the upper left-hand corner and ensure you are on the active device
+the status should be **ONLINE (ACTIVE)**. Most deployments are
+active-standby and either device could be the active device.
 
-Ensure ftp connection is currently established to **10.1.10.100**.
+On the **System > Resource Provisioning** page ensure **Local Traffic
+(LTM) and Application Visibility and Reporting (AVR)** modules are
+provisioned\ **.**
 
-Go to **Network > Packet Filters > General** and select **Enable** and
-then **Update**.
+Go to **Local Traffic > Virtual Servers** and verify your virtual
+server states. They should match the image below.
 
-*Q1. Was the existing ftp connection in the connection table affected?   Why?*
+.. image:: /_static/201L/201ex211t1-virtuals.png
 
-Quit ftp and clear virtual server statistics by going to **Local Traffic
-> Virtual Servers > Statistic**, select the virtual server and hit
-**Reset**.
+.. NOTE::
+   This BIG-IP has been pre-configured and the **purple\_vs**
+   virtual server is down on purpose.
 
-Attempt to establish an ftp connection to 10.1.10.100.
-Watch tcpdump capture you built in window1.
+Open BIG-IP TMSH and TCPDump session
+------------------------------------
 
-*Q2. Was ftp connection successful? Why?*
+In this task, you will open two SSH sessions to the BIG-IP. One for TMSH
+commands and the other for a tcpdump of the client-side network.
 
-*Q3. What did tcpdump reveal? Did the connection timeout or reset?*
+Open a terminal window (window1) from the shortcut bar at the
+bottom of the jumpbox.
 
-*Q4. What did virtual server statistics for* **ftp_vs** *reveal? Why are
-counters not incrementing?*
+.. code-block:: bash
 
-*Q5. Prioritize the packet processing order below from 1-7:*
+   ssh root@10.1.1.245
+   password: default
 
-Virtual Server\_\_\_ SNAT\_\_\_ AFM/Pkt Filter\_\_\_ NAT\_\_\_ Existing
-Connections\_\_\_ Self IP\_\_\_ Drop \_\_\_
+Use tcpdump to monitor traffic from the client (10.1.10.51) destined to
+**ftp\_vs** (10.1.10.100)
 
-Review the Packet Filter Logs and Packet Filter Statistics, then disable
-the Packet Filters.
+.. code-block:: bash
 
-Go to **Network > Packet Filters > Statistics** and review the
-information.
+   tcpdump -nni client_vlan host 10.1.10.51 and 10.1.10.100
 
-Go to **System > Logs > Packet Filters** and review the information.
+Open another terminal window (window2) and use **tmsh** to display the
+connection table.
 
-Go to **Network > Packet Filters > General** and select **Disable** and
-then **Update**
+.. code-block:: bash
+
+   ssh root@10.1.1.245
+   password: default
+
+   tmsh
+
+At the TMOS prompt **(tmos)#**
+
+.. code-block:: bash
+
+   show sys connection
+
+Do you see any connections from the jumpbox 10.1.1.51 to 10.1.1.245:22?
+
+*Q1. Why are the ssh management sessions not displayed in connection
+table?*
+
+Establish ftp connection
+------------------------
+
+In this task you will open a third terminal window and establish an FTP
+session through the **ftp\_vs** virtual server. With the connection
+remaining open you will view the results in window1 (tcpdump) and
+window2 (tmsh).
+
+Open a third command/terminal window (window3).
+
+.. code-block:: bash
+
+   ftp 10.1.10.100
+
+It may take 15 to 20 seconds for the logon on prompt, just leave it at
+prompt to hold the connection open.
+
+In window1 you should see something similar to the tcpdump captured
+below.
+
+.. image:: /_static/201L/201ex211t2a-tcpdump.png
+
+*Q1. In the tcpdump above, what is client IP address and port and the
+server IP address port?*
+
+In window2 (tmsh) run the **show sys conn** again, but strain out the
+noise of other connections (mirrored and selfIP) by just looking at
+connections from your jumpbox.
+
+.. code-block:: bash
+
+   sho sys conn cs-client-addr 10.1.10.51
+
+The connection table on window2 will show the client-side and
+server-side connection similar to below:
+
+.. image:: /_static/201L/201ex211t2b-shsysconn.png
+
+*Q2. What is source ip and port as seen by ftp server in the example
+above?*
+
+*Q3. What happened to the original client IP address and where did
+10.1.20.249 come from?*
+
+.. HINT::
+   You will have to review the configuration of **ftp\_vs** to  determine the answer to question 3.
+
