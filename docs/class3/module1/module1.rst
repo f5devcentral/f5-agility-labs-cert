@@ -8,6 +8,7 @@ items process or block the traffic under various circumstances.
 Overview of the lab environment
    - Logging on to UDF
    - Lab layout
+   - Accessing the images
 
 201 Objectives covered:
    - 1.01
@@ -15,7 +16,7 @@ Overview of the lab environment
    - 1.02
       - Determine expected traffic behavior based on configuration
 
-Estimated completion time: **30 minutes**
+Estimated completion time: **45 minutes**
 
 .. toctree::
    :maxdepth: 1
