@@ -1,35 +1,5 @@
-Review Setup and Packet Processing Lab
-======================================
-
-BIG-IP VE System Configuration 
-------------------------------
-
-Access your BIG-IP and verify it is configured properly.
-
-Open a new Web browser and access https://10.1.1.245. Log into the BIG-IP VE
-system using the following credentials:
-
-.. code-block:: bash
-
-   Username: admin
-   Password: admin
-
-Check the upper left-hand corner and ensure you are on the active device
-the status should be **ONLINE (ACTIVE)**. Most deployments are
-active-standby and either device could be the active device.
-
-On the **System > Resource Provisioning** page ensure **Local Traffic
-(LTM) and Application Visibility and Reporting (AVR)** modules are
-provisioned\ **.**
-
-Go to **Local Traffic > Virtual Servers** and verify your virtual
-server states. They should match the image below.
-
-.. image:: /_static/201L/201ex211t1-virtuals.png
-
-.. NOTE::
-   This BIG-IP has been pre-configured and the **purple\_vs**
-   virtual server is down on purpose.
+Packet Processing Lab
+======================
 
 Open BIG-IP TMSH and TCPDump session
 ------------------------------------
@@ -42,7 +12,7 @@ bottom of the jumpbox.
 
 .. code-block:: bash
 
-   ssh root@10.1.1.245
+   ssh root@10.1.1.4
    password: default
 
 Use tcpdump to monitor traffic from the client (10.1.10.51) destined to
@@ -50,25 +20,23 @@ Use tcpdump to monitor traffic from the client (10.1.10.51) destined to
 
 .. code-block:: bash
 
-   tcpdump -nni client_vlan host 10.1.10.51 and 10.1.10.100
+   tcpdump -nni client_vlan host 10.1.10.7 and 10.1.10.100
 
 Open another terminal window (window2) and use **tmsh** to display the
 connection table.
 
 .. code-block:: bash
 
-   ssh root@10.1.1.245
+   ssh root@10.1.1.4
    password: default
-
-   tmsh
 
 At the TMOS prompt **(tmos)#**
 
-.. code-block:: bash
-
+.. admonition:: TMSH
+   
    show sys connection
 
-Do you see any connections from the jumpbox 10.1.1.51 to 10.1.1.245:22?
+Do you see any connections from the jumpbox 10.1.1.7 to 10.1.1.245:22 in the connection table?
 
 *Q1. Why are the ssh management sessions not displayed in connection
 table?*
@@ -87,10 +55,7 @@ Open a third command/terminal window (window3).
 
    ftp 10.1.10.100
 
-It may take 15 to 20 seconds for the logon on prompt, just leave it at
-prompt to hold the connection open.
-
-In window1 you should see something similar to the tcpdump captured
+In the first terminal window ( window1) you should see something similar to the tcpdump captured
 below.
 
 .. image:: /_static/201L/201ex211t2a-tcpdump.png
@@ -104,7 +69,7 @@ connections from your jumpbox.
 
 .. code-block:: bash
 
-   sho sys conn cs-client-addr 10.1.10.51
+   show sys conn cs-client-addr 10.1.10.7
 
 The connection table on window2 will show the client-side and
 server-side connection similar to below:
