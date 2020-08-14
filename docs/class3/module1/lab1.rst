@@ -2,7 +2,7 @@ Accessing the Lab Environment
 =============================
 
 Accessing the UDF labs
------------------------
+----------------------
 
 You will be access the labs using the F5 Unified Demo Framework (UDF).  Chrome is the preferred browser for access.
 

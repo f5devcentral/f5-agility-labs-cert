@@ -12,24 +12,26 @@ On the sidebar expand the **Network** tab.  Here you will see all the networking
 
 Click on **Interfaces** or click on **Interface List** on the pop out menu.  Here you will see the status and configuration of the interfaces.  For statistical information you would click on the **Statistics** tab on the top bar.  
 
+*Q1. Why is interface 1.4 showing uninitialized?   Does this indicate a problem with the interface?*
+
 Create a Tagged VLAN
 --------------------
 
-VLANs on the BIG-IP can be tagged (802.1q) or untagged.  VLANs are required to have an interface assigned to them and a tag (if the Interfaces is Tagged).
+VLANs on the BIG-IP can be tagged (802.1q) or untagged.  VLANs are required to have an interface assigned to them and a tag, if the Interfaces is Tagged.  You will be creating an untagged VLAN.
 
 On the **Network** sidebar click on **VLANs** or select **VLAN List** from the pop out menu.  Here you will see a list of the currently configured VLANs and the interfaces assigned to them.
 
 - Create a new VLAN by selecting the **Create** to the upper right of the list.
 - Give the new VLAN a name:   **test-vlan**
 - Assign the VLAN a tag:      **40**
-- In the Resources section select the Interface: **1.3**
-- In the Resources section select the Tagging: **Tagged**
+- In the Resources section select the Interface: **1.4**
+- In the Resources section select the Tagging: **Untagged**
 - **Add** the interface.
 - Hit **Finished** at the bottom.
 
 .. admonition:: TMSH
 
-   tmsh create net vlan test_vlan tag 40 interfaces add { 1.3 { tagged } }
+   tmsh create net vlan test_vlan tag 40 interfaces add { 1.4 { untagged } }
 
 Once complete you should see the following:
 
@@ -57,4 +59,4 @@ Once complete you should see the following:
 
 .. image:: /_static/201L/selfip_list.png
 
-*Q1. What will happen to the IP addresses if the BIG-IP goes down?*
+*Q2. What will happen to the IP addresses if the BIG-IP goes down?*
