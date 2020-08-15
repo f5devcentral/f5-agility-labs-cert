@@ -26,7 +26,7 @@ to the following:
 Go to Local **Traffic > Pools > Statistics** and clear the **www\_pool**
 statistics.
 
-Browse to **http://10.1.10.100** and refresh or **<ctrl> F5** several
+Browse to **http://10.1.10.100** and  **F5** at least 10
 times.
 
 *Q1. Which* **www\_pool** *members was traffic sent to?*
@@ -39,6 +39,9 @@ Under the **Members** tab change **Load Balancing Method** to **Ratio
 Clear stats for **www\_pool** and browse **http://10.1.10.100** several
 times.
 
+Browse to **http://10.1.10.100** and  **F5** at least 10
+times.
+
 *Q3. Which* **www\_pool** *members was traffic sent to?*
 
 *Q4. Did member* **10.1.20.11** *receive the most traffic?*
@@ -46,17 +49,19 @@ times.
 Priority Group Activation
 -------------------------
 
+On the **www_pool** change the **Load Balancing Method** back to **Round Robin**. 
+
 Change **Priority Group Activation** to less than 2 and **Update**.
 
-Clear stats for **www\_pool** and browse to **http://10.1.10.100**.
+Clear statistics for **www\_pool** and browse to **http://10.1.10.100** hitting **F5** several times.
 
 *Q1. Which* **www\_pool** *members was traffic sent to?*
 
 On the pool statistics page, select member **10.1.20.11:80** and change
 the **State** to **Disable.**
 
-Clear the statistics for the **www\_pool** and browse to
-**http://10.1.10.100** several times.
+Clear statistics for **www\_pool** and browse to **http://10.1.10.100** hitting **F5** several times.
+
 
 *Q2. Which* **www\_pool** *members was traffic sent to?  Why?*
 
@@ -88,17 +93,16 @@ Did you see an error requiring an HTTP profile? Correct the error by assigning t
 
 *Q1. Why was a http profile required?*
 
-Clear stats for **www\_pool** and browse to **http://10.1.10.100**
+Clear stats for **www\_pool** and browse to **http://10.1.10.100** hitting **F5** or refresh several times.
 
 *Q2. Was traffic evenly distributed to all* **www\_pool** *members? Why
 not?*
 
-In the web page under **HTTP Request and Response Information** is 
-the **Display Cookie** link. Select the **Display Cookie** link to view the cookie created by the BIG-IP.
+Place the pointer in the web page and right click and selectg **Inspect**.  Select **Network** from the top bar in the right window and refresh the page.
 
-.. NOTE::
+Select 10.1.10.100 in the **Name** section and look at the **Headers** in the **Cookie** header you will see the BIG-IP cookie named **BIGipServerwww_pool**.
 
-   You may have to scroll down the web page to find the link.
+.. image:: /_static/201L/cookie-persistence.png
 
 Open **Statistic > Module Statistics > Local Traffic > Persistence
 Records**
@@ -123,4 +127,4 @@ work?  Why?*
 
    An Alternate method to display persistence is:
  
-   **tmsh show ltm persistence persist-records**
+   **show ltm persistence persist-records**

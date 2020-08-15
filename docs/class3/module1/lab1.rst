@@ -55,13 +55,15 @@ Go to the **Components** tab and select the **Access** drop down menu and select
 
 Access your BIG-IP and verify it is configured properly.
 
-From the jumpbox open a new Web browser and access https://10.1.1.4. Log into the BIG-IP VE
+From the jumpbox open a new Web browser from the bottom bar and access https://10.1.1.4. Log into the BIG-IP VE
 system using the following credentials:
 
 .. code-block:: bash
 
    Username: admin
    Password: f5UDFrocks
+
+.. image:: /_static/201L/bottom-bar.png
 
 Check the upper left-hand corner and ensure you are on the active device
 the status should be **ONLINE (ACTIVE)**. Most deployments are

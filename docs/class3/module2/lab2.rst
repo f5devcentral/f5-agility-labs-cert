@@ -62,8 +62,8 @@ statistics and tcpdump..
 
 *Q7. Did traffic counters increment for* **www\_vs**\ *?*
 
-Q8. What is the difference in the tcpdumps between Offline (Disabled) vs
-Offliine (Enabled)?
+*Q8. What is the difference in the tcpdumps between Offline (Disabled) vs
+Offliine (Enabled)?*
 
 .. IMPORTANT:: 
 

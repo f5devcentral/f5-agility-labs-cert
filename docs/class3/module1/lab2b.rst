@@ -13,14 +13,14 @@ bottom of the jumpbox.
 .. code-block:: bash
 
    ssh root@10.1.1.4
-   password: default
+   password: f5UDFrocks!
 
-Use tcpdump to monitor traffic from the client (10.1.10.51) destined to
+Use tcpdump to monitor traffic from the client (10.1.10.6) destined to
 **ftp\_vs** (10.1.10.100)
 
 .. code-block:: bash
 
-   tcpdump -nni client_vlan host 10.1.10.7 and 10.1.10.100
+   tcpdump -nni client_vlan host 10.1.10.6 and 10.1.10.100
 
 Open another terminal window (window2) and use **tmsh** to display the
 connection table.
@@ -28,17 +28,17 @@ connection table.
 .. code-block:: bash
 
    ssh root@10.1.1.4
-   password: default
+   tmsh
 
 At the TMOS prompt **(tmos)#**
 
 .. admonition:: TMSH
    
-   show sys connection
+   show sys connection type any
 
-Do you see any connections from the jumpbox 10.1.1.7 to 10.1.1.245:22 in the connection table?
+Do you see any connections from the jumpbox 10.1.1.6 to 10.1.1.245:22 in the connection table?
 
-*Q1. Why are the ssh management sessions not displayed in connection
+*Q1. Why are the ssh management sessions to 10.1.1.4 not displayed in connection
 table?*
 
 Establish ftp connection
@@ -69,7 +69,7 @@ connections from your jumpbox.
 
 .. code-block:: bash
 
-   show sys conn cs-client-addr 10.1.10.7
+   show sys conn cs-client-addr 10.1.10.6
 
 The connection table on window2 will show the client-side and
 server-side connection similar to below:

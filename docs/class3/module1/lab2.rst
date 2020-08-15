@@ -14,16 +14,15 @@ Click on **Interfaces** or click on **Interface List** on the pop out menu.  Her
 
 *Q1. Why is interface 1.4 showing uninitialized?   Does this indicate a problem with the interface?*
 
-Create a Tagged VLAN
---------------------
+Create a VLAN
+-------------
 
 VLANs on the BIG-IP can be tagged (802.1q) or untagged.  VLANs are required to have an interface assigned to them and a tag, if the Interfaces is Tagged.  You will be creating an untagged VLAN.
 
 On the **Network** sidebar click on **VLANs** or select **VLAN List** from the pop out menu.  Here you will see a list of the currently configured VLANs and the interfaces assigned to them.
 
 - Create a new VLAN by selecting the **Create** to the upper right of the list.
-- Give the new VLAN a name:   **test-vlan**
-- Assign the VLAN a tag:      **40**
+- Give the new VLAN a name:   **test_vlan**
 - In the Resources section select the Interface: **1.4**
 - In the Resources section select the Tagging: **Untagged**
 - **Add** the interface.
@@ -37,18 +36,20 @@ Once complete you should see the following:
 
 .. image:: /_static/201L/vlan-list.png
 
+Go to the **Interface List**.  What is the status of the interface now?
+
 Assign a Self IP to a VLAN
 --------------------------
 
-Self IPs are assign to VLANs to define L3 broadcast domains.  By default, Self IP addresses will respond only to ICMP traffic (port lockdown set to None).  Self IPs are defined as non-floating and floating.  Non-floating self IPs fail when the BIG-IP system fails. Floating self IPs will fail over to other BIG-IPs in the device service cluster and send out a gratuitous ARP to change L2 MAC address tables of the switching architecture.
+Self IPs are assign to VLANs to define L3 broadcast domains.  By default, self IP addresses will respond only to ICMP traffic (port lockdown set to None).  Self IPs are defined as non-floating and floating.  Non-floating self IPs fail when the BIG-IP system fails. Floating self IPs will fail over to other BIG-IPs in the device service cluster and send out a gratuitous ARP to change L2 MAC address tables of the switching architecture.
 
 To assign a self IP, go to **Network >> Self IPs >> Self IP List** from the sidebar and select **Create**.
 
 - You will name your self IP:  **test_selfIP**
-- You will give your self IP the following address: **10.1.30.245**
+- You will give your self IP the following address: **10.1.40.245**
 - With a netmask of: **255.255.255.0**
 - Assign the self IP to the VLAN you just created:  **test_vlan**
-- Note the **Port Lockdown** setting and the **Traffic Group**
+- Note the **Port Lockdown** and **Traffic Group** settings.
 - Select **Finished** when you are done.
 
 .. admonition:: TMSH
@@ -60,3 +61,31 @@ Once complete you should see the following:
 .. image:: /_static/201L/selfip_list.png
 
 *Q2. What will happen to the IP addresses if the BIG-IP goes down?*
+
+Open an terminal window from the bottom bar on the jumpbox.
+
+.. image:: /_static/201L/bottom-bar.png
+
+From the terminal window ping the self IP you just created.
+
+.. code:: bash
+ping 10.1.40.245
+
+Go to the interface statistics in the GUI and check the statistical information for the interface 1.4.
+
+From the terminal window SSH to the BIG-IP.
+
+.. code:: bash
+ssh root@10.1.1.4
+password: f5UDFrocks!
+
+On the BIG-IP go into TMSH and run the following commands and note the difference between the *list* and *show* commands.  You may see output like this on the exam.
+
+.. admonition:: TMSH
+list net interface
+show net interface
+list net vlan
+show net vlan
+list net self
+show net self
+

@@ -31,17 +31,17 @@ and select **Create**.
 To create the wildcard virtual server, go to **Local Traffic > Virtual
 Server** and select **Create**.
 
-+----------------------------------+--------------------+
-| **Name**                         | **wildcard\_vs**   |
-+==================================+====================+
-| **Destination**                  | 10.1.10.100        |
-+----------------------------------+--------------------+
-| **Service Port**                 | \*                 |
-+----------------------------------+--------------------+
-| **Source Address Translation**   | Automap            |
-+----------------------------------+--------------------+
-| **Default Pool**                 | wildcard\_pool     |
-+----------------------------------+--------------------+
++----------------------------------+------------------------------------+
+| **Name**                         | **wildcard\_vs\_10\_1\_10\_100**   |
++----------------------------------+------------------------------------+
+| **Destination**                  | 10.1.10.100                        |
++----------------------------------+------------------------------------+
+| **Service Port**                 | \*                                 |
++----------------------------------+------------------------------------+
+| **Source Address Translation**   | Automap                            |
++----------------------------------+------------------------------------+
+| **Default Pool**                 | wildcard\_pool                     |
++----------------------------------+------------------------------------+
 
 Don't forget to hit **Finished.**
 
@@ -59,9 +59,9 @@ Clear virtual server stats.
 
 Observe connection statistics (VS stats) after each of the following tasks.
 
-Browse to http://10.1.10.100:8080
+Webmin is installed on the backend server.  Browse to https://10.1.10.100:10000
 
-*Q1. Which VS is used for web traffic over port 8080?*
+*Q1. Which VS is used for web traffic over port 10000?*
 
 FTP to 10.1.10.100
 
@@ -74,11 +74,8 @@ port was used?*
 
 Clear virtual server stats.
 
-Modify the **wildcard\_vs** to only allow connections from a **Source**
-of 10.1.10.0/24.
-
-.. NOTE::
-   The source address your jumpbox shoud be connecting from is 10.1.10.51
+From the tcpdumps you can see you are accessing the virtual servers using a source IP of 10.1.10.6.  
+Modify the **www\_vs** to only allow connections from a **Source** of **10.1.10.10/32**.
 
 Browse to http://10.1.10.100
 
@@ -90,4 +87,4 @@ Clean up your modifications
 
 Clear virtual server stats.
 
-Modify **wildcard\_vs** to include the default **Source** of 0.0.0.0/0.
+Modify **www\_vs** to include the default **Source** of 0.0.0.0/0.

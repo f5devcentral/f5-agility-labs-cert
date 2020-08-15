@@ -68,6 +68,9 @@ In this task, you will set the connection limit for the FTP virtual
 server to 1 and note the status and behavior of different connection
 scenarios.
 
+.. NOTE::
+      `K8457: Connection limits for a CMP system are enforced per TMM instance <https://support.f5.com/csp/article/K8457>`__ states that connection limits should not be lower than the number of TMM instances on a BIG-IP or you may get unpredicitable results.  The UDF BIG-IPs have 4 vCPU and therefore 4 TMMs. When we set the connection limit to 1 on the virtual server we may get up to 2 connections before the connection limit is reached.
+
 Modify **ftp\_vs** for connection limit of 1. The **Connection Limit**
 option can be found under the **Advanced** virtual server menus.
 
@@ -77,7 +80,7 @@ Establish ftp connection to **10.1.10.100** and hold the logon open.
 
 *Q2. What is the virtual server symbol and status of* **ftp_vs**\ *?*
 
-Open another window and establish a second ftp connection to
+Open 2 more windows and establish a second  and third ftp connection to
 **10.1.10.100**.
 
 *Q3. Did new ftp session establish connection? Why not?*

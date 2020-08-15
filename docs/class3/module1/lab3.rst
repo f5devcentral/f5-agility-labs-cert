@@ -11,25 +11,24 @@ Go to **Network > Packet Filters > Rules** and **Create** a filter using
 the following:
 
 +--------------------------------------+---------------+
-| **Name**                             | Block\_ftp    |
+| **Name**                             | block\_ftp    |
 +--------------------------------------+---------------+
 | **Order**                            | First         |
 +--------------------------------------+---------------+
 | **Action**                           | Discard       |
 +--------------------------------------+---------------+
-| **Destination Hosts and Networks**   | 10.1.10.100   |
+| **Logging**                          | Enabled       |
 +--------------------------------------+---------------+
 | **Destination Port List**            | 21 (FTP)      |
 +--------------------------------------+---------------+
-| **Logging**                          | Enabled       |
-+--------------------------------------+---------------+
+
 
 Make sure you select **Add** after entering a host/network or a port.
 
 Test the FTP packet filter
 --------------------------
 
-Ensure ftp connection is currently established to **10.1.10.100**.
+Ensure ftp connection is currently established to **10.1.10.100**.  You can log on to FTP using the credentials **f5student/f5UDFrocks!**.
 
 Go to **Network > Packet Filters > General** and select **Enable** and
 then **Update**.
