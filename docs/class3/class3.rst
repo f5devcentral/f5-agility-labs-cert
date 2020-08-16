@@ -11,7 +11,7 @@ https://support.f5.com/csp/article/K29900360#301a
 
 This class covers the following topics:
 
-- Packet Processing and Virtual Server Processing Order
+- Accessing the lab, networking and BIG-IP traffic flow
 - Virtual Server and Pool Behavior and Status
 - Administrative Troubleshooting of the |bip|
 - Support, Analytics and iApps

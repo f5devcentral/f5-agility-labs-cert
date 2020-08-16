@@ -1,92 +1,27 @@
-iApps and Analytics
-===================
+Upgrading a BIG-IP Device Service Clusters (DSC)
+================================================
 
-Create and iApps and add Analytics
-----------------------------------
+This lab is based on the instructions provided in the YouTube video provided by F5 `Updating BIG-IP HA systems with a point release <https://www.youtube.com/watch?v=wcaBq-_zjbs>`_.
 
-As you saw in the first lab, Application Visibility and Reporting has
-already been provisioned. You are going to create an analytics profile
-and attach it to an HTTP iApp application you will create.
+BIG-IP TMOS version 15.1.0.4 is already available on the BIG-IPs, but you can feel free to download any version you want to the jumpbox and upload it to the BIG-IP to get the full upgrade experience.
 
-Open **Local Traffic > Profiles > Analytics** page.
+   Part 1: 
+      - 0:13 Installing the point release on the first device  
+      - 0:40 Validating the configuration
+      - 1:53 Verifying the Service check date
+      - 3:23 Synchronizing the configuration
+      - 4:32 Creating and saving a UCS archive
+      - 5:52 Importing the ISO file
+      - 7:05 Verifying the MD5 checksum
+      - 7:45 Disabling the "Automatic with Incremental Sync" option
+      - 8:30 Installing and rebooting to the new version
+      - 14:16 Verifying the new point release version is active on the newly patched system
+      - 15:00 Forcing a failover
+   Part 2: 
+      - 16:20 Installing the point release on the next device
+      - 16:25 Repeat these steps 
+      - 16:49 Verifying the new point release version is active on the newly patched system
+      - 17:46 Forcing a failover
+   Part 3: 
+      - 19:25 Performing the final ConfigSync
 
-Create an analytics profile checking the following boxes to obtain the 
-desired information, and then click **Finished**.
-
-+--------------------------+-----------------------------------------+
-| **Profile Name**         | custom\_analytics                       |
-+==========================+=========================================+
-| **Collected Metrics**    | Max TPS                                 |
-|                          |                                         |
-|                          | Throughput                              |
-|                          |                                         |
-|                          | Page Load Time                          |
-+--------------------------+-----------------------------------------+
-| **Collected Entities**   | URLs                                    |
-|                          |                                         |
-|                          | Countries                               |
-|                          |                                         |
-|                          | Client IP Addresses                     |
-|                          |                                         |
-|                          | Client Subnets                          |
-|                          |                                         |
-|                          | Response Codes                          |
-|                          |                                         |
-|                          | User Agents                             |
-|                          |                                         |
-|                          | Methods                                 |
-+--------------------------+-----------------------------------------+
-
-Go to **iApps > Application Services** and select **Create**.
-
-Select the **f5.http** template, name it **iapp\_lab** and review the
-**Basic** selections.
-
-In the **Template Options** section set the configuration mode to
-**Advanced - Configure advanced options**.
-
-Build the iApp using the following information:
-
-+---------------------------+---------------------+
-| **Virtual Server IP**     | 10.1.10.110         |
-+===========================+=====================+
-| **Virtual Server Port**   | 80                  |
-+---------------------------+---------------------+
-| **FQDN**                  | iapp.f5demo.com     |
-+---------------------------+---------------------+
-| **Pool member 1**         | 10.1.20.14:80       |
-+---------------------------+---------------------+
-| **Pool member 2**         | 10.1.20.15:80       |
-+---------------------------+---------------------+
-| **Analytics Profile**     | custom\_analytics   |
-+---------------------------+---------------------+
-
-Review the status and components built by the iApp.
-
-From both the Chromium and Firefox browsers go to **http://10.1.10.110**
-and refresh the page several times and the select the following links
-from the page on each browser.
-
-**Request and Response Headers Allowed** *(review the request and
-response headers)*
-
-**HTTP Compress Example**
-
-**Multiple Stream Example**
-
-*Q1. Did both pool members respond? Why?*
-
-Go to **Statistics > Analytics > HTTP** and review the information.
-
-.. NOTE::
-
-   It may take up to 10 minutes for Analytic statistics to be available.
-
-*Q2. Can you determine which page took the longest to load?*
-
-Go to **Local Traffic > Pools** and attempt to add **10.1.20.13:80** to
-the **iapp\_lab\_pool**.
-
-*O3. Could you add the pool member? Why?*
-
-*Q4. Can you add the custom\_analytics profile to the ftp\_vs? Why?*

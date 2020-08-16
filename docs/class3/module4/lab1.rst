@@ -1,100 +1,88 @@
-Support, Status and Logs
-========================
+Modify and Troubleshoot Virtual Servers
+=======================================
 
-Qkview and iHealth
-------------------
+Troubleshooting virtual servers
+-------------------------------
 
-Open **System > Support** page.
+By now, I am sure you are dying to know what's up with the
+**purple\_vs**. Here's a chance to find out. You are going to some
+troubleshooting with a little guidance.
 
-Ensure **QKView** is selected then click **Start**.
+Go to **Network Maps** and take a look at the status of the
+**purple\_vs** and its components.
 
-Download the snapshot file and upload it to **https://ihealth.f5.com** 
+It is obvious that all pool members are offline which could be anything,
+a network issue, a server issue, a BIG-IP configuration issue.
 
-.. NOTE::
+*Q1. Where would you start?*
 
-   A login account is required to access iHealth.  If you do not have an account, now would be a good time to create one.   It may take one or two days for your account to activate.
+SSH to **bigip01** at 10.1.1.245.
 
-*Q1. Are logs associated with qkview?*
+*Q2. Attempt to ping he pool members. Does it work? What does this tell
+you?*
 
-From ssh window run qkview
+*Q3. Attempt a* **curl -i** *against the pool members. Does it work? What
+does this tell you?*
 
-*Q2. Where is default filename and location of qkview output?*
+*Q4. Since the problem affects all pool members, what would you suspect
+as a possible issue?*
 
-*Q3. Where is the default filename and location of core dump?*
+Find and correct the issue.
 
-*Q4. What is Severity and Condition for unit failure in active/standby
-pair?*
+*Q5. Did you correct the issue?* 
 
-*Q5. If support case was opened online with Severity 4 and no call has
-been received in a week. What should you do?*
+.. HINT::
 
-*Q6. What is the procedure to escalate support case?*
+   If not go to **Appendix I - Answer Key** and see how the issue was fixed.
 
-Network Map
------------
+*Q6. Now the pool is working and purple\_vs is available can you access
+the page through the virtual?*
 
-You should be able to explain status icons of objects on network map.
+*Q7. What is your next step in debugging? Is the virtual server
+processing traffic?*
 
-Open **Local Traffic > Network Map** and hover over icons and observe
-status info.
+You need to watch traffic from your PC to the BIG-IP virtual server and
+from the BIG-IP to the pool.
 
-Ensure all icons are green. If an icon is red determine the reason why.
+*Q8. What command(s) could you use to watch traffic hit the virtual
+server and leave toward the pool?*
 
-Note the top-down status relationship between VS, pools, pool members
-and nodes.
+.. HINT::
+   
+   Try to figure it out, if you need help go to **Appendix I - Answer Key** and one version of the commands
 
-*Q1. What is a node?*
+*Q9. Did you see traffic hit the virtual server? Did you see BIG-IP send
+traffic to a pool member?*
 
-Open **Local Traffic > Nodes** and disable node **10.1.20.11**
+*Q10. Did you see the return traffic? If there was no response, what is
+your step?*
 
-*Q2. What icon is reflected for 10.1.20.11 on the Network map?*
+Remember the server's default gateway is 10.1.20.240, which is an **unused** IP
+address on the 10.1.20.0/24 network.
 
-*Q3. What is the color of the icon for pool members based on 10.1.20.11?  Why?*
+There were two ways to resolve the virtual server issue. Your purple\_vs
+should now be available.
 
-*Q4. Does* **ftp\_vs** *still work as expected?*
+Working with profiles
+---------------------
 
-Select **www\_vs** from the Network Map. Select **Resources > Manage irules**
+Create new virtual server **secure\_vs 10.1.10.100:443** with **TCP** profile,
+use SNAT and the **www\_pool**. Open tcpdumps to view traffic on both sides of the proxy. Browse to **https://10.1.10.100** and view the tcpdumps.
 
-Enable **_sys_https_redirect** irule and click **Finished**.
+*Q1. Did site work? Why not?*
 
-*Q5. Where is irule reflected on Network Map?*
+Change SSL Profile to include clientssl then update Browse to
+**https://10.1.10.100** and observe tcpdumps.
 
-Dashboard
----------
+*Q2. Did site work?*
 
-Observe Dashboard statistics
+Enable cookies Default Persistence Profile and update? Note error and
+troubleshoot to fix.
 
-Log on to the BIG-IP GUI using and go to **Statistics
-> Dashboard**
+*Q3. What was needed to add cookie persistence?*
 
-.. Warning::
+Open the Chromium inspect window (right-click and Inspect in the browser window. Browse to **https://10.1.10.100/index.php** and find the header information and the cookie(s).
 
-   Adobe Flash is required to view the dashboard.  If you are using the Ravello lab environment with the Xubuntu jumpbox you need to use Firefox to view the BIG-IP dashboard via the BIG-IP GUI.
+*Q4. What does the name of the BIG-IP cookie inserted begin with?*
 
-*Q1. What is longest duration available for reporting?*
 
-*Q2. How can report be exported?*
-
-Log files
----------
-
-Interpret the LTM log file
-
-Open ssh window1 and enter the following command::
-
-   tail -f /var/log/ltm
-
-Disable **ftp\_vs**
-
-*Q1. Was alert logged?*
-
-Go to **System > Logs > Local Traffic**
-
-*Q2. Was the alert logged here?*
-
-From ssh window1 enter **<CTRL> c** and at the CLI prompt enter::
-
-  grep alert /var/log/ltm
-  grep www_pool/var/log/ltm
-
-*Q3. What command is needed to find all instances of err in /var/log/ltm?*

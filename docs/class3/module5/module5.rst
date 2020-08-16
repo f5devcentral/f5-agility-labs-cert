@@ -1,23 +1,14 @@
-Lab 5 – Managing the BIG-IP
-==============================
+Appendix I - Answer Key
+==================================
 
-In this module you'll review basic BIG-IP management tasks and get a look at BIG-IQ.
+The answers to all of your questions.  Literally. Test
 
-201 Objectives covered:
-   - 7.01-7.08
-      - Create and restore a UCS archive under the appropriate
-        circumstances
-      - Identify which high-level tasks can be automated using BIG-IQ
-      - Manage software images
-      - Given an HA pair, describe the appropriate strategy for deploying
-        a new software image
-      - Understand the processes of licensing, license reactivation,
-        license modification and add-ons
-      - Identify which modules are licensed and/or provisioned
-      - Explain how to create a user
-      - Explain how to modify user properties
+.. WARNING::
+   The answer key is currently out of date. While the answers to the questions are here the questions the modules were reduced and labs rearranged, so it might take some work to find them.  I will hopefully get the answer key updated in the near future.  You'll know they are updated because this warning will be gone.
 
-Estimated completion time: **30 minutes**
+.. NOTE::
+
+   In this appendix the third digit in the section (ie. 2.7.**X**) represents the module number and the fourth digit (ie. 2.7.X.**Y**) the task/lab number.
 
 .. toctree::
    :maxdepth: 1

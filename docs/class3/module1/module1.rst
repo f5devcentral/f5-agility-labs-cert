@@ -9,9 +9,11 @@ Overview of the lab environment
    - Lab layout
    - Accessing the images
 
-201 Objectives covered:
+201 Objectives orimarily covered in these labs are:
    - 1.01
       - Explain the relationship between interfaces, trunks, VLANs, self-IPs, routes and their status/statistics
+   - 2.03
+      - Identify network level performance issues
    - 1.02
       - Determine expected traffic behavior based on configuration
 

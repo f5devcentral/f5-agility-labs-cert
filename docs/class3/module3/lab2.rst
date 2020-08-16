@@ -1,34 +1,43 @@
-tcpdump Packet Capture
-======================
+Self IP Port Lockdown and more
+==============================
 
-In this exercise are going to perform **tcpdump** packet captures and
-review the results.
+Effects of Port Lockdown
+------------------------
 
-Packet Captures of multiple interfaces simultaneously
------------------------------------------------------
+Ping **10.1.10.245**
 
-Open SSH session window1, and enter on one line::
+*Q1. Was echo response received?*
 
-    tcpdump -ni client_vlan -eXs 0 -w /var/tmp/dump.cap & tcpdump -ni
-    server_vlan -eXs 0 -w /var/tmp/dump2.cap &
+SSH to **10.1.10.245**
 
-This starts two tcpdumps, one on the **client_vlan** and one on the **server_vlan**
+*Q2. Was ssh successful? Why not?*
 
-Browse to **http://10.1.10.100**.
+Open **Network > Self IPs > 10.1.10.245** and change **Port Lockdown**
+to **Allow Defaults**
 
-Type **fg** then **<cr>** then **<crtl> c**.
+SSH to **10.1.10.245**
 
-Again, type **fg** then **<cr>** then **<crtl> c** then::
+Browse to **https://10.1.10.245**
 
-    tcpdump -r /var/tmp/dump.cap & tcpdump -r /var/tmp/dump2.cap
+*Q1. Did SSH work? Did browsing work?*
 
-*Q1. What is the alternate method for capturing two interfaces
-simultaneously?*
+*Q2. What other ports are opened when you select Allow Defaults.*
 
-*Q2. What interface does 0.0 represent?*
+Open **Network > Self IPs > 10.1.10.245** and change **Port Lockdown** to
+**Allow Custom** and add **Port 22**
 
-*Q3. What interface typically represents the management interface?*
+SSH to **10.1.10.245**
 
-*Q4. What is recommended method for packet captures on high load system?*
+Browse to **https://10.1.10.245**
 
-*Q5. Will tcpdump capture PVA accelerated traffic?*
+*Q3. Did SSH work? Did browsing work?*
+
+Open **System > Platform**
+
+On **SSH IP Allow** > **Specify Range** of **10.1.1.10-20**
+
+*Q4. Does existing SSH window still work?*
+
+Open new SSH session to **10.1.1.245**
+
+*Q5. Was new ssh session established?*

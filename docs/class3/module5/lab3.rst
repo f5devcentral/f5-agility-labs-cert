@@ -1,60 +1,173 @@
-BIG-IQ
-======
+Module 3 - Trouble-shooting the BIG-IP
+======================================
 
-Peruse BIG-IQ
--------------
+Trouble-shooting Hardware
+-------------------------
+End User Diagnostics
+~~~~~~~~~~~~~~~~~~~~
 
-In this lab you will talk a short walk through the BIG-IQ interface and
-perform a few tasks.
+*Q1. What three methods are available for running EUD on F5 Hardware?*
 
-Logon to the BIG-IQ at **https://10.1.1.235**::
-  Username: admin
-  Password: admin
+USB CDROM, USB Bootable Drive, Hardware Boot Menu
 
-Go to **BIG-IQ > Device > Configuration > Overview** view the
-various panes.
+*Q2. How do you determine EUD version?*
 
-*Q1. What BIG-IPs are being managed?*
+EUD image downloaded or eud\_info
 
-Select the Backups pane, select (**+**) and the **Add Backup**
+*Q3. What is the filename and location of the EUD output?*
 
-.. image:: /_static/201L/201bigiq.png 
+/shared/log/eud.log
 
-Back up **bigip01.f5demo.com**.
+LCD Panel 
+~~~~~~~~~
 
-Go to **BIG-IQ > ADC** and review the information in the panels.
+*Q1. How do you halt the unit via the LCD panel?*
 
-*Q2. Where are configurations currently being display from?*
+Press X, select system menu, press check, select halt, press check to
+confirm
 
-*Q3. What is the difference between displaying from BIG-IQ and displaying
-from BIG-IP?*
+*Q2. Holding the X for 4 seconds does what?*
 
-Select **bigip02** and the hover the mouse over the **Nodes** title.
+Powers down unit
 
-Now select the **BIG-IQ** radio button from above, select **bigip02**,
-and then hover over the **Nodes** title.
+*Q3. Holding the Check button for 4 seconds does what?*
 
-*Q4. What now appears in the* **Nodes** *title when you hover the mouse
-over it?*
+Reboots the unit
 
-Make a modification via the BIG-IQ
-----------------------------------
+Hardware Log Files
+~~~~~~~~~~~~~~~~~~
 
-With, **BIG-IQ** and **bigip02** selected hover over **Nodes** and hit
-the plus sign (**+**) and add a new node to **bigip02** named
-**new\_node** with an IP address of **10.1.20.252.**
+*Q1. What is the filename and location of the logs for LTM?*
 
-*Q1. Was new\_node added to bigip02?*
+/var/log/ltm
 
-Let's have BIG-IQ deploy the change. Select **Deployment** next to
-**ADC** on the top bar.
+*Q2. Where will power supply, fan and hard disk related issues be logged?*
 
-Next to **Deployments**, select the plus sign (**+**) and **Deploy
-Configuration Changes**. Select the **review Pending Changes** link.
+/var/log/ltm
 
-*Q2. What is being added? What is in the New Version window.?*
+HA and Failover
+~~~~~~~~~~~~~~~
 
-Name deployment **deploy\_new\_node**, select the **bigip02** device and
-click on **Deploy** in the upper left.
+*Q1. Is failover sometimes used to determine issues related to hardware or software?*
 
-*Q3. Check bigip02, was new\_node created?*
+hardware
+
+*Q2. How do you initiate failover to standby unit?*
+
+From Active unit select Network > Traffic Groups, select traffic group, select Force to Standby
+
+*Q3. What persistence profile cannot be mirrored?*
+
+Cookie persistence is not mirrored
+
+*Q4. What two connections types are re-mirrored after failback?*
+
+Only FastL4 and SNAT connections are re- mirrored after failback
+
+*Q5. When would you recommend using connection mirroring?*
+
+Long lived connections
+
+*Q6. Where is connection mirroring configured?*
+
+You can configure connection mirroring at VS and SNAT
+
+*Q7. Where is persistence mirroring configured?*
+
+You can configure persistence mirroring at Persistence
+
+*Q8. What tmsh command is used to view mirrored connections?*
+
+show /ltm persistence persist-records
+
+*Q9. What tmsh command is used to view mirrored persistence?.*
+
+show /ltm persistence persist-records
+
+*Q10. What can be the cause of primary unit returning to active state after initiating failover to standby?*
+
+Show /sys connection all-properties
+
+tcpdump Packet Capture
+----------------------
+
+Packet Captures of multiple interfaces simultaneously
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Q1. What is the alternate method for capturing two interfaces
+simultaneously?*
+
+tcpdump -ni eth1 -w /var/tmp/dump1.cap **&** tcpdump -ni eth2 -w
+/var/tmp/dump2.cap
+
+*Q2. What interface does 0.0 represent?*
+
+All interfaces
+
+*Q3. What interface typically represents the management interface?*
+
+eth0
+
+*Q4. What is recommended method for packet captures on high load system?*
+
+F5 recommends that you mirror traffic to a dedicated sniffing device
+
+*Q5. Will tcpdump capture PVA accelerated traffic?*
+
+No, you must disable PVA to capture traffic
+
+Performance Statistics
+----------------------
+
+Observing performance statistics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Q1. What is the longest time interval available for performance
+statistics?*
+
+30 Days
+
+Connectivity Troubleshooting
+----------------------------
+
+Connectivity troubleshooting tools
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Q1. Was echo response received?*
+
+Ping reply was successful
+
+*Q2. What is the status of the virtual servers?*
+
+ftp\_vs and www\_vs available, disabled - wildcard\_vs unknown, disabled
+
+*Q3. Was echo response received?*
+
+Ping reply successful
+
+Self IP Port Lockdown
+---------------------
+
+Effects of Port Lockdown
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Q1. Was echo response received?*
+
+Ping reply successful
+
+*Q2. Was ssh successful? Why not?*
+
+No. Port lockdown set to **Allow None** by default
+
+*Q3. Was ssh successful?*
+
+Yes
+
+*Q4. Does existing ssh window still work?*
+
+No
+
+*Q5. Was new ssh session established?*
+
+No
+ 
