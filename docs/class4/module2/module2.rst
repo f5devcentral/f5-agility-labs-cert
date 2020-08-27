@@ -1,4 +1,4 @@
-Lab 2 – Virtual Server and Pools Status and Behavior
+Module 2 – Virtual Server and Pools Status and Behavior
 =================================================================
 
 You are the administrator of a pair of BIG-IPs with a number of virtual

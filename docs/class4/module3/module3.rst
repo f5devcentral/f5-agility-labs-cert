@@ -1,5 +1,5 @@
-Lab 3 – Administering the System Configuration
-==============================================
+Module 3 – Administering the System Configuration
+=================================================
 
 You are the administrator of a pair of BIG-IPs with a number of virtual
 servers pre-configured. In this lab you will look at troubleshooting methodologies

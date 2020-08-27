@@ -1,120 +1,5 @@
-Module 3 - Trouble-shooting the BIG-IP
-======================================
-
-Trouble-shooting Hardware
--------------------------
-End User Diagnostics
-~~~~~~~~~~~~~~~~~~~~
-
-*Q1. What three methods are available for running EUD on F5 Hardware?*
-
-USB CDROM, USB Bootable Drive, Hardware Boot Menu
-
-*Q2. How do you determine EUD version?*
-
-EUD image downloaded or eud\_info
-
-*Q3. What is the filename and location of the EUD output?*
-
-/shared/log/eud.log
-
-LCD Panel 
-~~~~~~~~~
-
-*Q1. How do you halt the unit via the LCD panel?*
-
-Press X, select system menu, press check, select halt, press check to
-confirm
-
-*Q2. Holding the X for 4 seconds does what?*
-
-Powers down unit
-
-*Q3. Holding the Check button for 4 seconds does what?*
-
-Reboots the unit
-
-Hardware Log Files
-~~~~~~~~~~~~~~~~~~
-
-*Q1. What is the filename and location of the logs for LTM?*
-
-/var/log/ltm
-
-*Q2. Where will power supply, fan and hard disk related issues be logged?*
-
-/var/log/ltm
-
-HA and Failover
-~~~~~~~~~~~~~~~
-
-*Q1. Is failover sometimes used to determine issues related to hardware or software?*
-
-hardware
-
-*Q2. How do you initiate failover to standby unit?*
-
-From Active unit select Network > Traffic Groups, select traffic group, select Force to Standby
-
-*Q3. What persistence profile cannot be mirrored?*
-
-Cookie persistence is not mirrored
-
-*Q4. What two connections types are re-mirrored after failback?*
-
-Only FastL4 and SNAT connections are re- mirrored after failback
-
-*Q5. When would you recommend using connection mirroring?*
-
-Long lived connections
-
-*Q6. Where is connection mirroring configured?*
-
-You can configure connection mirroring at VS and SNAT
-
-*Q7. Where is persistence mirroring configured?*
-
-You can configure persistence mirroring at Persistence
-
-*Q8. What tmsh command is used to view mirrored connections?*
-
-show /ltm persistence persist-records
-
-*Q9. What tmsh command is used to view mirrored persistence?.*
-
-show /ltm persistence persist-records
-
-*Q10. What can be the cause of primary unit returning to active state after initiating failover to standby?*
-
-Show /sys connection all-properties
-
-tcpdump Packet Capture
-----------------------
-
-Packet Captures of multiple interfaces simultaneously
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-*Q1. What is the alternate method for capturing two interfaces
-simultaneously?*
-
-tcpdump -ni eth1 -w /var/tmp/dump1.cap **&** tcpdump -ni eth2 -w
-/var/tmp/dump2.cap
-
-*Q2. What interface does 0.0 represent?*
-
-All interfaces
-
-*Q3. What interface typically represents the management interface?*
-
-eth0
-
-*Q4. What is recommended method for packet captures on high load system?*
-
-F5 recommends that you mirror traffic to a dedicated sniffing device
-
-*Q5. Will tcpdump capture PVA accelerated traffic?*
-
-No, you must disable PVA to capture traffic
+Module 3 – Administering the System Configuration
+=================================================
 
 Performance Statistics
 ----------------------
@@ -127,29 +12,8 @@ statistics?*
 
 30 Days
 
-Connectivity Troubleshooting
-----------------------------
-
-Connectivity troubleshooting tools
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-*Q1. Was echo response received?*
-
-Ping reply was successful
-
-*Q2. What is the status of the virtual servers?*
-
-ftp\_vs and www\_vs available, disabled - wildcard\_vs unknown, disabled
-
-*Q3. Was echo response received?*
-
-Ping reply successful
-
 Self IP Port Lockdown
 ---------------------
-
-Effects of Port Lockdown
-~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Q1. Was echo response received?*
 
@@ -159,15 +23,100 @@ Ping reply successful
 
 No. Port lockdown set to **Allow None** by default
 
-*Q3. Was ssh successful?*
+*Q3. Did SSH work? Did browsing work?*
 
 Yes
 
-*Q4. Does existing ssh window still work?*
+*Q4. What other ports are opened when you select Allow Defaults.*
+        igmp:0
+        ospf:0
+        pim:0
+        tcp:161
+        tcp:22
+        tcp:4353
+        tcp:443
+        tcp:53
+        udp:1026
+        udp:161
+        udp:4353
+        udp:520
+        udp:53
 
-No
 
-*Q5. Was new ssh session established?*
+*Q5. Did SSH work? Did browsing work?*
+
+SSH worked, browsing (TMUI access) was blocked.
+
+*Q6. Does existing SSH window still work?*
+
+Yes
+
+*Q7. Was new ssh session established?*
 
 No
  
+System Configuration
+---------------------
+
+No questions in this section.
+
+UCS (BIG-IP Archive) and Support
+--------------------------------
+
+Create UCS Archive Files
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Q1. What extension must Archive have?*
+
+.ucs
+
+*Q2. What is the default location for ucs files?*
+
+/var/local/ucs
+
+*Q3. What is command for loading ucs file?*
+
+load /sys ucs <path to UCS>
+
+load /sys ucs <path to UCS> no-license - This will not restore the license
+file
+
+*Q4. What issues will occur by restoring ucs file on RMA device?*
+
+Licensing and device cert keys must be updated.
+
+Support - Qkview and iHealth
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Q1. Are logs associated with qkview?*
+
+Yes
+
+*Q2. Where is default filename and location of qkview output?*
+
+/var/tmp/hostname.qkview
+
+*Q3. Where is the default filename and location of core dump?*
+
+/var/core/
+
+*Q4. What is Severity and Condition for unit failure in active/standby
+pair?*
+
+Severity 2, Site at Risk
+
+*Q5. If support case was opened online with Severity 4 and no call has
+been received in a week. What should you do?*
+
+Call support, reference open case and ask to escalate. This may require
+Duty Manager approval.
+
+*Q6. What is the procedure to escalate support case?*
+
+Call support, reference open case and ask to escalate. This may require
+Duty Manager approval.
+
+Maintaining the Device Service Cluster (DSC)
+--------------------------------------------
+
+No questions in this section.

@@ -1,5 +1,5 @@
-Lab 4 – Challenge Labs
-======================================================
+Module 4 – Challenge Labs
+=========================
 
 The challenge labs are design to have you put your BIG-IP knowledge to work making modificatons and resolving issues with little or no guidance.  To cover labs that are too long or disruptive to do during the training.  Or, to cover topics that aren't on the blueprint but may consitute a question or two on the exam.
 

@@ -92,3 +92,26 @@ the **iapp\_lab\_pool**.
 *O3. Could you add the pool member? Why?*
 
 *Q4. Can you add the custom\_analytics profile to the ftp\_vs? Why?*
+
+iApps and Analytics
+-------------------
+
+Create iApps Analytics
+~~~~~~~~~~~~~~~~~~~~~~
+
+*Q1. Did both pool members respond? Why?*
+
+No, only one responded because cookie persistence was built using the
+iApp
+
+*Q2. Can you determine which page took the longest to load?*
+
+If you select Latency > Page Load Time from the top bar you will find
+/bigtext.html took longest.
+
+*O3. Could you add the pool member? Why?*
+
+No, because iApp strictness is on by default and the application can
+only be changed by going to the iApp application and selecting
+Reconfigure from the top bar
+

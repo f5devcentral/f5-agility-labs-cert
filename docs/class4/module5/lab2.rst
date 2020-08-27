@@ -77,6 +77,10 @@ No, the virtual server's connection limit has been reached.
 
 Yes, tcpdump revealed **R** TCP reset the connection.
 
+*Q5. Quit all FTP sessions and note* **ftp\_vs** *status.*
+
+Once all the FTP have been terminated and you have drop below the maximum connection limit the virtual server should become **Available**
+
 Pool Member and Virtual Servers
 -------------------------------
 
@@ -104,10 +108,11 @@ member(s) are down
 Red Diamond - Availability: offline - State: enabled - Pool member has
 been marked down by a monitor
 
-*Q5. Does pool configuration have an effect on virtual server status?*
+*Q5. How does the status of the pool configuration effect the virtual
+server status?*
 
-Yes, the status of the pool members can affect the status of the virtual
-server.
+The status of the pool members can affect the status of the virtual
+server.  If all the the pool members are offline, then the pool is offline and therefore the virtual server goes offline.
 
 *Q6. What is the icon and status of* **www\_vs**\ *?*
 

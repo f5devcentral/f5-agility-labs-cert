@@ -60,7 +60,7 @@ below.
 
 .. image:: /_static/201L/201ex211t2a-tcpdump.png
 
-*Q1. In the tcpdump above, what is client IP address and port and the
+*Q2. In the tcpdump above, what is client IP address and port and the
 server IP address port?*
 
 In window2 (tmsh) run the **show sys conn** again, but strain out the
@@ -76,10 +76,10 @@ server-side connection similar to below:
 
 .. image:: /_static/201L/201ex211t2b-shsysconn.png
 
-*Q2. What is source ip and port as seen by ftp server in the example
+*Q3. What is source ip and port as seen by ftp server in the example
 above?*
 
-*Q3. What happened to the original client IP address and where did
+*Q4. What happened to the original client IP address and where did
 10.1.20.249 come from?*
 
 .. HINT::

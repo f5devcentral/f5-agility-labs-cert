@@ -45,14 +45,14 @@ Welcome to the |classbold| last updated on 04/15/20
 
 .. toctree::
    :maxdepth: 1
-   :caption: Unofficial - 202 Certification Exam Resources:
+   :caption: Unofficial - 201 Certification Lab:
    :glob:
 
    class4/class4
 
 .. toctree::
    :maxdepth: 1
-   :caption: Unofficial - 201 Certification Lab:
+   :caption: Unofficial - 202 Certification Exam Resources:
    :glob:
 
    class5/class5
