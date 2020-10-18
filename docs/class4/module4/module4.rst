@@ -9,7 +9,7 @@ The challenge labs below are available for you to take advantage of.
 Estimated completion time: **A lot of minutes**
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
 
    lab*

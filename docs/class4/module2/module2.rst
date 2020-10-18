@@ -21,7 +21,7 @@ reasons a virtual server may not be working.
 Estimated completion time: **45 minutes**
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
 
    lab*

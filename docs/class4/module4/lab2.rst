@@ -1,4 +1,4 @@
-Upgrading a BIG-IP Device Service Clusters (DSC)
+Upgrading BIG-IP Device Service Clusters (DSC)
 ================================================
 
 This lab is based on the instructions provided in the YouTube video provided by F5 `Updating BIG-IP HA systems with a point release <https://www.youtube.com/watch?v=wcaBq-_zjbs>`_.

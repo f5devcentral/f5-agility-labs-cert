@@ -25,7 +25,7 @@ for various issues.
 Estimated completion time: **20 minutes**
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
 
    lab*
