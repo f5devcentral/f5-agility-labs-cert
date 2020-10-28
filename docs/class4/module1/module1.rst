@@ -20,7 +20,7 @@ Overview of the lab environment
 Estimated completion time: **45 minutes**
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
 
    lab*

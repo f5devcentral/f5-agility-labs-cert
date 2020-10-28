@@ -3,7 +3,7 @@ iApps and Analytics
 
 iApps is barely mentioned in the 201 blueprint and analytics not at all, but they were in the previous 201 and I decided to put them under the challenge labs for your edification and enjoyment.  And just in case there are a question or two on them.
 
-Create and iApps and add Analytics
+Create an iApps and add Analytics
 ----------------------------------
 
 As you saw in the first lab, Application Visibility and Reporting has
@@ -90,28 +90,3 @@ Go to **Local Traffic > Pools** and attempt to add **10.1.20.13:80** to
 the **iapp\_lab\_pool**.
 
 *O3. Could you add the pool member? Why?*
-
-*Q4. Can you add the custom\_analytics profile to the ftp\_vs? Why?*
-
-iApps and Analytics
--------------------
-
-Create iApps Analytics
-~~~~~~~~~~~~~~~~~~~~~~
-
-*Q1. Did both pool members respond? Why?*
-
-No, only one responded because cookie persistence was built using the
-iApp
-
-*Q2. Can you determine which page took the longest to load?*
-
-If you select Latency > Page Load Time from the top bar you will find
-/bigtext.html took longest.
-
-*O3. Could you add the pool member? Why?*
-
-No, because iApp strictness is on by default and the application can
-only be changed by going to the iApp application and selecting
-Reconfigure from the top bar
-
