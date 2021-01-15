@@ -17,20 +17,20 @@ Click on **Interfaces** or click on **Interface List** on the pop out menu.  Her
 Create a VLAN
 -------------
 
-VLANs on the BIG-IP can be tagged (802.1q) or untagged.  VLANs are required to have an interface assigned to them and a tag, if the Interfaces is Tagged.  You will be creating an untagged VLAN.
+VLANs on the BIG-IP can be tagged (802.1q) or untagged.  VLANs are required to have an interface or trunk assigned to them. A VLAN tag will be added automatically if not input by the administrator. If the interface is Tagged you will want to enter the appropriate VLAN tag.  You will be creating an tagged VLAN.
 
 On the **Network** sidebar click on **VLANs** or select **VLAN List** from the pop out menu.  Here you will see a list of the currently configured VLANs and the interfaces assigned to them.
 
 - Create a new VLAN by selecting the **Create** to the upper right of the list.
-- Give the new VLAN a name:   **test_vlan**
+- Give the new VLAN a name:   **test_vlan_40**
 - In the Resources section select the Interface: **1.4**
-- In the Resources section select the Tagging: **Untagged**
+- In the Resources section select the Tagging: **Tagged**
 - **Add** the interface.
 - Hit **Finished** at the bottom.
 
 .. admonition:: TMSH
 
-   tmsh create net vlan test_vlan tag 40 interfaces add { 1.4 { untagged } }
+   tmsh create net vlan test_vlan_40 tag 40 interfaces add { 1.4 { tagged } }
 
 Once complete you should see the following:
 
@@ -54,7 +54,7 @@ To assign a self IP, go to **Network >> Self IPs >> Self IP List** from the side
 
 .. admonition:: TMSH
 
-   tmsh create net self test_selfIP address 10.1.30.245/24 vlan test_vlan
+   tmsh create net self test_selfIP address 10.1.40.245/24 vlan test_vlan
 
 Once complete you should see the following:
 
@@ -85,10 +85,11 @@ On the BIG-IP go into TMSH and run the following commands and note the differenc
 
 .. admonition:: TMSH
 
-   list net interface
-   show net interface
-   list net vlan
-   show net vlan
-   list net self
-   show net self
+   - list net interface
+   - show net interface
+   - list net vlan
+   - show net vlan
+   - list net self
+   - show net self
 
+As you could see *list* commmands showed the configuration, while the *show* command display status and statistics.
