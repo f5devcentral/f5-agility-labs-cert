@@ -34,12 +34,9 @@ Since I can see all pool members are functioning I would suspect the
 monitor is the issue. You could start debugging the monitor directly, or
 you could put the default HTTP monitor and see if the pool members
 come up. If they do, then the monitor is the issue and needs correction.
-In the case, you would check the Send and Receive strings. I would use a
+You would check the Send and Receive strings. I would use a
 curl -i (to include the header and response codes) to look for the
-receive string. In this case it's obvious, we are looking for a 200 OK
-(successful reponse), but have fat-finger 020 OK in the Receive box.
-Correct the receive string and reapply the monitor. The pool should come
-up Available (Green).
+receive string. If you cannot find the receive string then you will have to alter the receive to something that is returned in the page.  In this case the Receive String *f5 vlab demo* is not the response (the monitor is not case sensitive), but *f5 vlab* is, so you can simply delete *demo*.
 
 .. Note:: 
 
@@ -66,11 +63,11 @@ server and leave toward the pool?*
 
 I would create two tcpdumps one on the client-side and the other on the
 server-side. I would want to limit the captures to watch for my PC IP
-address 10.1.10.51. You will need two terminal windows.
+address 10.1.10.6. You will need two terminal windows.
 
 Terminal Window 1 (Client to BIG-IP)
 
-**tcpdump -i client\_vlan -X -s0 host 10.1.10.51 and 10.1.10.105**
+**tcpdump -i client\_vlan -X -s0 host 10.1.10.6 and 10.1.10.105**
 
 (This command will only watch client-side traffic between the PC and
 virtual server. The -s0 command will dump the entire packet -X command
@@ -79,7 +76,7 @@ HTTP request and response in the dump)
 
 Terminal Window 2 (BIG-IP to Pool)
 
-**tcpdump -i server\_vlan -X -s0 host 10.1.10.51**
+**tcpdump -i server\_vlan -X -s0 host 10.1.10.6**
 
 (This command will only watch server-side traffic from the PC and to the
 pool. The -s0 command will dump the entire packet -X command will dump
@@ -95,25 +92,22 @@ Window 2 BIG-IP should have picked a pool member and sent traffic to it.
 *Q10. Did you see the return traffic? If there was no response, what is
 your step?*
 
-No, you should not have received a response. Because the BIG-IP is not
-the default gateway, so the response went someplace else.
+No, you did not received a response. Because the BIG-IP is not
+the default gateway for the server, so the response went someplace else.
 
-1. You can add and SNAT Pool or do SNAT Automap on the virtual server.
-
-2. You can add 10.1.20.240 as a self IP address on the BIG-IP. This
-   should be a floating IP in traffic\_group\_1 so that the default
-   gateway for the servers is still available upon failover.
+- In this case you will need to add a SNAT Pool or do SNAT Automap on the virtual server.
+- You could modify the default gateway of the server to point to an IP address on the BIG-IP. The self IP address should be a floating IP in traffic\_group\_1 so that the default gateway for the server is still available upon failover.
 
 Working with profiles
 ~~~~~~~~~~~~~~~~~~~~~
 
 *Q1. Did site work? Why not?*
 
-SSL connection error
+You met with an SSL protocol error, we are coming in on port 443 but there is not certificate exchange.
 
-*Q2. Did site work?*
+*Q2. Did site work? What did the traffic look like on either side of the tcpdumps?*
 
-Yes
+Yes, the page should have been received.  In the tcpdump on the client side the request was encrypted. On the server side the request was readable.
 
 *Q3. What was needed to add cookie persistence?*
 

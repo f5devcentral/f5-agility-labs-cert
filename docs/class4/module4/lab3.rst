@@ -65,14 +65,12 @@ Build the iApp using the following information:
 
 Review the status and components built by the iApp.
 
-From both the Chromium and Firefox browsers go to **http://10.1.10.110**
+From a couple of Chromium Incognito windows go to **http://10.1.10.110**
 and refresh the page several times and the select the following links
 from the page on each browser.
 
 **Request and Response Headers Allowed** *(review the request and
 response headers)*
-
-**HTTP Compress Example**
 
 **Multiple Stream Example**
 
