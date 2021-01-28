@@ -1,5 +1,428 @@
-Section 2 - Identify and Resolve Application Issues
-===================================================
+Section 2 - Set-up, administer, and secure LTM devices
+======================================================
+
+|
+|
+
+Objective - 2.01 Distinguish between the management interface configuration and application traffic interface configuration
+---------------------------------------------------------------------------------------------------------------------------
+
+|
+|
+
+**2.01 - Explain the requirements for management of the LTM devices**
+
+https://support.f5.com/csp/article/K7312?sr=29126873
+
+**LTM Management**
+
+The BIG-IP can be managed through either the TMM switch interfaces or
+the MGMT interface. However, F5 recommends that you use the management
+port.
+
+The TMM switch ports are the interfaces that the BIG-IP system uses to
+send and receive load-balanced traffic.
+
+The system uses the MGMT interface to perform system management
+functions. The MGMT interface is intended for administrative traffic and
+cannot be used for load-balanced traffic. Additionally, since no access
+controls can be applied on the MGMT interface, F5 recommends that you
+limit network access through the MGMT interface to trusted traffic. For
+security reasons, the MGMT interface should be connected to only a
+secure, management-only network, such as one that uses an RFC1918
+private IP address space. If you do not have a trusted and secure
+management network, F5 recommends that you do not use the MGMT
+interface, and that you grant administrative access through the TMM
+switch interfaces or the local serial console.
+
+Note: In BIG-IP versions earlier than 11.2.0, you must assign an IPv4
+address to the management port. Beginning in BIG-IP 11.2.0, you can
+assign either an IPv4 or IPv6 to the management port.
+
+|
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/f5-plat-hw-essentials/1.html
+
+**Serial Console Connection**
+
+In the event that network access is impaired or not yet configured, the
+serial console might be the only way to access your BIG-IP® system.
+
+Important: You should perform all BIG-IP software installations and
+upgrades using the serial console, as these procedures require reboots,
+in which network connectivity is lost temporarily.
+
+Note: If you cannot see or read output on the serial console, make sure
+that the baud rate is set to 19200.
+
+----
+
+|
+
+**2.01 - Explain the differences between the flow of management and application traffic**
+
+https://support.f5.com/csp/article/K7312
+
+The BIG-IP system uses the following two network connection entry
+points:
+
+-  Traffic Management Microkernel (TMM) switch interfaces
+
+-  Management interface
+
+Either the TMM switch interfaces or the management interface can provide
+administrative access to the BIG-IP system. However, F5 recommends that
+you use the management interface.
+
+The TMM switch ports are the interfaces that the BIG-IP system uses to
+send and receive load-balanced traffic.
+
+The system uses the management interface to perform system management
+functions. The management interface is intended for administrative
+traffic and cannot be used for load-balanced traffic. Additionally,
+since there are limited access controls that can be applied to the
+management interface, F5 recommends that you limit network access
+through the management interface to trusted traffic. For security
+reasons, the management interface should only be connected to a secure,
+management-only network, such as one that uses an RFC1918 private IP
+address space. If you do not have a trusted and secure management
+network, F5 recommends that you do not use the management interface and
+that you grant administrative access through the TMM switch interfaces
+or the local serial console.
+
+----
+
+|
+
+**2.01 - Explain how to configure management connectivity options: AOM, serial console, USB & Management Ethernet Port**
+
+https://support.f5.com/csp/article/K13117?sr=42528406
+
+**USB**
+
+On rare occasions, you may be required to perform a clean installation
+of BIG-IP 11.x. During a clean installation, all mass-storage devices
+are wiped, therefore restoring the BIG-IP system to its factory
+defaults. In addition, a clean installation allows you to reinstall a
+BIG-IP unit that no longer boots from any of its boot locations.
+
+You should choose an installation method based on the equipment
+available to you, and whether you have physical access to the system
+that requires reinstalling. Choose one of the following installation
+methods, which are listed in order of preference:
+
+USB DVD-ROM drive
+
+Note: F5 recommends that you perform a clean installation by using a
+USB DVD-ROM drive, as this is the simplest and most reliable of all
+the installation methods.
+
+USB thumb drive
+
+Burn the product ISO image to a DVD.
+
+Image the USB thumb drive using the product ISO image file.
+
+**Installing the software**
+
+1. Connect to the BIG-IP system serial console.
+
+2. Depending on the choice you made in the previous procedure, perform one of the following actions:
+
+   -  Connect the USB DVD-ROM drive to the F5 system and load the disc you burned with the product ISO image.
+
+   -  Connect the USB thumb drive to the F5 system.
+
+3. Reboot the BIG-IP system. If the F5 system cannot reboot, power cycle the BIG-IP system.
+
+Note: Upon completion of this step, regardless of the installation
+method, the BIG-IP system boots into the Maintenance Operating
+System (MOS).
+
+3. The MOS asks you to specify the type of terminal you are using. If you do not know what to specify, press Enter. The default setting (vt100) is fine in most cases.
+
+4. If you have booted the F5 system from a USB device, the system may display a manufacturing installation dialog.
+
+5. Press Ctrl+C to exit the dialog.
+
+6. Continue with step 8 if you have booted the F5 system from a USB removable media containing a BIG-IP 11.0.0 image, but you want to perform a custom installation using the diskinit and image2disk utilities. Otherwise, to reinstall the system according to the manufacturing installation plan displayed in the output, press Enter and skip to step 10.
+
+7. To wipe all mass-storage devices inside the BIG-IP system, type the following command:
+::
+
+    diskinit --style volumes
+
+Important: Do not omit the --style option; if you omit it, the
+system wipes the drives but does not reformat them.
+
+8. The diskinit utility asks whether you want to proceed wiping the drives. To continue, type y and press Enter. Otherwise, type n and press Enter.
+
+*Important*: Confirming this operation destroys all data on the
+system. Do not proceed with this step if you have data that needs to
+be recovered from the system. Using the MOS, you may be able to
+manually mount a partition or volume and recover such data.
+
+9. Install the software using one of the following methods:
+
+If you are using a USB DVD-ROM drive or a USB thumb drive, use the following command:
+::
+
+    image2disk --format=volumes --nosaveconfig --nosavelicense
+
+If you are using a PXE server, use the following command syntax:
+::
+
+    image2disk --format=volumes --nosaveconfig --nosavelicense
+    http://<SERVER_IP>/<PATH>
+
+For example, to install BIG-IP 11.x on HD1.1 using the http server
+configured in the previous procedure, type the following command:
+::
+
+    image2disk --format=volumes --nosaveconfig --nosavelicense
+    http://192.168.1.1/SOL13117
+
+Note: BIG-IP 11.x cannot be installed on a CompactFlash media drive;
+you must use boot locations on the system’s hard drive.
+
+Note: You must specify the --nosaveconfig option, as the system does
+not have a configuration to save.
+
+Note: If you are using a USB DVD-ROM drive or a USB thumb drive, you
+do not need to specify an installation repository, as the image2disk
+utility automatically finds and defaults to /cdserver.
+
+Note: For more information about the image2disk utility, refer to
+the Help screen by using the image2disk --h command.
+
+10. Once the installation has completed, disconnect any removable media from the BIG-IP system.
+
+11. To restart the system, type the following command:
+::
+
+    reboot
+
+The system boots from the location you have just reinstalled.
+
+|
+
+https://support.f5.com/csp/article/K7683?sr=42527838
+
+**Serial Console**
+
+You can administer a BIG-IP system by using a null modem cable to
+connect a management system that runs a terminal emulator program to the
+BIG-IP serial port. To connect to the BIG-IP system using the serial
+port, you must have a DB9 null modem cable and a VT100-capable terminal
+emulator available on the management system.
+
+To configure a serial terminal console for the BIG-IP system, perform
+the following procedure:
+
+1. Connect the null modem cable to the console port on the BIG-IP system.
+
+2. Connect the null modem cable to a serial port on the management system with the terminal emulator.
+
+3. Configure the serial terminal emulator settings according to the following table:
+
++--------------------------+-------------+
+| **Setting**              | **Value**   |
++==========================+=============+
+| Bits per second [baud]   | 19200       |
++--------------------------+-------------+
+| Data bits                | 8           |
++--------------------------+-------------+
+| Parity                   | None        |
++--------------------------+-------------+
+| Stop bit                 | 1           |
++--------------------------+-------------+
+| Flow control             | None        |
++--------------------------+-------------+
+
+4. Turn on the BIG-IP system.
+
+When the BIG-IP system starts up with the console working correctly, the
+system start-up sequence displays, and then the sequence completes with
+a BIG-IP system login prompt. If garbled text displays on the console,
+you may be required to change the baud of the serial console port using
+the LCD panel on the BIG-IP system.
+
+|
+
+https://support.f5.com/csp/article/K15040?sr=42528282
+
+**Management Ethernet Port**
+
+The management port on a BIG-IP system provides administrative access to
+the system out-of-band of the application traffic. This allows you to
+restrict administrative access to an internal secure network. You can
+display and configure the management IP address for the BIG-IP system
+using the Configuration utility, the command line, and the LCD panel.
+
+**Configuring the management IP address using the Configuration utility,
+command line, or LCD panel**
+
+You can configure the management IP address using the Configuration
+utility, the tmsh utility, the config command, or the LCD panel. To do
+so, perform one of the following procedures:
+
+Impact of procedure: Changing the management IP address will disconnect
+you from the BIG-IP system if you are connected through the management
+port.
+
+**Configuring the management IP address using the Configuration utility**
+
+1. Log in to the Configuration utility.
+
+2. Navigate to System > Platform.
+
+3. In the Management Port section, configure the IP address, network mask, and management route.
+
+4. To save the changes, click Update.
+
+**Configuring the management IP address using the tmsh utility**
+
+1. Log in to the Traffic Management Shell (tmsh) by typing the following command:
+::
+
+    tmsh
+
+2. To configure the management IP address, use the following syntax:
+::
+
+    create /sys management-ip [ip address/netmask]
+
+    or
+
+    create /sys management-ip [ip addres/prefixlen]
+
+    For example:
+
+    create /sys management-ip 192.168.1.245/255.255.255.0
+
+    or
+
+    create /sys management-ip 192.168.1.245/24
+
+3. To configure a default management gateway, use the following syntax:
+::
+
+    create /sys management-route default gateway <gateway ip address>
+
+    For example:
+
+    create /sys management-route default gateway 192.168.1.254
+
+4. Save the changes by typing the following command:
+::
+
+    save /sys config partitions all
+
+**Configuring the management IP address using the config command**
+
+1. Log in to the command line of the BIG-IP system.
+
+2. Enter the F5 Management Port Setup Utility by typing the following command:
+::
+
+    config
+
+3. To configure the management port, type the appropriate IP address, netmask, and management route in the screens that follow.
+
+**Configuring the management IP address using the LCD panel**
+
+1. Press the X button to activate Menu mode for the LCD.
+
+2. Use the arrow keys to select System, and press the Check button.
+
+3. To select Management, press the Check button.
+
+4. To select Mgmt IP, press the Check button.
+
+5. Enter your management IP address using the arrow keys, and press the Check button.
+
+6. Use the arrow keys to select Mgmt Mask, and press the Check button.
+
+7. Enter the netmask using the arrow keys, and press the Check button.
+
+8. Use the arrow keys to select Mgmt Gateway, and press the Check button.
+
+9. Enter your default route using the arrow keys, and press the Check button.
+
+If you do not have a default route, enter 0.0.0.0.
+
+10. Use the arrow keys to select Commit, and press the Check button.
+
+11. To select OK, press the Check button.
+
+|
+
+https://support.f5.com/csp/article/K14595
+
+**AOM**
+
+Always-On Management (AOM) is a separate subsystem that provides
+lights-out management for the BIG-IP system by using the 10/100/1000
+Ethernet management port over secure shell (SSH), or by using the serial
+console.
+
+AOM allows you to manage BIG-IP platforms using SSH (most platforms) or
+the serial console, even if the Host subsystem is turned off. The BIG-IP
+Host subsystem and the AOM subsystem operate independently. If AOM is
+reset or fails, the BIG-IP Host subsystem continues to operate and there
+is no interruption to load-balanced traffic. AOM is always turned on
+when power is supplied to the platform. If the BIG-IP Host subsystem
+stops responding, you can use the AOM Command Menu to reset it.
+
+**Configuring AOM network access**
+
+To configure AOM so that it can be accessed over the network, perform
+the following procedure:
+
+Impact of procedure: Performing the following procedure should not have
+a negative impact on your system.
+
+1. Connect the serial console to the CONSOLE port.
+
+2. Display the AOM command menu by typing the following key sequence:
+::
+
+    Esc (
+
+The AOM command menu displays as follows:
+::
+
+    AOM Command Menu:
+
+    B --- Set console baud rate
+
+    I --- Display platform information
+
+    P --- Power on/off host subsystem
+
+    R --- Reset host subsystem
+
+    N --- Configure AOM network
+
+    S --- Configure SSH Server
+
+    A --- Reset AOM
+
+    E --- Error report
+
+    Q --- Quit menu and return to console
+
+3. To configure network access, press the N key.
+
+The AOM management network configurator screen appears.
+
+4. Complete the network configurator screens.
+
+*Important*: The AOM IP address must be different than the BIG-IP
+management address, but on the same IP subnet.
+
+To disable the network configuration, re-run the N ---Configure AOM
+network option, and enter 0.0.0.0 for the IP address.
 
 |
 
@@ -13,119 +436,325 @@ Section 2 - Identify and Resolve Application Issues
 
 |
 
-Objective - 2.01 Determine which iRule to use to resolve an application issue
------------------------------------------------------------------------------
+Objective - 2.02 Given a network diagram, determine the appropriate network and system settings (i.e., VLANs, selfIPs, trunks, routes, NTP servers, DNS servers, SNMP receivers and syslog servers)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 |
 |
 
-**2.01 - Determine which iRule events and commands to use**
+**2.02 - Explain the requirements for self IPs (including port lockdown)**
 
-https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-5-0/18.html
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-5-0/13.html
 
-**iRule Events and Commands**
+**Self IPs**
 
-An iRule is a powerful and flexible feature within the BIG-IP operating
-system that you can use to manage your network traffic. The iRules
-feature not only allows you to select pools based on header data, but
-also allows you to direct traffic by searching on any type of content
-data that you define. Thus, the iRules feature significantly enhances
-your ability to customize your content switching to suit your exact
-needs.
+It is when you initially run the Setup utility on a BIG-IP system that
+you normally create any static and floating self IP addresses and assign
+them to VLANs. However, if you want to create additional self IP
+addresses later, you can do so using the Configuration utility.
 
-Important: For complete and detailed information on iRules syntax, see
-the F5 DevCentral web site, http://devcentral.f5.com. Note that
-iRules must conform to standard Tcl grammar rules; therefore, for more
-information on Tcl syntax, see
-http://tmml.sourceforge.net/doc/tcl/index.html.
+Note: Only users with either the Administrator or Resource
+Administrator user role can create and manage self IP addresses.
 
-An iRule is a script that you write if you want individual connections
-to target a pool other than the default pool defined for a virtual
-server. iRules allow you to more directly specify the destinations to
-which you want traffic to be directed. Using iRules, you can send
-traffic not only to pools, but also to individual pool members, ports,
-or URIs. The iRules you create can be simple or sophisticated, depending
-on your content-switching needs.
+Note: A self IP address can be in either IPv4 or IPv6 format.
 
-Events
+**IP address**
 
-iRules are event-driven, which means that the LTM system triggers an
-iRule based on an event that you specify in the iRule. An event
-declaration is the specification of an event within an iRule that causes
-the LTM system to trigger that iRule whenever that event occurs.
+A self IP address, combined with a netmask, typically represents a range
+of host IP addresses in a VLAN. If you are assigning a self IP address
+to a VLAN group, the self IP address represents the range of self IP
+addresses assigned to the VLANs in that group.
 
-In a basic system configuration where no iRule exists, Local Traffic
-Manager directs incoming traffic to the default pool assigned to the
-virtual server that receives that traffic. However, you might want Local
-Traffic Manager to direct certain kinds of connections to other
-destinations. The way to do this is to write an iRule that directs
-traffic to that other destination, contingent on a certain type of event
-occurring. Otherwise, traffic continues to go to the default pool
-assigned to the virtual server.
+**Netmask**
 
-iRules are therefore evaluated whenever an event occurs that you have
-specified in the iRule. For example, if an iRule includes the event
-declaration CLIENT\_ACCEPTED, then the iRule is triggered whenever Local
-Traffic Manager accepts a client connection. Local Traffic Manager then
-follows the directions in the remainder of the iRule to determine the
-destination of the packet.
+When you specify a netmask for a self IP address, the self IP address
+can represent a range of IP addresses, rather than a single host
+address. For example, a self IP address of 10.0.0.100 can represent
+several host IP addresses if you specify a netmask of 255.255.0.0.
 
-.. code-block:: bash
+**VLAN/Tunnel assignment**
 
-   when CLIENT\_ACCEPTED {
-     if { [IP::addr [IP::client\_addr] equals 10.10.10.10] } {
-       pool my\_pool
-     }
-   }
+You assign a unique self IP address to a specific VLAN or a VLAN group:
 
-This iRule is triggered when a client-side connection has been accepted,
-causing Local Traffic Manager to send the packet to the pool my\_pool,
-if the client’s address matches 10.10.10.10.
+-  Assigning a self IP address to a VLAN
 
-For a full list of possible events see the following link:
+The self IP address that you assign to a VLAN should represent an
+address space that includes the self IP addresses of the hosts that
+the VLAN contains. For example, if the address of one destination
+server in a VLAN is 10.0.0.1 and the address of another server in
+the VLAN is 10.0.0.2, you could assign a self IP address of
+10.0.0.100, with a netmask of 255.255.0.0, to the VLAN.
 
-https://devcentral.f5.com/wiki/irules.Events.ashx
+-  Assigning a self IP address to a VLAN group
+
+The self IP address that you assign to a VLAN group should represent
+an address space that includes the self IP addresses of the VLANs
+that you assigned to the group. For example, if the self IP address
+of one VLAN in a VLAN group is 10.0.20.100 and the address of the
+other VLAN in a VLAN group is 10.0.30.100,you could assign an
+address of 10.0.0.100, with a netmask of 255.255.0.0, to the VLAN
+group.
+
+The VLAN/Tunnel list in the BIG-IP Configuration utility displays the
+names of all existing VLANs and VLAN groups.
+
+**Port lockdown**
+
+Each self IP address has a feature known as port lockdown. Port lockdown
+is a security feature that allows you to specify particular UDP and TCP
+protocols and services from which the self IP address can accept
+traffic. By default, a self IP address accepts traffic from these
+protocols and services:
+
+-  For UDP, the allowed protocols and services are: DNS (53), SNMP
+   (161), RIP (520)
+
+-  For TCP, the allowed protocols and services are: SSH (22), DNS (53),
+   SNMP (161), HTTPS (443), 4353 (iQuery)
+
+If you do not want to use the default setting (Allow Default), you can
+configure port lockdown to allow either all UDP and TCP protocols and
+services (Allow All), no UDP protocols and services (Allow None), or
+only those that you specify (Allow Custom).
+
+**Traffic groups**
+
+If you want the self IP address to be a floating IP address, that is, an
+address shared between two or more BIG-IP devices in a device group, you
+can assign a floating traffic group to the self IP address. A floating
+traffic group causes the self IP address to become a floating self IP
+address.
+
+A floating self IP address ensures that application traffic reaches its
+destination. More specifically, a floating self IP address enables a
+source node to successfully send a request, and a destination node to
+successfully send a response, when the relevant BIG-IP device is
+unavailable.
+
+If you want the self IP address to be a static (non-floating) IP address
+(used mostly for standalone devices), you can assign a non-floating
+traffic group to the self IP address. A non-floating traffic group
+causes the self IP address to become a non-floating self IP address. An
+example of a non-floating self IP address is the address that you assign
+to the default VLAN named HA, which is used strictly to process failover
+communications between BIG-IP devices, instead of processing application
+traffic.
 
 ----
 
 |
 
-**2.01 - Given a specific iRule event determine what commands are available**
+**2.02 - Explain routing requirements for management and application traffic (including route domains and IPv6)**
 
-https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-5-0/18.html
+https://support.f5.com/csp/article/K13284?sr=42499558
 
-**iRule Commands**
+The Traffic Management Microkernel (TMM) controls all of the BIG-IP
+switch ports (TMM interfaces), and the underlying Linux operating system
+controls the BIG-IP management interface. The management interface
+processes only administrative traffic. The TMM interfaces process both
+application traffic and administrative traffic.
 
-An iRule command within an iRule causes Local Traffic Manager to take
-some action, such as querying for data, manipulating data, or specifying
-a traffic destination. The types of commands that you can include within
-iRules are:
+Inbound administrative traffic
 
-Statement commands
+The Linux operation system processes inbound traffic sent to the BIG-IP
+management IP address and arriving on the management interface. Inbound
+connections sent to the BIG-IP self IP addresses that arrive on a TMM
+interface are processed by TMM. If the self IP address is configured to
+allow a connection to the destination service port, TMM hands the
+connection off to the Linux operating system, which then processes the
+connection request. By default, the BIG-IP system uses Auto Last Hop to
+return response traffic to a remote host. Auto Last Hop returns response
+traffic to the MAC address of the device from which the traffic last
+traversed before reaching the BIG-IP system.
 
-These commands cause actions such as selecting a traffic destination or
-assigning a SNAT translation address. An example of a statement command
-is pool <name>, which directs traffic to the named load balancing pool.
+Note: Beginning in BIG-IP 14.1.0, the Auto Last Hop feature is no longer
+available on the BIG-IP management interface. For more information,
+refer to K55225090: BIG-IP VE no longer supports Auto Last Hop for
+management connections.
 
-Commands that query or manipulate data
+Outbound administrative traffic
 
-Some commands search for header and content data, while others perform
-data manipulation such as inserting headers into HTTP requests. An
-example of a query command is IP::remote\_addr, which searches for and
-returns the remote IP address of a connection. An example of a data
-manipulation command is HTTP::header remove <name>, which removes the
-last occurrence of the named header from a request or response.
+The Linux operating system processes outbound traffic sent from the
+BIG-IP system by administrative applications, such as SNMP, SMTP, SSH,
+and NTP. These connections may use either the management address or a
+self IP address as the source address. The BIG-IP system compares the
+destination address to the routing table to determine the interface
+through which the BIG-IP system routes the traffic.
 
-Utility commands
+BIG-IP routing tables
 
-These commands are functions that are useful for parsing and
-manipulating content. An example of a utility command is decode\_uri
-<string>, which decodes the named string using HTTP URI encoding and
-returns the result.
+The BIG-IP routing table consists of a combination of routing subtables.
+A subtable for management routes, and a subtable for TMM routes. Routes
+in the TMM subtable are defined with a lower metric than routes in the
+management subtable. As a result, if an equally specific route exists as
+both a TMM route and a management route, the system will prefer the TMM
+route. This also applies if the only defined management route is a
+default gateway, the system will prefer the TMM default gateway.
 
-For a full list of possible commands see the following link:
+TMM switch routes are routes that the BIG-IP system uses to forward
+traffic through the TMM switch interfaces instead of through the
+management interface. Traffic sourced from a TMM (self IP) address will
+always use the most specific matching TMM route. Traffic sourced from a
+TMM address will never use a management route. When TMM is not running,
+the TMM addresses are not available, and all TMM routes are removed. As
+a result, when TMM is not running, all outbound administrative traffic
+uses the most specific matching management route.
 
-https://devcentral.f5.com/wiki/iRules.Commands.ashx
+The BIG-IP system uses management routes to forward traffic through the
+management interface.
+
+|
+
+https://support.f5.com/csp/article/K84417414
+
+**Route domains**
+
+Route domains are designed to overcome the problem of overlapping
+network IP address spaces. Because of this design, forwarding traffic
+between route domains is limited.
+
+Description
+
+One intended route domain implementation would be when the BIG-IP system
+hosts multiple tenants that use the same private IP address space to
+configure their networking devices. In this case, route domains allow
+the hosting BIG-IP system to use the same IP address space for multiple
+tenants, while preventing direct access between the tenants.
+
+You can allow access between route domains in a limited capacity by
+using parent-child relationships and strict isolation.
+
+Parent-child relationship
+
+When you create a route domain, you can associate a parent route domain.
+When the BIG-IP system is unable to find a necessary route in the child
+domain, the system can then search an associated parent route domain for
+a possible route. The default associated route domain is None.
+
+Strict isolation
+
+When enabled, strict isolation specifies whether the system enforces
+cross-routing restrictions. When enabled, routes cannot cross-route
+domain boundaries; they are strictly isolated to the current route
+domain. The default setting is Enabled. When disabled, a route can
+cross-route domains. For example, you can add a route to the routing
+table where the destination is 10.0.0.0%20 (route domain 20) and the
+gateway is 172.27.84.29%32 (route domain 32).
+
+Note: When strict isolation is enabled on a route domain, the BIG-IP
+system allows traffic forwarding from that route domain to the specified
+parent route domain only. To enforce strict isolation between
+parent-child route domains, you must enable the strict isolation feature
+on both the child and the parent route domains.
+
+VLANs
+
+Route domains may not be the proper choice if the intended use does not
+involve overlapping IP address spaces. Virtual Local Area Networks
+(VLAN) serve as a logical separation of hosts using the same IP address
+space. Unlike route domains, the BIG-IP system can forward traffic
+between VLANs with simple modifications to the routing table.
+
+|
+
+https://support.f5.com/csp/article/K7267
+
+**IPV6**
+
+The BIG-IP is a native IPV6 device.
+
+In BIG-IP versions prior to 11.0.0, there is no option in the
+Configuration utility to specify an IPv6 default route. The default
+configuration when creating network routes on the BIG-IP system is for
+IPv4. To specify a default route for an IPv6 address, you must specify
+both a destination network that uses the route, and a netmask value.
+Otherwise, the route will be added to the BIG-IP system configuration as
+an IPv4 default route pointing to an IPv6 gateway.
+
+To specify an IPv6 default route on the BIG-IP system using the
+Configuration utility, perform the following procedure:
+
+1. Log in to the Configuration utility.
+
+2. Navigate to Network > Routes.
+
+3. Click Add.
+
+4. From the Type menu, click Route.
+
+5. Specify :: as the Destination.
+
+6. Specify :: as the Netmask.
+
+7. From the Resource list, click Use Gateway.
+
+8. In the box, type the IPv6 IP address.
+
+9. Click Finished.
+
+To specify an IPv6 default route on the BIG-IP system using the Traffic
+Management Shell (tmsh), perform the following procedure:
+
+1. Log in to the tmsh utility by typing the following command:
+::
+
+    tmsh
+
+2. Create the IPv6 default route using the following command syntax:
+::
+
+    create /net route default-inet6 gw <ipv6 gw address>
+
+Note: A corresponding self IP address residing in the same network
+of the IPv6 gateway must exist to create the IPv6 route gateway.
+::
+
+    For example:
+
+    create /net route default-inet6 gw fd00:9:0:0:0:0:0:2
+
+3. Save the configuration changes by typing the following command:
+::
+
+    save /sys config
+
+4. To exit the tmsh utility, type the following command:
+::
+
+    quit
+
+----
+
+|
+
+**2.02 - Explain the effect of system time on LTM devices**
+
+https://support.f5.com/csp/article/K10240?sr=29127185
+
+**NTP**
+
+Having the correct system time set on your BIG-IP devices is critical
+for many different administrative functions. Time stamping for logging
+is all based on system time. SSL certificates could have issues with the
+expiration dates. In HA environments if the system time is not set
+correctly between the units in the HA configuration the systems may not
+be able to sync configs.
+
+When the BIG-IP system clock is not showing the correct timezone, or the
+date and time is not synchronized correctly, this could be caused by
+incorrect NTP configuration or a communication issue with a valid NTP
+peer server. Remember that even if you have the NTP settings correct in
+the BIG-IP system it may not be able to reach the NTP if there is an
+up-stream Firewall or other network restrictions.
+
+**Network Time Protocol (NTP)**
+
+NTP is a protocol for synchronizing the clocks of computer systems over
+the network. On BIG-IP systems, accurate timestamps are essential to
+guarantee the correct behavior of a number of features. While in most
+cases it is sufficient to configure a couple of time servers that the
+BIG-IP system will use to update its system time, it is also possible to
+define more advanced NTP configurations on the BIG-IP system.
 
 |
 
@@ -139,278 +768,84 @@ https://devcentral.f5.com/wiki/iRules.Commands.ashx
 
 |
 
-Objective - 2.02 Explain the functionality of a given iRule
------------------------------------------------------------
+Objective - 2.03 Explain how to configure remote authentication and multiple administration roles on the LTM device
+-------------------------------------------------------------------------------------------------------------------
 
 |
 |
 
-**2.02 - Interpret information in iRule logs to determine the iRule and iRule events where they occurred**
+**2.03 - Explain the mapping between remote users and remote role groups**
 
-https://devcentral.f5.com/articles/irules-101-09-debugging
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-implementations-11-5-0/29.html
 
-**Logging with iRules**
+**Remote authentication and authorization of BIG-IP user accounts**
 
-The first tool you will want to arm yourself with is the iRules "log" command. 
-The syntax for the log is
+The BIG-IP system includes a comprehensive solution for managing BIG-IP
+administrative accounts on your network. With this solution, you can:
 
-.. code-block:: bash
+**Use a remote server to store BIG-IP system user accounts.**
 
-   log [<facility>.<level>] <message>
-   facility : "local0", "local1", "local2", "local3", "local4", "local5",
-   "local6", "local7"
-   level: "alert", "crit", "debug", "emerg", "err", "error", "info",
-   "none", "notice", "panic", "warn", "warning"
+The BIG-IP system includes support for using a remote authentication
+server to store BIG-IP system user accounts. After creating BIG-IP
+system accounts on the remote server (using the server vendor's
+instructions), you can configure the BIG-IP system to use remote user
+authentication and authorization (access control) for that server type.
 
-While the facility and level parameters are optional, it is good to know
-that there is a significant behavioral difference when the optional
-<facility>.<level> is specified. When iRule logs messages without the
-facility and/or level, they are rate-limited as a class and subsequently
-logged messages within the rate-limit period may be suppressed even
-though they are textually different. However, when the <facility> and/or
-<level> are specified, the log messages are not rate-limited (though
-syslog-ng will still perform suppression of repeated duplicates).
+**Assign group-based access.**
 
-Whew, that's a lot of options. Lucky for you all that unless you are
-doing some customization in syslog-ng regarding the different facilities
-and levels, you can stick with the defaults of "local0" and "error"
-which are the defaults. Actually, we've made it even easier than that
-for you, in that you can omit the level parameter and we'll default it
-for you. In almost every iRule you will see on DevCentral, the following
-syntax is used and in 99% of the cases, it will be all that you need.
+The BIG-IP system includes an optional feature known as remote role
+groups. With the remote role groups feature, you can use existing group
+definitions on the remote server to define the access control properties
+for users in a group. This feature not only provides more granularity in
+assigning user privileges, but also removes any need to duplicate remote
+user accounts on the BIG-IP system for the purpose of assigning those
+privileges.
 
-.. code-block:: bash
+**Propagate a set of authorization data to multiple BIG-IP systems.**
 
-   log local0. "message goes here"
-
-This will ensure that the log messages are not rate limited and go
-directly to the log files and that they will be stored in the system log
-file: /var/log/ltm.
-
-A practical example
-
-What and what not to log really depends on your iRule and what you are
-trying to accomplish with it. If you are trying to process a HTTP
-request, it's probably a good idea to log the inputs to your iRule such
-as HTTP::host and HTTP::uri, as well as any temporary variables you are
-using if processing those string values. Let's look at the following iRule.
-
-.. code-block:: bash
-   
-   when HTTP\_REQUEST {
-     switch -glob [HTTP::uri] {
-       "/app1\*" {
-         pool app1\_pool
-       }
-       "\*.gif" -
-       "\*.jpg" {
-         pool images\_pool
-       }
-       default {
-         pool def\_pool
-       }
-     }
-   }
-
-This seems fairly straight forward. All requests to the "/app1"
-application will be sent to the app1\_pool pool, all files with the
-".gif" and ".jpg" extensions will be routed to the images\_pool pool,
-and all other requests will be sent to the def\_pool pool. Then you go
-to test your application and none of the images for the app1 application
-are being displayed. The way to go about debugging this issue would be
-to log the inputs and log the decision elements of the iRules logic to
-determine the source of the problem.
-
-Your first thought is to go to the webserver logs for the image servers
-and see why the requests are not being honored. To your surpise, the
-logs show no requests on the image servers. Your next obvious step is to
-put some debugging in your iRule to see exactly what's going on.
-
-.. code-block:: bash
-
-   when HTTP\_REQUEST {
-     log local0. "Request: [HTTP::uri]"
-     switch -glob [HTTP::uri] {
-       "/app1\*" {
-         log local0. "Sending request to app1\_pool"
-         pool app1\_pool
-       }
-       "\*.gif" -
-       "\*.jpg" {
-         log local0. "Sending request to images\_pool"
-         pool images\_pool
-       }
-       default {
-         log local0. "Sending request to def\_pool"
-         pool def\_pool
-       }
-     }
-   }
-   
-
-Then when you run your traffic, you will see something like this in the
-logs
-
-.. code-block:: bash
-
-   Request: /app1/index.html
-   Sending request to app1\_pool
-   Request: /js/file.js
-   Sending request to def\_pool
-   Request: /app1/smile.gif
-   Sending request to app1\_pool
-
-What! I thought all image files were supposed to be sent to the
-images\_pool pool but they are being sent to the app1\_pool pool. Since
-the condition of searching for "/app1" was before the "gif/"jpg" test,
-it matched and requests were sent to the app1\_pool pool of servers. Now
-that you have this information, it's fairly easy to reorder the
-conditions in the switch statement to ensure all image request go to the
-images\_pool pool.
-
-.. code-block:: bash
-
-   when HTTP\_REQUEST {
-     log local0. "Request: [HTTP::uri]"
-     switch -glob [HTTP::uri] {
-       "\*.gif" -
-       "\*.jpg" {
-         log local0. "Sending request to images\_pool"
-         pool images\_pool
-       }
-       "/app1\*" {
-         log local0. "Sending request to app1\_pool"
-         pool app1\_pool
-       }
-       default {
-         log local0. "Sending request to def\_pool"
-         pool def\_pool
-       }
-     }
-   }
-
-Now to your pleasure, the images are displaying in your application.
-Just for kicks you look at the logs and see something like the
-following:
-
-.. code-block::  bash
-
-   Request: /app1/index.html
-   Sending request to app1\_pool
-   Request: /js/file.js
-   Sending request to def\_pool
-   Request: /app1/smile.gif
-   Sending request to images\_poo
-
-All is good, the app is working, and all images are being displayed
-properly. You're done right? WRONG...
-
-**Remove Logging in Production**
-
-Debug logging is a great tool when testing your application deployments,
-or even when fixing an issue with production servers. But, log messages
-do fill up the system logs and the system disks are only so big. In most
-cases, debug logging should be disabled when you've got all the kinks
-worked out. This can be done in several ways:
-
-1. Remove the log commands from the iRule. This is probably the easiest
-   to implement, just delete the log lines and click save. This option
-   will reduce the clutter in your iRule and makes it easier to read.
-
-2. Comment out the log commands with a # sign. This will enable you to
-   easily restore the log commands if another situation comes up where
-   you need to figure out a new app error. Just uncomment the log lines,
-   click save, and you are back in business.
-
-3. Use conditional log statements based on global variables. By wrapping
-   log statements with an if statement testing the value of a variable,
-   you can make turning on and off logging as simple as changing a
-   variable. The above iRule could be written like this.
-
-   .. code-block:: bash
-      
-      when HTTP\_REQUEST {
-        set DEBUG 1
-        if { $DEBUG } { log local0. "Request: [HTTP::uri]" }
-        switch -glob [HTTP::uri] {
-          "\*.gif" -
-          "\*.jpg" {
-            if { $DEBUG } { log local0. "Sending request to images\_pool"
-            }
-            pool images\_pool
-          }
-          "/app1\*" {
-            if { $DEBUG } { log local0. "Sending request to app1\_pool" }
-            pool app1\_pool
-          }
-          default {
-            if { $DEBUG } { log local0. "Sending request to def\_pool" }
-            pool def\_pool
-          }
-        }
-      }
-
-   Then by setting DEBUG to 1 will enable logging and setting it to 0 will
-   turn logging off. The method you use will solely depend on your own
-   situation. Options 1 and 2 take no CPU overhead in the log processing,
-   while option 3 still requires performing a Boolean test on a variable.
-   For hundreds of thousands of requests, this can add up.
-
-Wrapping it up
---------------
-
-First thing to know and imprint in your mind is that logging is your
-friend. You should get in the habit of including some form of logging in
-all new iRule development to speed up diagnosing issues. Just make sure
-that you remember to disable those log commands when you move your iRule
-into production so that you keep from filling up the BIG-IP's
-filesystem.
-
-For more information on the log command see the following link:
-
-https://devcentral.f5.com/wiki/iRules.log.ashx
+The BIG-IP system includes a tool for propagating BIG-IP system
+configuration data to multiple BIG-IP devices on the network. This tool
+is known as the Single Configuration File (SCF) feature.
 
 ----
 
 |
 
-**2.02 - Describe the results of iRule errors**
+**2.03 - Explain the options for partition access and terminal access**
 
-https://support.f5.com/kb/en-us/solutions/public/13000/900/sol13905.html?sr=46137011
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-5-0/10.html#unique_1660055220
 
-**iRule Errors**
+**Partition Access**
 
-When an iRule contains an error, such as a missing variable, the system
-generates a TCL error indicating the missing or incorrect element. A TCL
-runtime error aborts the affected instance of the iRule, and may cause
-the associated connection to be reset. The error message can provide
-valuable information when creating and troubleshooting iRule syntax.
+A user role defines the access level that a user has for each object in
+the users assigned partition. An access level refers to the type of task
+that a user can perform on an object. Possible access levels are:
 
-If the error message occurs during operation or while creating an iRule,
-use the information in the error message to troubleshoot the iRule
-syntax. If the error occurs after upgrading the BIG-IP system to a new
-software release, refer to the DevCentral site and verify whether any
-portion of the iRule syntax (such as an iRule command) was deprecated or
-changed.
+-  Write
 
-**Error Message**
+Grants full access, that is, the ability to create, modify, enable and disable, and delete an object.
 
-.. code-block:: console
+-  Update
 
-   *Error Message: 01220001:3: TCL error*
+Grants the ability to modify, enable, and disable an object.
 
-For example:
+-  Enable/disable
 
-.. code-block:: console
+Grants the ability to enable or disable an object.
 
-   *01220001:3: TCL error: /Common/broken <RULE\_INIT> - can't read "b": no
-   such variable while executing "set a $b"*
-   *01220001:3: TCL error: MyiRule <HTTP\_RESPONSE> - wrong # args: should
-   be ""persist add uie <key>" while executing "persist add uie
-   [HTTP::cookie "cookie\_name"]" *
-   *01220001:3: TCL error: MyiRule - Out of bounds (line 2) invoked from
-   within "HTTP::payload replace 0 $content\_length [string repeat "X"
-   $content\_length]"*
+-  Read
+
+Grants the ability to view an object.
+
+**Terminal Access**
+
+Specifies the level of access to the BIG-IP system command line
+interface. Possible values are: Disabled and Advanced shell.
+
+Users with the Administrator or Resource Administrator role assigned to
+their accounts can have advanced shell access, that is, permission to
+use all BIG-IP system command line utilities, as well as any Linux
+commands.
 
 |
 
@@ -424,1690 +859,132 @@ For example:
 
 |
 
-Objective - 2.03 Given specific traffic and configuration containing a simple iRule determine the result of the iRule on the traffic
-------------------------------------------------------------------------------------------------------------------------------------
+Objective - 2.04 Explain the uses of administrative partitions
+--------------------------------------------------------------
 
 |
 |
 
-**2.03 - Use an iRule to resolve application issues related to traffic steering and/or application data**
-
-https://devcentral.f5.com/articles/routing-traffic-by-uri-using-irule
-
-**Routing traffic by URI using iRule**
-
-DevCentral has a good article on this topic as an example.
-
-The Challenge:
-
-When a user conducts a search on a website and is directed to one of the
-servers, the search information is cached on that server. If another
-user searches for that same data but the LTM load balances to the other
-server, the cached data from the first server does him no good. So to
-solve this caching problem, the customer wants traffic that contains a
-specific search parameter to be routed to the second server (as long as
-the server is available). Specifically in this case, when a user loads a
-page and the URI starts with /path/\* that traffic should be sent to
-Server\_2.
-
-The picture below shows a representation of what the customer wants to
-accomplish:
-
-.. image:: /_static/301b/p09.jpeg
-
-|
-|
-
-The Solution:
-
-So, the question becomes: How does the customer ensure all /path/\*
-traffic is sent to a specific server? Well, you guessed it...the
-ubiquitous and loveable iRule! Everyone had a pretty good idea an iRule
-would be used to solve this problem, but what does that iRule look like?
-Well, here it is!!
-
-.. code-block:: bash
-   
-   when HTTP\_REQUEST {
-     if { [string tolower [HTTP::path]] starts\_with "/path/" } {
-       persist none
-       set pm [lsearch -inline [active\_members -list <pool name>]
-       x.x.x.x\*]
-       catch { pool <pool name> member [lindex $pm 0] [lindex $pm 1] }
-     }
-   }
-
-Let's talk through the specifics of this solution...
-
-For efficiency, start by checking the least likely condition. If an
-HTTP\_REQUEST comes in, immediately check for the "/path/" string. Keep
-in mind the "string tolower" command on the HTTP::path before the
-comparison to "/path/" to ensure the cases match correctly. Also, notice
-the use of HTTP::path instead of the full URI for the
-comparison...there's no need to use the full URI for this check.
-
-Next, turn off persistence just in case another profile or iRule is
-forcing the connection to persist to a place other than the beloved
-Server\_2.
-
-Then, search all active members in the pool for the Server\_2 IP address
-and port. The "lsearch -inline" ensures the matching value is returned
-instead of just the index. The "active\_members -list" is used to ensure
-we get a list of IP addresses and ports, not just the number of active
-members. Note the asterisk behind the IP address in the search
-command...this is needed to ensure the port number is included in the
-search. Based on the searches, the resulting values are set in a
-variable called "pm".
-
-Next, use the catch command to stop any TCL errors from causing
-problems. Because we are getting the active members list, it's possible
-that the pool member we are trying to match is NOT active and therefore
-the pool member listed in the pool command may not be there...this is
-what might cause that TCL error. Then send the traffic to the correct
-pool member, which requires the IP and port. The astute observer and
-especially the one familiar with the output of "active\_members -list"
-will notice that each pool member returned in the list is already
-pre-formatted in "ip port" format. However, just using the pm variable
-in the pool command returns a TCL error, likely because the pm variable
-is a single object instead of two unique objects. So, the lindex is used
-to pull out each element individually to avoid the TCL error.
-
-Testing:
-
-Our team tested the iRule by adding it to a development site and then
-accessing several pages on that site. We made sure the pages included
-"/path/" in the URIs! We used tcpdump on the BIG-IP to capture the
-transactions (tcpdump -ni 0.0 -w/var/tmp/capture1.pcap tcp port 80 -s0)
-and then downloaded them locally and used Wireshark for analysis. Using
-these tools, we determined that all the "/path/" traffic routed to
-Server\_2 and all other traffic was still balanced between Server\_1 and
-Server\_2. So, the iRule worked correctly and it was ready for prime
-time!
-
-Special thanks to Jason Rahm and Joe Pruitt for their outstanding
-technical expertise and support in solving this challenge!
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-Objective - 2.04 Interpret AVR information to identify performance issues or application attacks
-------------------------------------------------------------------------------------------------
-
-|
-|
-
-**2.04 - Explain how to modify profile settings using information from the AVR**
-
-https://support.f5.com/kb/en-us/products/big-ip_analytics/manuals/product/avr-implementations-11-5-0/4.html#conceptid
-
-**Changing the default values in the Analytics profile**
-
-Reported information that is captured by AVR can be used to help you
-understand what is happening with the application and possible tune
-settings in the BIG-IP configuration.
-
-You may have users experiencing slow Page Load Times which is the length
-of time it takes for application web pages to load on client-side
-browsers. This information is useful if end users report that an
-application is slow, and you want to determine the cause of the problem.
-Adjusting the TCP profile to account for Cell or WAN based users on the
-client side may help improve the issue or understanding that the content
-is large and perhaps doing some simple compression may help the user
-experience.
-
-----
-
-|
-
-**2.04 - Explain how to use advanced filters to narrow output data from AVR**
-
-https://support.f5.com/kb/en-us/products/big-ip_analytics/manuals/product/avr-implementations-11-5-0/2.html#conceptid
-
-You can review charts that show statistical information about traffic to
-your web applications. The charts provide visibility into application
-behavior, user experience, transactions, and data center resource usage.
-
-1. On the Main tab, click Statistics > Analytics > HTTP. The Overview
-   screen opens.
-
-2. From the Override time range to list, select a new time frame to
-   apply to all of the widgets in the overview.
-
-   Tip: Within each widget you can override the default time range, as
-   needed.
-
-3. For each widget, select the data format and the time range to
-   display, as needed.
-
-4. From the menu bar, select the type of statistics you want to view.
-
-   +------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Select this option                 | To see these application statistics                                                                                                                                                                           |
-   +====================================+===============================================================================================================================================================================================================+
-   | Overview                           | Top statistical information about traffic on your system or managed systems, such as the top virtual servers, top URLs accessed, and top applications. You can customize the information that is displayed.   |
-   +------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Transactions                       | The HTTP transaction rate (transactions per second) passing through the web applications, and the number of transactions to and from the web applications.                                                    |
-   +------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Latency > Server Latency           | The number of milliseconds it takes from the time a request arrives at the virtual server until a response arrives at the virtual server.                                                                     |
-   +------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Latency > Page Load Time           | The number of milliseconds it takes for a web page to fully load on a client browser, from the time the user clicks a link or enters a web address until the web page displays in its entirety.               |
-   +------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Throughput > Request Throughput    | HTTP request throughput in bits per second.                                                                                                                                                                   |
-   +------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Throughput > Response Throughput   | HTTP response throughput in bits per second.                                                                                                                                                                  |
-   +------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Sessions > New Sessions            | The number of transactions that open new sessions, in sessions per second.                                                                                                                                    |
-   +------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Sessions > Concurrent Sessions     | The total number of open and active sessions at a given time, until they time out.                                                                                                                            |
-   +------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-   The charts display information based on the settings you enabled in the Analytics profile.
-
-5. From the View By list, select the specific network object type for
-   which you want to display statistics. You can also click Expand
-   Advanced Filters to filter the information that displays.
-
-6. To focus in on the specific details you want more information about,
-   click the chart or the details. The system refreshes the charts and
-   displays information about the item.
-
-7. On the screen, the system displays the path you followed to reach the
-   current display, including the items you clicked. For example, to
-   review throughput details for a particular virtual server, follow
-   these steps:
-
-   - From the Throughput menu, choose Request Throughput.
-
-   - From the View By list, select Virtual Servers. The charts show
-     throughput statistics for all virtual servers on this BIG-IP system.
-     You can point on the charts to display specific numbers.
-
-   - Click the virtual server you want more information about. You can
-     either click a part of the pie chart or click the name of the virtual
-     server in the Details table. The charts show throughput statistics
-     for that virtual server, and shows the path you used to display the
-     information.
-
-   - To view information about other applications or retrace your path,
-     click a link (in blue) in the path displayed by the charts.
-
-     As you drill down into the statistics, you can locate more details
-     and view information about a specific item on the charts.
-
-You can continue to review the collected metrics on the system viewing
-transactions, latency, throughput, and sessions. As a result, you become
-more familiar with the system, applications, resource utilization, and
-more, and you can view the statistics in clear graphical charts, and
-troubleshoot the system as needed.
-
-----
-
-|
-
-**2.04 - Identify potential latency increases within an application**
-
-https://support.f5.com/kb/en-us/products/big-ip_analytics/manuals/product/avr-implementations-11-5-0/3.html#conceptid
-
-**Investigating the server latency of applications**
-
-You can review statistics concerning server latency on the Analytics
-charts. Server latency is how long it takes (in milliseconds) from the
-time a request reaches the BIG-IP system, for it to proceed to the web
-application server, and return a response to the BIG-IP system.
-
-1. On the Main tab, click Statistics > Analytics > HTTP. The Overview
-   screen opens.
-
-2. From the Latency menu, choose Server Latency. A chart shows the
-   server latency for all applications and virtual servers associated
-   with all Analytics profiles.
-
-3. To view server latency for a specific application, in the Details
-   table, select only that application. The charts show latency only for
-   the selected application.
-
-4. To view server latency for a specific virtual server:
-
-   - In the View By list, select Virtual Servers. The charts show latency
-     for all virtual servers.
-
-   - In the Details list near the charts, click the virtual server you are
-     interested in. The charts show latency only for the selected virtual
-     server.
-
-5. If further investigation is needed, in the View By setting, select
-   other entities to view charts that show latency for other collected
-   entities included in the Analytics profile, for example, specific
-   pool members, URLs, countries, or client IP addresses.
-
-Tip: If you are concerned about server latency, you can configure the
-Analytics profile so that it sends an alert when the average server
-latency exceeds a number of milliseconds for some period of time.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-Objective - 2.05 Interpret AVR information to identify LTM device misconfiguration
-----------------------------------------------------------------------------------
-
-|
-|
-
-**2.05 - Explain how to use AVR to trace application traffic**
-
-https://support.f5.com/kb/en-us/products/big-ip_analytics/manuals/product/avr-implementations-11-5-0.pdf
-
-**AVR to trace application traffic**
-
-This implementation describes how to set up the BIG-IP system to collect
-application traffic so that you can troubleshoot problems that have
-become apparent by monitoring application statistics. For example, by
-examining captured requests and responses, you can investigate issues
-with latency, throughput, or reduced transactions per second to
-understand what is affecting application performance.
-
-When Application Visibility and Reporting (AVR) is provisioned, you can
-create an Analytics profile that includes traffic capturing
-instructions. The system can collect application traffic locally,
-remotely, or both. If the system is already monitoring applications, you
-can also update an existing Analytics profile to make it so that it
-captures traffic.
-
-If logging locally, the system logs the first 1000 transactions and
-displays charts based on the analysis of those transactions. If logging
-remotely, the system logs information on that system; log size is
-limited only by any constraints of the remote logging system. To see
-updated application statistics, you can clear the existing data to
-display the current statistics.
-
-**Prerequisites for capturing application traffic**
-
-After you finish a basic networking configuration of the BIG-IP system,
-you must complete the following tasks as prerequisites for setting up
-application statistics collection:
-
--  Provision Application Visibility and Reporting (AVR): System >
-   Resource Provisioning
-
--  Create an iAppsTM application service (go to iApp > Application
-   Services), or configure at least one virtual server with a pool
-   pointing to one or more application servers.
-
--  The Traffic Sampling Ratio must be set to all in the default
-   Analytics profile.
-
-You can set up the system for capturing traffic locally or remotely (or
-both).
-
-Tip: Before setting up traffic capturing, it is a good idea to
-clear the captured transaction log. On the Captured Transactions
-screen, click Clear All to clear all previously captured data
-records.
-
-**Capturing traffic for troubleshooting**
-
-To set up traffic capturing, the Transaction Sampling Ratio of the
-default analytics profile must be set to All.
-
-You can configure the BIG-IP system to capture application traffic and
-store the information locally or remotely (on syslog servers or SIEM
-devices, such as Splunk). To do this, you create an Analytics profile
-designed for capturing traffic. The profile instructs the BIG-IP system
-to collect a portion of application traffic using the Application
-Visibility and Reporting module.
-
-Note: You typically use traffic capturing if you notice an
-application issue, such as trouble with throughput or latency,
-discovered when examining application statistics, and want to
-troubleshoot the system by examining actual transactions.
-
-1. On the Main tab, click Local Traffic > Profiles > Analytics.
-
-   Tip: If Analytics is not listed, this indicates that Application
-   Visibility and Reporting (AVR) is not provisioned, or you do not
-   have rights to create profiles.
-
-   The Analytics screen opens and lists all Analytics profiles that are
-   on the system, including a default profile called analytics.
-
-2. Click Create.
-
-   The New Analytics Profile screen opens. By default, the settings are
-   initially the same as in the default analytics profile.
-
-3. In the Profile Name field, type a name for the Analytics profile.
-
-4. To the right of the General Configuration area, click the Custom
-   check box.
-
-   The settings in the area become available for modification.
-
-5. For Traffic Capturing Logging Type, specify where to store captured
-   traffic.
-
-   - To store traffic locally, click Internal. You can view details on the
-     Statistics: Captured Transactions screen. This option is selected by
-     default.
-
-   - To store traffic on a remote logging server, click External and type
-     the Remote Server IP Address and Remote Server Port number.
-
-   Tip: If you specify remote logging for multiple applications,
-   you can use the Remote Server Facility filter to sort the data for
-   each.
-
-6. In the Included Objects area, specify the virtual servers for which
-   to capture application statistics:
-
-   - For the Virtual Servers setting, click Add.
-
-     A popup lists the virtual servers that you can assign to the
-     Analytics profile.
-
-   - From the Select Virtual Server popup list, select the virtual servers
-     to include and click Done.
-
-     Note: You need to have previously configured the virtual servers
-     (with an HTTP profile) for them to appear in the list. Also, you can
-     assign only one Analytics profile to a virtual server so the list
-     shows only virtual servers that have not been assigned an Analytics
-     profile.
-
-     Special considerations apply if using Analytics on a BIG-IP system
-     with both Application Security ManagerTM and Access Policy
-     ManagerTM, where security settings (in Portal Access WebTop or an
-     iRule) redirect traffic from one virtual server to a second one. In
-     this case, you need to attach the Analytics profile to the second
-     virtual server to ensure that the charts show accurate statistics.
-
-7. In the Statistics Gathering Configuration, for Collected Metrics,
-   select the statistics you want the system to collect:
-
-   +------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Option           | Description                                                                                                                                                                                                                         |
-   +==================+=====================================================================================================================================================================================================================================+
-   | Server Latency   | Tracks how long it takes to get data from the application server to the BIG-IP system (selected by default).                                                                                                                        |
-   +------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Page Load Time   | Tracks how long it takes an application user to get a complete response from the application, including network latency and completed page processing.                                                                              |
-   |                  |                                                                                                                                                                                                                                     |
-   |                  | **Note:** End user response times and latencies can vary significantly based on geography and connection types.                                                                                                                     |
-   +------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Throughput       | Saves information about HTTP request and response throughput (selected by default).                                                                                                                                                 |
-   +------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | User Sessions    | Stores the number of unique user sessions. For Timeout, type the number of minutes of user non-activity to allow before the system considers the session to be over. If using transaction sampling, this option is not available.   |
-   +------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-8. For Collected Entities, select the entities for which you want the system to collect statistics:
-
-   +-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Option                | Description                                                                                                                                                                       |
-   +=======================+===================================================================================================================================================================================+
-   | URLs                  | Collects the requested URLs.                                                                                                                                                      |
-   +-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Countries             | Saves the name of the country where the request came from based on the client IP address.                                                                                         |
-   +-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Client IP Addresses   | Saves the IP address where the request originated. The address saved also depends on whether the request has an XFF (X-forwarded-for) header and whether Trust XFF is selected.   |
-   +-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Response Codes        | Saves HTTP response codes that the server returned to requesters (selected by default).                                                                                           |
-   +-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | User Agents           | Saves information about browsers used when making the request.                                                                                                                    |
-   +-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Methods               | Saves HTTP methods in requests (selected by default).                                                                                                                             |
-   +-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-9. In the Capture Filter area, from the Capture Requests and Capture
-   Responses lists, select the options that indicate the part of the
-   traffic to capture.
-
-   +-----------+--------------------------------------------------------------------------------+
-   | Option    | Description                                                                    |
-   +===========+================================================================================+
-   | None      | Specifies that the system does not capture request (or response) data.         |
-   +-----------+--------------------------------------------------------------------------------+
-   | Headers   | Specifies that the system captures request (or response) header data only.     |
-   +-----------+--------------------------------------------------------------------------------+
-   | Body      | Specifies that the system captures the body of requests (or responses) only.   |
-   +-----------+--------------------------------------------------------------------------------+
-   | All       | Specifies that the system captures all request (or response) data.             |
-   +-----------+--------------------------------------------------------------------------------+
-
-10. Depending on the application, customize the remaining filter settings
-    to capture the portion of traffic to that you need for
-    troubleshooting.
-
-    Tip: By focusing in on the data and limiting the type of
-    information that is captured, you can troubleshoot particular areas
-    of an application more quickly. For example, capture only requests
-    or responses, specific status codes or methods, or headers
-    containing a specific string.
-
-11. Click Finished.
-
-The BIG-IP system captures the application traffic described by the
-Analytics profile for 1000 transactions locally (or until system limits
-are reached). If logging remotely, the system logs information on that
-system; log size is limited only by constraints of the remote logging
-system.
-
-Note: System performance is affected when traffic is being captured.
-
-**Reviewing captured traffic**
-
-Before you can review captured traffic details on the BIG-IP system, you
-need to have created an Analytics profile that is capturing application
-traffic locally. The settings you enable in the Capture Filter area of
-the profile determine what information the system captures. You need to
-associate the Analytics profile with one or more virtual servers, or
-with an iApps application service.
-
-The system starts capturing application traffic as soon as you enable it
-on the Analytics profile. You can review the captured transactions
-locally on the BIG-IP system. The system logs the first 1000
-transactions.
-
-1. On the Main tab, click System > Logs > Captured Transactions.
-
-   The Captured Transactions screen opens and lists all of the captured
-   transactions.
-
-2. Optionally, use the time period and filter settings to limit which
-   transactions are listed.
-
-3. In the Captured Traffic area, click any transaction that you want to
-   examine.
-
-   Details of the request will display on the screen.
-
-4. Review the general details of the request.
-
-   Tip: The general details, such as the response code or the size
-   of the request and response, help with troubleshooting.
-
-5. For more information, click Request or Response to view the contents
-   of the actual transaction. Review the data for anything unexpected,
-   and other details that will help with troubleshooting the
-   application.
-
-6. On the Captured Transactions screen, click Clear All to clear all
-   previously captured data records (including those not displayed on
-   the screen) and start collecting transactions again.
-
-   The system captures up to 1000 transactions locally and displays
-   them on the screen. Captured transactions are visible a few seconds
-   after they occur.
-
-----
-
-|
-
-**2.05 - Explain how latency trends identify application tier bottlenecks**
-
-https://support.f5.com/kb/en-us/products/big-ip_analytics/manuals/product/avr-implementations-11-5-0/3.html#conceptid
-
-Latency is a classic network performance metric, which at the basic
-level requires the evaluation of timestamps applied to the same packet
-as it passes through two locations in the network. By comparing the
-timestamps, the latency of the network segment can be monitored. Many
-networked applications and services rely on low latency in order to
-function correctly.
-
-If you have established latency times for transport traffic in your
-network and you are seeing latency grow or exceed a threshold that
-causes user acceptance to drop for an application, you can use it as a
-basis to look into changes or setting that may be causing additional
-latency. Gathering the information and keep track of changes is the key
-to identifying application tier issues.
-
-**Investigating the server latency of applications**
-
-Before you can investigate server latency, you need to have created an
-Analytics profile that is logging statistics internally on the BIG-IP
-system. The Analytics profile must be associated with one or more
-virtual servers, or an iApps application service. If your browser is IE8
-or earlier, you need to have Adobe Flash Player installed on the
-computer from which you plan to review the data.
-
-Note: Newer browsers (Internet Explorer 9 or later, Firefox 3.6 or
-later, or Chrome 14 or later) support viewing Analytics charts with no
-additional plug-in. If using older browsers (Internet Explorer 8 or
-earlier, Firefox 3.5 or earlier, or Chrome 13 or earlier), Adobe Flash
-Player (version 8 or later) must be installed on the computer where you
-plan to view Analytics charts.
-
-You can review statistics concerning server latency on the Analytics
-charts. Server latency is how long it takes (in milliseconds) from the
-time a request reaches the BIG-IP system, for it to proceed to the web
-application server, and return a response to the BIG-IP system.
-
-1. On the Main tab, click Statistics > Analytics > HTTP. The Overview
-   screen opens.
-
-2. From the Latency menu, click Server Latency. A chart shows the server
-   latency for all applications and virtual servers associated with all
-   Analytics profiles.
-
-3. To view server latency for a specific application, in the Details
-   table, select only that application. The charts show latency only for
-   the selected application.
-
-4. To view server latency for a specific virtual server:
-
-   - In the View By list, select Virtual Servers. The charts show latency
-     for all virtual servers.
-
-   - In the Details list near the charts, click the virtual server you are
-     interested in. The charts show latency only for the selected virtual
-     server.
-
-5. If further investigation is needed, in the View By setting, select
-   other entities to view charts that show latency for other collected
-   entities included in the Analytics profile, for example, specific
-   pool members, URLs, countries, or client IP addresses.
-
-Tip: If you are concerned about server latency, you can configure
-the Analytics profile so that it sends an alert when the average server
-latency exceeds a number of milliseconds for some period of time.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-
-Objective - 2.06 Given a set of headers or traces, determine the root cause of an HTTP/HTTPS application problem
-----------------------------------------------------------------------------------------------------------------
-
-|
-|
-
-**2.06 - Explain how to interpret response codes**
-
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-
-**Response Codes**
-
-The Status-Code element is a 3-digit integer result code of the attempt
-to understand and satisfy the request. The Reason-Phrase is intended to
-give a short textual description of the Status-Code. The Status-Code is
-intended for use by automata and the Reason-Phrase is intended for the
-human user. The client is not required to examine or display the Reason-
-Phrase.
-
-The first digit of the Status-Code defines the class of response. The
-last two digits do not have any categorization role. There are 5 values
-for the first digit:
-
--  1xx: Informational - Request received, continuing process
-
--  2xx: Success - The action was successfully received, understood, and
-   accepted
-
--  3xx: Redirection - Further action must be taken in order to complete
-   the request
-
--  4xx: Client Error - The request contains bad syntax or cannot be
-   fulfilled
-
--  5xx: Server Error - The server failed to fulfill an apparently valid
-   request
-
-**Status Code Definitions**
-
-Each Status-Code is described below, including a description of which
-method(s) it can follow and any meta information required in the
-response.
-
-**Informational 1xx**
-
-This class of status code indicates a provisional response, consisting
-only of the Status-Line and optional headers, and is terminated by an
-empty line. There are no required headers for this class of status code.
-Since HTTP/1.0 did not define any 1xx status codes, servers must not
-send a 1xx response to an HTTP/1.0 client except under experimental
-conditions.
-
-A client must be prepared to accept one or more 1xx status responses
-prior to a regular response, even if the client does not expect a 100
-(Continue) status message. A user agent MAY ignore an unexpected 1xx
-status response.
-
-Proxies must forward 1xx responses, unless the connection between the
-proxy and its client has been closed, or unless the proxy itself
-requested the generation of the 1xx response. (For example, if a proxy
-adds a "Expect: 100-continue" field when it forwards a request, then it
-need not forward the corresponding 100 (Continue) response(s).)
-
-**100 Continue**
-
-The client should continue with its request. This interim response is
-used to inform the client that the initial part of the request has been
-received and has not yet been rejected by the server. The client should
-continue by sending the remainder of the request or, if the request has
-already been completed, ignore this response. The server must send a
-final response after the request has been completed.
-
-**101 Switching Protocols**
-
-The server understands and is willing to comply with the client's
-request, via the Upgrade message header field, for a change in the
-application protocol being used on this connection. The server will
-switch protocols to those defined by the response's Upgrade header field
-immediately after the empty line, which terminates the 101 response.
-
-The protocol should be switched only when it is advantageous to do so.
-For example, switching to a newer version of HTTP is advantageous over
-older versions, and switching to a real-time, synchronous protocol might
-be advantageous when delivering resources that use such features.
-
-**Successful 2xx**
-
-This class of status code indicates that the client's request was
-successfully received, understood, and accepted.
-
-**200 OK**
-
-The request has succeeded. The information returned with the response is
-dependent on the method used in the request, for example:
-
-**GET** an entity corresponding to the requested resource is sent in the
-response;
-
-**HEAD** the entity-header fields corresponding to the requested
-resource are sent in the response without any message-body;
-
-**POST** an entity describing or containing the result of the action;
-
-**TRACE** an entity containing the request message as received by the
-end server.
-
-**201 Created**
-
-The request has been fulfilled and resulted in a new resource being
-created. The newly created resource can be referenced by the URI(s)
-returned in the entity of the response, with the most specific URI for
-the resource given by a Location header field. The response should
-include an entity containing a list of resource characteristics and
-location(s) from which the user or user agent can choose the one most
-appropriate. The media type given in the Content-Type header field
-specifies the entity format. The origin server must create the resource
-before returning the 201 status code. If the action cannot be carried
-out immediately, the server should respond with 202 (Accepted) response
-instead.
-
-A 201 response may contain an ETag response header field indicating the
-current value of the entity tag for the requested variant just created.
-
-**202 Accepted**
-
-The request has been accepted for processing, but the processing has not
-been completed. The request might or might not eventually be acted upon,
-as it might be disallowed when processing actually takes place. There is
-no facility for re-sending a status code from an asynchronous operation
-such as this.
-
-The 202 response is intentionally non-committal. Its purpose is to allow
-a server to accept a request for some other process (perhaps a
-batch-oriented process that is only run once per day) without requiring
-that the user agent's connection to the server persist until the process
-is completed. The entity returned with this response should include an
-indication of the request's current status and either a pointer to a
-status monitor or some estimate of when the user can expect the request
-to be fulfilled.
-
-**203 Non-Authoritative Information**
-
-The returned metainformation in the entity-header is not the definitive
-set as available from the origin server, but is gathered from a local or
-a third-party copy. The set presented may be a subset or superset of the
-original version. For example, including local annotation information
-about the resource might result in a superset of the metainformation
-known by the origin server. Use of this response code is not required
-and is only appropriate when the response would otherwise be 200 (OK).
-
-**204 No Content**
-
-The server has fulfilled the request but does not need to return an
-entity-body, and might want to return updated metainformation. The
-response may include new or updated metainformation in the form of
-entity-headers, which if present should be associated with the requested
-variant.
-
-If the client is a user agent, it should not change its document view
-from that which caused the request to be sent. This response is
-primarily intended to allow input for actions to take place without
-causing a change to the user agent's active document view, although any
-new or updated metainformation should be applied to the document
-currently in the user agent's active view.
-
-The 204 response must not include a message-body, and thus is always
-terminated by the first empty line after the header fields.
-
-**205 Reset Content**
-
-The server has fulfilled the request and the user agent should reset the
-document view, which caused the request to be sent. This response is
-primarily intended to allow input for actions to take place via user
-input, followed by a clearing of the form in which the input is given so
-that the user can easily initiate another input action. The response
-must not include an entity.
-
-**206 Partial Content**
-
-The server has fulfilled the partial GET request for the resource. The
-request must have included a Range header field indicating the desired
-range, and may have included an If-Range header field to make the
-request conditional.
-
-The response must include the following header fields:
-
--  Either a Content-Range header field indicating the range included
-   with this response, or a multipart/byteranges Content-Type including
-   Content-Range fields for each part. If a Content-Length header field
-   is present in the response, its value must match the actual number of
-   OCTETs transmitted in the message-body.
-
--  Date
-
--  ETag and/or Content-Location, if the header would have been sent in a
-   200 response to the same request
-
--  Expires, Cache-Control, and/or Vary, if the field-value might differ
-   from that sent in any previous response for the same variant
-
-If the 206 response is the result of an If-Range request that used a
-strong cache validator, the response should not include other
-entity-headers. If the response is the result of an If-Range request
-that used a weak validator, the response must not include other
-entity-headers; this prevents inconsistencies between cached
-entity-bodies and updated headers. Otherwise, the response must include
-all of the entity-headers that would have been returned with a 200 (OK)
-response to the same request.
-
-A cache must not combine a 206 response with other previously cached
-content if the ETag or Last-Modified headers do not match exactly.
-
-A cache that does not support the Range and Content-Range headers must
-not cache 206 (Partial) responses.
-
-**Redirection 3xx**
-
-This class of status code indicates that further action needs to be
-taken by the user agent in order to fulfill the request. The user agent
-may carry out the action required without interaction with the user if
-and only if the method used in the second request is GET or HEAD. A
-client should detect infinite redirection loops, since such loops
-generate network traffic for each redirection.
-
-Note: previous versions of this specification recommended a
-maximum of five redirections. Content developers should be aware
-that there might be clients that implement such a fixed limitation.
-
-**300 Multiple Choices**
-
-The requested resource corresponds to any one of a set of
-representations, each with its own specific location, and agent- driven
-negotiation information is being provided so that the user (or user
-agent) can select a preferred representation and redirect its request to
-that location.
-
-Unless it was a HEAD request, the response should include an entity
-containing a list of resource characteristics and location(s) from which
-the user or user agent can choose the one most appropriate. The media
-type given in the Content-Type header field specifies the entity format.
-Depending upon the format and the capabilities of the user agent,
-selection of the most appropriate choice may be performed automatically.
-However, this specification does not define any standard for such
-automatic selection.
-
-If the server has a preferred choice of representation, it should
-include the specific URI for that representation in the Location field;
-user agents may use the Location field value for automatic redirection.
-This response is cacheable unless indicated otherwise.
-
-**301 Moved Permanently**
-
-The requested resource has been assigned a new permanent URI and any
-future references to this resource should use one of the returned URIs.
-Clients with link editing capabilities ought to automatically re-link
-references to the Request-URI to one or more of the new references
-returned by the server, where possible. This response is cacheable
-unless indicated otherwise.
-
-The Location field in the response should give the new permanent URI.
-Unless the request method was HEAD, the entity of the response should
-contain a short hypertext note with a hyperlink to the new URI(s).
-
-If the 301 status code is received in response to a request other than
-GET or HEAD, the user agent must not automatically redirect the request
-unless it can be confirmed by the user, since this might change the
-conditions under which the request was issued.
-
-Note: When automatically redirecting a POST request after
-receiving a 301 status code, some existing HTTP/1.0 user agents will
-erroneously change it into a GET request.
-
-**302 Found**
-
-The requested resource resides temporarily under a different URI. Since
-the redirection might be altered on occasion, the client should continue
-to use the Request-URI for future requests. This response is only
-cacheable if indicated by a Cache-Control or Expires header field.
-
-The temporary URI should be given by the Location field in the response.
-Unless the request method was HEAD, the entity of the response should
-contain a short hypertext note with a hyperlink to the new URI(s).
-
-If the 302 status code is received in response to a request other than
-GET or HEAD, the user agent must not automatically redirect the request
-unless it can be confirmed by the user, since this might change the
-conditions under which the request was issued.
-
-Note: RFC 1945 and RFC 2068 specify that the client is not allowed to change the method 
-on the redirected request. However, most existing user agent implementations treat 302 as 
-if it were a 303 response, performing a GET on the Location field-value regardless of the 
-original request method. The status codes 303 and 307 have been added for servers that 
-wish to make unambiguously clear which kind of reaction is expected of the client.
-
-**303 See Other**
-
-The response to the request can be found under a different URI and
-should be retrieved using a GET method on that resource. This method
-exists primarily to allow the output of a POST-activated script to
-redirect the user agent to a selected resource. The new URI is not a
-substitute reference for the originally requested resource. The 303
-response must not be cached, but the response to the second (redirected)
-request might be cacheable.
-
-The Location field in the response should give the different URI. Unless
-the request method was HEAD, the entity of the response should contain a
-short hypertext note with a hyperlink to the new URI(s).
-
-Note: Many pre-HTTP/1.1 user agents do not understand the 303
-status. When interoperability with such clients is a concern, the
-302 status code may be used instead, since most user agents react to
-a 302 response as described here for 303.
-
-**304 Not Modified**
-
-If the client has performed a conditional GET request and access is
-allowed, but the document has not been modified, the server should
-respond with this status code. The 304 response must not contain a
-message-body, and thus is always terminated by the first empty line
-after the header fields.
-
-The response must include the following header fields:
-
--  Date, unless its omission is required
-
-   If a clockless origin server obeys these rules, and proxies and
-   clients add their own Date to any response received without one (as
-   already specified by RFC 2068), caches will operate correctly.
-
--  ETag and/or Content-Location, if the header would have been sent in a
-   200 response to the same request
-
--  Expires, Cache-Control, and/or Vary, if the field-value might differ
-   from that sent in any previous response for the same variant
-
-If the conditional GET used a strong cache validator, the response
-should not include other entity-headers. Otherwise (i.e., the
-conditional GET used a weak validator), the response must not include
-other entity-headers; this prevents inconsistencies between cached
-entity-bodies and updated headers.
-
-If a 304 response indicates an entity not currently cached, then the
-cache must disregard the response and repeat the request without the
-conditional.
-
-If a cache uses a received 304 response to update a cache entry, the
-cache must update the entry to reflect any new field values given in the
-response.
-
-**305 Use Proxy**
-
-The requested resource must be accessed through the proxy given by the
-Location field. The Location field gives the URI of the proxy. The
-recipient is expected to repeat this single request via the proxy. 305
-responses must only be generated by origin servers.
-
-Note: RFC 2068 was not clear that 305 was intended to redirect a
-single request, and to be generated by origin servers only. Not
-observing these limitations has significant security consequences.
-
-**306 (Unused)**
-
-The 306 status code was used in a previous version of the specification,
-is no longer used, and the code is reserved.
-
-**307 Temporary Redirect**
-
-The requested resource resides temporarily under a different URI. Since
-the redirection may be altered on occasion, the client should continue
-to use the Request-URI for future requests. This response is only
-cacheable if indicated by a Cache-Control or Expires header field.
-
-The temporary URI should be given by the Location field in the response.
-Unless the request method was HEAD, the entity of the response should
-contain a short hypertext note with a hyperlink to the new URI(s), since
-many pre-HTTP/1.1 user agents do not understand the 307 status.
-Therefore, the note should contain the information necessary for a user
-to repeat the original request on the new URI.
-
-If the 307 status code is received in response to a request other than
-GET or HEAD, the user agent must not automatically redirect the request
-unless it can be confirmed by the user, since this might change the
-conditions under which the request was issued.
-
-**Client Error 4xx**
-
-The 4xx class of status code is intended for cases in which the client
-seems to have erred. Except when responding to a HEAD request, the
-server should include an entity containing an explanation of the error
-situation, and whether it is a temporary or permanent condition. These
-status codes are applicable to any request method. User agents should
-display any included entity to the user.
-
-If the client is sending data, a server implementation using TCP should
-be careful to ensure that the client acknowledges receipt of the
-packet(s) containing the response, before the server closes the input
-connection. If the client continues sending data to the server after the
-close, the server's TCP stack will send a reset packet to the client,
-which may erase the client's unacknowledged input buffers before they
-can be read and interpreted by the HTTP application.
-
-**400 Bad Request**
-
-The server due to malformed syntax could not understand the request. The
-client should not repeat the request without modifications.
-
-**401 Unauthorized**
-
-The request requires user authentication. The response must include a
-WWW-Authenticate header field containing a challenge applicable to the
-requested resource. The client MAY repeat the request with a suitable
-Authorization header field. If the request already included
-Authorization credentials, then the 401 response indicates that
-authorization has been refused for those credentials. If the 401
-response contains the same challenge as the prior response, and the user
-agent has already attempted authentication at least once, then the user
-should be presented the entity that was given in the response, since
-that entity might include relevant diagnostic information. HTTP access
-authentication is explained in "HTTP Authentication: Basic and Digest
-Access Authentication".
-
-**402 Payment Required**
-
-This code is reserved for future use.
-
-**403 Forbidden**
-
-The server understood the request, but is refusing to fulfill it.
-Authorization will not help and the request should not be repeated. If
-the request method was not HEAD and the server wishes to make public why
-the request has not been fulfilled, it should describe the reason for
-the refusal in the entity. If the server does not wish to make this
-information available to the client, the status code 404 (Not Found) can
-be used instead.
-
-**404 Not Found**
-
-The server has not found anything matching the Request-URI. No
-indication is given of whether the condition is temporary or permanent.
-The 410 (Gone) status code should be used if the server knows, through
-some internally configurable mechanism, that an old resource is
-permanently unavailable and has no forwarding address. This status code
-is commonly used when the server does not wish to reveal exactly why the
-request has been refused, or when no other response is applicable.
-
-**405 Method Not Allowed**
-
-The method specified in the Request-Line is not allowed for the resource
-identified by the Request-URI. The response must include an Allow header
-containing a list of valid methods for the requested resource.
-
-**406 Not Acceptable**
-
-The resource identified by the request is only capable of generating
-response entities which have content characteristics not acceptable
-according to the accept headers sent in the request.
-
-Unless it was a HEAD request, the response should include an entity
-containing a list of available entity characteristics and location(s)
-from which the user or user agent can choose the one most appropriate.
-The media type given in the Content-Type header field specifies the
-entity format. Depending upon the format and the capabilities of the
-user agent, selection of the most appropriate choice MAY be performed
-automatically. However, this specification does not define any standard
-for such automatic selection.
-
-Note: HTTP/1.1 servers are allowed to return responses which are
-not acceptable according to the accept headers sent in the request.
-In some cases, this may even be preferable to sending a 406
-response. User agents are encouraged to inspect the headers of an
-incoming response to determine if it is acceptable.
-
-If the response could be unacceptable, a user agent should temporarily
-stop receipt of more data and query the user for a decision on further
-actions.
-
-**407 Proxy Authentication Required**
-
-This code is similar to 401 (Unauthorized), but indicates that the
-client must first authenticate itself with the proxy. The proxy must
-return a Proxy-Authenticate header field containing a challenge
-applicable to the proxy for the requested resource. The client may
-repeat the request with a suitable Proxy-Authorization header field.
-HTTP access authentication is explained in "HTTP Authentication: Basic
-and Digest Access Authentication".
-
-**408 Request Timeout**
-
-The client did not produce a request within the time that the server was
-prepared to wait. The client may repeat the request without
-modifications at any later time.
-
-**409 Conflict**
-
-The request could not be completed due to a conflict with the current
-state of the resource. This code is only allowed in situations where it
-is expected that the user might be able to resolve the conflict and
-resubmit the request. The response body should include enough
-information for the user to recognize the source of the conflict.
-Ideally, the response entity would include enough information for the
-user or user agent to fix the problem; however, that might not be
-possible and is not required.
-
-Conflicts are most likely to occur in response to a PUT request. For
-example, if versioning were being used and the entity being PUT included
-changes to a resource which conflict with those made by an earlier
-(third-party) request, the server might use the 409 response to indicate
-that it can't complete the request. In this case, the response entity
-would likely contain a list of the differences between the two versions
-in a format defined by the response Content-Type.
-
-**410 Gone**
-
-The requested resource is no longer available at the server and no
-forwarding address is known. This condition is expected to be considered
-permanent. Clients with link editing capabilities should delete
-references to the Request-URI after user approval. If the server does
-not know, or has no facility to determine, whether or not the condition
-is permanent, the status code 404 (Not Found) should be used instead.
-This response is cacheable unless indicated otherwise.
-
-The 410 response is primarily intended to assist the task of web
-maintenance by notifying the recipient that the resource is
-intentionally unavailable and that the server owners desire that remote
-links to that resource be removed. Such an event is common for
-limited-time, promotional services and for resources belonging to
-individuals no longer working at the server's site. It is not necessary
-to mark all permanently unavailable resources as "gone" or to keep the
-mark for any length of time -- that is left to the discretion of the
-server owner.
-
-**411 Length Required**
-
-The server refuses to accept the request without a defined Content-
-Length. The client may repeat the request if it adds a valid
-Content-Length header field containing the length of the message-body in
-the request message.
-
-**412 Precondition Failed**
-
-The precondition given in one or more of the request-header fields
-evaluated to false when it was tested on the server. This response code
-allows the client to place preconditions on the current resource
-metainformation (header field data) and thus prevent the requested
-method from being applied to a resource other than the one intended.
-
-**413 Request Entity Too Large**
-
-The server is refusing to process a request because the request entity
-is larger than the server is willing or able to process. The server may
-close the connection to prevent the client from continuing the request.
-
-If the condition is temporary, the server should include a Retry-After
-header field to indicate that it is temporary and after what time the
-client may try again.
-
-**414 Request-URI Too Long**
-
-The server is refusing to service the request because the Request-URI is
-longer than the server is willing to interpret. This rare condition is
-only likely to occur when a client has improperly converted a POST
-request to a GET request with long query information, when the client
-has descended into a URI "black hole" of redirection (e.g., a redirected
-URI prefix that points to a suffix of itself), or when the server is
-under attack by a client attempting to exploit security holes present in
-some servers using fixed-length buffers for reading or manipulating the
-Request-URI.
-
-**415 Unsupported Media Type**
-
-The server is refusing to service the request because the entity of the
-request is in a format not supported by the requested resource for the
-requested method.
-
-**416 Requested Range Not Satisfiable**
-
-A server should return a response with this status code if a request
-included a Range request-header field, and none of the range-specifier
-values in this field overlap the current extent of the selected
-resource, and the request did not include an If-Range request-header
-field. (For byte-ranges, this means that the first- byte-pos of all of
-the byte-range-spec values were greater than the current length of the
-selected resource.)
-
-When this status code is returned for a byte-range request, the response
-should include a Content-Range entity-header field specifying the
-current length of the selected resource. This response must not use the
-multipart/byteranges content- type.
-
-**417 Expectation Failed**
-
-This server could not meet the expectation given in an Expect
-request-header field, or, if the server is a proxy, the server has
-unambiguous evidence that the next-hop server could not meet the
-request.
-
-**Server Error 5xx**
-
-Response status codes beginning with the digit "5" indicate cases in
-which the server is aware that it has erred or is incapable of
-performing the request. Except when responding to a HEAD request, the
-server should include an entity containing an explanation of the error
-situation, and whether it is a temporary or permanent condition. User
-agents should display any included entity to the user. These response
-codes are applicable to any request method.
-
-**500 Internal Server Error**
-
-The server encountered an unexpected condition, which prevented it from
-fulfilling the request.
-
-**501 Not Implemented**
-
-The server does not support the functionality required to fulfill the
-request. This is the appropriate response when the server does not
-recognize the request method and is not capable of supporting it for any
-resource.
-
-**502 Bad Gateway**
-
-The server, while acting as a gateway or proxy, received an invalid
-response from the upstream server it accessed in attempting to fulfill
-the request.
-
-**503 Service Unavailable**
-
-The server is currently unable to handle the request due to a temporary
-overloading or maintenance of the server. The implication is that this
-is a temporary condition, which will be alleviated after some delay. If
-known, the length of the delay may be indicated in a Retry-After header.
-If no Retry-After is given, the client should handle the response as it
-would for a 500 response.
-
-Note: The existence of the 503 status code does not imply that a
-server must use it when becoming overloaded. Some servers may wish
-to simply refuse the connection.
-
-**504 Gateway Timeout**
-
-The server, while acting as a gateway or proxy, did not receive a timely
-response from the upstream server specified by the URI (e.g. HTTP, FTP,
-LDAP) or some other auxiliary server (e.g. DNS) it needed to access in
-attempting to complete the request.
-
-Note: Note to implementers: some deployed proxies are known to
-return 400 or 500 when DNS lookups time out.
-
-**505 HTTP Version Not Supported**
-
-The server does not support, or refuses to support, the HTTP protocol
-version that was used in the request message. The server is indicating
-that it is unable or unwilling to complete the request using the same
-major version as the client, as described in section 3.1, other than
-with this error message. The response should contain an entity
-describing why that version is not supported and what other protocols
-that server supports.
-
-----
-
-|
-
-**2.06 - Explain the function of HTTP headers within different HTTP applications (Cookies, Cache Control, Vary, Content Type & Host)**
-
-https://f5.com/resources/white-papers/fundamentals-of-http
-
-**HTTP Headers**
-
-HTTP headers carry information about behavior and application state
-between the browser and the server. These headers can be modified and
-examined by the browser and the server, as well as intermediary devices
-such as web acceleration solutions and application delivery controllers.
-The headers sent by the browser notify the web server of the browser's
-capabilities. The headers sent by the web server tell the browser how to
-treat the content.
-
-The most important browser headers, in terms of end-user performance,
-are:
-
-1. HTTP version (HTTP/1.0 or HTTP/1.1)
-
-2. Accept-Encoding: gzip, deflate
-
-3. Connection: Keep-Alive
-
-4. If - \* headers
-
-5. Cache-Control or Pragma no-cache
-
-The first three items are interrelated. HTTP 1.0 does not include
-compression–indicated by the Accept-Encoding: gzip, deflate header, or
-connection keep-alives. Compression can reduce the byte count of text by
-6:1 to 8:1. This often translates into a 40-50 percent reduction in size
-for a page. Connection: Keep-Alive will reuse TCP connections for
-subsequent requests and will save on the latency incurred by the 3-way
-hand-shake, and 4-way tear-down required for TCP connections on every
-request. Keeping connections open is important in emerging web-based
-applications that utilize Web 2.0 technology such as AJAX (Asynchronous
-JavaScript and XML) to perform real-time updates of content because it
-reduces the overhead associated with opening and closing TCP
-connections.
-
-The various If-\* headers, such as If-Modified-Since, will enable the
-web server to send a response that indicates the content has not been
-modified if this is true. This can potentially turn a 200KB download
-into a 1KB download, as the browser will respond to the 304 Not Modified
-response by loading the referenced content from the browser's cache.
-However, a lot of If-\* requests for static content can result in
-unnecessary round trips. This can really slow end-user performance. The
-no-cache header and its relatives—no-store, private, must-revalidate,
-and proxy-revalidate—request that proxies and, sometimes, web servers
-not cache the response to the request. Honoring those requests can cause
-the servers to do a lot more work because they must always return the
-full content rather than enable the browser to use a cached version.
-
-The most important web server headers, in terms of end-user performance,
-are:
-
-1. The HTTP version (either HTTP/1.0 or HTTP/1.1) at the beginning of
-   the status line
-
-2. Connection: Keep-Alive/Close
-
-3. Encoding: gzip, deflate
-
-4. The various cache-control headers, especially max-age
-
-5. Content-Type:
-
-6. Date:
-
-7. Accept-Ranges: bytes
-
-Again, the first three items are inter-related and are meant to impart
-the same information as when sent by the browser. The cache-control
-headers are very important because they can be used to store items in
-the browser cache and avoid future HTTP requests altogether. However,
-using cached data runs the risk of using out-dated data if the content
-changes before the cached object expires. Content-type is important for
-telling the browser how to handle the object. This is most important for
-content that the browser hands off to plug-ins (Flash, Microsoft Office
-documents, etc.). It is also the biggest clue to the true function of
-that object in the web application. Improper content types will often
-result in slower, but not broken web applications. The Date header is
-very important because it affects how the browser interprets the
-cache-control headers. It is important to make sure the date on the
-server is set correctly so that this field is accurate. The
-Accept-Ranges header is only important when downloading PDF documents.
-It enables the browser to know that it can request the PDF document one
-page at a time.
-
-----
-
-https://f5.com/resources/white-papers/fundamentals-of-http
-
-**Cookies**
-
-Cookies are sent by the web server to the browser as an HTTP header and
-used to store all sorts of information about a user’s interaction with
-the site. Generally speaking the use of cookies will not affect the
-performance of an application, unless they are encrypted for security
-purposes. The reason encrypted cookies can affect performance is because
-the web server needs to decrypt them before use, and the
-encryption/decryption process is resource intensive. The more encrypted
-cookies that are used by a site, the longer it takes for the web server
-to process them into a readable format.
-
-----
-
-https://support.f5.com/kb/en-us/solutions/public/5000/100/sol5157.html?sr=46612722
-
-**Vary**
-
-The HTTP Vary header, documented in RFC2616, is set by an origin web
-server (OWS) and contains request-header information. This information
-is used to determine whether a proxy server is permitted to reply to a
-subsequent request without re-validating the content from the OWS.
-
-The BIG-IP HTTP cache (referred to as RAM Cache in BIG-IP versions prior
-to 11.0.0) uses the information from the Vary header to cache responses
-from the OWS. The OWS can include information within the Vary header to
-determine which resource the server returns in its response. For
-example, if a page is optimized for a particular web browser, the OWS
-response may return the Vary: User-Agent HTTP header. The proxy server
-then uses this information to determine whether to return a cached copy
-of the response to subsequent requests, or to query the OWS for the
-resource again (a subsequent client request containing a different
-User-Agent value forces the proxy to query the OWS for the resource
-again).
-
-This behavior can require a proxy server (including the BIG-IP HTTP
-cache) to use up excess disk space to cache the same response.
-
-For example:
-
-Client A's request for a URI contains the following header:
-
-User-Agent: agent1
-
-The server's response includes the following headers:
-
-Vary: User-Agent, Accept-Encoding
-
-The BIG-IP system then stores the page, noting the User-Agent and
-Accept-Encoding headers from the client's request.
-
-Client B then requests the same URI, but the request has a User-Agent
-header containing agent2. The BIG-IP system ignores the existing cache
-entry (since the User-Agent is different), forwards the request to the
-server, and caches the response as a separate entry.
-
-Beginning with BIG-IP 9.2, you can use the iRule CACHE::userkey
-<keystring> command to instruct the cache to cache the information based
-on the parameter that the administrator specifies. You can use this
-command to prevent multiple caches of the same information.
-Additionally, you can use the CACHE::useragent and CACHE::acceptencoding
-commands to override the behavior described in the previous example,
-such as, have a cache based on a group of User-Agent values rather than
-store an entry for each User-Agent header seen, and cause duplication.
-
-For example, the following iRule sets the cache behavior based on the
-information that the User-Agent has on the customer's initial request,
-not on honoring User-Agent or Accept-Encoding when found in the server's
-Vary header:
-
-.. code-block:: bash
-
-   when HTTP\_REQUEST { set user\_key "[HTTP::header User-Agent]"
-   CACHE::userkey $user\_key }
-
-.. note:: The user\_key can be defined as any string found in the HTTP
-   request that the administrator wants to use to build cache
-   responses.
-
-You can use the previously listed iRule commands, even when the server
-does not set a Vary header, which allows the administrator to control
-the behavior outside of the server.
-
-**Content-Type**
-
-The MIME type of the body of the request (used with POST and PUT
-requests)
-
-**Host**
-
-The host value is represented by the domain name of the server (for
-virtual hosting), and the TCP port number on which the server is
-listening. The port number may be omitted if the port is the standard
-port for the service requested.
-
-----
-
-|
-
-**2.06 - Explain HTTP methods (GET, POST, etc.)**
-
-https://f5.com/resources/white-papers/fundamentals-of-http
-
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
-
-**HTTP Methods**
-
-When you open up a browser and request a web page (either by setting a
-default page or by entering a Uniform Resource Locater or URL), the
-first thing that happens is that the browser relies upon the operating
-system to resolve the host name in the URL to an IP address. Normally
-this is done via a DNS (Domain Name System) query over UDP (User
-Datagram Protocol) on port 53. However, if the host is listed in the
-local hosts file, the operating system will not make a DNS query.
-
-When the IP address is obtained, the browser will attempt to open a TCP
-(Transmission Control Protocol) connection to the web server, usually on
-port 80. Once the TCP connection is made, the browser will issue an HTTP
-request to the server using the connection. The request comprises a
-header section, and possibly a body section (this is where things like
-POST data go). Once the request is sent, the browser will wait for the
-response. When the web server has assembled the response, it is sent
-back to the browser for rendering.
-
-The base request comprises a method, the URI (Uniform Resource
-Indicator) of the web page or resource being requested, and the HTTP
-version desired (1.0 or 1.1). The method may be one of:
-
--  Get
-
--  Post
-
--  Put
-
--  Delete
-
--  Head
-
-Web servers almost universally support GET and POST, with the difference
-between them being the way in which query parameters are represented.
-With the GET method, all query parameters are part of the URI. This
-restricts the length of the parameters because a URI is generally
-limited to a set number of characters. Conversely, all parameters are
-included within the body of the request when using the POST method and
-there is usually no limit on the length of the body. PUT and DELETE,
-though considered important for emerging technology architectures such
-as REST (Representational State Transfer), are considered potentially
-dangerous as they enable the user to modify resources on the web server.
-These methods are generally disabled on web servers and not supported by
-modern web browsers.
-
-The HTTP response consists of a header section and a body. The header
-section tells the browser how to treat the body content and the browser
-renders the content for viewing. Each HTTP response includes a status
-code, which indicates the status of the request. The most common status
-codes are:
-
-200 OK. This indicates success
-
-304 Not Modified. This shows that the resource in question has not
-changed and the browser should load it from its cache instead. This is
-only used when the browser performs a conditional GET request.
-
-404 Not Found. This suggests that the resource requested cannot be found
-on the server.
-
-401 Authorization Required. This indicates that the resource is
-protected and requires valid credentials before the server can grant
+**2.04 - Explain the relationship between route domains, user roles and administrative partitions**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-5-0/10.html#unique_1327994881
+
+**Administrative partitions**
+
+When you create configurable objects for the BIG-IP system, you have the
+option of putting those objects into administrative partitions. An
+administrative partition is a logical container of BIG-IP system objects
+such as virtual servers, pools, and monitors. When you first install the
+BIG-IP system, a default partition already exists named Common.
+
+By putting objects into partitions, you establish a finer granularity of
+access control. Rather than having control over all resources on the
+BIG-IP system or no resources whatsoever, users with certain permissions
+can control resources within a designated partition only. For example,
+users with the role of Operator can mark nodes up or down, but can only
+mark those nodes that reside within their designated partition.
+
+User accounts are another type of object that you can put into a
+partition. You put user accounts into administrative partitions strictly
+for the purpose of giving other users administrative access to those
+accounts. For example, you can put user accounts into partition B, and
+then assign a set of permissions (known as a user role) to user Jane so
+that she is allowed to modify user accounts in partition B.
+
+Each user account on the BIG-IP system has a property known as Partition
+Access. The Partition Access property defines the partitions that the
+user can access. A user account can have access to either one partition
+or all partitions. Access to all partitions is known as universal
 access.
 
-500 Internal Error. This signifies that the server had a problem
-processing the request.
+This figure shows how partition access can differ for different user
+accounts on the BIG-IP system.
 
-While most developers do not need to know these status codes as they are
-not used within D/HTML, AJAX (Asynchronous Javascript and XML)
-developers may need to recognize these codes as part of their
-development efforts.
+|
 
-Most HTTP responses will also contain references to other objects within
-the body that will cause the browser to automatically request these
-objects as well. Web pages often contain more than 30 other object
-references required to complete the page.
+.. image:: /_static/301a/p8.png
 
-When retrieving these referenced objects, the default browser behavior
-is to open two TCP connections per host seen in the references. With
-Internet Explorer there is a Windows registry setting that limits this
-to a total of eight TCP connections. There is a similar setting in
-Firefox, but its maximum is 24 TCP connections.
+|
 
-Get
+In this example, the BIG-IP system objects reside in multiple
+partitions. Note that user accounts are also a type of BIG-IP system
+object, and as such, reside in a partition named Users. (Although you
+are not required to group user accounts together in a separate
+partition, for security purposes F5 highly recommends that you
+do so.)
 
-The GET method means retrieve whatever information (in the form of an
-entity) is identified by the Request-URI. If the Request-URI refers to a
-data-producing process, it is the produced data, which shall be returned
-as the entity in the response and not the source text of the process,
-unless that text happens to be the output of the process.
+To continue with the example, each user account in partition Users has
+access to specific, but different, partitions. Note that user accounts
+sjones, cjohnson, and gnelson can access one partition only, while the
+tbrown account has universal access.
 
-The semantics of the GET method change to a "conditional GET" if the
-request message includes an If-Modified-Since, If-Unmodified-Since,
-If-Match, If-None-Match, or If-Range header field. A conditional GET
-method requests that the entity be transferred only under the
-circumstances described by the conditional header field(s). The
-conditional GET method is intended to reduce unnecessary network usage
-by allowing cached entities to be refreshed without requiring multiple
-requests or transferring data already held by the client.
+To summarize, an administrative partition defines a set of objects,
+including user accounts, that other administrative users can potentially
+manage. This gives computing organizations greater control over user
+access to specific objects on the BIG-IP system.
 
-The semantics of the GET method change to a "partial GET" if the request
-message includes a Range header field. A partial GET requests that only
-part of the entity be transferred. The partial GET method is intended to
-reduce unnecessary network usage by allowing partially retrieved
-entities to be completed without transferring data already held by the
-client.
+**Effect of user roles on objects within partitions**
 
-The response to a GET request is cacheable if and only if it meets the
-requirements for HTTP caching.
+A user role defines the access level that a user has for each object in
+the user’s assigned partition. An access level refers to the type of
+task that a user can perform on an object. Possible access levels are:
 
-**PUT**
+**Write**
 
-The PUT method requests that the enclosed entity be stored under the
-supplied Request-URI. If the Request-URI refers to an already existing
-resource, the enclosed entity SHOULD be considered as a modified version
-of the one residing on the origin server. If the Request-URI does not
-point to an existing resource, and that URI is capable of being defined
-as a new resource by the requesting user agent, the origin server can
-create the resource with that URI. If a new resource is created, the
-origin server MUST inform the user agent via the 201 (Created) response.
-If an existing resource is modified, either the 200 (OK) or 204 (No
-Content) response codes SHOULD be sent to indicate successful completion
-of the request. If the resource could not be created or modified with
-the Request-URI, an appropriate error response SHOULD be given that
-reflects the nature of the problem. The recipient of the entity MUST NOT
-ignore any Content-\* (e.g. Content-Range) headers that it does not
-understand or implement and MUST return a 501 (Not Implemented) response
-in such cases.
+Grants full access: that is, the ability to create, modify, enable and
+disable, and delete an object.
 
-If the request passes through a cache and the Request-URI identifies one
-or more currently cached entities, those entries SHOULD be treated as
-stale. Responses to this method are not cacheable.
+**Update**
 
-The fundamental difference between the POST and PUT requests is
-reflected in the different meaning of the Request-URI. The URI in a POST
-request identifies the resource that will handle the enclosed entity.
-That resource might be a data-accepting process, a gateway to some other
-protocol, or a separate entity that accepts annotations. In contrast,
-the URI in a PUT request identifies the entity enclosed with the request 
-the user agent knows what URI is intended and the server MUST NOT
-attempt to apply the request to some other resource. If the server
-desires that the request be applied to a different URI, it MUST send a 
-301 (Moved Permanently) response; the user agent MAY then
-make its own decision regarding whether or not to redirect the request.
+Grants the ability to modify, enable, and disable an object.
 
-Many different URIs MAY identify a single resource. For example, an
-article might have a URI for identifying "the current version" which is
-separate from the URI identifying each particular version. In this case,
-a PUT request on a general URI might result in several other URIs being
-defined by the origin server.
+**Enable/disable**
 
-HTTP/1.1 does not define how a PUT method affects the state of an origin
-server.
+Grants the ability to enable or disable an object.
 
-Unless otherwise specified for a particular entity-header, the
-entity-headers in the PUT request SHOULD be applied to the resource
-created or modified by the PUT.
+**Read**
+
+Grants the ability to view an object.
 
 ----
 
 |
 
-**2.06 - Explain how to decode POST data**
+**2.04 - Explain the options for partition access and terminal access**
 
-You can decode post data within an iRule if you are trying to manipulate
-or rewrite a URL data.
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-5-0/10.html#unique_1660055220
 
-----
+**Partition Access**
 
-https://devcentral.f5.com/codeshare?sid=523
+A user role defines the access level that a user has for each object in
+the users assigned partition. An access level refers to the type of task
+that a user can perform on an object. Possible access levels are:
 
-And there are plenty of online encoding and decoding tools you can use
-if you are just trying to see what is being passed in your browser. The
-following site is one example of an online tool.
+-  Write
 
-----
+Grants full access, that is, the ability to create, modify, enable and disable, and delete an object.
 
-https://www.url-encode-decode.com/
+-  Update
 
-URL encoding stands for encoding certain characters in a URL by
-replacing them with one or more character-triplets that consist of the
-percent character "%" followed by two hexadecimal digits. The two
-hexadecimal digits of the triplet(s) represent the numeric value of the
-replaced character.
+Grants the ability to modify, enable, and disable an object.
 
-The term URL encoding is a bit inexact because the encoding procedure is
-not limited to URLs (Uniform Resource Locators) but can also be applied
-to any other URIs (Uniform Resource Identifiers) such as URNs (Uniform
-Resource Names). Therefore, the term percent-encoding should be
-preferred.
+-  Enable/disable
 
-For worldwide interoperability, URIs have to be encoded uniformly. To
-map the wide range of characters used worldwide into the 60 or so
-allowed characters in a URI, a two-step process is used:
+Grants the ability to enable or disable an object.
 
--  Convert the character string into a sequence of bytes using the UTF-8
-   encoding
+-  Read
 
--  Convert each byte that is not an ASCII letter or digit to %HH, where
-   HH is the hexadecimal value of the byte
+Grants the ability to view an object.
 
-For example, the string: François ,would be encoded as: Fran%C3%A7ois
+**Terminal Access**
 
-(The "ç" is encoded in UTF-8 as two bytes C3 (hex) and A7 (hex), which
-are then written as the three characters "%c3" and "%a7" respectively.)
-This can make a URI rather long (up to 9 ASCII characters for a single
-Unicode character), but the intention is that browsers only need to
-display the decoded form, and many protocols can send UTF-8 without the
-%HH escaping.
+Specifies the level of access to the BIG-IP system command line
+interface. Possible values are: Disabled and Advanced shell.
+
+Users with the Administrator or Resource Administrator role assigned to
+their accounts can have advanced shell access, that is, permission to
+use all BIG-IP system command line utilities, as well as any Linux
+commands.
 
 |
 
@@ -2121,473 +998,3067 @@ display the decoded form, and many protocols can send UTF-8 without the
 
 |
 
-Objective - 2.07 Given a set of headers or traces, determine a solution to an HTTP/HTTPS application problem
+Objective - 2.05 Given a scenario, determine an appropriate high availability configuration (i.e., failsafe, failover and timers)
+---------------------------------------------------------------------------------------------------------------------------------
+
+|
+|
+
+**2.05 - Explain how the score is calculated for HA groups**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-implementations-11-5-0/8.html
+
+**Specifying the HA capacity of a device**
+
+Before you perform this task, verify that this device is a member of a
+device group and that the device group contains three or more devices.
+
+You perform this task when you have more than one type of hardware
+platform in a device group and you want to configure load-aware
+failover. Load-aware failover ensures that the BIG-IP system can
+intelligently select the next-active device for each active traffic
+group in the device group when failover occurs. As part of configuring
+load-aware failover, you define an HA capacity to establish the amount
+of computing resource that the device provides relative to other devices
+in the device group.
+
+Note: If all devices in the device group are the same hardware platform,
+you can skip this task.
+
+1. On the Main tab, click Device Management > Devices. This displays a list of device objects discovered by the local device.
+
+2. In the Name column, click the name of the device for which you want to view properties. This displays a table of properties for the device.
+
+3. In the HA Capacity field, type a relative numeric value. You need to configure this setting only when you have varying types of hardware platforms in a device group and you want to configure load-aware failover. The value you specify represents the relative capacity of the device to process application traffic compared to the other devices in the device group.
+
+Important: If you configure this setting, you must configure the
+setting on every device in the device group.
+
+If this device has half the capacity of a second device and a third
+of the capacity of a third device in the device group, you can
+specify a value of 100 for this device, 200 for the second device,
+and 300 for the third device. When choosing the next active device
+for a traffic group, the system considers the capacity that you
+specified for this device.
+
+4. Click Update.
+
+After you perform this task, the BIG-IP system uses the HA Capacity
+value to calculate the current utilization of the local device, to
+determine the next-active device for failover of other traffic groups in
+the device group.
+
+**Specifying an HA load factor for a traffic group**
+
+You perform this task when you want to specify the relative application
+load for an existing traffic group, for the purpose of configuring
+load-aware failover. Load-aware failover ensures that the BIG-IP system
+can intelligently select the next-active device for each active traffic
+group in the device group when failover occurs. When you configure
+load-aware failover, you define an application traffic load (known as an
+HA load factor) for a traffic group to establish the amount of computing
+resource that an active traffic group uses relative to other active
+traffic groups.
+
+1. On the Main tab, click Device Management > Traffic Groups.
+
+2. In the Name column, click the name of a traffic group. This displays the properties of the traffic group.
+
+3. From the Failover Methods list, select Load Aware. This displays the HA Load Factor setting.
+
+4. In the HA Load Factor field, specify a value that represents the application load for this traffic group relative to other active traffic groups on the local device.
+
+Important: If you configure this setting, you must configure the
+setting on every traffic group in the device group.
+
+5. Click Update.
+
+After performing this task, the BIG-IP system uses the HA Load Factor
+value as a factor in calculating the current utilization of the local
+device, to determine whether this device should be the next-active
+device for failover of other traffic groups in the device group.
+
+**Implementation Results**
+
+For this implementation example, the load-aware configuration now
+consists of both a user-specified relative high availability (HA)
+hardware capacity for each device and a relative load factor for each
+active traffic group.
+
+Using the example in the overview, devices Bigip_A and Bigip_B are the
+same hardware platform and therefore have the same HA capacity, while
+Bigip_C has twice the HA capacity of the other two devices. Also,
+devices Bigip_A and Bigip_B currently have one active traffic group
+each, while Bigip_C has two active traffic groups. All three traffic
+groups process the same amount of application traffic.
+
+|
+
+.. image:: /_static/301a/p9.png
+
+|
+
+Device utilization scores based on device capacity and traffic group
+load
+
+The device utilization score that the BIG-IP system calculates in this
+implementation is the sum of all traffic load values on a device divided
+by the device capacity.
+
+Table 1. Calculating the utilization score for Bigip_A
+
++---------------+------------------------+------------------+----------------------------------+------------------+----------------------------+
+| HA capacity   | Active traffic group   | HA load factor   | Potential active traffic group   | HA load factor   | Device utilization score   |
++===============+========================+==================+==================================+==================+============================+
+| 10            | Traffic-group-1        | 1                | Traffic-group-2                  | 1                | 2/10 = .2                  |
++---------------+------------------------+------------------+----------------------------------+------------------+----------------------------+
+
+Table 2. Calculating the utilization score for Bigip_B
+
++---------------+-----------------------+------------------+----------------------------------+------------------+----------------------------+
+| HA capacity   | Active traffic group  | HA load factor   | Potential active traffic group   | HA load factor   | Device utilization score   |
++===============+=======================+==================+==================================+==================+============================+
+| 10            | Traffic-group-2       |    1             | Traffic-group-3                  | 1                | 2/10=.2                    |
++---------------+-----------------------+------------------+----------------------------------+------------------+----------------------------+
+
+Table 3. Calculating the utilization score for Bigip_C
+
++---------------+----------------------------------------+------------------+----------------------------------+------------------+----------------------------+
+| HA capacity   | Active traffic group                   | HA load factor   | Potential active traffic group   | HA load factor   | Device utilization score   |
++===============+========================================+==================+==================================+==================+============================+
+| 20            | Traffic-group-3 and Traffic-group-4    | 1 and 1          | Traffic-group-1                  | 1                | 3/20=.15                   |
++---------------+----------------------------------------+------------------+----------------------------------+------------------+----------------------------+
+
+This example shows the results of the calculations that the BIG-IP
+system performs for each device in the device group. The example shows
+that although device Bigip_C currently has the two active traffic
+groups, the device has the most available resource due to having the
+lowest utilization score of .15. In this case, Bigip_C is most likely
+the next-active device for the other two devices in the device group.
+
+----
+
+|
+
+**2.05 - Explain the required objects on an HA pair**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-implementations-11-5-0/2.html
+
+**Configuration objects for HA**
+
+The following BIG-IP configuration will be on each device of the HA
+pair:
+
+-  A management port, management route, and administrative passwords defined.
+
+-  A VLAN named internal, with one static and one floating IP address.
+
+-  A VLAN named external, with one static and one floating IP address.
+
+-  A VLAN named HA with a static IP address.
+
+-  Configuration synchronization, failover, and mirroring enabled.
+
+-  Failover methods of serial cable and network (or network-only, for a VIPRION platform.
+
+-  A designation as an authority device, where trust was established with the peer device.
+
+-  A Sync-Failover type of device group with two members defined.
+
+-  A default traffic group that floats to the peer device to process application traffic when this device becomes unavailable. This traffic group contains two floating self IP addresses for VLANs internal and external.
+
+On either device in the device group, you can create additional
+configuration objects, such as virtual IP addresses and SNATs. The
+system automatically adds these objects to Traffic-Group-1.
+
+----
+
+|
+
+**2.05 - Explain how to configure device trust**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-implementations-11-5-0/3.html
+
+**Establishing device trust**
+
+Before you begin this task, verify that:
+
+-  Each BIG-IP device that is to be part of the local trust domain has a device certificate installed on it.
+
+-  The local device is designated as a certificate signing authority.
+
+You perform this task to establish trust among devices on one or more
+network segments. Devices that trust each other constitute the local
+trust domain. A device must be a member of the local trust domain prior
+to joining a device group.
+
+By default, the BIG-IP software includes a local trust domain with one
+member, which is the local device. You can choose any one of the BIG-IP
+devices slated for a device group and log into that device to add other
+devices to the local trust domain. For example, devices A, B, and C each
+initially shows only itself as a member of the local trust domain. To
+configure the local trust domain to include all three devices, you can
+simply log into device A and add devices B and C to the local trust
+domain. Note that there is no need to repeat this process on devices B
+and C.
+
+1. On the Main tab, click Device Management > Device Trust, and then either Peer List or Subordinate List.
+
+2. Click Add.
+
+3. Type a device IP address, administrator user name, and administrator password for the remote BIG-IP device with which you want to establish trust. The IP address you specify depends on the type of BIG-IP device:
+
+-  If the BIG-IP device is a non-VIPRION device, type the management IP address for the device.
+
+-  If the BIG-IP device is a VIPRION device that is not licensed and provisioned for vCMP, type the primary cluster management IP address for the cluster.
+
+-  If the BIG-IP device is a VIPRION device that is licensed and provisioned for vCMP, type the cluster management IP address for the guest.
+
+-  If the BIG-IP device is an Amazon Web Services EC2 device, type one of the Private IP addresses created for this EC2 instance.
+
+4. Click Retrieve Device Information.
+
+5. Verify that the certificate of the remote device is correct.
+
+6. Verify that the name of the remote device is correct.
+
+7. Verify that the management IP address and name of the remote device are correct.
+
+8. Click Finished.
+
+The device you added is now a member of the local trust domain.
+
+Repeat this task for each device that you want to add to the local trust
+domain.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
+Objective - 2.06 Given a scenario, describe the steps necessary to set up a device group, traffic group and HA group
+--------------------------------------------------------------------------------------------------------------------
+
+|
+|
+
+**2.06 - Explain how to set up sync-only and sync-failover device service cluster**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-device-service-clustering-admin-11-5-0/6.html
+
+**About Sync-Failover Device Groups**
+
+One of the types of device groups that you can create is a Sync-Failover
+type of device group. A Sync-Failover device group contains devices that
+synchronize their configuration data and fail over to one another when a
+device becomes unavailable. A Sync-Failover device group supports a
+maximum of eight devices.
+
+|
+
+.. image:: /_static/301a/p10.png
+
+|
+
+traffic_group_1 is active on a device in a Sync-Failover device group
+
+.. image:: /_static/301a/p11.png
+
+On failover, traffic_group_1 becomes active on another device in the
+Sync-Failover device group
+
+A device in the trust domain can be a member of both a Sync-Failover
+group and a Sync-Only group simultaneously.
+
+For devices in a Sync-Failover group, the BIG-IP system uses both the
+device group and the traffic group attributes of a folder to make
+decisions about which devices to target for synchronizing the contents
+of the folder, and which application-related configuration objects to
+include in failover.
+
+You can control the way that the BIG-IP chooses a target failover
+device. This control is especially useful when a device group contains
+heterogeneous hardware platforms that differ in load capacity, because
+you can ensure that when failover occurs, the system will choose the
+device with the most available resource to process the application
+traffic.
+
+|
+
+.. image:: /_static/301a/p12.png
+
+|
+
+Sample Sync-Failover device groups in a trust domain
+
+**Sample Sync-Failover configuration**
+
+You can use a Sync-Failover device group in a variety of ways. This
+sample configuration shows two separate Sync-Failover device groups in
+the local trust domain. Device group A is a standard active-standby
+configuration. Prior to failover, only BIGIP1 processes traffic for
+application A. This means that BIGIP1 and BIGIP2 synchronize their
+configurations, and BIGIP1 fails over to BIGIP2 if BIGIP1 becomes
+unavailable. BIGIP1 cannot fail over to BIGIP3 or BIGIP4 because those
+devices are in a separate device group.
+
+Device group B is also a standard active-standby configuration, in which
+BIGIP3 normally processes traffic for application B. This means that
+BIGIP3 and BIGIP4 synchronize their configurations, and BIGIP3 fails
+over to BIGIP4 if BIGIP3 becomes unavailable. BIGIP3 cannot fail over to
+BIGIP1 or BIGIP2 because those devices are in a separate device group.
+
+**Sync-Failover device group considerations**
+
+The following configuration restrictions apply to Sync-Failover device
+groups:
+
+-  A specific BIG-IP device in a trust domain can belong to one
+   Sync-Failover device group only.
+
+-  On each device in a Sync-Failover device group, the BIG-IP system
+   automatically assigns the device group name to the root and /Common
+   folders. This ensures that the system synchronizes any traffic groups
+   for that device to the correct devices in the local trust domain.
+
+-  The BIG-IP system creates all device groups and traffic-groups in the
+   /Common folder, regardless of the partition to which the system is
+   currently set.
+
+-  If no Sync-Failover device group is defined on a device, then the
+   system sets the device group value that is assigned to the root and
+   /Common folders to None.
+
+-  By default, on each device, the BIG-IP system assigns a Sync-Failover
+   device group to any sub-folders of the root or /Common folders that
+   inherit the device group attribute.
+
+-  You can configure a maximum of 15 floating traffic groups for a
+   Sync-Failover device group.
+
+**Creating a Sync-Failover device group**
+
+This task establishes failover capability between two or more BIG-IP
+devices. If the active device in a Sync-Failover device group becomes
+unavailable, the configuration objects fail over to another member of
+the device group and traffic processing is unaffected. You can perform
+this task on any authority device within the local trust domain.
+
+1. On the Main tab, click Device Management > Device Groups. The Device Groups screen displays a list of existing device groups.
+
+2. On the Device Group List screen, click Create.
+
+3. Type a name for the device group, select the device group type Sync-Failover, and type a description for the device group.
+
+4. In the Configuration area of the screen, select a host name from the available list for each BIG-IP device that you want to include in the device group. Use the Move button to move the host name to the selected list.
+
+The Available list shows any devices that are members of the
+device's local trust domain but not currently members of a
+Sync-Failover device group. A device can be a member of one
+Sync-Failover group only.
+
+5. For Network Failover, select the Enabled check box.
+
+6. Click Finished.
+
+You now have a Sync-Failover type of device group containing BIG-IP
+devices as members.
+
+**About Sync-Only device groups**
+
+One of the types of device groups that you can create is a Sync-Only
+device group. A Sync-Only device group contains devices that synchronize
+configuration data with one another, but their configuration data does
+not fail over to other members of the device group. A Sync-Only device
+group supports a maximum of 32 devices.
+
+A device in a trust domain can be a member of more than one Sync-Only
+device group. A device can also be a member of both a Sync-Failover
+group and a Sync-Only group simultaneously.
+
+A typical use of a Sync-Only device group is one in which you configure
+a device to synchronize the contents of a specific folder to a different
+device group than to the device group to which the other folders are
+synchronized.
+
+|
+
+.. image:: /_static/301a/p13.png
+
+|
+
+Sync-only device group
+
+**Sample Sync-Only configuration**
+
+The most common reason to use a Sync-Only device group is to synchronize
+a specific folder containing policy data that you want to share across
+all BIG-IP devices in a local trust domain, while setting up a
+Sync-Failover device group to fail over the remaining configuration
+objects to a subset of devices in the domain. In this configuration, you
+are using a Sync-Only device group attribute on the policy folder to
+override the inherited Sync-Failover device group attribute. Note that
+in this configuration, BIGIP1 and BIGIP2 are members of both the
+Sync-Only and the Sync-Failover groups.
+
+|
+
+.. image:: /_static/301a/p14.png
+
+|
+
+Sync-Only Device Group
+
+To implement this configuration, you can follow this process:
+
+1. Create a Sync-Only device group on the local device, adding all devices in the local trust domain as members.
+
+2. Create a Sync-Failover device group on the local device, adding a subset of devices as members.
+
+3. On the folder containing the policy data, use tmsh to set the value of the device group attribute to the name of the Sync-Only device group.
+
+4. On the root folder, retain the default Sync-Failover device group assignment.
+
+**Creating a Sync-Only device group**
+
+You perform this task to create a Sync-Only type of device group. When
+you create a Sync-Only device group, the BIG-IP system can then
+automatically synchronize certain types of data such as security
+policies and acceleration applications and policies to the other devices
+in the group, even when some of those devices reside in another network.
+You can perform this task on any BIG-IP device within the local trust
+domain.
+
+1. On the Main tab, click Device Management > Device Groups.
+
+2. On the Device Groups list screen, click Create. The New Device Group screen opens.
+
+3. Type a name for the device group, select the device group type Sync-Only, and type a description for the device group.
+
+4. From the Configuration list, select Advanced.
+
+5. For the Members setting, select an IP address and host name from the Available list for each BIG-IP device that you want to include in the device group. Use the Move button to move the host name to the Includes list. The list shows any devices that are members of the device's local trust domain.
+
+6. For the Automatic Sync setting, select or clear the check box:
+
+-  Select the check box when you want the BIG-IP system to automatically
+   sync the BIG-IP configuration data whenever a config sync operation
+   is required. In this case, the BIG-IP system syncs the configuration
+   data whenever the data changes on any device in the device group.
+
+-  Clear the check box when you want to manually initiate each config
+   sync operation. In this case, F5 recommends that you perform
+   a config sync operation whenever configuration data changes on one of
+   the devices in the device group.
+
+7. For the Full Sync setting, select or clear the check box:
+
+-  Select the check box when you want all sync operations to be full
+   syncs. In this case, the BIG-IP system syncs the entire set of BIG-IP
+   configuration data whenever a config sync operation is required.
+
+-  Clear the check box when you want all sync operations to be
+   incremental (the default setting). In this case, the BIG-IP system
+   syncs only the changes that are more recent than those on the target
+   device. When you select this option, the BIG-IP system compares the
+   configuration data on each target device with the configuration data
+   on the source device and then syncs the delta of each target-source
+   pair.
+
+If you enable incremental synchronization, the BIG-IP system might
+occasionally perform a full sync for internal reasons. This is a
+rare occurrence and no user intervention is required.
+
+8. In the Maximum Incremental Sync Size (KB) field, retain the default value of 1024, or type a different value. This value specifies the total size of configuration changes that can reside in the incremental sync cache. If the total size of the configuration changes in the cache exceeds the specified value, the BIG-IP system performs a full sync whenever the next config sync operation occurs.
+
+9. Click Finished.
+
+You now have a Sync-Only type of device group containing BIG-IP devices
+as members.
+
+**A note about folders and overlapping device groups**
+
+Sometimes when one BIG-IP object references another, one of the objects
+gets synchronized to a particular device, but the other object does not.
+This can result in an invalid device group configuration.
+
+For example, suppose you create two device groups that share some
+devices but not all. In the following illustration, Device A is a member
+of both Device Group 1 and Device Group 2.
+
+|
+
+.. image:: /_static/301a/p15.png
+
+|
+
+One device with membership in two device groups
+
+Device Group 1 is associated with folder /Common, and Device Group 2 is
+associated with the folder /Common/my_app. This configuration causes
+Device A to synchronize all of the data in folder /Common to Device B in
+Device Group 1. The only data that Device A can synchronize to Device C
+in Device Group 2 is the data in the folder /Common/my_app, because
+this folder is associated with Device Group 2 instead of Device Group 1.
+
+Now suppose that you create a pool in the /Common/my_app folder, which
+is associated with Device Group 2. When you create the pool members in
+that folder, the BIG-IP system automatically creates the associated node
+addresses and puts them in folder /Common. This results in an invalid
+configuration, because the node objects in folder /Common do not get
+synchronized to the device on which the nodes' pool members reside,
+Device C. When an object is not synchronized to the device on which its
+referenced objects reside, an invalid configuration results.
+
+----
+
+|
+
+**2.06 - Explain how to configure HA groups**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-device-service-clustering-admin-11-5-0/8.html
+
+**Creating an HA group**
+
+You use this task to create an HA group for a traffic group on a device
+in a BIG-IP device group. Also known as fast failover, an HA group is
+most useful when you want an active traffic group on a device to fail
+over to another device based on trunk and pool availability, and on
+VIPRION systems, also cluster availability. You can create multiple HA
+groups on a single device, and you associate each HA group with the
+local instance of a traffic group.
+
+Important: Once you create an HA group on a device and associate the HA
+group with a traffic group, you must create an HA group and associate it
+with that same traffic group on every device in the device group. For
+example, on Device_A, if you create HA_GroupA_TG1 and associate it
+with trafffic-group-1, then on Device_B you can create HA_GroupB_TG1)
+and also associate it with traffic-group-1.
+
+1. On the Main tab, click System > High Availability > HA Groups
+
+2. In the HA Group Name field, type a name for the HA group, such as ha_group1.
+
+3. Verify that the Enable check box is selected.
+
+4. In the Active Bonus field, specify an integer the represents the
+   amount by which you want the system to increase the overall score of
+   the active device. The purpose of the active bonus is to prevent
+   failover when minor or frequent changes occur to the configuration of
+   a pool, trunk, or cluster.
+
+5. In the table displayed along the bottom of the screen, for the
+   Threshold setting, for each pool, trunk, or VIPRION cluster in the HA
+   group, optionally specify an integer for a threshold value.
+
+6. For the Weight setting, for each pool, trunk, or VIPRION cluster in
+   the HA group, specify an integer for the weight. The allowed weight
+   for an HA group object ranges from 10 through 100. This value is
+   required.
+
+7. Click Create.
+
+You now have an HA group that the BIG-IP system can later use to
+calculate an HA score for fast failover.
+
+After creating an HA group on the local device, you must assign it to a
+traffic group on the local device.
+
+**Associating an HA group with a traffic group**
+
+You use this task to associate an HA group with an existing traffic
+group. Also known as fast failover, this configuration option is most
+useful when you want an active traffic group to fail over to another
+device due to trunk, pool, and/or VIPRION cluster availability
+specifically. When you configure an HA group for a traffic group, you
+ensure that the traffic group, when active, fails over to the device on
+which the traffic group has the highest HA score.
+
+*Important*: HA groups are not included in config sync operations. For
+this reason, you must create a separate HA group on every device in the
+device group for this traffic group. For example, if the device group
+contains three devices and you want to create an HA group for
+traffic-group-1, you must configure the HA group property for
+traffic-group-1 on each of the three devices separately. In a typical
+device group configuration, the values of the HA group settings on the
+traffic group will differ on each device.
+
+1. On the Main tab, click Device Management > Traffic Groups.
+
+2. In the Name column, click the name of a traffic group on the local device. This displays the properties of the traffic group.
+
+3. From the Failover Methods list, select HA Group.
+
+4. From the HA Group list, select an HA group.
+
+5. Click Update.
+
+After you perform this task for this traffic group on each device group
+member, the BIG-IP system ensures that this traffic group is always
+active on the device with the highest HA score.
+
+----
+
+|
+
+**2.06 - Explain how to assign virtual servers to traffic groups**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-device-service-clustering-admin-11-5-0/8.html
+
+**Traffic Group Assignment**
+
+You perform this task to add members to a newly-created or existing
+traffic group. Traffic group members are the floating IP addresses
+associated with application traffic passing through the BIG-IP system.
+Typical members of a traffic group are: a floating self IP address, a
+floating virtual address, and a floating SNAT translation address.
+
+1. From the Main tab, display the properties page for an existing BIG-IP object, such as a self IP address or a virtual address. For example, from the Main tab, click Network > Self IPs, and then from the Self IPs list, click a self IP address.
+
+2. From the Traffic Group list, select the floating traffic group that you want the BIG-IP object to join.
+
+3. Click Update.
+
+After performing this task, the BIG-IP object belongs to the selected
+traffic group.
+
+Repeat this task for each BIG-IP object that you want to be a member of
+the traffic group.
+
+----
+
+|
+
+**2.06 - (Supplemental Example) Explain use cases for MAC masquerading**
+
+https://support.f5.com/csp/article/K13502
+
+**MAC Masquerading**
+
+Using MAC masquerading will reduce ARP convergence issues within the
+BIG-IP LAN environments when a failover event happens.
+
+To optimize the flow of traffic during failover events, you can
+configure MAC masquerade addresses for any defined traffic groups on the
+BIG-IP system. A MAC masquerade address is a unique, floating MAC
+address that you create. You can assign one MAC masquerade address to
+each traffic group on a BIG-IP device. By assigning a MAC masquerade
+address to a traffic group, you associate that address with any floating
+IP addresses associated with the traffic group. By configuring a MAC
+masquerade address for each traffic group, a single Virtual Local Area
+Network (VLAN) can potentially carry traffic and services for multiple
+traffic groups, with each service having its own MAC masquerade address.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
+Objective - 2.07 Predict the behavior of an LTM device group or traffic groups in a given failure scenario
+----------------------------------------------------------------------------------------------------------
+
+|
+|
+
+**2.07 - (Supplemental Example) Predict the behavior of an LTM device group or traffic groups in a given failure scenario**
+
+https://support.f5.com/csp/article/K13946?sr=29127385
+
+This topic is focused on predicting behaviors during failovers between
+BIG-IP systems. Understanding how device groups and traffic groups
+behave is the key to this topic. Experience with failing over HA systems
+will give the candidate the ability to answer the questions on this
+topic.
+
+F5 introduced the Device Service Clustering (DSC) architecture in BIG-IP
+11.x. DSC provides the framework for ConfigSync, and other
+high-availability features, including the following components:
+
+**Device trust and trust domains**
+
+Device trust establishes trust relationships between BIG-IP devices
+through certificate-based authentication. Each device generates a device
+ID key and Secure Socket Layer (SSL) certificate upon upgrade or
+installation. A trust domain is a collection of BIG-IP devices that
+trust each other, and can synchronize and fail over their BIG-IP
+configuration data, as well as regularly exchange status and failover
+messages.
+
+When the local BIG-IP device attempts to join a device trust with a
+remote BIG-IP device, the following applies:
+
+If the local BIG-IP device is added as a peer authority device, the
+remote BIG-IP device presents a certificate signing request (CSR) to the
+local device, which then signs the CSR and returns the certificate along
+with its CA certificate and key.
+
+If the local BIG-IP device is added as a subordinate (non-authority)
+device, the remote BIG-IP device presents a CSR to the local device,
+which then signs the CSR and returns the certificate. The CA certificate
+and key are not presented to the remote BIG-IP device. The subordinate
+device is unable to request other devices to join the device trust.
+
+**Device groups**
+
+A device group is a collection of BIG-IP devices that reside in the same
+trust domain and are configured to securely synchronize their BIG-IP
+configuration and failover when needed. Device groups can initiate a
+ConfigSync operation from the device group member with the desired
+configuration change. You can create two types of device groups:
+
+A Sync-Failover device group contains devices that synchronize
+configuration data and support traffic groups for failover purposes.
+
+A Sync-Only device group contains devices that synchronize configuration
+data, but do not synchronize failover objects and do not fail over to
+other members of the device group.
+
+**Traffic groups**
+
+A traffic group represents a collection of related configuration objects
+that are configured on a BIG-IP device. When a BIG-IP device becomes
+unavailable, a traffic group can float to another device in a device
+group.
+
+**Folders**
+
+A folder is a container for BIG-IP configuration objects. You can use
+folders to set up synchronization and failover of configuration data in
+a device group. You can sync all configuration data on a BIG-IP device,
+or you can sync and fail over objects within a specific folder only.
+
+**Centralized Management Infrastructure (CMI) communication channel**
+
+The BIG-IP system uses SSL certificates to establish a trust
+relationship between devices. In a device trust, BIG-IP devices can act
+as certificate signing authorities, peer authorities, or subordinate
+non-authorities. When acting as a certificate signing authority, the
+BIG-IP device signs x509 certificates for another BIG-IP device that is
+in the local trust domain. The BIG-IP device for which a certificate
+signing authority device signs its certificate is known as a subordinate
+non-authority device.
+
+----
+
+|
+
+**2.07 - Compare and contrast network and serial failover**
+
+https://support.f5.com/csp/article/K2397?sr=42496090
+
+**Network Failover**
+
+Network failover is based on heartbeat detection where the system sends
+heartbeat packets over the internal network.
+
+The system uses the primary and secondary failover addresses to send
+network failover heartbeat packets. For more information about the
+BIG-IP mirroring and network failover transport protocols, refer to the
+following articles:
+
+-  `K9057: Service port and protocol used for BIG-IP network
+   failover <https://support.f5.com/csp/article/K9057>`__
+
+-  `K7225: Transport protocol used for BIG-IP connection and persistence
+   mirroring <https://support.f5.com/csp/article/K7225>`__
+
+The BIG-IP system considers the peer down after the
+Failover.NetTimeoutSec timeout value is exceeded. The default value of
+Failover.NetTimeoutSec is three seconds, after which the standby unit
+attempts to switch to an active state. The following database entry
+represents the default settings for the failover time configuration:
+
+Failover.NetTimeoutSec = 3
+
+Device Service Clustering (DSC) was introduced in BIG-IP 11.0.0 and
+allows many new features such as synchronization and failover between
+two or more devices. Network failover provides communication between
+devices for synchronization, failover, and mirroring and is required for
+the following deployments:
+
+-  Sync-Failover device groups containing three or more devices
+
+-  Active-active configurations between two BIG-IP platforms
+
+-  BIG-IP VIPRION platforms
+
+-  BIG-IP Virtual Edition
+
+An active-active pair must communicate over the network to indicate the
+objects and resources they service. Otherwise, if network communications
+fail, the two systems may attempt to service the same traffic management
+objects, which could result in duplicate IP addresses on the network.
+
+A broken network may cause BIG-IP systems to enter into active-active
+mode. To avoid this issue, F5 recommends that you dedicate one interface
+on each system to perform only failover communications and, when
+possible, directly connect these two interfaces with an Ethernet cable
+to avoid network problems that could cause the systems to go into an
+active-active state.
+
+Important: When you directly connect two BIG-IP systems with an
+Ethernet cable, do not change the speed and duplex settings of the
+interfaces involved in the connection. If you do, depending on the
+BIG-IP software version, you may be required to use a crossover
+cable. For more information, refer to SOL9787: Auto MDI/MDIX
+behavior for BIG-IP platforms.
+
+If you configure a BIG-IP high-availability pair to use network
+failover, and the hardwired failover cable also connects the two units,
+hardwired failover always has precedence; if network failover traffic is
+compromised, the two units do not fail over because the hardwired
+failover cable still connects them.
+
+**Hardwired Failover**
+
+Hardwired failover is also based on heartbeat detection, where one
+BIG-IP system continuously sends voltage to another. If a response does
+not initiate from one BIG-IP system, failover to the peer occurs in less
+than one second. When BIG-IP redundant devices connect using a hardwired
+failover cable, the system automatically enables hardwired failover.
+
+The maximum hardwired cable length is 50 feet. Network failover is an
+option if the distance between two BIG-IP systems exceeds the acceptable
+length for a hardwired failover cable.
+
+Note: For information about the failover cable wiring pinouts, refer
+to `SOL1426: Pinouts for the failover cable used with BIG-IP
+platforms <https://support.f5.com/kb/en-us/solutions/public/1000/400/sol1426.html>`__.
+
+Hardwired failover can only successfully be deployed between two
+physical devices. In this deployment, hardwired failover can provide
+faster failover response times than network failover. However, peer
+state may be reported incorrectly when using hardwired failover alone.
+
+Hardwired failover is only a heartbeat and carries no status
+information. Communication over the network is necessary for certain
+features to function properly. For example, Traffic Management
+Microkernel (TMM) uses the network to synchronize packets and flow state
+updates to peers for connection mirroring. To enable proper state
+reporting and mirroring, F5 recommends that you configure network
+failover in addition to hardwired failover.
+
+----
+
+|
+
+**2.07 - Compare and contrast failover unicast and multicast**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-device-service-clustering-admin-11-5-0/8.html
+
+**Failover Unicast and Multicast**
+
+The unicast failover configuration uses a self-IP address and TMM switch
+port to communicate failover packets between each BIG-IP appliance. For
+appliance platforms, specifying two unicast addresses should suffice.
+
+For VIPRION platforms, you should enable multicast and retain the
+default multicast address that the BIG-IP system provides. The multicast
+failover entry uses the management port to communicate failover packets
+between each VIPRION system. As an alternative to configuring the
+multicast failover option, you can define a unicast mesh using the
+management port for each VIPRION system.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
+Objective - 2.08 Determine the effect of LTM features and/or modules on LTM device performance and/or memory
 ------------------------------------------------------------------------------------------------------------
 
 |
 |
 
-**2.07 - Investigate the cause of a specific response code**
+**2.08 - Determine the effect of iRules on performance**
 
-https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes
+https://devcentral.f5.com/articles/irules-optimization-101-05-evaluating-irule-performance
 
-**Determine cause of a specific response code**
+**Effect of iRules on Performance**
 
-There are many possible response codes as we covered in section 2.06.
+This is a classic case of “It Depends”. Since iRules are written
+individually to solve specific issues or do specific functions necessary
+for a particular scenario, there is not a fixed sheet of performance
+numbers showing how an iRule will impact performance. iRules do get
+compiled into byte code, and can run at wire speed, but it really
+depends on what you're doing. Many times, there is more than one way to
+write an iRule and one method may work more efficiently than another.
 
-404 Not Found
+That said there are ways to see how an iRule is performing by collecting
+and interpreting runtime statistics by inserting a timing command into
+event declarations to see over all CPU usage when under load. This tool
+will help you to create an iRule that is performing the best on your
+system.
 
-The 404 status code, or a Not Found error, means that the user is able
-to communicate with the server but it is unable to locate the requested
-file or resource.
+**Collecting Statistics**
 
-404 errors can occur in a large variety of situations. If the user is
-unexpectedly receiving a 404 Not Found error, here are some questions to
-ask while troubleshooting:
+To generate & collect runtime statistics, you can insert the command
+"timing on" into your iRule. When you run traffic through your iRule
+with timing enabled, LTM will keep track of how many CPU cycles are
+spent evaluating each iRule event. You can enable rule timing for the
+entire iRule, or only for specific events.
 
--  Does the link that directed the user to your server resource have a
-   typographical error in it?
+To enable timing for the entire iRule, insert the "timing on" command at
+the top of the rule before the first "when EVENT_NAME" clause.
 
--  Did the user type in the wrong URL?
+With the timing command in place, each time the rule is evaluated, LTM
+will collect the timing information for the requested events.
 
--  Does the file exist in the correct location on the server? Was the
-   resource was moved or deleted on the server?
+To get a decent average for each of the events, you'll want to run at
+least a couple thousand iterations of the iRule under the anticipated
+production load.
 
--  Does the server configuration have the correct document root
-   location?
+**Viewing Statistics**
 
--  Does the user that owns the web server worker process have privileges
-   to traverse to the directory that the requested file is in? (Hint:
-   directories require read and execute permissions to be accessed)
+The statistics for your iRule (as measured in CPU cycles) may be viewed
+at the command line or console by running
 
--  Is the resource being accessed a symbolic link? If so, ensure the web
-   server is configured to follow symbolic links.
+tmsh show ltm rule rule_name all
+
+The output includes totals for executions, failures & aborts along with
+minimum, average & maximum cycles consumed for each event since stats
+were last cleared.
+::
+
+   ----------------------------
+    Ltm::Rule rule_name
+   ----------------------------
+    Executions
+    Total 729
+    Failures 0
+    Aborts 0
+    CPU Cycles on Executing
+    Average 3959
+    Maximum 53936
+    Minimum 3693
+
+**Evaluating statistics**
+
+“Average cycles reported” is the most useful metric of real-world
+performance, assuming a large representative load sample was evaluated.
+
+The “maximum cycles reported” is often very large since it includes some
+one-time and periodic system overhead. (More on that below.)
+
+Here's a spreadsheet (iRules Runtime Calculator) that will calculate
+percentage of CPU load per iteration once you populate it with your
+clock speed and the statistics gathered with the "timing" command.
+(Clock speed can be found by running 'cat /proc/cpuinfo' at the command
+line.)
+
+**Caveats**
+
+Timing is intended to be used only as an optimization/debug tool, and
+does have a small impact on performance; so don't leave it turned on
+indefinitely.
+
+Timing functionality seems to exhibit a 70 - 100 cycle margin of error.
+
+Use average cycles for most analyses. Maximum cycles is not always an
+accurate indicator of actual iRule performance, as the very first call a
+newly edited iRule includes the cycles consumed for compile-time
+optimizations, which will be reflected in an inflated maximum cycles
+value. The simple solution to this is to wait until the first time the
+rule is hit, then reset the statistics.
+
+However, maximum cycles is also somewhat inflated by OS scheduling
+overhead incurred at least once per tick, so the max value is often
+overstated even if stats are cleared after compilation.
+
+https://support.f5.com/csp/article/K13033?sr=43030558
+
+**Global Variable Impact**
+
+iRules use global variables to make variable data that is created in one
+context, that is available to other connections, virtual servers, and
+Traffic Management Microkernel (TMM) instances. If a virtual server
+references an iRule that uses a global variable that is not Clustered
+Multiprocessing (CMP) compatible, the virtual server will be ineligible
+for CMP processing. In most cases, it is good to retain the benefits of
+CMP processing when using iRules. This document expands on the various
+ways to represent global variable data, making it available to other
+connections, other virtual servers, and other TMM instances.
+
+In many cases, variable data used in an iRule is required to be
+available only within the scope of the current connection. The use of
+TCL local variables satisfies this requirement and does not affect CMP
+compatibility.
+
+In other cases, variable data must be available globally, that is,
+outside the context of a connection. The most common requirement people
+have is to capture data from one connection, then to reference that data
+from subsequent connections that are part of the same session. This
+requirement can be further refined to include both multiple connections
+traversing the same TMM instance, such as would be seen on a
+non-CMP-enabled system or virtual server, and also multiple related
+connections on CMP-enabled virtual servers, which may traverse different
+TMM instances.
+
+Another common use for global variables is to share data among multiple
+iRules that run on the same BIG-IP system. For example, to set and
+enforce a cumulative concurrent connection limit, an iRule would need to
+both set a globally accessible limit value, and also allow each iRule
+instance to update a separate globally-accessible counter value.
+
+The use of global variables can force the BIG-IP system to automatically
+disable CMP processing, which is known as demotion. Demotion of a
+virtual server limits processing of that virtual server to only one CPU
+core. This can adversely affect performance on multi-core BIG-IP
+systems, as only a fraction of the available CPU resources are available
+for each demoted virtual server. In addition, CMP demotion can create an
+internal communication bottleneck for virtual servers that are
+WebAccelerator-enabled or ASM-enabled.
+
+The following sections explain each of three popular methods for sharing
+iRules-derived data globally, including the CMP compatibility of each
+method.
+
+**Using TCL global variables**
+
+TCL global variables are not actually global on a CMP-enabled BIG-IP
+system, since the global variables are not shared among TMM instances.
+TCL global variables are accessible globally only within the local TMM
+instance (meaning that each TMM instance would need to set and update
+separately its own copy of the variable and the value of the variable).
+As a result, the TMM process running on one processor is not able to
+access the contents of the same TCL global variable that was set by a
+different TMM process, even if both TMM processes are handling
+connections for the same virtual server. Because of this limitation, the
+use of a TCL global variable in an iRule automatically demotes from CMP
+any virtual server to which it is applied. This avoids the confusion
+that would otherwise result from accessing and updating multiple
+instances of the same “global” variable. Because the virtual server will
+be automatically demoted from CMP, you should restrict the use of TCL
+global variables to iRules that will be applied to virtual servers that
+do not depend on CMP processing.
+
+**Using static global variables**
+
+If you must share static data (data that will never be modified by the
+iRule itself) across CMP-enabled virtual servers, you can use a static
+global variable. A static global variable stores data globally to the
+entire BIG-IP system, and is set within each TMM instance each time the
+iRule is initialized. The value of a static global variable is assumed
+not to change unless the iRule is re-initialized. As a result, static
+global variables must be set within the RULE_INIT event. Static global
+variables set within the RULE_INIT event are propagated to all TMM
+instances each time the iRule is initialized: when the iRule is loaded
+at system startup, when the configuration is re-loaded, or when the
+iRule is modified from within the BIG-IP Configuration utility and
+saved.
+
+*Important*: While it is possible to use the set command to modify a
+static global variable within the iRule and outside of the RULE_INIT
+event, such modifications will not be propagated to each TMM instance;
+they will be visible to only the TMM process on which the modification
+was made, resulting in inconsistent values for the static global
+variable across TMM instances. As a result, F5 strongly recommends that
+you do not update the value of any static global variable within the
+iRule.
+
+**Using the session table to store global variables**
+
+If you must share non-static global data across CMP-enabled virtual
+servers, you can use the session table to store and reference the data.
+Session table data is shared among all TMM instances. Using the session
+table imposes considerable operational overhead, but the preservation of
+CMP processing for the virtual server typically far outweighs any such
+impact.
+
+You can use the table command to manipulate the session table. For
+details, refer to the DevCentral article linked in the Supplemental
+Information section below.
+
+**Recommendations**
+
+As you can see, there are several different options for using global
+variables, or the equivalent functionality, in session tables. Each of
+these options has advantages and disadvantages in their use. Typically,
+these decisions are made on performance and ease of implementation.
+
+In summary:
+
+- TCL global variables
+
+- You should restrict the use of TCL global variables to iRules that will
+  be applied to virtual servers that do not depend on CMP processing.
+
+Static global variables
+
+The use of static global variables is recommended for sharing static
+data (data that will not be updated by any iRule) among TMM instances
+that are used by CMP-enabled virtual servers, or for sharing static data
+among multiple iRules without affecting the CMP status of any virtual
+server to which it is applied.
+
+Session table
+
+The use of the session table is recommended for sharing dynamic global
+variable data (data that will be updated within the iRule) among
+CMP-enabled virtual servers.
 
 ----
 
 |
 
-**2.07 - Investigate the cause of an SSLHandshake failure**
+**2.08 - Determine the effect of RAM cache on performance and memory**
 
-https://support.f5.com/csp/article/K15292
+https://support.f5.com/techdocs/home/solutions/related/ramcache.pdf
 
-**Troubleshooting SSLHandshake failures**
+**Effect of RAM Cache on Performance**
 
-SSL handshake overview
+The largest effect of using the RAM Cache feature on the BIG-IP system
+is system memory utilization. There is a finite amount of RAM in every
+system and using any amount of that RAM for caching HTTP objects can
+impact performance and even limit provisioning additional licensing
+options.
 
-SSL communication consists of a series of messages exchanged between two
-parties (client and server). The SSL handshake between a client and
-server consists of nine steps, and appears as follows.
+**RAM Cache**
 
-.. image:: /_static/301b/p10.png
+A RAM Cache is a cache of HTTP objects stored in the BIG-IP system’s RAM
+that are reused by subsequent connections to reduce the amount of load
+on the back-end servers.
 
-Identifying SSL handshake failures
+**When to use the RAM Cache**
 
-When troubleshooting SSL handshake failures, it is important to identify
-the stage in which the failure occurs. For example, if the failure
-occurs during the initial negotiation phase, the client and server may
-not have agreed on the complete list of parameters, such as protocol
-version or cipher. For information about identifying handshake failures,
-refer to the following sections.
+The RAM Cache feature provides the ability to reduce the traffic load to
+back-end servers. This ability is useful if an object on a site is under
+high demand, if the site has a large quantity of static content, or if
+the objects on the site are compressed.
 
-Negotiation stage
+-  High demand objects
 
-During the negotiation phase, the client starts the SSL communication
-between the two systems by presenting the SSL options to the server, and
-the server responds by selecting the options it supports. This stage
-defines the parameters for the secure channel. If the client and server
-do not agree on the complete list of options, the handshake will fail,
-often with very little diagnostic data. The most common failures during
-the negotiation stage involve the following incompatible components:
-protocols, ciphers, secure renegotiation options, or client certificate
-requests.
+This feature is useful if a site has periods of high demand for
+specific content. With RAM Cache configured, the content server only
+has to serve the content to the BIG-IP system once per expiration
+period.
 
-To understand failures in the negotiation stage, it is important to
-understand the client and server behavior during the message exchange.
+-  Static content
 
--  The ClientHello offers the highest protocol version supported by the
-   client. If the server does not support the client's protocol version,
-   the server must send a "protocol\_version" alert message and close
-   the connection. If the server responds with a lower protocol version,
-   the client then decides whether to downgrade the protocol or
-   terminate the SSL handshake.
+This feature is also useful if a site consists of a large quantity
+of static content such as CSS, javascript, or images and logos.
 
--  The ClientHello also offers a list of supported cipher suites, in the
-   preferred order. The server then typically chooses the highest cipher
-   level shared by both. If the server does not support the ciphers from
-   the client's list, the connection is terminated.
+-  Content compression
 
-Negotiation phase handshake examples
+For compressible data, the RAM Cache can store data for clients that
+can accept compressed data. When used in conjunction with the
+compression feature on the BIG-IP system, the RAM Cache takes stress
+off of the BIG-IP system and the content servers.
 
--  Successful negotiation
+**Items you can cache**
 
-   In the following example, the client offered protocol TLSv1.2
-   (version 3.3) and the server downgraded the protocol to TLSv1.0
-   (version 3.1). The server also chose the preferred cipher from the
-   client's list:
+The RAM Cache feature is fully compliant with the cache specifications
+described in RFC 2616, Hypertext Transfer Protocol -- HTTP/1.1. This
+means you can configure RAM Cache to cache the following content types:
 
-   .. code-block:: bash
+-  200, 203, 206, 300, 301, and 410 responses
 
-      1 1 0.0003 (0.0003) C>SV3.3(79) Handshake
-      ClientHello
-      Version 3.3
-      cipher suites
-      TLS\_RSA\_WITH\_RC4\_128\_SHA
-      TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA
-      TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA
-      TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA256
-      TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA256
-      1 2 0.0008 (0.0005) S>CV3.1(74) Handshake
-      ServerHello
-      Version 3.1
-      cipherSuite TLS\_RSA\_WITH\_RC4\_128\_SHA
+-  Responses to GET methods by default.
 
--  Unsuccessful negotiation
+-  Other HTTP methods for URIs specified in the URI Include list or
+   specified in an iRule.
 
-In the following examples, the client and server fail to agree on the
-SSL protocol version in the first example, and the SSL cipher in the
-second example.
+-  Content based on the User-Agent and Accept-Encoding values. The RAM
+   Cache holds different content for Vary headers.
 
-Example 1: The client and server unsuccessfully negotiate the protocol.
-The server does not support protocol version below TLS1 (version 3.1)
-and the client does not support protocol versions above SSLv3 (version
-3.0):
+The items that the RAM Cache does not cache are:
 
-.. code-block:: bash
+-  Private data specified by cache control headers
 
-   1 1 0.0012 (0.0012) C>SV3.0(47) Handshake
-   ClientHello
-   Version 3.0
-   cipher suites
-   SSL\_RSA\_WITH\_AES\_256\_CBC\_SHA
-   1 2 0.0013 (0.0000) S>CV0.0(2) Alert
-   level fatal
-   value handshake\_failure
+-  By default, the RAM Cache does not cache HEAD, PUT, DELETE, TRACE,
+   and CONNECT methods.
 
-Example 2: The client and server unsuccessfully negotiate a cipher; the
-server does not support any of the client's ciphers. This is a common
-failure:
+**Understanding the RAM Cache mechanism**
 
-.. code-block:: bash
+The default RAM Cache configuration caches only the HTTP GET methods.
+You can use the RAM Cache to cache both the GET and other methods,
+including non-HTTP methods, by specifying a URI in the URI Include list
+or writing an iRule.
 
-   1 1 0.0012 (0.0012) C>SV3.1(58) Handshake
-   ClientHello
-   Version 3.2
-   cipher suites
-   TLS\_DH\_anon\_WITH\_RC4\_128\_MD5
-   1 2 0.0013 (0.0000) S>CV3.2(2) Alert
-   level fatal
-   value handshake\_failure
+----
 
-.. note:: The SSL alert message (Alert 2 level fatal) is marginally
-   useful and means an unrecoverable error has occurred. If the virtual
-   server is using a Client SSL profile, you may be able to enable
-   useful message logging by modifying the SSL logging level to debug.
+|
 
-ChangeCipherSpec (client)
+**2.08 - Determine the effect of compression on performance**
 
-During the client's ChangeCipherSpec phase, the client initializes the
-options that were negotiated by both parties. This phase marks the point
-when the parties change the secure channel parameters from using
-asymmetric (public key) to symmetric (shared key) encryption. A
-handshake failure during this phase may relate to SSL message corruption
-or issues with the SSL implementation itself.
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-5-0/7.html#unique_766348760
 
-ChangeCipherSpec (server)
+**Effect of Compression on Performance**
 
-During the server's ChangeCipherSpec phase, the server initializes the
-options that were negotiated by both parties. This phase marks the point
-when the parties change the secure channel parameters from using
-asymmetric (public key) to symmetric (shared key) encryption. A
-handshake failure during this phase may relate to SSL message corruption
-or issues with the SSL implementation itself.
+The function of data compression is highly CPU intensive. The largest
+effect of using the RAM Cache feature on the BIG-IP system is system
+memory utilization. There is a finite amount of RAM in every system and
+using any amount of that RAM for caching HTTP objects can impact
+performance and even limit provisioning additional licensing options.
 
-Application phase
+**HTTP Compression**
 
-Messages marked as application\_data indicate that data is being
-successfully encrypted. Failures in the application phase indicate
-application layer events. For example, a client's request for a document
-that results in an HTTP 500 error, may cause a failure during this
-phase. To diagnose failures during the application phase, you must
-decrypt the SSL session using a utility, such as ssldump.
+An optional feature is the BIG-IP systems ability to off-load HTTP
+compression tasks from the target server. All of the tasks needed to
+configure HTTP compression in Local Traffic Manager, as well as the
+compression software itself, are centralized on the BIG-IP system.
 
-Enabling SSL debug logging
+**gzip compression levels**
 
-You can enable SSL debug logging on the BIG-IP system, test SSL
-connections for the virtual server using a web browser or the OpenSSL
-client, and then review the debug log files. Doing so will provide more
-useful logging information when troubleshooting SSL handshake failures.
+A gzip compression level defines the extent to which data is compressed,
+as well as the compression rate. You can set the gzip level in the range
+of 1 through 9. The higher the gzip level, the better the quality of the
+compression, and therefore the more resources the system must use to
+reach that specified quality. Setting a gzip level yields these results:
 
-Note: Beginning in 12.0.0, the BIG-IP system automatically logs SSL
-handshake failure information through standard logging; the use of debug
-logging for SSL handshake failures is not required.
+-  A lower number causes data to be less compressed but at a higher
+   performance rate. Thus, a value of 1 causes the least compression but
+   the fastest performance.
 
-For example, with debug logging enabled, the system logs error messages
-similar to the /var/log/ltm file that appear similar to the following:
+-  A higher number causes data to be more compressed but at a slower
+   performance rate. Thus, a value of 9 (the highest possible value)
+   causes the most compression, but the slowest performance.
 
--  The client and server unsuccessfully negotiate the protocol version:
+Warning: Selecting any value other than 1 - Least Compression (Fastest)
+can degrade system performance.
 
-   debug tmm3[9261]: 01260009:7: Connection error:
-   ssl\_hs\_rxhello:4409: unsupported version (70)
+For example, you might set the gzip compression level to 9 if you are
+utilizing Local Traffic Manager cache feature to store response data.
+The reason for this is that the stored data in the cache is continually
+re-used in responses, and therefore you want the quality of the
+compression of that data to be very high.
 
--  The client and server unsuccessfully negotiate a cipher:
+As the traffic flow on the BIG-IP system increases, the system
+automatically decreases the compression quality from the gzip
+compression level that you set in the profile. When the gzip compression
+level decreases to the point where the hardware compression provider is
+capable of providing the specified compression level, the system uses
+the hardware compression providers rather than the software compression
+providers to compress the HTTP server responses.
 
-   debug tmm1[9261]: 01260009:7: Connection error:
-   ssl\_select\_suite:4133: no shared ciphers (40)
+Tip: You can change the way that Local Traffic Manager uses gzip levels
+to compress data by configuring the compression strategy. The
+compression strategy determines the particular compression provider
+(hardware or software) that the system uses for HTTP responses. The
+available strategies are: Speed (the default strategy), Size, Ratio, and
+Adaptive.
 
-To enable SSL debug logging, perform the following procedure:
+Memory levels for gzip compression
 
-Impact of procedure: F5 recommends that you return the SSL log level to
-the default value after you complete the troubleshooting steps. Leaving
-debug logging enabled when the system is in normal production mode may
-generate excessive logging and cause poor performance.
+You can define the number of kilobytes of memory that Local Traffic
+Manager uses to compress data when using the gzip or deflate compression
+method. The memory level is a power-of-2 integer, in bytes, ranging from
+1 to 256.
 
-1. Log in to the TMOS Shell (tmsh) by typing the following command:
+Generally, a higher value causes Local Traffic Manager to use more
+memory, but results in a faster and higher compression ratio.
+Conversely, a lower value causes Local Traffic Manager to use less
+memory, but results in a slower and lower compression ratio.
 
-   .. code-block:: bash
+----
 
-      tmsh
+|
 
-2. To enable SSL debug logging, type the following command:
+**2.08 - Determine the effect of modules on performance and memory**
 
-   .. code-block:: bash
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-system-essentials-11-6-0/7.html?sr=42462566
 
-      modify /sys db log.ssl.level value Debug
+**Effect of Modules on Performance**
 
-   .. important:: After you test SSL connections for the virtual server using a
-      web browser or OpenSSL client, you should disable SSL debug logging by
-      typing the following command:
+Enabling additional software on any F5 hardware platform will increase
+the utilization of the hardware resources of the unit. As you provision
+the software modules in TMOS the Resource Provisioning screen will show
+the administrator how much CPU, Disk and Memory is being used by each
+module. And if provisioning an additional module requires more resources
+than are available on the system, the system will not allow the
+provisioning of the module.
 
-      .. code-block:: bash
+Resource Provisioning is a management feature to help support the
+installation and configuration of many modules available with BIG-IP.
+Provisioning gives you some control over the resources, both CPU and
+RAM, which are allocated to each licensed module. You may want, for
+example, to minimize the resources available to GTM on a system licensed
+for LTM and GTM. Since all models have some reliance on both management
+(Linux) and local traffic features, they will always be provisioned.
+Other modules must be manually provisioned. When you provision the
+modules, you can choose between four levels of resources. A fifth level
+may be allowed on certain modules. Dedicated, Nominal, Minimum and None
+are available for all modules and Lite is a fifth level available for
+trials only.
 
-         modify /sys db log.ssl.level value Warning
+You can manage the provisioning of system memory, disk space, and CPU
+usage among licensed modules on the BIG-IP system.
 
-Testing SSL connections (using s\_client)
+There are five available resource allocation settings for modules.
 
-After you enable SSL debug logging on the BIG-IP system, you should test
-SSL connections for the virtual server using a web browser or other
-utility, such as the OpenSSL utility, s\_client, or cURL. Using the
-s\_client utility may provide additional debugging information that you
-can use to troubleshoot the issue. After making several requests to the
-virtual server, you can review and analyze the debug log files on the
+-  None/Disabled
+
+Specifies that a module is not provisioned. A module that is not
+provisioned does not run.
+
+-  Dedicated
+
+Specifies that the system allocates all CPU, memory, and disk
+resources to one module. When you select this option, the system
+sets all other modules to None (Disabled).
+
+-  Nominal
+
+Specifies that, when first enabled, a module gets the least amount
+of resources required. Then, after all modules are enabled, the
+module gets additional resources from the portion of remaining
+resources.
+
+-  Minimum
+
+Specifies that when the module is enabled, it gets the least amount
+of resources required. No additional resources are ever allocated to
+the module.
+
+-  Lite
+
+Lite is available for selected modules granting limited features for
+trials.
+
+**Provisioning the BIG-IP system using the Configuration utility**
+
+After you have activated a license on the BIG-IP® system, you can
+use the Configuration utility to provision the licensed modules.
+
+1. On the Main tab, click System > Resource Provisioning.
+
+2. For licensed modules, select either Minimum or Nominal, as needed.
+
+3. Click Submit.
+
+4. Reboot the system:
+
+   -  On the Main tab, click System > Configuration > Device > General.
+
+   -  Click Reboot.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
+Objective - 2.09 Determine the effect of traffic flow on LTM device performance and/or utilization
+--------------------------------------------------------------------------------------------------
+
+|
+|
+
+**2.09 - Explain how to use traffic groups to maximize capacity**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-device-service-clustering-admin-11-5-0/8.html
+
+**Traffic Groups**
+
+A traffic group is a collection of related configuration objects, such
+as a floating self IP address, a virtual IP address, and a SNAT
+translation address, that run on a BIG-IP device. Together, these
+objects process a particular type of application traffic on that device.
+When a BIG-IP device becomes unavailable, a traffic group floats (that
+is, fails over) to another device in a device group to ensure that
+application traffic continues to be processed with little to no
+interruption in service. In general, a traffic group ensures that when a
+device becomes unavailable, all of the failover objects in the traffic
+group fail over to any one of the available devices in the device group.
+
+A traffic group is initially active on the device on which you create
+it, until the traffic group fails over to another device. For example,
+if you initially create three traffic groups on Device A, these traffic
+groups remain active on Device A until one or more traffic groups fail
+over to another device. If you want an active traffic group to become
+active on a different device in the device group when failover has not
+occurred, you can intentionally force the traffic group to switch to a
+standby state, thereby causing failover to another device.
+
+Only objects with floating IP addresses can be members of a floating
+traffic group.
+
+An example of a set of objects in a traffic group is an iApps
+application service. If a device with this traffic group is a member of
+a device group, and the device becomes unavailable, the traffic group
+floats to another member of the device group, and that member becomes
+the device that processes the application traffic.
+
+Note: A Sync-Failover device group can support a maximum of 15 floating
+traffic groups.
+
+**Maximizing Capacity**
+
+For every active traffic group on a device, the BIG-IP system identifies
+the device that is to be the next-active device if failover of that
+active traffic group occurs. A next-active device is the device on which
+a traffic group will become active if that traffic group eventually
+fails over to another device. This next-active designation changes
+continually depending on which devices are currently available in the
+device group.
+
+There are various configuration options for you to choose from to affect
+the BIG-IP system's selection of the next-active device for failover:
+
+-  Load-aware failover
+
+-  An ordered list with auto-failback
+
+-  HA groups
+
+**What is load-aware failover?**
+
+Load-aware failover is a BIG-IP feature designed for use in a
+Sync-Failover device group. Configuring load-aware failover ensures that
+the traffic load on all devices in a device group is as equivalent as
+possible, factoring in any differences in device capacity and the amount
+of application traffic that traffic groups process on a device. The
+load-aware configuration option is most useful for device groups with
+heterogeneous hardware platforms or varying application traffic loads
+(or both).
+
+For example, suppose you have a heterogeneous three-member device group
+in which one device (BIGIP_C) has twice the hardware capacity of the
+other two devices (BIGIP_A and BIGIP_B).
+
+If the device group has four active traffic groups that each process the
+same amount of application traffic, then the load on all devices is
+equivalent when devices BIGIP_A and BIGIP_B each contain one active
+traffic group, while device BIGIP_C contains two active traffic groups.
+
+The BIG-IP system implements load-aware failover by calculating a
+numeric, current utilization score for each device, based on numeric
+values that you specify for each device and traffic group relative to
+the other devices and traffic groups in the device group. The system
+then uses this current utilization score to determine which device is
+the best device in the group to become the next-active device when
+failover occurs for a traffic group.
+
+The overall result is that the traffic load on each device is as
+equivalent as possible in a relative way, that is, factoring in
+individual device capacity and application traffic load per traffic
+group.
+
+**About device utilization calculation**
+
+The BIG-IP system on each device performs a calculation to determine the
+device's current level of utilization. This utilization level indicates
+the ability for the device to be the next-active device in the event
+that an active traffic group on another device must fail over within a
+heterogeneous device group.
+
+The calculation that the BIG-IP performs to determine the current
+utilization of a device is based on these factors:
+
+**Device capacity**
+
+A local device capacity relative to other device group members.
+
+**Active local traffic groups**
+
+The number of active traffic groups on the local device.
+
+**Active remote traffic groups**
+
+The number of remote active traffic groups for which the local device is
+the next-active device.
+
+A multiplying load factor for each active traffic group
+
+A multiplier value for each traffic group. The system uses this value to
+weight each active traffic group's traffic load compared to the traffic
+load of each of the other active traffic groups in the device group.
+
+The BIG-IP system uses all of these factors to perform a calculation to
+determine, at any particular moment, a score for each device that
+represents the current utilization of that device. This utilization
+score indicates whether the BIG-IP system should, in its attempt to
+equalize traffic load on all devices, designate the device as a
+next-active device for an active traffic group on another device in the
+device group.
+
+The calculation that the BIG-IP performs for each device is:
+
+(The sum of all local active traffic group HA load factors + The sum of
+all remote active traffic group HA load factors) / device capacity
+
+**About HA capacity**
+
+For each device in a BIG-IP device group, you can assign a high
+availability (HA) capacity value. An HA capacity value is a number that
+represents the relative processing capacity of that device compared to
+the other devices in a device group. Assigning different HA capacity
+values to the devices in the device group is useful when the device
+group contains heterogeneous hardware platforms.
+
+For example, if the device group has two devices with equal capacity and
+a third device that has twice the capacity of each of the other two
+devices, then you can assign values of 2, 2, and 4, respectively. You
+can assign any number to represent the HA capacity, as long as the
+number reflects the device's relative capacity compared to the other
+devices in the device group.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
+Objective - 2.10 Determine the effect of virtual server settings on LTM device performance and/or utilization
+-------------------------------------------------------------------------------------------------------------
+
+|
+|
+
+**2.10 - Determine the effect of connection mirroring on performance**
+
+https://support.f5.com/csp/article/K13478
+
+**Connection Mirroring Performance Implications**
+
+The connection and persistence mirroring feature allows you to configure
+a BIG-IP system to duplicate connection and persistence information to
+the standby unit of a redundant pair. This setting provides higher
+reliability, but might affect system performance.
+
+The BIG-IP device service clustering (DSC) architecture allows you to
+create a redundant system configuration for multiple BIG-IP devices on a
+network. System redundancy includes the ability to mirror connection and
+persistence information to a peer device to prevent interruption in
+service during failover. Traffic Management Microkernel (TMM) manages
+the state mirroring mechanism, and connection and persistence data is
+synchronized to the standby unit with every packet or flow state update.
+The standby unit decapsulates the packets and adds them to the
+connection table.
+
+Beginning with version 11.4.0, the BIG-IP system maintains a separate
+mirroring channel for each traffic group. The active BIG-IP system in an
+HA device group dynamically establishes a mirroring connection to the
+standby with a status of Next Active for a given traffic group. The port
+range for each connection channel begins at TCP 1029 and increments by
+one for each new traffic group and channel created. For more
+information, refer to K14894: The BIG-IP system establishes a separate
+mirroring channel for each traffic group.
+
+In BIG-IP 12.0.0 and later, you can configure the system to mirror
+Secure Sockets Layer (SSL) connections that are terminated by the BIG-IP
+system to peer device group members. For more information, refer to
+K17391: Configuring SSL connection mirroring.
+
+You can use the Configuration utility or Traffic Management Shell (tmsh)
+to configure mirroring addresses, configure connection mirroring for
+virtual servers and Secure Network Address Translations (SNATs), and
+configure persistence mirroring. You can also view mirroring data on the
+active and standby BIG-IP systems using the tmsh utility.
+
+This feature can add CPU overhead to the system and can also cause
+network congestion depending on the system configuration.
+
+**Recommendations**
+
+When configuring mirroring on the BIG-IP system, F5 recommends that you
+consider the following factors:
+
+Note: Only FastL4 and SNAT connections are re-mirrored after
+failback.
+
+-  Enable connection and persistence mirroring when a BIG-IP failover
+   would cause the user's session to be lost or significantly disrupted
+
+For example, where long-term connections, such as FTP and Telnet,
+are good candidates for mirroring, mirroring short-term connections,
+such as HTTP and UDP, is not recommended as this causes a decrease
+in system performance. In addition, mirroring HTTP and UDP
+connections is typically not necessary, as those protocols allow for
+failure of individual requests without loss of the entire session.
+
+-  Configure a dedicated VLAN and dedicated interfaces to process
+   mirroring traffic
+
+The TMM process manages the BIG-IP LTM state mirroring mechanism,
+and connection data is synchronized to the standby unit with every
+packet or flow state update. In some mirroring configurations, this
+behavior may generate a significant amount of traffic. Using a
+shared VLAN and shared interfaces for both mirroring and production
+traffic reduces the overall link capacity for either type of
+traffic. Due to high traffic volumes, production traffic and
+mirroring traffic may interfere, potentially causing latency in
+mirrored connections or interrupting the network mirror connection
+between the two BIG-IP devices. If the network mirror connection is
+interrupted, it can cause loss of mirror information and interfere
+with the ability of the peer device to take over connections in the
+event of a failover.
+
+-  Directly cable network mirroring interfaces
+
+You can directly cable network mirroring interfaces on the BIG-IP
+systems in the failover pair, and F5 highly recommends that you do
+this when configuring a dedicated VLAN for mirroring. Configuring
+the pair in this way removes the need to allocate additional ports
+on surrounding switches, and removes the possibility of switch
+failure and switch-induced latency. Interfaces used for mirroring
+should be dedicated to the mirroring VLAN. Tagged interfaces shared
+with other VLANs could become saturated by traffic on other VLANs.
+
+-  Configure both primary and secondary mirroring addresses
+
+This would allow an alternate mirroring path and ensure reliable
+mirroring in the event of equipment or cable failure.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
+Objective - 2.11 Describe how to deploy vCMP guests and how the resources are distributed
+-----------------------------------------------------------------------------------------
+
+|
+|
+
+**2.11 - Identify the performance impact of vCMP guests on other guests**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/vcmp-administration-viprion-11-5-0/3.html#conceptid
+
+**Flexible Resource Allocation**
+
+Flexible resource allocation is a built-in vCMP feature that allows vCMP
+host administrators to optimize the use of available system resources.
+Flexible resource allocation gives you the ability to configure the vCMP
+host to allocate a different amount of CPU and memory to each guest
+through core allocation, based on the needs of the specific BIG-IP
+modules provisioned within a guest. When you create each guest, you
+specify the number of logical cores that you want the host to allocate
+to the guest, and you identify the specific slots that you want the host
+to assign to the guest. Configuring these settings determines the total
+amount of CPU and memory that the host allocates to the guest. With
+flexible allocation, you can customize CPU and memory allocation in
+granular ways that meet the specific resource needs of each individual
+guest.
+
+**Resource allocation planning**
+
+When you create a vCMP guest, you must decide the amount of dedicated
+resource, in the form of CPU and memory, that you want the vCMP host to
+allocate to the guest. You can allocate a different amount of resources
+to each guest on the system.
+
+**Prerequisite hardware considerations**
+
+Blade models vary in terms of how many cores the blade provides and how
+much memory each core contains. Also variable is the maximum number of
+guests that each blade model supports. For example, a single B2100 blade
+provides eight cores and approximately 3 gigabytes (GB) of memory per
+core, and supports a maximum of four guests.
+
+Before you can determine the number of cores to allocate to a guest and
+the number of slots to assign to a guest, you should understand:
+
+-  The total number of cores that the blade model provides
+
+-  The amount of memory that each blade model provides
+
+-  The maximum number of guests that the blade model supports
+
+By understanding these metrics, you ensure that the total amount of
+resource you allocate to guests is aligned with the amount of resource
+that your blade model supports.
+
+For specific information on the resources that each blade model
+provides, see the vCMP guest memory/CPU core allocation matrix on the
+AskF5 Knowledge Base at http://support.f5.com.
+
+**Understanding guest resource requirements**
+
+Before you create vCMP guests and allocate system resources to them, you
+need to determine the specific CPU and memory needs of each guest. You
+can then decide how many cores to allocate and slots to assign to a
+guest, factoring in the resource capacity of your blade model.
+
+To determine the CPU and memory resource needs, you must know:
+
+-  The number of guests you need to create
+
+-  The specific BIG-IP modules you need to provision within each guest
+
+-  The combined memory requirement of all BIG-IP modules within each
+   guest
+
+**About core allocation for a guest**
+
+When you create a guest on the vCMP system, you must specify the total
+number of cores that you want the host to allocate to the guest based on
+the guest's total resource needs. Each core provides some amount of CPU
+and a fixed amount of memory. You should therefore specify enough cores
+to satisfy the combined memory requirements of all BIG-IP modules that
+you provision within the guest. When you deploy the guest, the host
+allocates this number of cores to every slot on which the guest runs,
+regardless of the number of slots you have assigned to the guest.
+
+It is important to understand that the total amount of memory available
+to a guest is only as much as the host has allocated to each slot. If
+you instruct the host to allocate a total of two cores per slot for the
+guest (for example, 6 GB of memory depending on blade model) and you
+configure the guest to run on four slots, the host does not aggregate
+the 6 GB of memory on each slot to provide 24 GB of memory for the
+guest. Instead, the guest still has a total of 6 GB of memory available.
+This is because blades in a chassis operate as a cluster of independent
+devices, which ensures that if the number of blades for the guest is
+reduced for any reason, the remaining blades still have the required
+memory available to process the guest traffic.
+
+**Formula for host memory allocation to a guest**
+
+You can use a formula to confirm that the cores you plan to allocate to
+a specific guest are sufficient, given the guest's total memory
+requirements:
+
+(total_GB_memory_per_blade - 3 GB) x (cores_per_slot_per_guest /
+total_cores_per_blade) = amount of guest memory allocation from host
+
+Important: For metrics on memory and CPU support per blade model,
+refer to the vCMP guest memory/CPU allocation matrix at
+http://support.f5.com.
+
+The variables in this formula are defined as follows:
+
+- total_GB_memory_per_blade
+
+The total amount of memory in gigabytes that your specific blade
+model provides (for all guests combined).
+
+- cores_per_slot_per_guest
+
+The estimated number of cores needed to provide the total amount of
+memory that the guest requires.
+
+- total_cores_per_blade
+
+The total number of cores that your specific blade model provides
+(for all guests combined).
+
+For example, if you have a VIPRION 2150 blade, which provides
+approximately 32 GB memory through a maximum of eight cores, and you
+estimate that the guest will need two cores to satisfy the guest's total
+memory requirement of 8 GB, the formula looks as follows:
+
+- (32 GB - 3 GB) x (2 cores / 8 cores) = 7.25 GB memory that the host will allocate to the guest per slot
+
+In this case, the formula shows that two cores will not provide
+sufficient memory for the guest. If you specify four cores per slot
+instead of two, the formula shows that the guest will have
+sufficient memory:
+
+- (32 GB - 3 GB) x (4 cores / 8 cores) = 14.5 GB memory that the host will allocate to the guest per slot
+
+Note that except for single-core guests, the host always allocates
+cores in increments of two. For example, for B2150 blade models, the
+host allocates cores in increments of 2, 4, and 8.
+
+Once you use this formula for each of the guests you plan to create on a
+slot, you can create your guests so that the combined memory allocation
+for all guests on a slot does not exceed the total amount of memory that
+the blade model provides.
+
+**About slot assignment for a guest**
+
+On the vCMP system, the host assigns some number of slots to each guest
+based on information you provide when you initially create the guest.
+The key information that you provide for slot assignment is the maximum
+and minimum number of slots that a host can allocate to the guest, as
+well as the specific slots on which the guest is allowed to run. With
+this information, the host determines the number of slots and the
+specific slot numbers to assign to each guest.
+
+As a best practice, you should configure every guest so that the guest
+can span all slots in the cluster whenever possible. The more slots that
+the host can assign to a guest, the lighter the load is on each blade
+(that is, the fewer the number of connections that each blade must
+process for that guest).
+
+Note: In device service clustering (DSC) configurations, all guests in
+the device group must have the same core allocation and module
+provisioning, and the guests must match with respect to number of slots
+and the exact slot numbers. Also, each guest in the device group must
+run on the same blade and chassis models.
+
+**About single-core guests**
+
+On platforms with hard drives, the vCMP host always allocates cores on a
+slot for a guest in increments of two cores. In the case of blades with
+solid-state drives, however, the host can allocate a single core to a
+guest, but only for a guest that requires one core only; the host never
+allocates any other odd number of cores per slot for a guest (such as
+three, five, or seven cores).
+
+The illustration shows a possible configuration where the host has
+allocated a single core to one of the guests.
+
+|
+
+.. image:: /_static/301a/p16.png
+
+|
+
+A vCMP configuration with a single-core guest
+
+Because a single-core guest has a relatively small amount of CPU and
+memory allocated to it, F5 supports only these products or
+product combinations for a single-core guest:
+
+-  BIG-IP Local Traffic Manager (LTM) only
+
+-  BIG-IP Local Traffic Manager (LTM) and BIG-IP Global Traffic Manager
+   (GTM) only
+
+-  BIG-IP Global Traffic Manager (GTM) standalone only
+
+**Resource allocation results**
+
+This illustration shows an example of a system with three guests that
+the vCMP host has distributed across slots in varying ways. The way that
+the host distributes the guests depends on the way you configured guest
+properties when you initially created each guest.
+
+|
+
+.. image:: /_static/301a/p17.png
+
+|
+
+Three guests with varying amounts of core allocation and slot assignment
+
+This illustration shows three guests configured on the system. For blade
+model B2100, which provides approximately 2 GB of memory per core:
+
+-  The blue guest is configured with two cores per slot, providing a
+   total memory allocation of four GB per slot for the guest (2 cores x
+   2 GB). The guest spans four slots.
+
+-  The red guest is configured with two cores per slot, providing a
+   total memory allocation of four GB per slot for the guest (2 cores x
+   2 GB). The guest spans two slots.
+
+-  The green guest is configured with four cores per slot, providing a
+   total memory allocation of eight GB per slot for the guest (4 cores x
+   2 GB). The guest spans two slots.
+
+*Important*: For an individual guest, the number of cores allocated to
+one (not all) of the guest's slots determines the guest's total memory
+allocation.
+
+**Scalability considerations**
+
+When managing a guest's slot assignment, or when removing a blade from a
+slot assigned to a guest, there are a few key concepts to consider.
+
+**About initial slot assignment**
+
+When you create a vCMP guest, the number of slots that you initially
+allow the guest to run on determines the maximum total resource
+allocation possible for that guest, even if you add blades later. For
+example, in a four-slot VIPRION chassis that contains two blades, if you
+allow a guest to run on two slots only and you later add a third blade,
+the guest continues to run on two slots and does not automatically
+expand to acquire additional resource from the third blade. However, if
+you initially allow the guest to run on all slots in the cluster, the
+guest will initially run on the two existing blades but will expand to
+run on the third slot, acquiring additional traffic processing capacity,
+if you add another blade.
+
+Because each connection causes some amount of memory use, the fewer the
+connections that the blade is processing, the lower the percentage of
+memory that is used on the blade compared to the total amount of memory
+allocated on that slot for the guest. Configuring each guest to span as
+many slots as possible reduces the chance that memory use will exceed
+the available memory on a blade when that blade must suddenly process
+additional connections.
+
+If you do not follow the best practice of instructing the host to assign
+as many slots as possible for a guest, you should at least allow the
+guest to run on enough slots to account for an increase in load per
+blade if the number of blades is reduced for any reason.
+
+In general, F5 strongly recommends that when you create a
+guest, you assign the maximum number of available slots to the guest to
+ensure that as few additional connections as possible are redistributed
+to each blade, therefore resulting in as little increase in memory use
+on each blade as possible.
+
+**About changing slot assignments**
+
+At any time, you can intentionally increase or decrease the number of
+slots a guest runs on explicitly by re-configuring the number of slots
+that you initially assigned to the guest. Note that you can do this
+while a guest is processing traffic, to either increase the guest's
+resource allocation or to reclaim host resources.
+
+When you increase the number of slots that a guest is assigned to, the
+host attempts to assign the guest to those additional slots. The host
+first chooses those slots with the greatest number of available cores.
+The change is accepted as long as the guest is still assigned to at
+least as many slots as dictated by its Minimum Number of Slotsvalue. If
+the additional number of slots specified is not currently available, the
+host waits until those additional slots become available and then
+assigns the guest to these slots until the guest is assigned to the
+desired total number of slots. If the guest is currently in a deployed
+state, VMs are automatically created on the additional slots.
+
+When you decrease the number of slots that a guest is assigned to, the
+host removes the guest from the most populated slots until the guest is
+assigned to the correct number of slots. The guest's VMs on the removed
+slots are deleted, although the virtual disks remain on those slots for
+reassignment later to another guest. Note that the number of slots that
+you assign to a guest can never be less than the minimum number of slots
+configured for that guest.
+
+**Effect of blade removal on a guest**
+
+If a blade suddenly becomes unavailable, the total traffic processing
+resource for guests on that blade is reduced and the host must
+redistribute the load on that slot to the remaining assigned slots. This
+increases the number of connections that each remaining blade must
+process.
+
+Fortunately, there is no reduction in memory allocation, given that when
+you create a guest, you instruct the host to allocate the full amount of
+required memory for that guest to every slot in the guest's cluster
+(through the guest's Cores per Slot property). However, each connection
+causes some amount of memory use, which means that when a blade becomes
+unavailable and the host redistributes its connections to other blades,
+the percentage of memory use on these remaining blades increases. In
+some cases, the increased memory use could exceed the amount of memory
+allocated to each of those slots.
+
+For example, if a guest spans three slots which process 1,000,000
+connections combined, each slot is processing a third of the connections
+to the guest. If one of the blades becomes unavailable, reducing the
+guest's cluster to two slots, then the two remaining blades must each
+process half of the guest's connections (500,000), resulting in a memory
+use per slot that could be higher than what is allocated for that slot.
+Assigning as many slots as possible to each guest reduces this risk.
+
+**Effect of blade re-insertion on a guest**
+
+When you remove a blade from the chassis, the host remembers which
+guests were allocated to that slot. If you then re-insert a blade into
+that slot, the host automatically allocates cores from that blade to the
+guests that were previously assigned to that slot.
+
+Whenever the host assigns guests to a newly-inserted blade, those guests
+that are below their Minimum Number of Slots threshold are given
+priority; that is, the host assigns those guests to the slot before
+guests that are already assigned to at least as many slots as their
+Minimum Number of Slots value. Note that this is the only time when a
+guest is allowed to be assigned to fewer slots than specified by its
+Minimum Number of Slots value.
+
+**About SSL and compression hardware**
+
+On systems that include SSL and compression hardware processors, the
+vCMP feature shares these hardware resources among all guests on the
+system, in a round robin fashion.
+
+When sharing SSL hardware, if all guests are using similar-sized keys,
+then each guest receives an equal share of the SSL resource. Also, if
+any guests are not using SSL keys, then other guests can take advantage
+of the extra SSL resource.
+
+**Guest states and resource allocation**
+
+As a vCMP host administrator, you can control when the system allocates
+or de-allocates system resources to a guest. You can do this at any
+time, by setting a guest to one of three states: Configured,
+Provisioned, or Deployed. These states affect resource allocation in
+these ways:
+
+**Configured**
+
+This is the initial (and default) state for a newly-created guest. In
+this state, the guest is not running, and no resources are allocated. If
+you change a guest from another state to the Configured state, the vCMP
+host does not delete any virtual disks that were previously attached to
+that guest; instead, the guest's virtual disks persist on the system.
+The host does, however, automatically de-allocate other resources such
+as CPU and memory. When the guest is in the Configured state, you cannot
+configure the BIG-IP modules that are licensed to run within the guest;
+instead, you must set the guest to the Deployed state to provision and
+configure the BIG-IP modules within the guest.
+
+**Provisioned**
+
+When you change a guest state from Configured to Provisioned, the vCMP
+host allocates system resources to the guest (CPU, memory, and any
+unallocated virtual disks). If the guest is new, the host creates new
+virtual disks for the guest and installs the selected ISO image on them.
+A guest does not run while in the Provisioned state. When you change a
+guest state from Deployed to Provisioned, the host shuts down the guest
+but retains its current resource allocation.
+
+**Deployed**
+
+When you change a guest to the Deployed state, the vCMP host activates
+the guest virtual machines (VMs), and the guest administrator can then
+provision and configure the BIG-IP modules within the guest. For a guest
+in this state, the vCMP host starts and maintains a VM on each slot for
+which the guest has resources allocated. If you are a host administrator
+and you reconfigure the properties of a guest after its initial
+deployment, the host immediately propagates the changes to all of the
+guest VMs and also propagates the list of allowed VLANs.
+
+----
+
+|
+
+**2.11 - Understand that the vCMP guest license is inherited from the host**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/vcmp-administration-appliances-11-6-0/1.html?sr=42415298
+
+**BIG-IP license considerations for vCMP**
+
+The BIG-IP system license authorizes you to provision the vCMP feature
+and create guests with one or more BIG-IP system modules provisioned.
+Note the following considerations:
+
+Each guest inherits the license of the vCMP host.
+
+The host license must include all BIG-IP modules that are to be
+provisioned across all guest instances. Examples of BIG-IP modules are
+BIG-IP Local Traffic Manager and BIG-IP Global Traffic Manager.
+
+The license allows you to deploy the maximum number of guests that the
+platform allows.
+
+If the license includes the appliance mode feature, you cannot enable
+appliance mode for individual guests; when licensed, appliance mode
+applies to all guests and cannot be disabled.
+
+You activate the BIG-IP system license when you initially set up the
+vCMP host.
+
+----
+
+|
+
+**2.11 - Describe how to deploy and/or upgrade vCMP guests and related dependency on host version**
+
+https://support.f5.com/csp/article/K14088
+
+**Upgrading software on a vCMP system**
+
+When you upgrade software on vCMP systems, keep the following
+information in mind:
+
+-  When you upgrade a vCMP host, the guests go offline.
+
+-  Upgrading the vCMP host does not upgrade individual guests.
+
+-  To avoid excessive disk and CPU usage, upgrade only one vCMP guest at
+   a time.
+
+-  Each guest inherits the license of the vCMP host, and the host
+   license includes all BIG-IP modules available for use with vCMP guest
+   instances. If you need to reactivate the license, you reactivate it
+   at the vCMP host only.
+
+-  While not required, F5 recommends that you configure your vCMP host
+   to run the same BIG-IP version as the latest version used by any of
+   its vCMP guests.
+
+-  F5 hardware platforms with multiple blades manage and share software
+   image ISO files between blades automatically. Starting in 11.6.0,
+   BIG-IP software images that are stored and managed on the vCMP host
+   are also available for vCMP guests to install.
+
+-  Hosts and guests use unique UCS configuration files. For example,
+   virtual servers configured within a BIG-IP guest are not contained in
+   the UCS file created on the vCMP host.
+
+For more information, refer to `K15930: Overview of vCMP configuration
+considerations <https://support.f5.com/csp/article/K15930>`__.
+
+https://support.f5.com/csp/article/K14088
+
+**vCMP host and compatible guest version matrix**
+
+Starting in BIG-IP 11.0.0, the BIG-IP system supports vCMP, a feature
+that allows you to run multiple instances of the BIG-IP software on a
+single hardware platform. The hypervisor allows you to allocate hardware
+resources to each BIG-IP vCMP guest instance.
+
+The vCMP host allows you to run a vCMP guest software version, which can
+be either the same version or a different version than the host, which
+is BIG-IP 11.0.0 and later. This functionality allows customers to run
+multiple versions of BIG-IP code simultaneously for testing, migration
+staging, or environment consolidation.
+
+|
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+====
+
+|
+
+Objective - 2.12 Determine the appropriate LTM device security configuration to protect against a security threat
+-----------------------------------------------------------------------------------------------------------------
+
+|
+|
+
+**2.12 - Explain the implications of SNAT and NAT on network promiscuity**
+
+In a typical network, a host’s network adapter only receives frames that
+are meant for it. If the Host’s network adapter supports promiscuous
+mode, then placing it in promiscuous mode will allow it to receive all
+frames passed on the switch that are allowed under the VLAN policy for
+the associated port group. This can be useful for intrusion detection
+monitoring or if a sniffer needs to analyze all traffic on the network
+segment.
+
+When the BIG-IP platform performs SNAT or NAT functions to the network
+traffic that is traversing the system it rewrites the destination IP or
+source IP address of the traffic depending on the function performed.
+This can make troubleshooting captures of network traffic difficult
+since with SNAT all traffic seems to have a source IP address of the
+BIG-IP system, or with NAT the destination IP address is not the same on
+each side of the communications of the BIG-IP.
+
+----
+
+|
+
+**2.12 - Explain the implications of forwarding virtual servers on the environment security**
+
+https://support.f5.com/csp/article/K7595?sr=42401954
+
+**Forwarding Virtual Servers**
+
+There are two different types of forwarding virtual server, the Layer2
+forwarding and IP forwarding.
+
+An IP forwarding virtual server accepts traffic that matches the virtual
+server address and forwards it to the destination IP address that is
+specified in the request rather than load balancing the traffic to a
+pool. Address translation is disabled when you create an IP forwarding
+virtual server, leaving the destination address in the packet unchanged.
+When creating an IP forwarding virtual server, as with all virtual
+servers, you can create either a host IP forwarding virtual server,
+which forwards traffic for a single host address, or a network IP
+forwarding virtual server, which forwards traffic for a subnet.
+
+**Host IP forwarding virtual server**
+
+A host IP forwarding virtual server forwards traffic to a single
+destination host address. For example, the following configuration
+defines a host IP forwarding virtual server that accepts any traffic
+arriving on the Virtual Local Area Network (VLAN) named external whose
+destination is 10.0.0.1 on any service port using any valid TCP/IP
+protocol. The traffic is forwarded from the external VLAN to the
+destination host at 10.0.0.1.
+
+**Network IP forwarding virtual server**
+
+A network IP forwarding virtual server forwards traffic to the
+destination network. For example, the following configuration example
+defines a network IP forwarding virtual server that accepts traffic from
+any VLAN bound for any host on the 10.0.0.0/24 network, but only if it
+arrives on TCP port 22. Matching traffic is forwarded from the
+originating VLAN to the host specified in the client request.
+
+Note: IP forwarding virtual servers are similar to Layer 2 forwarding
+virtual servers in that neither one load balances traffic to pool
+members, but instead forward directly to the destination address
+requested by the client. For more information about Layer 2 forwarding
+virtual servers, refer to K8082: Overview of TCP connection setup for
+BIG-IP LTM virtual server types.
+
+An IP forwarding virtual server is useful when you want to configure the
+BIG-IP system to pass infrastructure-related traffic, such as Internet
+Control Message Protocol (ICMP) traffic.
+
+**Emulating stateless IP routing with BIG-IP LTM forwarding virtual servers**
+
+The TMOS-based full-proxy model is stateful and connection-orientated by
+nature, in contrast to the stateless IP forwarding typically provided by
+L3 routers. The BIG-IP LTM system must be specifically configured to
+more closely emulate a standard router's stateless routing behavior by
+adjusting the virtual server and protocol profile configurations to
+match your requirements.
+
+For the closest approximation of stateless IP forwarding, F5 recommends
+that you create an IP forwarding wildcard virtual server. This
+configuration accepts traffic and forwards it using the information
+contained in the system routing table, regardless of whether it is
+associated with an established connection.
+
+Note: The VLANs on which you enable the forwarding virtual server may
+vary depending on your routing requirements and restrictions. The
+virtual server should be enabled on all VLANs from which it will accept
+and route traffic.
+
+The FastL4 profile determines how the system handles the connection
+table entries. Enabling the Loose Initiation option allows the system to
+initialize a connection when it receives any TCP packet, rather than
+requiring a SYN packet for connection initiation. It also provides a
+good alternative to the high overhead of connection mirroring. In the
+event of a failover, with the Loose Initiation option enabled, the
+standby BIG-IP system accepts connections mid-flow, and forwards, as
+expected. The Loose Close option allows the system to remove a
+connection when the system receives the first FIN packet from either the
+client or the server. This will help trim connection table entries as
+the connection entry can be removed as soon as the connection officially
+closes, and the system does not need to maintain the connection table
+entry.
+
+Note: The Loose Close feature is optional, and may impact system
+performance because it disables Packet Velocity ASIC (PVA) Acceleration
+for the virtual server. For information about PVA Acceleration, refer to
+K4832: Overview of PVA Acceleration. The Loose Close feature does not
+impact ePVA acceleration. For information about ePVA acceleration, refer
+to K12837: Overview of the ePVA feature.
+
+Setting the Idle Timeout allows the system to remove connections from
+the connection table when the connections are no longer active. F5
+recommends that you use the default timeout of 300 seconds. If you
+disable Reset on Timeout, the system removes connection entries from the
+connection table once the idle timeout expires, but the system does not
+reset the connection. This setting prevents the BIG-IP LTM system from
+sending resets when closing an idle connection, it also reduces the need
+to use long idle timeouts for long-lived TCP connections, which may go
+idle for extended periods of time. For instance, if an application
+allows for long periods of inactivity (greater than the configured Idle
+Timeout) with no traffic being exchanged, then without this setting, the
+BIG-IP LTM system would close both sides of the connection when the
+timeout expired. The system would reject any subsequent packets that the
+client or server sent in the same TCP connection, since the connection
+is no longer valid on the BIG-IP LTM system. However, with Reset on
+Timeout disabled, the BIG-IP LTM quietly removes the connection entry
+and neither the client nor the server is aware that the communication
+channel has timed out. When the client or server begins communicating
+again, the Loose Initiation setting allows the BIG-IP LTM system to
+re-add the connection to the connection table, and the newly-arrived
+packets are forwarded, as expected.
+
+Note: F5 does not recommend that you set the idle timeout for any
+virtual server to immediate or indefinite. Setting the timeout to
+immediate results in constant writing and deletion of connection entries
+for each datagram, creating undesirable overhead. Setting the timeout to
+indefinite (or to large values) results in a connection table that grows
+until all available memory is consumed, and typically results in an
+unplanned failover upon memory exhaustion.
+
+Some protocols have different requirements than others. In which case, a
+more specific virtual server allows you to control traffic handling for
+specific protocols. A protocol-specific virtual server can help keep
+connection table sizes down, and if Last Hop is still used, will help
+reduce stale last hop information for short-lived connections. For
+instance, User Datagram Protocol (UDP) is less stateful than TCP, and
+does not typically require as long an idle timeout. To set a specific
+timeout for UDP traffic, you can create the wildcard forwarding virtual
+server described previously, and a protocol-specific forwarding virtual
+server and profile. This virtual server listens for only UDP traffic.
+All other IP protocols will be processed by the more general wildcard
+forwarding virtual server defined previously.
+
+**Forwarding Virtual Servers Security Concerns**
+
+Since the forwarding virtual server is not processing traffic to a
+specific pool resource traffic can be destined for any IP address in the
+subnet that the BIG-IP system is listening on. This may allow traffic to
+systems that you did not intend to pass.
+
+----
+
+|
+
+**2.12 - Explain how to set up and enable SNMP device traps on the LTM device**
+
+https://support.f5.com/csp/article/K3727
+
+**SNMP trap configuration files**
+
+Standard, pre-configured SNMP traps are contained in the
+/etc/alertd/alert.conf file. F5 does not recommend, or support, the
+addition or removal of traps or any other changes to the alert.conf
+file.
+
+Custom, user-defined SNMP traps should be defined in the
+/config/user_alert.conf file.
+
+The BIG-IP system will process the alert notification specified in the
+/config/user_alert.conf file first, if the same alert definition exists
+on both of the config files.
+
+Prior to BIG-IP 10.1.0, when the alertd process starts, it creates a
+dynamic configuration file by appending the /config/user_alert.conf
+file to the /etc/alertd/alert.conf file. The BIG-IP system searches the
+dynamic configuration file sequentially for matches. After a match is
+found, the trap is generated and no further matches are attempted.
+
+Note: All files in the /config directory, including any customizations
+to the /config/user_alert.conf file, are automatically included in the
+UCS archive by default. For more information, refer to K4422: Viewing
+and modifying the files that are configured for inclusion in a UCS
+archive.
+
+Creating custom SNMP traps
+
+Before you create a custom trap, you must determine the unique syslog
+messages for which you want the system to send alerts. The message must
+not match the matched_message value of any other SNMP trap already
+defined in the /etc/alertd/alert.conf file or the
+/config/user_alert.conf file.
+
+Note: For information about how to determine which alerts are
+pre-configured to trigger an SNMP trap, refer to K6414: Determining
+which alerts are pre-configured to trigger an SNMP trap. You may also
+examine the alerts from the /config/user_alert.conf file in the same
+manner.
+
+To create a custom SNMP trap, perform the following procedure:
+
+1. Log in to the command line.
+
+2. To back up your /config/user_alert.conf file, type the following command:
+::
+
+    cp /config/user_alert.conf /config/user_alert.conf.SOL3727
+
+3. Edit the /config/user_alert.conf file.
+
+4. Add a new SNMP trap using the following format:
+::
+
+    alert <alert_name> "<matched message>" {
+
+    snmptrap OID=".1.3.6.1.4.1.3375.2.4.0.XXX"
+
+    }
+
+Note: Replace <alert_name> with a descriptive name. Do not use an
+alert name that exactly matches one already used in the
+/etc/alertd/alert.conf file or the /config/user_alert.conf file.
+Replace <matched_message> with text that matches the syslog message
+that triggers the custom trap. You can specify a portion of the
+syslog message text or use a regular expression. F5 recommends that
+you do not include the syslog prefix information, such as the date
+stamp and process ID, in the match string. Including information of
+a variable nature in the match string or regular expression may
+result in unexpected false positives or result in no matches at all.
+The syslog message you want to trap must not match the
+matched_message value of any other SNMP trap defined in the
+/etc/alertd/alert.conf file or the /config/user_alert.conf file.
+
+5. Replace XXX with a number unique to this object ID.
+
+You can use any object ID that meets all of the following criteria:
+
+-  The object ID is in standard object identifier (OID) format, and within the following range:
+
+.1.3.6.1.4.1.3375.2.4.0.300 through .1.3.6.1.4.1.3375.2.4.0.999
+
+Note: If the OID value is outside the range listed above, a trap
+will be sent with the OID specified, but it will not contain any
+text within the trap body.
+
+-  The object ID is in a numeric range that can be processed by your trap receiving tool.
+
+-  The object ID does not already exist in the /usr/share/snmp/mibs/F5-BIGIP-COMMON-MIB.txt management information base (MIB) file.
+
+-  The object ID is not already used in another custom trap.
+
+6. Save the file and exit the editor.
+
+Note: If the alertd process fails to start, examine the newly added
+entry to ensure it contains all of the required elements and
+punctuation.
+
+Note: To test the newly created trap, refer to K11127: Testing SNMP
+traps on the BIG-IP system (9.4.x - 13.x).
+
+Custom SNMP trap example
+
+A message that appears similar to the following example is logged to the
+/var/log/ltm file when switchboard failsafe is enabled:
+::
+
+    Sep 23 11:51:40 bigip1.askf5.com lacpd[27753]: 01160016:6:
+    Switchboard Failsafe enabled
+
+To create a custom SNMP trap that is triggered whenever switchboard
+failsafe status changes are logged, add the following trap definition to
+the /config/user_alert.conf file:
+::
+
+   alert SWITCHBOARD_FAILSAFE_STATUS "Switchboard Failsafe (.\*)" {
+   
+   snmptrap OID=".1.3.6.1.4.1.3375.2.4.0.500"
+   
+   }
+
+----
+
+|
+
+**2.12 - Describe the implications of port lockdown settings**
+
+`https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-5-0/13.html <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-concepts-11-5-0/13.html>`__
+
+**Port lockdown**
+
+Each self IP address has a feature known as port lockdown. Port lockdown
+is a security feature that allows you to specify particular UDP and TCP
+protocols and services from which the self IP address can accept
+traffic.
+
+You can determine the supported protocols and services by using the tmsh
+command tmsh list net self-allow defaults.
+
+If you do not want to use the default setting (Allow None), you can
+configure port lockdown to allow either all UDP and TCP protocols and
+services (Allow All) or only those that you specify (Allow Custom).
+
+Note: High availability-related traffic from configured peer devices in
+a device group might not be subject to port lockdown settings.
+
+|
+
+`https://support.f5.com/csp/article/K13250 <https://support.f5.com/csp/article/K13250>`__
+
+The port lockdown feature allows you to secure the BIG-IP system from
+unwanted connection attempts by controlling the level of access to each
+self IP address defined on the system. Each port lockdown list setting,
+defined later in this document, specifies the protocols and services
+from which a self IP can accept connections. The system refuses traffic
+and connections made to a service or protocol port that is not on the
+list.
+
+Port lockdown exceptions
+
+-  TCP port 1028: In BIG-IP 11.0.0 - 11.3.0 redundant pair
+   configurations, the system allows tcp:1028 for connection and
+   persistence mirroring, regardless of the port lockdown settings.
+
+-  TCP port 1029 - 1043: Beginning in BIG-IP 11.4.0, the BIG-IP system
+   maintains a separate mirroring channel for each traffic group. The
+   port range for each connection channel begins at TCP 1029 and
+   increments by one for each new traffic group and channel created. By
+   default, the BIG-IP system allows TCP ports 1029-1043. For more
+   information, refer to K14894: The BIG-IP system establishes a
+   separate mirroring channel for each traffic group.
+
+-  TCP port 4353: When BIG-IP 11.0.0 and later devices are configured in
+   a synchronization group, peer devices communicate using Centralized
+   Management Infrastructure (CMI) on tcp:4353, regardless of the port
+   lockdown settings.
+
+Note: CMI uses the same port as iQuery tcp:4353, but is independent
+of iQuery and the port configuration options available for the port.
+If you are using iQuery, you must allow port 4353 in your port
+lockdown settings.
+
+-  ICMP: ICMP traffic to the self-IP address is not affected by the port
+   lockdown list and is implicitly allowed in all cases.
+
+Note: In most cases, it is not possible to ping self IP addresses
+across Virtual Local Area Networks (VLANs). For more information,
+refer to K3475: The BIG-IP system may not respond to requests for a
+self IP address.
+
+**Port lockdown setting definitions:**
+
+Allow Default
+
+This option allows access to a pre-defined set of network protocols and
+services that are typically required in a BIG-IP deployment.
+
+The Allow Default setting specifies that connections to the self IP
+address are allowed from the following protocols and services:
+
+Allowed protocol Service Service definition
+
++------------------------+---------------+--------------------------+
+| **Allowed protocol**   | **Service**   | **Service definition**   |
++========================+===============+==========================+
+| OSPF                   | N/A           | N/A                      |
++------------------------+---------------+--------------------------+
+| TCP                    | 4353          | iQuery                   |
++------------------------+---------------+--------------------------+
+| UDP                    | 4353          | iQuery                   |
++------------------------+---------------+--------------------------+
+| TCP                    | 443           | HTTPS                    |
++------------------------+---------------+--------------------------+
+| TCP                    | 161           | SNMP                     |
++------------------------+---------------+--------------------------+
+| UDP                    | 161           | SNMP                     |
++------------------------+---------------+--------------------------+
+| TCP                    | 22            | SSH                      |
++------------------------+---------------+--------------------------+
+| TCP                    | 53            | DNS                      |
++------------------------+---------------+--------------------------+
+| UDP                    | 53            | DNS                      |
++------------------------+---------------+--------------------------+
+| UDP                    | 520           | RIP                      |
++------------------------+---------------+--------------------------+
+| UDP                    | 1026          | network failover         |
++------------------------+---------------+--------------------------+
+
+You can also determine the default supported protocols and services by
+using the following command:
+::
+
+   tmsh list net self-allow
+
+The output appears similar to the following example:
+::
+
+   net self-allow {
+   defaults {
+   ospf:any
+   tcp:domain
+   tcp:f5-iquery
+   tcp:https
+   tcp:snmp
+   tcp:ssh
+   udp:520
+   udp:cap
+   udp:domain
+   udp:f5-iquery
+   udp:snmp
+   }
+   }
+
+- Allow All
+
+This option specifies that all connections to the self IP address are
+allowed, regardless of protocol or service.
+
+- Allow None
+
+This option specifies that no connections are allowed on the self IP
+address, regardless of protocol or service. However, ICMP traffic is
+always allowed, and if the BIG-IP systems are configured in a redundant
+pair, ports that are listed as exceptions are always allowed from the
+peer system.
+
+- Allow Custom
+
+This option allows you to specify the protocols and services for which
+connections are allowed on the self IP address. However, ICMP traffic is
+always allowed, and if the BIG-IP systems are configured in a redundant
+pair, ports that are listed as exceptions are always allowed from the
+peer system.
+
+Important: A known issue prevents connections to the state mirroring
+address when port tcp:1028 is explicitly allowed in the custom port
+lockdown list. For more information, refer to K12932: The BIG-IP system
+resets statemirror connections when port 1028 is configured in the Self
+IP Port Lockdown list.
+
+Default port lockdown setting
+
+When creating self IP addresses using the Configuration utility, the
+default port lockdown setting in BIG-IP 10.x through 11.5.2 is Allow
+Default, and for BIG-IP 11.6.0 and later versions is Allow None.
+
+When creating self IP addresses using the bigpipe or tmsh utilities, the
+default port lockdown setting in BIG-IP 10.x is Allow None. For BIG-IP
+11.0.0 - 11.5.2, the default port lockdown setting is Allow Default, and
+for BIG-IP 11.5.3 and 11.6.0 and later versions, the default port
+lockdown setting is Allow None.
+
+Using the Configuration utility to modify port lockdown settings for a
+specific self IP
+
+1. Log in to the Configuration utility.
+
+2. Navigate to Network > Self IPs.
+
+3. Click the relevant self IP address.
+
+4. From the Port Lockdown box, click the setting you want.
+
+5. Click Update.
+
+Using the tmsh utility to modify port lockdown settings
+
+1. Log in to the Traffic Management Shell (tmsh) by typing the following command:
+::
+
+    tmsh
+
+2. To modify the port lockdown settings for a self IP address, use the following command syntax:
+::
+
+    modify /net self <self_IP> allow-service <option>
+
+For example, to change the port lockdown setting for self IP address
+10.10.10.1 to default, you would type the following command:
+::
+
+    modify /net self 10.10.10.1 allow-service default
+
+3. Save the change by typing the following command:
+
+BIG-IP 10.1.0 and later:
+::
+
+    save sys config
+
+**Recommendations**
+
+For optimal security, F5 recommends that you use the port lockdown
+feature to allow only the protocols or services required for a self IP
+address.
+
+----
+
+|
+
+**2.12 - (Supplemental Example) Describe how to disable services**
+
+**Making the BIG-IP Listen for a service**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-5-0/2.html#conceptid
+
+The Big-IP platform is a default deny network platform. You have to
+configure the BIG-IP to listen for traffic whether that is for
+management or for production traffic. Virtual servers are the listeners
+for application traffic services. Some listeners need to be built to
+pass more than one type of traffic. And many times, the configuration
+will allow either one port or all ports. If you want to restrict it to a
+short list of ports, an iRule can be used that will allow the selective
+list of ports.
+
+Simply sending a TCP reset to a port scan can tell an intruder a lot
+about your environment. By default, the TM.RejectUnmatched BigDB
+variable is set to true, and the BIG-IP system sends a TCP RST packet in
+response to a non-SYN packet that matches a virtual server address and
+port or self IP address and port, but does not match an established
+connection. The BIG-IP system also sends a TCP RST packet in response to
+a packet that matches a virtual server address, or self IP address, but
+specifies an invalid port. The TCP RST packet is sent on the client side
+of the connection, and the source IP address of the reset is the
+relevant BIG-IP LTM object address or self IP address for which the
+packet was destined. If TM.RejectUnmatched is set to false, the system
+silently drops unmatched packets.
+
+----
+
+|
+
+**2.12 - (Supplemental Example) Describe how to disable ARP**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-ip-routing-administration-11-5-0/5.html
+
+**Address Resolution Protocol on the BIG-IP system**
+
+The BIG-IP system is a multi-layer network device, and as such, needs to
+perform routing functions. To do this, the BIG-IP system must be able to
+find destination MAC addresses on the network, based on known IP
+addresses. The way that the BIG-IP system does this is by supporting
+Address Resolution Protocol (ARP), an industry-standard Layer 3
+protocol. Settings for ARP behaviors can be found on the Main tab, click
+Network > ARP > Options. You can also see and manage the dynamic and
+static ARP entries in ARP cache from the console or the GUI.
+
+|
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-5-0/2.html#conceptid
+
+**Disabling ARP for A Virtual Server’s Address**
+
+If you want to control how the BIG-IP handles ARP for a virtual server
+you can make a change to the configuration of the virtual address of the
+virtual server.
+
+**What is a virtual address?**
+
+A virtual address is the IP address with which you associate a virtual
+server. For example, if a virtual server’s IP address and service are
+10.10.10.2:80, then the IP address 10.10.10.2 is a virtual address.
+
+You can create a many-to-one relationship between virtual servers and a
+virtual address. For example, you can create the three virtual servers
+10.10.10.2:80, 10.10.10.2:443, and 10.10.10.2:161 for the same virtual
+address, 10.10.10.2.
+
+You can enable and disable a virtual address. When you disable a virtual
+address, none of the virtual servers associated with that address can
+receive incoming network traffic.
+
+You create a virtual address indirectly when you create a virtual
+server. When this happens, Local Traffic Manager internally associates
+the virtual address with a MAC address. This in turn causes the BIG-IP
+system to respond to Address Resolution Protocol (ARP) requests for the
+virtual address, and to send gratuitous ARP requests and responses with
+respect to the virtual address. As an option, you can disable ARP
+activity for virtual addresses, in the rare case that ARP activity
+affects system performance. This most likely occurs only when you have a
+large number of virtual addresses defined on the system.
+
+----
+
+|
+
+**2.12 - (Supplemental Example) Explain how to set up logging for security events on the LTM device**
+
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-external-monitoring-implementations-11-5-0/6.html
+
+**Overview: Configuring DoS Protection event logging**
+
+You can configure the BIG-IP system to log information about BIG-IP
+system denial-of-service (DoS) events, and send the log messages to
+remote high-speed log servers.
+
+Important: The BIG-IP Advanced Firewall Manager (AFM) must be licensed
+and provisioned before you can configure DoS Protection event logging.
+Additionally, for high-volume logging requirements, such as DoS, ensure
+that the BIG-IP system sends the event logs to a remote log server.
+
+When configuring remote high-speed logging of DoS Protection event
+logging, it is helpful to understand the objects you need to create and
+why, as described here:
+
++--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Object to create in implementation   | Reason                                                                                                                                                                                                                           |
++======================================+==================================================================================================================================================================================================================================+
+| Pool of remote log servers           | Create a pool of remote log servers to which the BIG-IP system can send log messages.                                                                                                                                            |
++--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Destination (unformatted)            | Create a log destination of Remote High-Speed Log type that specifies a pool of remote log servers.                                                                                                                              |
++--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Destination (formatted)              | If your remote log servers are the ArcSight, Splunk, IPFIX, or Remote Syslog type, create an additional log destination to format the logs in the required format and forward the logs to a remote high-speed log destination.   |
++--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Publisher                            | Create a log publisher to send logs to a set of specified log destinations.                                                                                                                                                      |
++--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Logging profile                      | Create a custom Logging profile to enable logging of user-specified data at a user-specified level, and associate a log publisher with the profile.                                                                              |
++--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| LTM virtual server                   | Associate a custom Logging profile with a virtual server to define how the BIG-IP system logs security events on the traffic that the virtual server processes.                                                                  |
++--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+This illustration shows the association of the configuration objects for
+remote high-speed logging of DoS Protection events.
+
+|
+
+.. image:: /_static/301a/p18.png
+
+|
+
+Association of remote high-speed logging configuration objects
+
+**Task summary**
+
+Perform these tasks to configure logging of DoS Protection events on the
 BIG-IP system.
 
-Impact of procedure: Performing the following procedure should not have
-a negative impact on your system.
+Note: Enabling logging impacts BIG-IP system performance.
 
-1. Log in to the command line of a Linux host (with a current version of
-   OpenSSL) that can access the SSL virtual server.
+**Creating a pool of remote logging servers**
 
-2. To test SSL connections for the virtual server, use the following
-   command syntax:
+Before creating a pool of log servers, gather the IP addresses of the
+servers that you want to include in the pool. Ensure that the remote log
+servers are configured to listen to and receive log messages from the
+BIG-IP system.
 
-   .. code-block:: bash
+Create a pool of remote log servers to which the BIG-IP system can send
+log messages.
 
-      openssl s\_client -connect <virtual\_server>:<port>
+1. On the Main tab, click DNS > Delivery > Load Balancing > Pools or Local Traffic > Pools. The Pool List screen opens.
 
-    For example:
+2. Click Create. The New Pool screen opens.
 
-    .. code-block:: bash
+3. In the Name field, type a unique name for the pool.
 
-       openssl s\_client -connect 10.12.23.115:443
+4. Using the New Members setting, add the IP address for each remote logging server that you want to include in the pool:
 
-3. If the handshake attempt fails, take note of SSL errors returned by
-   the s\_client utility.
+   -  Type an IP address in the Address field, or select a node address from the Node List.
 
-4. If the handshake succeeds, type the following at the prompt:
+   -  Type a service number in the Service Port field, or select a service name from the list. Note: Typical remote logging servers require port 514.
 
-   .. code-block:: bash
+   -  Click Add.
 
-      GET / HTTP/1.0
+5. Click Finished.
 
-5. Press Enter twice.
+**Creating a remote high-speed log destination**
 
-   The HTML page should display.
+Before creating a remote high-speed log destination, ensure that at
+least one pool of remote log servers exists on the BIG-IP system. Create
+a log destination of the Remote High-Speed Log type to specify that log
+messages are sent to a pool of remote log servers.
 
-Reviewing log messages related to SSL handshake failures
+1. On the Main tab, click System > Logs > Configuration > Log Destinations. The Log Destinations screen opens.
 
-After you test SSL connections using a web browser or OpenSSL client,
-you should review the BIG-IP log files for debug error messages related
-to the SSL handshake. To do so, perform the following procedure:
+2. Click Create.
 
-Impact of procedure: Performing the following procedure should not have
-a negative impact on your system.
+3. In the Name field, type a unique, identifiable name for this destination.
 
-1. Log in to the BIG-IP command line.
+4. From the Type list, select Remote High-Speed Log.
 
-2. Use a Linux text utility to review the /var/log/ltm file. For example:
+Important: If you use log servers such as Remote Syslog, Splunk,
+or ArcSight, which require data be sent to the servers in a specific
+format, you must create an additional log destination of the
+required type, and associate it with a log destination of the Remote
+High-Speed Log type. With this configuration, the BIG-IP system can
+send data to the servers in the required format. The BIG-IP system
+is configured to send an unformatted string of text to the log
+servers.
 
-   .. code-block:: bash
-      
-      tail -f /var/log/ltm
+5. From the Pool Name list, select the pool of remote log servers to
+   which you want the BIG-IP system to send log messages.
 
-   .. note:: To filter the log information for SSL errors only, use the
-      grep command. For example:
+6. From the Protocol list, select the protocol used by the high-speed
+   logging pool members.
 
-      .. code-block:: bash
+7. Click Finished.
 
-         cat /var/log/ltm \|grep -i 'ssl'
+|
 
-3. Review the debug logs for SSL handshake failure or SSL alert codes.
+**Creating a formatted remote high-speed log destination**
 
-Additionally, you can use the grep or egrep commands to filter for
-specific SSL-related keywords in the log files. To do so, refer to the
-following commands:
+Ensure that at least one remote high-speed log destination exists on the
+BIG-IP system.
 
-To display log messages related to cipher or profile, use the grep or
-egrep commands to search for certain patterns in the /var/log/ltm file.
+Create a formatted logging destination to specify that log messages are
+sent to a pool of remote log servers, such as Remote Syslog, Splunk, or
+ArcSight servers.
 
-For example:
+1. On the Main tab, click System > Logs > Configuration > Log Destinations. The Log Destinations screen opens.
 
-.. code-block:: bash
-   
-   egrep -i 'cipher \| profile' /var/log/ltm
+2. Click Create.
 
-You may observe messages similar to the following examples.
+3. In the Name field, type a unique, identifiable name for this destination.
 
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SSL message**                                                                       | **Description**                                                                                                                                                                                                         |
-+=======================================================================================+=========================================================================================================================================================================================================================+
-| 01260014:3: Cipher <cipher> negotiated is not configured in profile <profile\_name>   | The cipher negotiated by the client and server is not supported in one of the SSL profiles                                                                                                                              |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 01260026:4: No shared ciphers between SSL peers <client\_IP>:<server\_IP>             | None of the SSL ciphers sent by the client match the configured ciphers in the Client SSL profile. This error can occur when an older SSL client using a less secure cipher attempts to connect to the virtual server   |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+4. From the Type list, select a formatted logging destination, such as IPFIX, Remote Syslog, Splunk, or ArcSight.
 
-To display log messages related to ssl and tps, use the grep or egrep
-commands to search for certain patterns in the /var/log/ltm file.
+Important: ArcSight formatting is only available for logs coming
+from Advanced Firewall Manager (AFM), Application Security Manager
+(ASM), and the Secure Web Gateway component of Access Policy Manager
+(APM). IPFIX is not available for Secure Web Gateway. The BIG-IP
+system is configured to send a formatted string of text to the log
+servers.
 
-For example:
+5. If you selected Remote Syslog, from the Syslog Format list, select a format for the logs, and then from the High-Speed Log Destination list, select the destination that points to a pool of remote Syslog servers to which you want the BIG-IP system to send log messages.
 
-.. code-block:: bash
+6. If you selected Splunk or IPFIX, from the Forward To list, select the destination that points to a pool of high-speed log servers to which you want the BIG-IP system to send log messages.
 
-   egrep -i 'ssl.\*tps' /var/log/ltm
+7. Click Finished.
 
-You may observe messages similar to the following example.
+|
 
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SSL message**                                                                  | **Description**                                                                                                                                                      |
-+==================================================================================+======================================================================================================================================================================+
-| err tmm<instance>[<pid>]: 01260008:3: SSL transaction (TPS) rate limit reached   | The BIG-IP system is handling a large number of Secure Socket Layer (SSL) connections and the number of SSL TPS connections reaches or exceeds the licensed limit.   |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+**Creating a publisher**
 
-Packet tracing using the ssldump utility
+Ensure that at least one destination associated with a pool of remote
+log servers exists on the BIG-IP system. Create a publisher to specify
+where the BIG-IP system sends log messages for specific resources.
 
-The ssldump utility is a protocol analyzer for SSL that identifies TCP
-connections from a chosen packet trace or network interface and attempts
-to interpret the packets as SSL traffic. When the ssldump utility
-identifies SSL traffic, it decodes the records and displays them in text
-to standard output. If provided with the private key that was used to
-encrypt the connections, the ssldump utility may also be able to decrypt
-the connections and display the application data traffic. You can use
-the ssldump utility to examine, decrypt, and decode SSL-encrypted packet
-streams that are processed by the BIG-IP system. For information about
-using ssldump to troubleshoot SSL handshake failures, refer to K10209:
-Overview of packet tracing with the ssldump utility.
+1. On the Main tab, click System > Logs > Configuration > Log Publishers. The Log Publishers screen opens.
+
+2. Click Create.
+
+3. In the Name field, type a unique, identifiable name for this publisher.
+
+4. For the Destinations setting, select a destination from the Available list, and click << to move the destination to the Selected list.
+
+Note: If you are using a formatted destination, select the
+destination that matches your log servers, such as Remote Syslog,
+Splunk, or ArcSight.
+
+5. Click Finished.
+
+|
+
+**Creating a custom DoS Protection Logging profile**
+
+Create a custom Logging profile to log DoS Protection events and send
+the log messages to a specific location.
+
+1. On the Main tab, click Security > Event Logs > Logging Profiles. The Logging Profiles list screen opens.
+
+2. Click Create. The New Logging Profile screen opens.
+
+3. Select the DoS Protection check box.
+
+4. In the DNS DoS Protection area, from the Publisher list, select the publisher that the BIG-IP system uses to log DNS DoS events. You can specify publishers for other DoS types in the same profile, for example, for SIP or Application DoS Protection.
+
+5. Click Finished.
+
+Assign this custom DoS Protection Logging profile to a virtual server.
+
+|
+
+**Configuring an LTM virtual server for DoS Protection event logging**
+
+Ensure that at least one Log Publisher exists on the BIG-IP system.
+
+Assign a custom DoS Protection Logging profile to a virtual server when
+you want the BIG-IP system to log DoS Protection events on the traffic
+the virtual server processes.
+
+Note: This task applies only to LTM-provisioned systems.
+
+1. On the Main tab, click Local Traffic > Virtual Servers. The Virtual Server List screen opens.
+
+2. Click the name of the virtual server you want to modify.
+
+3. On the menu bar, click Security > Policies. The screen displays Policy settings and Inline Rules settings.
+
+4. From the Log Profile list, select Enabled. Then, for the Profile setting, move the profiles that log specific events to specific locations from the Available list to the Selected list.
+
+5. Click Update to save the changes.
+
+|
+
+**Disabling logging**
+
+Disable Network Firewall, Protocol Security, or DoS Protection event
+logging when you no longer want the BIG-IP system to log specific events
+on the traffic handled by specific resources.
+
+Note: You can disable and re-enable logging for a specific resource
+based on your network administration needs.
+
+1. On the Main tab, click Local Traffic > Virtual Servers. The Virtual Server List screen opens.
+
+2. Click the name of the virtual server you want to modify.
+
+3. On the menu bar, click Security > Policies. The screen displays Policy settings and Inline Rules settings.
+
+4. From the Log Profile list, select Disabled.
+
+5. Click Update to save the changes.
+
+The BIG-IP system does not log the events specified in this profile for
+the resources to which this profile is assigned.
+
+**Implementation result**
+
+You now have an implementation in which the BIG-IP system logs specific
+DoS Protection events and sends the logs to a specific location.
 
 ----
 
 |
 
-**2.07 - Predict the browser caching behavior when application data is received (headers and HTML)**
+**2.12 - (Supplemental Example) Explain how route domains can be used to enforce network segmentation**
 
-https://www.f5.com/services/resources/white-papers/caching-behavior-of-web-browsers
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-ip-routing-administration-11-5-0/2.html
 
-**Browser Caching Behavior**
+**What is a route domain?**
 
-When a user visits a web page, the contents of that page can be stored
-in the browser's cache so it doesn't need to be re-requested and
-re-downloaded. Efficiently using the browser cache can improve end user
-response times and reduce bandwidth utilization.
+A route domain is a configuration object that isolates network traffic
+for a particular application on the network.
 
-The cache-ability of an item on the browser is determined by:
+Because route domains segment network traffic, you can assign the same
+IP address or subnet to multiple nodes on a network, provided that each
+instance of the IP address resides in a separate routing domain.
 
--  The response headers returned from the origin web server. If the
-   headers indicate that content should not be cached then it won't be.
+Note: Route domains are compatible with both IPv4 and IPv6 address
+formats.
 
--  A validator such as an ETag or Last-Modified header must be present
-   in the response.
+**Benefits of route domains**
 
-If an item is considered cacheable, the browser will retrieve the item
-from cache on repeat visits if it is considered "fresh." Freshness is
-determined by:
+Using the route domains feature of the BIG-IP system, you can provide
+hosting service for multiple customers by isolating each type of
+application traffic within a defined address space on the network.
 
--  A valid expiration time that is still within the fresh period.
+With route domains, you can also use duplicate IP addresses on the
+network, provided that each of the duplicate addresses resides in a
+separate route domain and is isolated on the network through a separate
+VLAN. For example, if you are processing traffic for two different
+customers, you can create two separate route domains. The same node
+address (such as 10.0.10.1) can reside in each route domain, in the same
+pool or in different pools, and you can assign a different monitor to
+each of the two corresponding pool members.
 
--  The browser settings as explained below.
+**Sample partitions with route domain objects**
 
-If a representation is stale or does not have a valid expiration date,
-the browser will ask the web server of origin to validate the content to
-confirm that the copy it has can be served. The web server will then
-return a 304 to let the browser know that the local cached copy is still
-good to use. If the content has changed, the web server returns a 200
-response code and delivers the new version.
+This illustration shows two route domain objects on a BIG-IP system,
+where each route domain corresponds to a separate customer, and thus
+resides in its own partition. Within each partition, the customer
+created the network objects and local traffic objects required for that
+customer's application (AppA or AppB).
 
-How the browser cache is used is dependent on three main things:
+|
 
--  Browser settings
+.. image:: /_static/301a/p19.png
 
--  The web site (HTML code and HTTP headers)
+|
 
--  How the user loads the page
+**Sample route domain deployment**
 
-In most instances the cache behavior of content is controlled by the
-Cache-Control and Expires HTTP headers. Cache-Control headers specify
-whether or not the content can be cached and for how long. The values
-can include:
+A good example of the use of route domains is a configuration for an ISP
+that services multiple customers, where each customer deploys a
+different application. In this case, the BIG-IP system isolates traffic
+for two different applications into two separate route domains. The
+routes for each application's traffic cannot cross route domain
+boundaries because cross-routing restrictions are enabled on the BIG-IP
+system by default.
 
--  no-cache – Do not cache this content
+|
 
--  private – Can be cached by browsers, but not shared/public caches
+.. image:: /_static/301a/p20.png
 
--  max-age – Set in seconds; specifies the maximum amount of time
-   content is considered fresh
+|
 
-The inclusion of just an Expires header with no Cache-Control header
-indicates that the content can be cached by both browsers and
-public/shared caches and is considered stale after the specified date
-and time as shown below:
+About strict isolation
 
-.. code-block:: bash
+You can control the forwarding of traffic across route domain boundaries
+by configuring the strict isolation feature of a route domain:
 
-   (Status-Line) HTTP/1.1 200 OK
-   Content-Length 4722
-   Content-Type image/gif
-   Date Fri, 31 Aug 2007 10:20:29 GMT
-   Expires Sun, 17 Jan 2038 19:14:07 GMT
-   Last-Modified Wed, 07 Jun 2006 23:55:38 GMT
-   URL in cache? Yes
-   Expires 19:14:07 Sun, 17 Jan 2038 GMT
-   Last Modification 23:55:38 Wed, 07 Jun 2006 GMT
-   Last Cache Update 10:20:32 Friday, August 31, 2007 GMT
-   Last Access 10:20:31 Friday, August 31, 2007 GMT
-   ETag
-   Hit Count 1
+If strict isolation is enabled, the BIG-IP system allows traffic
+forwarding from that route domain to the specified parent route domain
+only. This is the default behavior. Note that for successful isolation,
+you must enable the strict isolation feature on both the child and the
+parent route domains.
 
-If no Cache-Control or Expires headers are present, the browser will
-cache the content with no expiration date as illustrated below:
-
-.. code-block:: bash
-
-   Headers:
-   (Status-Line) HTTP/1.1 200 OK
-   Accept-Ranges bytes
-   Connection Keep-Alive
-   Content-Length 221
-   Content-Type Image/gif
-   Date Fri, 31 Aug 2007 10:27:06 GMT
-   Last-Modified Fri, 02 Jun 2006 09:46:32 GMT
-   URL in cache? Yes
-   Expires (Not set)
-   Last Modification 09:46:32 Friday, June 02, 2006 GMT
-   Last Cache Update 10:26:32 Friday, August 31, 2007 GMT
-   Last Access 10:26:31 Friday, August 31, 2007 GMT
-   ETag
-   Hit Count 1
-
-Some web developers have opted to use META Tags to control how content
-can be cached as opposed to setting cache parameters in the HTTP
-headers. Using the HTTP header is the preferred and recommended way of
-controlling the cache behavior.
+If strict isolation is disabled, the BIG-IP system allows traffic
+forwarding from that route domain to any route domain on the system,
+without the need to define a parent-child relationship between route
+domains. Note that in this case, for successful forwarding, you must
+disable the strict isolation feature on both the forwarding route domain
+and the target route domain (that is, the route domain to which the
+traffic is being forwarded).
 
 |
 
@@ -2601,2031 +4072,26 @@ controlling the cache behavior.
 
 |
 
-Objective - 2.08 Given a direct trace, a trace through the LTM device, and other relevant information, compare the traces to determine the root cause of an HTTP/HTTPS application problem
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Conclusion
+==========
 
 |
 |
 
-**2.08 - Given a failed HTTP request and LTM configuration data determine if the connection is failing due to the LTM configuration**
+This document is intended as a study guide for the F5 301a – LTM
+Specialist: Architect, Set-Up & Deploy exam version 2 - TMOS v11.5.0.
+This study guide is not an all-inclusive document that will guarantee a
+passing grade on the exam. It is intended to be a living doc and any feedback or material that you feel should be included, to help exam takers better prepare, can be sent to
+F5CertGuides@f5.com.
 
-**Configuration Problem Determination**
+Thank you for using this study guide to prepare the 301a – LTM
+Specialist exam and good luck with your certification goals.
 
-This Objective and Example are very broad. They have to be to cover all
-of the possible issues you can run into. A detailed understanding of why
-the application is failing will allow you to correct the issue. I will
-focus on SNAT issues for this example. There can be many other reasons
-an application is failing.
+Thanks
 
-When you are troubleshooting scenarios and looking at packet traces you
-may need to recognize if SNAT needs to be enabled or disabled in the
-BIG-IP flow. When SNAT is not enabled the client IP address will remain
-the same on both sides of the flow. When SNAT is enabled the client ip
-address will be changed to an IP address controlled by the BIG-IP.
 
-----
+**Eric Mitchell**
 
-https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-5-1/17.html
+Sr. Systems Engineer - Global SI
 
-In the most common client-server network configuration, the Local
-Traffic Manager™ standard address translation mechanism ensures that
-server responses return to the client through the BIG-IP® system,
-thereby reversing the original destination IP address translation. This
-typical network configuration is as follows:
 
-The server nodes are on the same subnet as the BIG-IP system.
-
-The client nodes are on a different subnet from the server nodes.
-
-The BIG-IP system is the default gateway for the server subnet.
-
-However, there are atypical network configurations in which the standard
-BIG-IP system address translation sequence by itself does not ensure
-that server responses use the required return path. Examples of these
-atypical configurations are:
-
-When clients and servers are on the same network
-
-If you want to load balance requests to server nodes that are on the
-same network as the client nodes, you can create a SNAT so that server
-responses are sent back through the virtual server, rather than directly
-from the server node to the client node. Otherwise, problems can occur
-such as the client rejecting the response because the source of the
-response does not match the destination of the request. Known as virtual
-server bounceback, this SNAT configuration causes the source of the
-response to match the destination of the request, thus ensuring that the
-client node accepts the response. You can use this kind of configuration
-when you want to load balance requests from web servers to application
-servers on the same network.
-
-When the default gateway of the server node is not the BIG-IP system
-
-For various reasons, the server node’s default route cannot always be
-defined to be a route back through the BIG-IP system. Again, this can
-cause problems such as the client rejecting the response because the
-source of the response does not match the destination of the request.
-The solution is to create a SNAT. When Local Traffic Manager then
-translates the client node’s source IP address in the request to the
-SNAT address, this causes the server node to use that SNAT address as
-its destination address when sending the response. This, in turn, forces
-the response to return to the client node through the BIG-IP system
-rather than through the server node’s default gateway.
-
-When using the OneConnect feature
-
-Local Traffic Manager OneConnect™ feature allows client requests to
-re-use idle server-side connections. Without a SNAT, the source IP
-address in the server-side connection remains the address of the client
-node that initially established the connection, regardless of which
-other client nodes re-use the connection. Although this is not an issue
-for traffic routing, you might find it confusing when examining various
-types of system output. A SNAT solves this problem.
-
-Note: Using a SNAT for inbound connections can impact the availability
-of ephemeral ports. This can lead to the SNAT being unable to process
-additional connections until some source ports become available.
-
-This image shows a typical problem for client-initiated connections when
-Local Traffic Manager is not defined as the server’s default gateway,
-and you have not configured a SNAT for inbound traffic.
-
-.. image:: /_static/301b/p11.png
-
-Client rejects response due to non-matching destination and source IP
-addresses
-
-To prevent these problems, you can configure an inbound SNAT. An inbound
-SNAT translates the original client source IP address in a request to a
-BIG-IP system virtual server or BIG-IP system self IP address, forcing
-subsequent server response to return directly to Local Traffic Manager.
-When an inbound SNAT is configured on the system, Local Traffic Manager
-translates not only the destination IP address in the request (using the
-standard address translation mechanism), but also the source IP address
-in the request (using a SNAT).
-
-The figure below shows that by configuring a SNAT, you ensure that the
-response returns through the BIG-IP system instead of through the
-default gateway, thus ensuring that the client can accept the server
-response.
-
-.. image:: /_static/301b/p12.png
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-Objective - 2.09 Given a direct trace, a trace through the LTM device, and other relevant information, compare the traces to determine a solution to an HTTP/HTTPS application problem
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-|
-|
-
-**2.09 - Investigate the cause of an SSL Handshake failure**
-
-https://support.f5.com/csp/article/K15292#id
-
-Identifying SSL handshake failures
-
-When troubleshooting SSL handshake failures, it is important to identify
-the stage in which the failure occurs. For example, if the failure
-occurs during the initial negotiation phase, the client and server may
-not have agreed on the complete list of parameters, such as protocol
-version or cipher. For information about identifying handshake failures,
-refer to the following sections.
-
-Negotiation stage
-
-During the negotiation phase, the client starts the SSL communication
-between the two systems by presenting the SSL options to the server, and
-the server responds by selecting the options it supports. This stage
-defines the parameters for the secure channel. If the client and server
-do not agree on the complete list of options, the handshake will fail,
-often with very little diagnostic data. The most common failures during
-the negotiation stage involve the following incompatible components:
-protocols, ciphers, secure renegotiation options, or client certificate
-requests.
-
-To understand failures in the negotiation stage, it is important to
-understand the client and server behavior during the message exchange.
-
-The ClientHello offers the highest protocol version supported by the
-client. If the server does not support the client's protocol version,
-the server must send a "protocol\_version" alert message and close the
-connection. If the server responds with a lower protocol version, the
-client then decides whether to downgrade the protocol or terminate the
-SSL handshake.
-
-The ClientHello also offers a list of supported cipher suites, in the
-preferred order. The server then typically chooses the highest cipher
-level shared by both. If the server does not support the ciphers from
-the client's list, the connection is terminated.
-
-Negotiation phase handshake examples
-
-Successful negotiation
-
-In the following example, the client offered protocol TLSv1.2 (version
-3.3) and the server downgraded the protocol to TLSv1.0 (version 3.1).
-The server also chose the preferred cipher from the client's list:
-
-.. code-block:: bash
-
-   1 1 0.0003 (0.0003) C>SV3.3(79) Handshake
-   ClientHello
-   Version 3.3
-   cipher suites
-   TLS\_RSA\_WITH\_RC4\_128\_SHA
-   TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA
-   TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA
-   TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA256
-   TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA256
-   1 2 0.0008 (0.0005) S>CV3.1(74) Handshake
-   ServerHello
-   Version 3.1
-   cipherSuite TLS\_RSA\_WITH\_RC4\_128\_SHA
-   Unsuccessful negotiation
-
-In the following examples, the client and server fail to agree on the
-SSL protocol version in the first example, and the SSL cipher in the
-second example.
-
-Example 1: The client and server unsuccessfully negotiate the protocol.
-The server does not support protocol version below TLS1 (version 3.1)
-and the client does not support protocol versions above SSLv3 (version
-3.0):
-
-.. code-block:: bash
-
-   1 1 0.0012 (0.0012) C>SV3.0(47) Handshake
-   ClientHello
-   Version 3.0
-   cipher suites
-   SSL\_RSA\_WITH\_AES\_256\_CBC\_SHA
-   1 2 0.0013 (0.0000) S>CV0.0(2) Alert
-   level fatal
-   value handshake\_failure
-
-Example 2: The client and server unsuccessfully negotiate a cipher; the
-server does not support any of the client's ciphers. This is a common
-failure:
-
-.. code-block:: bash
-
-   1 1 0.0012 (0.0012) C>SV3.1(58) Handshake
-   ClientHello
-   Version 3.2
-   cipher suites
-   TLS\_DH\_anon\_WITH\_RC4\_128\_MD5
-   1 2 0.0013 (0.0000) S>CV3.2(2) Alert
-   level fatal
-   value handshake\_failure
-
-Note: The SSL alert message (Alert 2 level fatal) is marginally useful
-and means an unrecoverable error has occurred. If the virtual server is
-using a Client SSL profile, you may be able to enable useful message
-logging by modifying the SSL logging level to debug.
-
-ChangeCipherSpec (client)
-
-During the client's ChangeCipherSpec phase, the client initializes the
-options that were negotiated by both parties. This phase marks the point
-when the parties change the secure channel parameters from using
-asymmetric (public key) to symmetric (shared key) encryption. A
-handshake failure during this phase may relate to SSL message corruption
-or issues with the SSL implementation itself.
-
-ChangeCipherSpec (server)
-
-During the server's ChangeCipherSpec phase, the server initializes the
-options that were negotiated by both parties. This phase marks the point
-when the parties change the secure channel parameters from using
-asymmetric (public key) to symmetric (shared key) encryption. A
-handshake failure during this phase may relate to SSL message corruption
-or issues with the SSL implementation itself.
-
-Application phase
-
-Messages marked as application\_data indicate that data is being
-successfully encrypted. Failures in the application phase indicate
-application layer events. For example, a client's request for a document
-that results in an HTTP 500 error, may cause a failure during this
-phase. To diagnose failures during the application phase, you must
-decrypt the SSL session using a utility, such as ssldump.
-
-----
-
-|
-
-**2.09 - Given a failed HTTP request and LTM configuration data determine if the connection is failing due to the LTM configuration**
-
-**Configuration Problem Determination**
-
-This Objective and Example are very broad. They have to be to cover all
-of the possible issues you can run into. A detailed understanding of why
-the application is failing will allow you to correct the issue. I will
-focus on SSL termination for this example. There can be many other
-reasons an application is failing.
-
-When you are troubleshooting scenarios and looking at packet traces you
-may need to recognize if SSL termination (offloading) is correctly
-applied to the application’s BIG-IP flow. When SSL termination is
-enabled the virtual server will listen for encrypted traffic and then
-decrypt the traffic as it sends it to the destination server. This means
-the servers are configured to listen on http while the virtual server is
-listening on https. Many times an administrator can make configuration
-mistakes depending on the requirement to decrypt and re-encrypt.
-
-----
-
-https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-ssl-administration-11-5-0/3.html#unique_1885783063
-
-About SSL offload
-
-When you want the BIG-IP system to process application traffic over SSL,
-you can configure the system to perform the SSL handshake that
-destination servers normally perform. This ability for the BIG-IP system
-to offload SSL processing from a destination server is an important
-feature of the BIG-IP system.
-
-The most common way to configure the BIG-IP system is to create a Client
-SSL profile, which makes it possible for the BIG-IP system to decrypt
-client requests before sending them on to a server, and encrypt server
-responses before sending them back to the client.
-
-Within a Client SSL profile specifically, you can specify multiple
-certificate/key pairs, one per key type. This enables the system to
-accept all types of cipher suites that a client might support as part of
-creating a secure connection. The system then decrypts the client data,
-manipulates any headers or payload according to the way that you
-configured the Client SSL profile, and by default, sends the request in
-clear text to the target server for processing.
-
-For those sites that require enhanced security on their internal
-network, you can configure a Server SSL profile. With a Server SSL
-profile, the BIG-IP system re-encrypts the request before sending it to
-the destination server. When the server returns an encrypted response,
-the BIG-IP system decrypts and then re-encrypts the response, before
-sending the response back to the client.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-Objective - 2.10 Given a scenario, determine which protocol analyzer tool and its options are required to resolve an application issue
---------------------------------------------------------------------------------------------------------------------------------------
-
-|
-|
-
-**2.10 - Identify application issues based on a protocol analyzer trace**
-
-To determine application issues, you will need to be familiar with how
-to gather packet traces and what the output should look like when
-applications are performing correctly. Since applications pass through
-the BIG-IP, a mis-configuration of the BIG-IP can cause an application
-fail. But if an app is broken, it will still be broken regardless of how
-it is accessed. This can only be learned by doing captures of working
-and broken application traffic.
-
-----
-
-|
-
-**2.10 - Explain how to follow a conversation from client-side and server-side traces**
-
-https://support.f5.com/csp/article/K411
-
-**Following a Conversation in a Capture**
-
-When you have a proxy in the middle of a conversation flow as you do
-when using a BIG-IP and you need to capture and see the complete
-conversation, you will first need to successfully capture the data from
-both sides of the proxy. This can be done in a few different ways.
-
-You can do a separate capture on each side of the proxy by defining the
-interface on which the traffic is received and egresses. Here we did it
-based on VLAN names:
-
-.. code-block:: bash
-
-   tcpdump -i external -s0 -w/var/tmp/extcap.cap
-
-   tcpdump -i internal -s0 -w/var/tmp/intcap.cap
-
-This will give you two separate files to parse through side-by-side and
-try to follow the conversation.
-
-You can do a single capture of all traffic using the loopback interface:
-
-.. code-block:: bash
-
-    tcpdump -i 0.0 -s0 -w/var/tmp/fullcap.cap
-
-This will give you a single file to parse for both sides of the
-conversation.
-
-Gathering the data is the easy part. You can read the files in any way
-you prefer but a tool like Wireshark makes the task much easier. You
-need to look at each side of the conversation and find the corelating
-flow. This can be done by right-clicking on a packet and filtering the
-conversation. You can filter by IP or TCP. TCP conversation filter will
-show you the flow of the TCP request.
-
-.. image:: /_static/301b/p13.png
-
-|
-
-You can find the start of a conversation by looking for the SYN that
-starts a TCP 3-way handshake in each of the captures. On the external
-side you can see the client IP (10.1.10.1) connect to the virtual server
-listener (10.1.101.100).
-
-.. image:: /_static/301b/p14.png
-
-|
-
-On the internal side you can see the client IP (10.1.10.1) connect to
-the physical server (10.1.20.11). The BIG-IP when load balancing will
-translate destination IP from the Virtual Server IP address to the
-physical server IP address as the packet passes, leaving the Client IP
-the same.
-
-.. image:: /_static/301b/p15.png
-
-|
-
-Other settings such as enabling SNAT on the BIG-IP can affect the Client
-IP address on the internal side of the conversation.
-
-----
-
-|
-
-**2.10 - Explain how SNAT and OneConnect effect protocol analyzer traces**
-
-**SNAT and OneConnect**
-
-SNAT and OneConnect can have a direct impact on your captures since they
-both modify the typical connection flows in the system. SNAT does a
-Source Network Address Translation thus if configured a source IP
-addresses may change from one side of the full proxy to the other.
-OneConnect is essentially TCP multiplexing and when enabled will attempt
-to reuse existing established connections for the subsequent
-connections. Both of these settings can cause you to get lost when
-trying to follow connections from client to server and back again.
-
-https://support.f5.com/csp/article/K13637
-
-Beginning in BIG-IP 11.2.0, you can use the p interface modifier with
-the n modifier to capture traffic with TMM information for a specific
-flow and its related peer flow. The p modifier allows you to capture a
-specific traffic flow through the BIG-IP system from end to end, even
-when the configuration uses a secure network address translation (SNAT)
-or OneConnect. For example, the following command searches for traffic
-to or from client 10.0.0.1 on interface 0.0:
-
-.. code-block:: bash
-
-   tcpdump -ni 0.0:nnnp -s0 -c 100000 -w /var/tmp/capture.dmp host 10.0.0.1
-
-After tcpdump identifies a related flow, the flow is marked in TMM, and
-every subsequent packet in the flow (on both sides of the BIG-IP system)
-is written to the capture file.
-
-Important: This modifier produces large amounts of data and can cause
-significant resource utilization. This additional resource demand may
-cause poor performance or a system failure if the BIG-IP system is at
-high resource utilization. Use this modifier only with very specific
-filters.
-
-Note: This modifier continues to produce flow information for the life
-of the connection. Subsequent tcpdump captures reveal flow information
-from previous tcpdump captures using the :p modifier if the connection
-is still active. To clear flow information from previous use, run the
-tcpdump command without the :p modifier using a filter that matches no
-information in the flow and ensure some traffic has been received by the
-BIG-IP system for the flow.
-
-----
-
-|
-
-**2.10 - Explain how to decrypt SSL traffic for protocol analysis**
-
-https://support.f5.com/kb/en-us/solutions/public/10000/200/sol10209.html
-
-**ssldump**
-
-The Secure Socket Layer (SSL) protocol is used to encrypt sensitive data
-for transmission on the Internet. If a BIG-IP LTM system is contributing
-to a technical issue, it may be helpful to decrypt the application data
-to better understand the issue. The ssldump utility is an SSL/TLS
-network protocol analyzer, which identifies TCP connections from a
-chosen packet trace or network interface and attempts to interpret them
-as SSL/TLS traffic. When the ssldump utility identifies SSL/TLS traffic,
-it decodes the records and displays them in text to standard output. If
-provided with the private key that was used to encrypt the connections,
-the ssldump utility may also be able to decrypt the connections and
-display the application data traffic.
-
-You can use the ssldump utility to examine, decrypt, and decode
-SSL-encrypted packet streams managed by the BIG-IP system. The ssldump
-utility can act on packet streams real-time as they traverse the system,
-or on a packet capture file saved in the libpcap format, such as that
-produced by the tcpdump utility. Although it is possible for the ssldump
-utility to decode and display live traffic real-time as it traverses the
-BIG-IP system, it is rarely the most effective method to examine the
-voluminous and complex output of the ssldump utility. Capturing the
-target traffic to a file using the tcpdump utility, then decoding the
-file using the ssldump utility offers a better opportunity to examine
-the traffic in detail.
-
-----
-
-|
-
-**2.10 - Explain how to recognize the different causes of slow traffic (e.g., drops, RSTs, retransmits, ICMP errors, demotion from CMP)**
-
-https://support.f5.com/kb/en-us/solutions/public/9000/800/sol9812.html?sr=46608010
-
-**Causes of slow traffic**
-
-There can be many different reasons for slow traffic or poor network
-performance and to end users of a network-based application it all seems
-the same “The network is slow”. Any of these topics or combination of
-topics can cause the network to seem slow.
-
-----
-
-**Resets**
-
-http://blogs.technet.com/b/networking/archive/2009/08/12/where-do-resets-come-from-no-the-stork-does-not-bring-them.aspx
-
-The BIG-IP system will close a TCP connection by sending a TCP RST
-packet to a client and/or pool member under a variety of circumstances.
-Depending on the specific BIG-IP configuration object, you can adjust
-the BIG-IP system reset behavior from the default behavior by using the
-Configuration utility or command line.
-
-There are many reasons for resets, but some common causes of resets are
-as follows:
-
-Global settings:
-
--  Adaptive Reaping
-
-   To prevent SYN flood attacks, and to preserve memory, the BIG-IP
-   system can prevent new connections by sending a TCP RST packet to
-   the client when memory usage increases beyond the reaper high-water
-   mark setting. The TCP RST packet is sent on the client side of the
-   connection, and the source IP address of the reset is the relevant
-   BIG-IP LTM object IP address for which the SYN request was destined.
-
-   Note: For more information, refer to K5670: Overview of adaptive
-   connection reaping (11.5.x and earlier) and K14813: Detecting and
-   mitigating DoS/DDoS attacks (11.4.x - 12.x).
-
--  TM.RejectUnmatched
-
-   By default, the TM.RejectUnmatched BigDB variable is set to true,
-   and the BIG-IP system sends a TCP RST packet in response to a
-   non-SYN packet that matches a virtual server address and port or
-   self IP address and port, but does not match an established
-   connection. The BIG-IP system also sends a TCP RST packet in
-   response to a packet that matches a virtual server address, or self
-   IP address, but specifies an invalid port. The TCP RST packet is
-   sent on the client side of the connection, and the source IP address
-   of the reset is the relevant BIG-IP LTM object address or self IP
-   address for which the packet was destined. If TM.RejectUnmatched is
-   set to false, the system silently drops unmatched packets.
-
--  TM.MaxRejectRate
-
-   The TM.MaxRejectRate BigDB variable can reduce the effects of a
-   denial-of-service (DoS) attack by allowing you to limit the number
-   of TCP RSTs or ICMP unreachable packets that the BIG-IP system sends
-   in response to incoming connections that cannot be matched with
-   virtual server connections. The default value for the
-   TM.MaxRejectRate db key is 250 TCP RSTs or 250 ICMP unreachable
-   packets, per second.
-
-   Note: For more information, refer to K13151: Configuring the rate at
-   which the BIG-IP system issues TCP RSTs or ICMP unreachable packets
-   (11.x - 13.x).
-
-Virtual servers:
-
--  Virtual server connection limits
-
-   When a virtual server connection limit is configured, and the
-   maximum number of concurrent connections is exceeded for the virtual
-   server, the BIG-IP system sends a TCP RST packet in response to
-   connection attempts. The TCP RST packet is sent on the client side
-   of the connection, and the source IP address of the reset is the
-   relevant virtual server IP address.
-
--  Reject virtual servers
-
-   A Reject virtual server always sends a TCP RST packet in response to
-   a connection attempt. The TCP RST packet is sent on the client side
-   of the connection, and the source IP address of the reset is the
-   relevant virtual server IP address.
-
-   Note: For more information, refer to K8082: Overview of TCP
-   connection setup for BIG-IP LTM virtual server types.
-
-Pools:
-
--  No available pool members
-
-   When all pool members are unavailable due to being disabled, forced
-   offline, or down, the BIG-IP RST behavior varies slightly depending
-   on the virtual server type. If the virtual server references a TCP
-   profile (Standard virtual server type), the system allows the
-   three-way TCP handshake to complete before sending the TCP RST to
-   the client. If the virtual server references a FastL4 profile, the
-   system sends a TCP RST packet in response to a connection attempt.
-   The TCP RST packet is sent on the client side of the connection, and
-   the source IP address of the reset is the relevant virtual server IP
-   address.
-
--  Pool member or node connection limits
-
-   When a pool member or node connection limit is configured, and the
-   maximum number of concurrent connections is exceeded for the pool
-   member or node, the BIG-IP system resets the connection attempt. The
-   TCP RST packet is sent on the client side of the connection, and the
-   source IP address of the reset is the relevant virtual server IP
-   address.
-
-   Note: For more information, refer to K9849: The BIG-IP system sends
-   a TCP RST packet when the system reaches a pool member or node
-   connection limit.
-
-Profiles:
-
--  Protocol profile idle timeouts (if the Reset On Timeout setting is
-   enabled)
-
-   The BIG-IP system tracks connection flows by adding an entry to the
-   connection table. When the connection flow becomes idle, the BIG-IP
-   system starts a timer and closes the connection with a TCP RST
-   packet when the connection reaches the idle session timeout. The TCP
-   RST packet is sent on the client and server side of the connection,
-   and the source IP address of the reset is the relevant virtual
-   server IP address. If the connection flow is associated with
-   multiple profiles that specify different idle session timeout
-   values, the connection will be closed when the idle time reaches the
-   smaller value.
-
-   Note: For more information, refer to K7606: Overview of BIG-IP idle
-   session time-outs and K7166: Changing the idle timeout for a
-   protocol profile.
-
--  Maximum Segment Retransmission
-
-   The BIG-IP LTM system resets TCP connections after sending eight
-   retransmissions for a connection. The TCP RST packet is sent on the
-   client side of the connection, and the source IP address of the
-   reset is the relevant virtual server IP address.
-
-   Note: For more information, refer to K14813: Detecting and
-   mitigating DoS/DDoS attacks (11.4.x - 12.x) and K7381: The BIG-IP
-   resets TCP connections after sending eight retransmissions for a
-   connection.
-
--  Maximum SYN Retransmissions
-
-   The BIG-IP LTM system resets TCP connections after sending three SYN
-   retransmissions for a connection. The TCP RST packet is sent on the
-   client side of the connection, and the source IP address of the
-   reset is the relevant virtual server IP address.
-
-   Note: For more information, refer to K14813: Detecting and
-   mitigating DoS/DDoS attacks (11.4.x - 12.x), and K10372: BIG-IP LTM
-   resets TCP connections after sending three SYN retransmissions for a
-   connection.
-
-SNATs:
-
--  Unacknowledged SYN requests for SNAT objects
-
-   The BIG-IP LTM system terminates a SNAT flow with a TCP RST packet
-   after processing three unacknowledged SYN requests for the
-   connection.
-
-   Note: For more information, refer to K7829: Nascent SNAT connections
-   are reset when the retransmission backoff time exceeds the TCP
-   Handshake Timeout.
-
--  Idle connection timeouts for SNAT objects
-
-   When a SNAT connection flow becomes idle and reaches the idle
-   session timeout, the BIG-IP system closes the connection with a TCP
-   RST packet.
-
-   Note: For more information, refer to K7606: Overview of BIG-IP idle
-   session time-outs.
-
--  SNAT port exhaustion
-
-   A SNAT supports approximately 64,000 concurrent connections per
-   destination IP. A high volume of requests can exceed the 64,000
-   connection limit and result in TCP port exhaustion.
-
-   Note: For more information, refer to K7820: Overview of SNAT features.
-
-   Note: Connections processed by a SNAT object are also frequently
-   processed by a virtual server object. The source address of the TCP RST
-   packet will vary depending on whether the connection is processed by a
-   SNAT object alone, or whether the connection is also processed by a
-   virtual server.
-
-Monitors:
-
--  BIG-IP health monitors
-
-   Certain BIG-IP monitors may use a TCP RST packet to close the
-   monitor connection when the remote service returns a prompt. For
-   example, the tcp monitor initiates a TCP connection to the remote
-   service. If the service returns a prompt after the connection is
-   established (for example, FTP or SSH), the tcp monitor considers the
-   service to be up, and sends a TCP RST packet to the service.
-
-   The following BIG-IP monitor types may use a TCP RST packet to close
-   the monitor connection quickly after receiving matched content:
-
--  The tcp\_half\_open monitor performs a simple check on the pool
-   member service by sending a TCP SYN packet to the service port. When
-   the monitor receives the SYN-ACK packet from the pool member, the
-   monitor considers the service to be up, and sends a TCP RST packet to
-   the service instead of completing the three-way handshake. The TCP
-   RST packet is typically sent on the server side of the connection,
-   and the source IP address of the reset is the relevant self IP
-   address of the VLAN.
-
--  The HTTP monitor may send TCP reset packets to close the monitor
-   connection as soon as the health check receive string is matched,
-   even if the BIG-IP system has not yet received the entire object that
-   was requested in the HTTP monitor send string. Closing the monitor
-   connection in this way saves BIG-IP system resources.
-
-iRules:
-
--  iRules commands
-
-   An iRule can be configured to close TCP connections using a TCP RST
-   packet. For example, the reject iRule command closes the TCP
-   connection by sending a TCP RST packet to the TCP peer, as
-   appropriate, for the protocol. The TCP RST packet is sent on the
-   client side of the connection, and the source IP address of the
-   reset is the relevant BIG-IP LTM object address with which the iRule
-   is associated.
-
-   Note: For more information, refer to the DevCentral site. A
-   DevCentral login is required to access this content.
-
--  Improperly configured iRules
-
-   An iRule with proper syntax but improper logic can be saved but may
-   cause traffic to be reset.
-
-Packet filters:
-
--  Packet filter rules
-
-   A packet filter configured with an action of Reject for certain TCP
-   traffic will force the system to reject the packet, and send a TCP
-   RST packet to the sender.
-
-**Application Reset**
-
-This situation also generates a lot of calls and, unfortunately, is
-determined typically by process of elimination. In other words, there is
-no other reason for the reset so it must have come from the application.
-I hate saying that, but that really is the answer. If we look at the
-network traffic and see no reason for TCP itself to have sent the reset,
-such as the other examples above, then it must have been sent from the
-application. As I mentioned in the first paragraph, this is perfectly
-legitimate and may even be desirable. This is a common practice in an
-application that is making a large number of short-lived TCP
-connections. Such an application can cause port exhaustion on the server
-due to so many ports being in a Time Wait state. However, application
-developers need to understand why the Time Wait state exists before just
-resetting all connections.
-
-Note: It is possible to look at the code for an application and
-see if it is performing a Winsock function close (socket). If this
-is done on a connection where data has been set, then this will
-generate the Reset. You can also see this in Winsock logging. If
-this function is called on a TCP connection where only the Three Way
-Handshake has been completed, but no data has been sent, it will
-result in the graceful close of the connection using Fin frames.
-
-**Dropped packets**
-
-A dropped packet on a network can cause a overhead on your network. It
-is likely that if a packet is dropped more than one packet will have to
-be resent. This is caused when network fragmentation occurs. As a
-network interface is placing packets on the wire it is following an MTU
-size limit for each packet. If the operating system is sending data to
-the network that is in a way that is larger than the MTU size the
-interface will break it up into packets that will fit the MTU. So when
-one packet is lost it must resend all the packets for that data not just
-the one lost packet.
-
-**Retransmits**
-
-A retransmit at a TCP level will likely mean that the TCP session data
-has to be resent and if there is also fragmentation occurring at the
-network layer it will compound the issue as mentioned in the dropped
-packet section above.
-
-ICMP Errors
-
-ICMP Errors can add to an already taxed network. If you are under an
-ICMP DOS attack the ICMP errors will add to the overhead that has to be
-processed.
-
-ICMP messages are typically used for diagnostic or control purposes or
-generated in response to errors in IP operations (as specified in RFC
-1122). ICMP errors are directed to the source IP address of the
-originating packet.
-
-ICMP error messages contain a data section that includes the entire IPv4
-header, plus the first eight bytes of data from the IPv4 packet that
-caused the error message. The ICMP packet is then encapsulated in a new
-IPv4 packet.
-
-----
-
-**CMP Demotion**
-
-https://support.f5.com/kb/en-us/solutions/public/14000/200/sol14248.html?sr=46608046
-
-CMP should not be confused with Symmetric Multi-Processing (SMP). SMP
-architecture is used in multiple operating systems. SMP operates by
-allowing operating systems and software applications that are optimized
-for SMP to use the multiple processors that are available to the
-operating system. SMP performs this operation by spreading multiple
-threads across multiple processors, which allows for faster processing
-and more efficient use of system resources, as multiple threads can be
-processed simultaneously instead of waiting in a queue to be processed.
-CMP uses a similar approach to leverage multiple processing units by
-spawning a separate instance of the TMM process on each processing unit
-that is available to the system. While SMP may be used for any process,
-CMP processing is available only to the BIG-IP TMM process for the sole
-purpose of providing more dedicated resources to manage load balanced
-traffic. With multiple TMM instances simultaneously processing traffic,
-system performance is enhanced, and traffic management capacity is
-expanded.
-
-Even if CMP is enabled on a virtual server, the BIG-IP system demotes a
-virtual server with incompatible features from CMP processing. This
-means it will run slower due to the CMP feature being turned off.
-
-If the virtual server has been demoted, the CMP Mode line of the TMSH
-show ltm virtual <virtual\_server\_name> command reports none, disable,
-or single to indicate that CMP has been demoted for the virtual server.
-
-The command output would appear similar to the following example:
-
-.. code-block:: console
-
-   ---------------------------------------------------------
-   Ltm::Virtual Server: CMP_vip
-   ---------------------------------------------------------
-   Status
-   Availability : available
-   State : enabled
-   Reason : The virtual server is available
-   CMP : enabled
-   CMP Mode : single
-   Destination : 10.11.10.212:80
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-Objective - 2.11 Given a trace and necessary supporting documentation, determine the root cause of an application problem
--------------------------------------------------------------------------------------------------------------------------
-
-|
-|
-
-**2.11 - Analyze a tcpdump to identify application or configuration problems.**
-
-https://support.f5.com/kb/en-us/solutions/public/1000/800/sol1893.html
-
-**Packet trace analysis**
-
-To determine application issues, you will need to be familiar with how
-to gather packet traces and what the output should look like when
-applications are performing correctly. Since applications pass through
-the BIG-IP, a mis-configuration of the BIG-IP can cause an application
-fail. But if an app is broken, it will still be broken regardless of how
-it is accessed. This can only be learned by doing captures of working
-and broken application traffic.
-
-When you are troubleshooting scenarios and looking at packet traces you
-may need to recognize that the application is not working due to
-anything from of the network design to application requirements.
-
-**Network Design example**
-
-Settings related to SNAT may need to be enabled or disabled in the
-BIG-IP flow. When SNAT is not enabled the client IP address will remain
-the same on both sides of the flow. When SNAT is enabled the client IP
-address will be changed to an IP address controlled by the BIG-IP.
-
-If the application server does not have a return path in the network to
-the original requesting client IP address, that passes through the
-BIG-IP, then SNAT will need to be enabled to force the return traffic
-back to the BIG-IP. This will allow the BIG-IP to respond to the
-original request from the client correctly.
-
-**Application Requirements**
-
-Recognizing applications issues can be harder than recognizing most
-network issues. It might not be hard to recognize an SSL handshake issue
-as described in section 2.09 but an issue with persistence may be hard
-to see in a packet capture. If you have feedback from the testers or
-users defining the issue you may be able to more quickly pinpoint that
-the issue revolves around persistence. If you are looking at a trace you
-may have to look past the TCP and into the HTTP headers and or payload
-to find the issue.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-Objective - 2.12 Given a trace and necessary supporting documentation, determine a solution to an application problem
----------------------------------------------------------------------------------------------------------------------
-
-|
-|
-
-**2.12 - Analyze a tcpdump to identify application or configuration problems**
-
-https://support.f5.com/kb/en-us/solutions/public/1000/800/sol1893.html
-
-**Packet trace analysis**
-
-To determine application issues, you will need to be familiar with how
-to gather packet traces and what the output should look like when
-applications are performing correctly. Since applications pass through
-the BIG-IP, a mis-configuration of the BIG-IP can cause an application
-fail. But if an app is broken, it will still be broken regardless of how
-it is accessed. This can only be learned by doing captures of working
-and broken application traffic.
-
-When you are troubleshooting scenarios and looking at packet traces you
-may need to recognize that the application is not working due to
-anything from of the network design to application requirements.
-
-**Network Design example**
-
-Settings related to SNAT may need to be enabled or disabled in the
-BIG-IP flow. When SNAT is not enabled the client IP address will remain
-the same on both sides of the flow. When SNAT is enabled the client IP
-address will be changed to an IP address controlled by the BIG-IP.
-
-If the application server does not have a return path in the network to
-the original requesting client IP address, that passes through the
-BIG-IP, then SNAT will need to be enabled to force the return traffic
-back to the BIG-IP. This will allow the BIG-IP to respond to the
-original request from the client correctly.
-
-**Application Requirements**
-
-Recognizing applications issues can be harder than recognizing most
-network issues. It might not be hard to recognize an SSL handshake issue
-as described in section 2.09 but an issue with persistence may be hard
-to see in a packet capture. If you have feedback from the testers or
-users defining the issue you may be able to more quickly pinpoint that
-the issue revolves around persistence. If you are looking at a trace you
-may have to look past the TCP and into the HTTP headers and or payload
-to find the issue.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-Objective - 2.13 Given a scenario, determine from where the protocol analyzer data should be collected
-------------------------------------------------------------------------------------------------------
-
-|
-|
-
-**2.13 - Explain how to decrypt SSL traffic for protocol analysis**
-
-https://support.f5.com/kb/en-us/solutions/public/10000/200/sol10209.html
-
-**ssldump**
-
-The Secure Socket Layer (SSL) protocol is used to encrypt sensitive data
-for transmission on the Internet. If a BIG-IP LTM system is contributing
-to a technical issue, it may be helpful to decrypt the application data
-to better understand the issue. The ssldump utility is an SSL/TLS
-network protocol analyzer, which identifies TCP connections from a
-chosen packet trace or network interface and attempts to interpret them
-as SSL/TLS traffic. When the ssldump utility identifies SSL/TLS traffic,
-it decodes the records and displays them in text to standard output. If
-provided with the private key that was used to encrypt the connections,
-the ssldump utility may also be able to decrypt the connections and
-display the application data traffic.
-
-You can use the ssldump utility to examine, decrypt, and decode
-SSL-encrypted packet streams managed by the BIG-IP system. The ssldump
-utility can act on packet streams real-time as they traverse the system,
-or on a packet capture file saved in the libpcap format, such as that
-produced by the tcpdump utility. Although it is possible for the ssldump
-utility to decode and display live traffic real-time as it traverses the
-BIG-IP system, it is rarely the most effective method to examine the
-voluminous and complex output of the ssldump utility. Capturing the
-target traffic to a file using the tcpdump utility, then decoding the
-file using the ssldump utility offers a better opportunity to examine
-the traffic in detail.
-
-----
-
-|
-
-**2.13 - Explain how to recognize the different causes of slow traffic (e.g., drops, RSTs, retransmits, ICMP errors, demotion from CMP)**
-
-https://support.f5.com/kb/en-us/solutions/public/9000/800/sol9812.html?sr=46608010
-
-**Causes of slow traffic**
-
-There can be many different reasons for slow traffic or poor network
-performance and to end users of a network-based application it all seems
-the same “The network is slow”. Any of these topics or combination of
-topics can cause the network to seem slow.
-
-----
-
-**Resets**
-
-http://blogs.technet.com/b/networking/archive/2009/08/12/where-do-resets-come-from-no-the-stork-does-not-bring-them.aspx
-
-The BIG-IP system will close a TCP connection by sending a TCP RST
-packet to a client and/or pool member under a variety of circumstances.
-Depending on the specific BIG-IP configuration object, you can adjust
-the BIG-IP system reset behavior from the default behavior by using the
-Configuration utility or command line.
-
-There are many reasons for resets, but some common causes of resets are
-as follows:
-
-Global settings:
-
--  Adaptive Reaping
-
-   To prevent SYN flood attacks, and to preserve memory, the BIG-IP
-   system can prevent new connections by sending a TCP RST packet to
-   the client when memory usage increases beyond the reaper high-water
-   mark setting. The TCP RST packet is sent on the client side of the
-   connection, and the source IP address of the reset is the relevant
-   BIG-IP LTM object IP address for which the SYN request was destined.
-
-   Note: For more information, refer to K5670: Overview of adaptive
-   connection reaping (11.5.x and earlier) and K14813: Detecting and
-   mitigating DoS/DDoS attacks (11.4.x - 12.x).
-
--  TM.RejectUnmatched
-
-   By default, the TM.RejectUnmatched BigDB variable is set to true,
-   and the BIG-IP system sends a TCP RST packet in response to a
-   non-SYN packet that matches a virtual server address and port or
-   self IP address and port, but does not match an established
-   connection. The BIG-IP system also sends a TCP RST packet in
-   response to a packet that matches a virtual server address, or self
-   IP address, but specifies an invalid port. The TCP RST packet is
-   sent on the client side of the connection, and the source IP address
-   of the reset is the relevant BIG-IP LTM object address or self IP
-   address for which the packet was destined. If TM.RejectUnmatched is
-   set to false, the system silently drops unmatched packets.
-
--  TM.MaxRejectRate
-
-   The TM.MaxRejectRate BigDB variable can reduce the effects of a
-   denial-of-service (DoS) attack by allowing you to limit the number
-   of TCP RSTs or ICMP unreachable packets that the BIG-IP system sends
-   in response to incoming connections that cannot be matched with
-   virtual server connections. The default value for the
-   TM.MaxRejectRate db key is 250 TCP RSTs or 250 ICMP unreachable
-   packets, per second.
-
-   Note: For more information, refer to K13151: Configuring the rate at
-   which the BIG-IP system issues TCP RSTs or ICMP unreachable packets
-   (11.x - 13.x).
-
-Virtual servers:
-
--  Virtual server connection limits
-
-   When a virtual server connection limit is configured, and the
-   maximum number of concurrent connections is exceeded for the virtual
-   server, the BIG-IP system sends a TCP RST packet in response to
-   connection attempts. The TCP RST packet is sent on the client side
-   of the connection, and the source IP address of the reset is the
-   relevant virtual server IP address.
-
--  Reject virtual servers
-
-   A Reject virtual server always sends a TCP RST packet in response to
-   a connection attempt. The TCP RST packet is sent on the client side
-   of the connection, and the source IP address of the reset is the
-   relevant virtual server IP address.
-
-   Note: For more information, refer to K8082: Overview of TCP
-   connection setup for BIG-IP LTM virtual server types.
-
-Pools:
-
--  No available pool members
-
-   When all pool members are unavailable due to being disabled, forced
-   offline, or down, the BIG-IP RST behavior varies slightly depending
-   on the virtual server type. If the virtual server references a TCP
-   profile (Standard virtual server type), the system allows the
-   three-way TCP handshake to complete before sending the TCP RST to
-   the client. If the virtual server references a FastL4 profile, the
-   system sends a TCP RST packet in response to a connection attempt.
-   The TCP RST packet is sent on the client side of the connection, and
-   the source IP address of the reset is the relevant virtual server IP
-   address.
-
--  Pool member or node connection limits
-
-   When a pool member or node connection limit is configured, and the
-   maximum number of concurrent connections is exceeded for the pool
-   member or node, the BIG-IP system resets the connection attempt. The
-   TCP RST packet is sent on the client side of the connection, and the
-   source IP address of the reset is the relevant virtual server IP
-   address.
-
-   Note: For more information, refer to K9849: The BIG-IP system sends
-   a TCP RST packet when the system reaches a pool member or node
-   connection limit.
-
-Profiles:
-
--  Protocol profile idle timeouts (if the Reset On Timeout setting is
-   enabled)
-
-   The BIG-IP system tracks connection flows by adding an entry to the
-   connection table. When the connection flow becomes idle, the BIG-IP
-   system starts a timer and closes the connection with a TCP RST
-   packet when the connection reaches the idle session timeout. The TCP
-   RST packet is sent on the client and server side of the connection,
-   and the source IP address of the reset is the relevant virtual
-   server IP address. If the connection flow is associated with
-   multiple profiles that specify different idle session timeout
-   values, the connection will be closed when the idle time reaches the
-   smaller value.
-
-   Note: For more information, refer to K7606: Overview of BIG-IP idle
-   session time-outs and K7166: Changing the idle timeout for a
-   protocol profile.
-
--  Maximum Segment Retransmission
-
-   The BIG-IP LTM system resets TCP connections after sending eight
-   retransmissions for a connection. The TCP RST packet is sent on the
-   client side of the connection, and the source IP address of the
-   reset is the relevant virtual server IP address.
-
-   Note: For more information, refer to K14813: Detecting and
-   mitigating DoS/DDoS attacks (11.4.x - 12.x) and K7381: The BIG-IP
-   resets TCP connections after sending eight retransmissions for a
-   connection.
-
--  Maximum SYN Retransmissions
-
-   The BIG-IP LTM system resets TCP connections after sending three SYN
-   retransmissions for a connection. The TCP RST packet is sent on the
-   client side of the connection, and the source IP address of the
-   reset is the relevant virtual server IP address.
-
-   Note: For more information, refer to K14813: Detecting and
-   mitigating DoS/DDoS attacks (11.4.x - 12.x), and K10372: BIG-IP LTM
-   resets TCP connections after sending three SYN retransmissions for a
-   connection.
-
-SNATs:
-
--  Unacknowledged SYN requests for SNAT objects
-
-   The BIG-IP LTM system terminates a SNAT flow with a TCP RST packet
-   after processing three unacknowledged SYN requests for the
-   connection.
-
-   Note: For more information, refer to K7829: Nascent SNAT connections
-   are reset when the retransmission backoff time exceeds the TCP
-   Handshake Timeout.
-
--  Idle connection timeouts for SNAT objects
-
-   When a SNAT connection flow becomes idle and reaches the idle
-   session timeout, the BIG-IP system closes the connection with a TCP
-   RST packet.
-
-   Note: For more information, refer to K7606: Overview of BIG-IP idle
-   session time-outs.
-
--  SNAT port exhaustion
-
-   A SNAT supports approximately 64,000 concurrent connections per
-   destination IP. A high volume of requests can exceed the 64,000
-   connection limit and result in TCP port exhaustion.
-
-   Note: For more information, refer to K7820: Overview of SNAT
-   features.
-
-   Note: Connections processed by a SNAT object are also frequently
-   processed by a virtual server object. The source address of the TCP RST
-   packet will vary depending on whether the connection is processed by a
-   SNAT object alone, or whether the connection is also processed by a
-   virtual server.
-
-Monitors:
-
--  BIG-IP health monitors
-
-   Certain BIG-IP monitors may use a TCP RST packet to close the
-   monitor connection when the remote service returns a prompt. For
-   example, the tcp monitor initiates a TCP connection to the remote
-   service. If the service returns a prompt after the connection is
-   established (for example, FTP or SSH), the tcp monitor considers the
-   service to be up, and sends a TCP RST packet to the service.
-
-   The following BIG-IP monitor types may use a TCP RST packet to close
-   the monitor connection quickly after receiving matched content:
-
--  The tcp\_half\_open monitor performs a simple check on the pool
-   member service by sending a TCP SYN packet to the service port. When
-   the monitor receives the SYN-ACK packet from the pool member, the
-   monitor considers the service to be up, and sends a TCP RST packet to
-   the service instead of completing the three-way handshake. The TCP
-   RST packet is typically sent on the server side of the connection,
-   and the source IP address of the reset is the relevant self IP
-   address of the VLAN.
-
--  The HTTP monitor may send TCP reset packets to close the monitor
-   connection as soon as the health check receive string is matched,
-   even if the BIG-IP system has not yet received the entire object that
-   was requested in the HTTP monitor send string. Closing the monitor
-   connection in this way saves BIG-IP system resources.
-
-iRules:
-
--  iRules commands
-
-   An iRule can be configured to close TCP connections using a TCP RST
-   packet. For example, the reject iRule command closes the TCP
-   connection by sending a TCP RST packet to the TCP peer, as
-   appropriate, for the protocol. The TCP RST packet is sent on the
-   client side of the connection, and the source IP address of the
-   reset is the relevant BIG-IP LTM object address with which the iRule
-   is associated.
-
-   Note: For more information, refer to the DevCentral site. A
-   DevCentral login is required to access this content.
-
--  Improperly configured iRules
-
-   An iRule with proper syntax but improper logic can be saved but may
-   cause traffic to be reset.
-
-Packet filters:
-
--  Packet filter rules
-
-   A packet filter configured with an action of Reject for certain TCP
-   traffic will force the system to reject the packet, and send a TCP
-   RST packet to the sender.
-
-**Application Reset**
-
-This situation also generates a lot of calls and, unfortunately, is
-determined typically by process of elimination. In other words, there is
-no other reason for the reset so it must have come from the application.
-I hate saying that, but that really is the answer. If we look at the
-network traffic and see no reason for TCP itself to have sent the reset,
-such as the other examples above, then it must have been sent from the
-application. As I mentioned in the first paragraph, this is perfectly
-legitimate and may even be desirable. This is a common practice in an
-application that is making a large number of short-lived TCP
-connections. Such an application can cause port exhaustion on the server
-due to so many ports being in a Time Wait state. However, application
-developers need to understand why the Time Wait state exists before just
-resetting all connections.
-
-Note: It is possible to look at the code for an application and
-see if it is performing a Winsock function close (socket). If this
-is done on a connection where data has been set, then this will
-generate the Reset. You can also see this in Winsock logging. If
-this function is called on a TCP connection where only the Three Way
-Handshake has been completed, but no data has been sent, it will
-result in the graceful close of the connection using Fin frames.
-
-**Dropped packets**
-
-A dropped packet on a network can cause a overhead on your network. It
-is likely that if a packet is dropped more than one packet will have to
-be resent. This is caused when network fragmentation occurs. As a
-network interface is placing packets on the wire it is following an MTU
-size limit for each packet. If the operating system is sending data to
-the network that is in a way that is larger than the MTU size the
-interface will break it up into packets that will fit the MTU. So when
-one packet is lost it must resend all the packets for that data not just
-the one lost packet.
-
-**Retransmits**
-
-A retransmit at a TCP level will likely mean that the TCP session data
-has to be resent and if there is also fragmentation occurring at the
-network layer it will compound the issue as mentioned in the dropped
-packet section above.
-
-ICMP Errors
-
-ICMP Errors can add to an already taxed network. If you are under an
-ICMP DOS attack the ICMP errors will add to the overhead that has to be
-processed.
-
-ICMP messages are typically used for diagnostic or control purposes or
-generated in response to errors in IP operations (as specified in RFC
-1122). ICMP errors are directed to the source IP address of the
-originating packet.
-
-ICMP error messages contain a data section that includes the entire IPv4
-header, plus the first eight bytes of data from the IPv4 packet that
-caused the error message. The ICMP packet is then encapsulated in a new
-IPv4 packet.
-
-----
-
-**CMP Demotion**
-
-https://support.f5.com/kb/en-us/solutions/public/14000/200/sol14248.html?sr=46608046
-
-CMP should not be confused with Symmetric Multi-Processing (SMP). SMP
-architecture is used in multiple operating systems. SMP operates by
-allowing operating systems and software applications that are optimized
-for SMP to use the multiple processors that are available to the
-operating system. SMP performs this operation by spreading multiple
-threads across multiple processors, which allows for faster processing
-and more efficient use of system resources, as multiple threads can be
-processed simultaneously instead of waiting in a queue to be processed.
-CMP uses a similar approach to leverage multiple processing units by
-spawning a separate instance of the TMM process on each processing unit
-that is available to the system. While SMP may be used for any process,
-CMP processing is available only to the BIG-IP TMM process for the sole
-purpose of providing more dedicated resources to manage load balanced
-traffic. With multiple TMM instances simultaneously processing traffic,
-system performance is enhanced, and traffic management capacity is
-expanded.
-
-Even if CMP is enabled on a virtual server, the BIG-IP system demotes a
-virtual server with incompatible features from CMP processing. This
-means it will run slower due to the CMP feature being turned off.
-
-If the virtual server has been demoted, the CMP Mode line of the TMSH
-show ltm virtual <virtual_server_name> command reports none, disable,
-or single to indicate that CMP has been demoted for the virtual server.
-
-The command output would appear similar to the following example:
-
-.. code-block:: console
-
-   ---------------------------------------------------------
-   Ltm::Virtual Server: CMP\_vip
-   ---------------------------------------------------------
-   Status
-   Availability : available
-   State : enabled
-   Reason : The virtual server is available
-   CMP : enabled
-   CMP Mode : single
-   Destination : 10.11.10.212:80
-
-----
-
-|
-
-**2.13 - Chose the appropriate protocol analyzer for troubleshooting a given problem (e.g., Wireshark, tcpdump, ssldump)**
-
-**Which packet capture tool should be used to resolve an application issue?**
-
-There are many different tools that can do a packet capture. Some are a
-physical bump in the wire (e.g. protocol analyzer on a tap port)
-capturing data as it flows through the device, while others are software
-running on a node (e.g. Wireshark on a PC, tcpdump on a Linux system)
-that promiscuously (promiscuous network interface is required) listens
-on the wire for traffic flow. You can also do a capture on the BIG-IP
-using tcpdump. Doing a capture on the BIG-IP will create overhead on the
-system and may negatively affect system performance of a device which is
-controlling network flow to production systems. So, choosing how and
-where to capture data is very important.
-
-The rules are simple. You need to gather the packet capture where the
-problem is occurring on the network, when the problem is happening. A
-packet capture, no matter the tool used to gather it, is going to show
-you the conversations between the nodes. Some tools are easier than
-others to use to filter and read conversations. Some gathering tools
-like tcpdump provide only the ability to read the capture (-r).
-Wireshark is one of the better tools to use due to strong filtering
-capabilities.
-
-----
-
-|
-
-**2.13 - Identify application issues based on a protocol analyzer trace**
-
-To determine application issues, you will need to be familiar with how
-to gather packet traces and what the output should look like when
-applications are performing correctly. Since applications pass through
-the BIG-IP, a mis-configuration of the BIG-IP can cause an application
-fail. But if an app is broken, it will still be broken regardless of how
-it is accessed. This can only be learned by doing captures of working
-and broken application traffic.
-
-----
-
-|
-
-**2.13 - Explain how SNAT and OneConnect effect protocol analyzer traces**
-
-**SNAT and OneConnect**
-
-SNAT and OneConnect can have a direct impact on your captures since they
-both modify the typical connection flows in the system. SNAT does a
-Source Network Address Translation thus if configured a source IP
-addresses may change from one side of the full proxy to the other.
-OneConnect is essentially TCP multiplexing and when enabled will attempt
-to reuse existing established connections for the subsequent
-connections. Both of these settings can cause you to get lost when
-trying to follow connections from client to server and back again.
-
-----
-
-https://support.f5.com/csp/article/K13637
-
-Beginning in BIG-IP 11.2.0, you can use the p interface modifier with
-the n modifier to capture traffic with TMM information for a specific
-flow and its related peer flow. The p modifier allows you to capture a
-specific traffic flow through the BIG-IP system from end to end, even
-when the configuration uses a secure network address translation (SNAT)
-or OneConnect. For example, the following command searches for traffic
-to or from client 10.0.0.1 on interface 0.0:
-
-.. code-block:: bash
-
-   tcpdump -ni 0.0:nnnp -s0 -c 100000 -w /var/tmp/capture.dmp host 10.0.0.1
-
-After tcpdump identifies a related flow, the flow is marked in TMM, and
-every subsequent packet in the flow (on both sides of the BIG-IP system)
-is written to the capture file.
-
-Important: This modifier produces large amounts of data and can cause
-significant resource utilization. This additional resource demand may
-cause poor performance or a system failure if the BIG-IP system is at
-high resource utilization. Use this modifier only with very specific
-filters.
-
-Note: This modifier continues to produce flow information for the life
-of the connection. Subsequent tcpdump captures reveal flow information
-from previous tcpdump captures using the :p modifier if the connection
-is still active. To clear flow information from previous use, run the
-tcpdump command without the :p modifier using a filter that matches no
-information in the flow and ensure some traffic has been received by the
-BIG-IP system for the flow.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-Objective - 2.14 Given a trace, identify monitor issues
--------------------------------------------------------
-
-|
-|
-
-**2.14 - Explain how to capture and interpret monitor traffic using protocol analyzer**
-
-https://support.f5.com/csp/article/K12531
-
-https://support.f5.com/csp/article/K411
-
-**Capture and Interpret Monitor Traffic**
-
-Health monitors originate from the non-floating self IP addresses of
-both the active and standby BIG-IP systems. This means when you need
-capture monitor traffic from a BIG-IP to another device you will need to
-filter for traffic originating from the non-floating self IP addresses.
-
-The following capture would gather http based monitor traffic:
-
-.. code-block:: bash
-
-   tcpdump -s0 src host <non-floating self IP address> and dst port 80
-
-----
-
-|
-
-**2.14 - Explain how to obtain needed input and output data to create the monitors**
-
-You can use external tools to try to gather the information necessary to
-configure a monitor. For example, a tool like CURL will allow you to
-make a http based URL request to a server and will display the requested
-webpage data in text format. This way you know the http request string
-to use in the monitor and know what comes back and can choose what part
-of the response to put in the receive string of the monitor.
-
-.. code-block:: bash
-
-   curl http://www.f5.com
-
-   <html>
-   <head><title>301 Moved Permanently</title></head>
-   <body bgcolor="white">
-   <center><h1>301 Moved Permanently</h1></center>
-   <hr><center>CloudFront</center>
-   </body>
-   </html>
-
-----
-
-https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-5-1/15.html
-
-**Creating Monitors**
-
-You create a custom monitor when the values defined in a pre-configured
-monitor do not meet your needs, or no pre-configured monitor exists for
-the type of monitor you are creating.
-
-When you create a custom monitor, you use the BIG-IP Configuration
-utility or a command line utility to: give the monitor a unique name,
-specify a monitor type, and, if a monitor of that type already exists,
-import settings and their values from the existing monitor. You can then
-change the values of any imported settings.
-
-You must base each custom monitor on a monitor type. When you create a
-monitor, the BIG-IP Configuration utility displays a list of monitor
-types. To specify a monitor type, simply choose the one that corresponds
-to the service you want to check. For example, if you want to want to
-create a monitor that checks the health of the HTTP service on a pool,
-you choose HTTP as the monitor type.
-
-If you want to check more than one service on a pool or pool member (for
-example HTTP and HTTPS), you can associate more than one monitor on that
-pool or pool member.
-
-Checking services is not the only reason for implementing a monitor. If
-you want to verify only that the destination IP address is alive, or
-that the path to it through a transparent node is alive, use one of the
-simple monitors, icmp or tcp\_echo. Or, if you want to verify TCP only,
-use the monitor tcp.
-
-Monitor destinations
-
-By default, the value for the Alias Address setting in the monitors is
-set to the wildcard \* Addresses, and the Alias Service Port setting is
-set to the wildcard \* Ports. This value causes the monitor instance
-created for a pool, pool member, or node to take that node’s address or
-address and port as its destination. You can, however, replace either or
-both wildcard symbols with an explicit destination value, by creating a
-custom monitor. An explicit value for the Alias Address and/or Alias
-Service Port setting is used to force the instance destination to a
-specific address and/or port which might not be that of the pool, pool
-member, or node.
-
-The ECV monitor types HTTP, HTTPS, and TCP include the settings Send
-String and Receive String for the send string and receive expression,
-respectively.
-
-The most common Send String value is GET /, which retrieves a default
-HTML page for a web site. To retrieve a specific page from a web site,
-you can enter a Send String value that is a fully qualified path name:
-
-.. code-block:: bash
-
-   "GET /www/support/customer\_info\_form.html"
-
-The Receive String value is the text string that the monitor looks for
-in the returned resource. The most common Receive String values contain
-a text string that is included in a particular HTML page on your site.
-The text string can be regular text, HTML tags, or image names.
-
-The sample Receive String value below searches for a standard HTML tag:
-
-.. code-block:: bash
-
-   "<HEAD>"
-
-You can also use the default null Receive String value [""]. In this
-case, any content retrieved is considered a match. If both the Send
-String and Receive String fields are left empty, only a simple
-connection check is performed.
-
-For HTTP and FTP monitor types, you can use the special values GET or
-hurl in place of Send String and Receive String values. For FTP monitors
-specifically, the GET value should specify the full path to the file to
-retrieve.
-
-Transparent and Reverse modes
-
-The normal and default behavior for a monitor is to ping the destination
-pool, pool member, or node by an unspecified route, and to mark the node
-up if the test is successful. However, with certain monitor types, you
-can specify a route through which the monitor pings the destination
-server. You configure this by specifying the Transparent or Reverse
-setting within a custom monitor.
-
-Transparent setting
-
-Sometimes it is necessary to ping the aliased destination through a
-transparent pool, pool member, or node. When you create a custom monitor
-and set the Transparent setting to Yes, Local Traffic Manager forces the
-monitor to ping through the pool, pool member, or node with which it is
-associated (usually a firewall) to the pool, pool member, or node. (That
-is, if there are two firewalls in a load balancing pool, the destination
-pool, pool member, or node is always pinged through the pool, pool
-member, or node specified; not through the pool, pool member, or node
-selected by the load balancing method.) In this way, the transparent
-pool, pool member, or node is tested: if there is no response, the
-transparent pool, pool member, or node is marked as down.
-
-Common examples are checking a router, or checking a mail or FTP server
-through a firewall. For example, you might want to check the router
-address 10.10.10.53:80 through a transparent firewall 10.10.10.101:80.
-To do this, you create a monitor called http\_trans in which you specify
-10.10.10.53:80 as the monitor destination address, and set the
-Transparent setting to Yes. Then you associate the monitor http\_trans
-with the transparent pool, pool member, or node.
-
-This causes the monitor to check the address 10.10.10 53:80 through
-10.10.10.101:80. (In other words, the BIG-IP system routes the check of
-10.10.10.53:80 through 10.10.10.101:80.) If the correct response is not
-received from 10.10.10.53:80, then 10.10.10.101:80 is marked down.
-
-Reverse setting
-
-With the Reverse setting set to Yes, the monitor marks the pool, pool
-member, or node down when the test is successful. For example, if the
-content on your web site home page is dynamic and changes frequently,
-you may want to set up a reverse ECV service check that looks for the
-string "Error". A match for this string means that the web server was
-down.
-
-By default, when a monitor detects that a resource (that is, a node or a
-pool member) is unavailable, the BIG-IP system marks the resource as
-down and routes traffic to the next appropriate resource as dictated by
-the active load balancing method. When the monitor next determines that
-the resource is available again, the BIG-IP system marks the resource as
-up and immediately considers the resource to be available for load
-balancing connection requests. While this process is appropriate for
-most resources, there are situations where you want to manually
-designate a resource as available, rather than allow the BIG-IP system
-to do that automatically. You can manually designate a resource as
-available by configuring the Manual Resume setting of the monitor.
-
-For example, consider a monitor that you assigned to a resource to track
-the availability of an HTML file, index.html, for a web site. During the
-course of a business day, you decide that you need to restart the system
-that hosts the web site. The monitor detects the restart action and
-informs the BIG-IP system that the resource is now unavailable. When the
-system restarts, the monitor detects that the index.html file is
-available, and begins sending connection requests to the web site.
-However, the rest of the web site might not be ready to receive
-connection requests. Consequently, the BIG-IP system sends connection
-requests to the web site before the site can respond effectively.
-
-To prevent this problem, you can configure the Manual Resume setting of
-the monitor. When you set the Manual Resume setting to Yes, you ensure
-that the BIG-IP system considers the resource to be unavailable until
-you manually enable that resource.
-
-Resumption of connections
-
-If you have a resource (such as a pool member or node) that a monitor
-marked as down, and the resource has subsequently become available
-again, you must manually re-enable that resource if the monitor’s Manual
-Resume setting is set to Yes. Manually re-enabling the resource allows
-the BIG-IP system to resume sending connections to that resource.
-
-The procedure for manually re-enabling a resource varies depending on
-whether the resource is a pool, a pool member, or a node.
-
-The Time Until Up feature
-
-By default, the BIG-IP system marks a pool member or node as up
-immediately upon receipt of the first correct response to a ping
-command.
-
-The Time Until Up feature provides a way to adjust the default behavior.
-This feature allows the system to delay the marking of a pool member or
-node as up for some number of seconds after receipt of the first correct
-response. The purpose of this feature is to ensure that the monitor
-marks the pool member or node as up only after the pool member or node
-has consistently responded correctly to the BIG-IP system during the
-defined time period. With this feature, you ensure that a pool member or
-node that is available only momentarily, after sending one correct
-response, is not marked as up.
-
-A Time Until Up value of 0 causes the default behavior. When the Time
-Until Up value is a non-0 value, the BIG-IP system marks a pool member
-or node as up only when all pool member or node responses during the
-Time Until Up period are correct.
-
-Dynamic ratio load balancing
-
-You can configure Dynamic Ratio load balancing for pools that consist of
-RealNetworks RealServer servers, Microsoft Windows servers equipped with
-Windows Management Instrumentation (WMI), or any server equipped with an
-SNMP agent such as the UC Davis SNMP agent or Windows 2000 Server SNMP
-agent.
-
-To implement Dynamic Ratio load balancing for these types of servers,
-BIG-IP Local Traffic Manager provides a special monitor plug-in file and
-a performance monitor for each type of server. The exception is a server
-equipped with an SNMP agent. In this case, Local Traffic Manager
-provides the monitor only; no special plug-in file is required for a
-server running an SNMP agent.
-
-You must install the monitor plug-in on each server to be monitored, and
-you must create a performance monitor that resides on the BIG-IP system.
-Once you have created a monitor, the monitor communicates directly with
-the server plug-in.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
-Objective - 2.15 Given a monitor issue, determine an appropriate solution
--------------------------------------------------------------------------
-
-|
-|
-
-**2.15 - Determine appropriate monitor and monitor timing based on application and server limitations**
-
-https://support.f5.com/csp/article/K12531
-
-**Monitor timing**
-
-Interval/timeout ratio
-
-You must configure an appropriate interval/timeout ratio for simple
-monitors. In most cases, the timeout value should be equal to three
-times the interval value, plus one. For example, the default ratio is
-5/16 (three times 5 plus one equals 16). Verify that the ratio is
-properly defined.
-
-There are some applications that may require different timers and some
-of those settings may be shown in the following article under the
-details of each specific type of monitor
-
-----
-
-https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-monitors-reference-11-5-0/3.html
-
-**Application appropriate monitor**
-
-The following tables describe the functional categories of health
-monitors, and list the available BIG-IP monitors within each category.
-Unless otherwise specified, each monitor is used by Local Traffic
-Manager, Global Traffic Manager, and Link Controller.
-
-Address-check monitors
-
-An address-check monitor is a simple monitor that pings an IP address to
-verify that the address can be reached on a network.
-
-+-----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Address-check monitor**   | **Description**                                                                                                                                                        |
-+-----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Gateway ICMP**            | Uses Internet Control Message Protocol (ICMP) to make a simple resource check. The check is successful if the monitor receives a response to an ICMP\_ECHO datagram.   |
-+-----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **ICMP**                    | Makes a simple node check. The check is successful if the monitor receives a response to an ICMP_ECHO datagram.                                                        |
-+-----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **TCP Echo**                | Verifies Transmission Control Protocol (TCP) connections. The check is successful if the BIG-IP system receives a response to a TCP Echo message.                      |
-+-----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-Service-check monitors
-
-A service-check monitor determines whether a service is available by
-opening a connection to an IP address and port.
-
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Service-check monitor**   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Diameter**                | Monitors servers running the Diameter authentication service. After configuring a Diameter monitor, associate the monitor with a load balancing pool. The BIG-IP system then attempts to establish a TCP connection with a server in the pool. After successfully establishing a connection, the Diameter monitor sends a Capabilities-Exchanging-Request (CER) message to the server. The monitor then waits to receive a Capabilities-Exchanging-Answer (CEA) message, as well as a result code of DIAMETER\_SUCCESS (2001).                                                                                                    |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **FirePass**                | Checks the health of FirePass systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Inband**                  | Performs passive monitoring as part of client requests. This monitor, when acting as a client, attempts to connect to a pool member. If the pool member does not respond to a connection request after a user-specified number of tries within a user-specified period, the monitor marks the pool member as down. After the monitor has marked the pool member as down, and after a user-specified period has passed, the monitor again tries to connect to the pool member (if so configured).                                                                                                                                  |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **NNTP**                    | Checks the status of Usenet News traffic. The check is successful if the monitor retrieves a newsgroup identification line from the server. An **NNTP** monitor requires a newsgroup name (for example, alt.cars.mercedes) and, if necessary, a user name and password.                                                                                                                                                                                                                                                                                                                                                           |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **MSSQL**                   | Performs service checks on Microsoft SQL Server-based services such as Microsoft SQL Server versions 6.5 and 7.0.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **MySQL**                   | Checks the status of a MySQL database server. The check is successful if the monitor is able to connect to the server, log in as the indicated user, and log out.                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Oracle**                  | Checks the status of an Oracle database server. The check is successful if the monitor is able to connect to the server, log in as the indicated user, and log out.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **POP3**                    | Checks the status of Post Office Protocol (POP) traffic. The check is successful if the monitor is able to connect to the server, log in as the indicated user, and log out. A **POP3** monitor requires a user name and password.                                                                                                                                                                                                                                                                                                                                                                                                |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **PostgreSQL**              | Checks the status of a PostgreSQL database server. The check is successful if the monitor is able to connect to the server, log in as the indicated user, and log out.                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **RADIUS**                  | Checks the status of Remote Access Dial-in User Service (RADIUS) servers. The check is successful if the server authenticates the requesting user. A RADIUS monitor requires a user name, a password, and a shared secret string for the code number.                                                                                                                                                                                                                                                                                                                                                                             |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **RADIUS Accounting**       | Checks the status of Remote Access Dial-in User Service (RADIUS) accounting servers. A RADIUS Accounting monitor requires a user name and a shared secret string for the code number.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **RPC**                     | Checks the availability of specific programs that reside on a remote procedure call (RPC) server. This monitor uses the **rpcinfo** command to query the RPC server and verify the availability of a given program.                                                                                                                                                                                                                                                                                                                                                                                                               |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SASP**                    | Verifies the availability of a IBM Group Workload Manager. This monitor uses the Server/Application State Protocol (SASP) to communicate with the Group Workload Manager. The monitor queries the Group Workload Manager for information on the current weights of each managed resource. These weights determine which resource currently provides the best response time. When the monitor receives this information from the Group Workload Manager (GWM), it configures the dynamic ratio option for the resources, allowing the BIG-IP system to select the most appropriate resource to respond to a connection request.    |
-|                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                             | Note: When you assign an **SASP** monitor, the monitor initially marks the resources as down. This change in status occurs because the GWM might not yet have information pertaining to its resources. As soon as the monitor receives the results of its query, it changes the status as needed. In most configurations, the monitor receives these results within a few seconds.                                                                                                                                                                                                                                                |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SIP**                     | Checks the status of SIP Call-ID services. By default, this monitor type issues an SIP OPTIONS request to a server device. However, you can use alternative protocols instead: **TCP**, **UDP**, **TLS**, and **SIPS** (that is, Secure SIP).                                                                                                                                                                                                                                                                                                                                                                                     |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SMB**                     | Verifies the availability of a Server Message Block/Common Internet File System (SMB/CIFS) server. Use this monitor to check the availability of the server as a whole, the availability of a specific service on the server, or the availability of a specific file used by a service.                                                                                                                                                                                                                                                                                                                                           |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SOAP**                    | Tests a web service based on the Simple Object Access Protocol (SOAP). The monitor submits a request to a SOAP-based web service, and optionally, verifies a return value or fault.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **TCP Half Open**           | Monitors the associated service by sending a TCP SYN packet to the service. As soon as the monitor receives the SYN-ACK packet, the monitor marks the service as up.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **UDP**                     | Verifies the User Datagram Protocol (UDP) service by attempting to send UDP packets to a pool, pool member, or virtual server and receiving a reply.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-Content-check monitors
-
-A content-check monitor sends a command to a server and examines that
-server's response to ensure that it is serving appropriate content.
-
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Content-check monitor**   | **Description**                                                                                                                                                                                                                                                                                                               |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **DNS**                     | Checks the status of Domain Name Server (DNS) servers, by sending a specific string, and verifying receipt of that string. The check is successful if the DNS server responds with a specified string within a specified period.                                                                                              |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **HTTP**                    | Checks the status of Hypertext Transfer Protocol (HTTP) traffic. Like a TCP monitor, an HTTP monitor attempts to receive specific content from a web page, and unlike a TCP monitor, might send a user name and password.                                                                                                     |
-|                             |                                                                                                                                                                                                                                                                                                                               |
-|                             | Note: An HTTP monitor can monitor Outlook® Web Access (OWA) in Microsoft® Exchange Server 2007 and Microsoft® SharePoint® 2007 web sites that require NT LAN Manager (NTLM) authentication. NTLM authentication requires a send string that complies with HTTP/1.1, a user name, and a password.                              |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **HTTPS**                   | Checks the status of Hypertext Transfer Protocol Secure (HTTPS) traffic. An HTTPS monitor attempts to receive specific content from a web page protected by SSL security. The check is successful when the content matches the **Receive String** value.                                                                      |
-|                             |                                                                                                                                                                                                                                                                                                                               |
-|                             | Note: An HTTP monitor can monitor Outlook® Web Access (OWA) in Microsoft® Exchange Server 2007 and Microsoft® SharePoint® 2007 web sites that require NT LAN Manager (NTLM) authentication. NTLM authentication requires a send string that complies with HTTP/1.1, a user name, and a password.                              |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **https\_443**              | Checks the status of Hypertext Transfer Protocol Secure (HTTPS) traffic, by using port 443.                                                                                                                                                                                                                                   |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **LDAP**                    | Checks the status of Lightweight Directory Access Protocol (LDAP) servers. A check is successful if entries are returned for the base and filter specified. An LDAP monitor requires a user name, a password, and base and filter strings.                                                                                    |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Scripted**                | Generates a simple script that reads a file that you create. The file contains send and expect strings to specify lines that you want to send or that you expect to receive.                                                                                                                                                  |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SMTP**                    | Checks the status of Simple Mail Transport Protocol (SMTP) servers. This monitor type checks only that the server is up and responding to commands. The check is successful if the mail server responds to the standard **SMTP HELO** and **QUIT** commands.                                                                  |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **TCP**                     | Verifies the Transmission Control Protocol (TCP) service by attempting to receive specific content from a resource. The check is successful when the content matches the **Receive String** value.                                                                                                                            |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **WAP**                     | Monitors Wireless Application Protocol (WAP) servers. The common usage for the **WAP** monitor is to specify the **Send String** and **Receive String** settings only. The **WAP** monitor functions by requesting a URL and finding the string in the **Receive String** setting in the data returned by the URL response.   |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-Path-check monitors
-
-A path-check monitor determines whether traffic can flow through a given
-device to an arbitrary endpoint. The monitor sends a packet through the
-network device, or to a remote server, to verify that the traffic can
-actually pass through the network device, and not just to the device.
-
-+--------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Path-check monitor**   | **Description**                                                                                                                                                        |
-+--------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Gateway ICMP**         | Uses Internet Control Message Protocol (ICMP) to make a simple resource check. The check is successful if the monitor receives a response to an ICMP\_ECHO datagram.   |
-+--------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **ICMP**                 | Makes a simple node check. The check is successful if the monitor receives a response to an ICMP\_ECHO datagram.                                                       |
-+--------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **TCP Echo**             | Verifies Transmission Control Protocol (TCP) connections. The check is successful if the BIG-IP system receives a response to a TCP Echo message.                      |
-+--------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-Application-check monitors
-
-An application-check monitor is typically a custom monitor or external
-monitor that tests a specific application. For example, an FTP monitor
-connects, logs in by using a user ID and password, changes to a
-specified directory, and requests a specific file. This monitor succeeds
-when the file is received.
-
-+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Application-check monitor**   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **BIG-IP**                      | Gathers metrics and statistics information that the Local Traffic Manager acquires through the monitoring of its own resources. Typically, it is sufficient to assign only the BIG-IP monitor to a Local Traffic Manager. When you want to verify the availability of a specific resource managed by the Local Traffic Manager, F5 recommends that you first assign the appropriate monitor to the resource through the Local Traffic Manager, and then assign a BIG-IP monitor to the Local Traffic Manager through the Global Traffic Manager. This configuration provides the most efficient means of tracking resources managed by a BIG-IP system.                     |
-+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **BIG-IP Link**                 | Gathers metrics and statistics information that the Link Controller™ acquires through the monitoring of its own resources. When you use the Global Traffic Manager in a network that contains a Link Controller, you must assign a BIG-IP Link monitor to the Link Controller. This monitor is automatically assigned to the Link Controller if you do not manually assign it.                                                                                                                                                                                                                                                                                              |
-+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **External**                    | Enables you to create your own monitor type.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **FTP**                         | Attempts to download a specified file to the /var/tmp directory, and if the file is retrieved, the check is successful. Note that once the file has been successfully downloaded, the BIG-IP system does not save it.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **IMAP**                        | Checks the status of Internet Message Access Protocol (IMAP) traffic. An IMAP monitor is essentially a POP3 type of monitor with the addition of the Folder setting. The check is successful if the monitor is able to log into a server and open the specified mail folder.                                                                                                                                                                                                                                                                                                                                                                                                |
-+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Module Score**                | Enables global and local traffic management systems to load balance in a proportional manner to local traffic management virtual servers associated with the BIG-IP® Application Acceleration Manager and Application Security Manager™. When you configure a **Module Score** monitor, the local traffic management system uses SNMP to pull the gtm\_score values from the downstream virtual servers and set the dynamic ratios on the associated upstream local traffic management pool members or nodes.                                                                                                                                                               |
-|                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                                 | The **Module Score** monitor retrieves the gtm\_score values from the virtual server and the gtm\_vs\_score values associated with the virtual server. Then, if a pool name is not specified, this monitor sets the dynamic ratio on the node that is associated with the virtual server.                                                                                                                                                                                                                                                                                                                                                                                   |
-|                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                                 | The BIG-IP system uses the lowest non-zero value of the gtm\_vs\_score values to set the dynamic ratio. If all gtm\_vs\_score values are zero, then the gtm\_score value is used to set the dynamic ratios. If you specify a pool name in the monitor definition, then the dynamic ratio is set on the pool member.                                                                                                                                                                                                                                                                                                                                                         |
-+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Virtual Location**            | Optimizes end-user response time in environments with dynamic distribution of application resources across multiple data centers. When using the **Virtual Location** monitor, the BIG-IP sets the **Priority Group** value of all local pool members to **2** (a higher priority). When a member of a load balancing pool migrates to a remote data center the **Virtual Location** monitor lowers the members **Priority Group** value to **1** (a lower priority). This value adjustment results in subsequent connections being sent to local pool members only if available. If no local pool members are available, connections are sent to the remote pool member.   |
-+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-Performance monitors
-
-A performance monitor interacts with the server (as opposed to virtual
-server) to examine the server load and to acquire information about the
-condition of virtual servers.
-
-+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Performance monitor**   | **Description**                                                                                                                                                                                                                                         |
-+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **BIG-IP**                | Collects data from Global Traffic Manager and Local Traffic Manager. Typically, the Local Traffic Manager probes local pool members and provides the results to Global Traffic Manager.                                                                 |
-|                           |                                                                                                                                                                                                                                                         |
-|                           | Note: When the BIG-IP monitor fails, all virtual servers for that Local Traffic Manager system are marked unavailable, regardless of the results of individual virtual server probes.                                                                   |
-+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **BIG-IP Link**           | Gathers metrics and statistics information acquired through the monitoring of Global Traffic Manager or Link Controller resources.                                                                                                                      |
-+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SNMP**                  | Checks the performance of a server that runs an SNMP agent to load balance to that server. A custom **snmp\_gtm** import setting is assigned to servers that are not developed by F5.                                                                   |
-+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SNMP DCA**              | Checks the performance of a server running an SNMP agent such as UC Davis, for the purpose of load balancing traffic to that server. With this monitor you can define ratio weights for CPU, memory, and disk use.                                      |
-+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **SNMP DCA Base**         | Checks the performance of servers that are running an SNMP agent, such as UC Davis. However, you should use this monitor only when you want the load balancing destination to be based solely on user data, and not CPU, memory, or disk use.           |
-+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Real Server**           | Checks the performance of a node that is running the RealSystem Server data collection agent. The monitor then dynamically load balances traffic accordingly.                                                                                           |
-+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **WMI**                   | Checks the performance of a node that is running the Windows Management Infrastructure (WMI) data collection agent, and then dynamically load balances traffic accordingly. Generally, you would use a WMI monitor with dynamic ratio load balancing.   |
-|                           |                                                                                                                                                                                                                                                         |
-|                           | Note: When using the **GetWinMediaInfo** command with a WMI monitor, Microsoft® Windows Server® 2003 and Microsoft® Windows Server® 2008 require the applicable version of Windows Media® Services to be installed on each server.                      |
-+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-----
-
-|
-
-**2.15 - Describe how to modify monitor settings to resolve monitor problems**
-
-https://support.f5.com/csp/article/K12531#3
-
-https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-monitors-reference-11-5-0/1.html
-
-https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-concepts-11-5-0/14.html
-
-**Checking Monitor setting**
-
-Verifying monitor settings
-
-You must verify that monitor settings are properly defined for your
-environment. F5 recommends that in most cases the timeout value should
-be equal to three times the interval value, plus one. For example, the
-default timeout/interval ratio is 5/16 (three times 5 plus one equals
-16). This setting prevents the monitor from marking the node as down
-before sending the last check.
-
-Simple monitors
-
-You can use a simple monitor to verify the status of a destination node
-(or the path to the node through a transparent device). Simple monitors
-only monitor the node address itself, not individual protocols,
-services, or applications on a node. The BIG-IP system provides the
-following pre-configured simple monitor types: gateway\_icmp, icmp,
-tcp\_echo, tcp\_half\_open. If you determine that a simple monitor is
-marking a node as down, you can verify the following settings:
-
--  Interval/timeout ratio
-
-   You must configure an appropriate interval/timeout ratio for simple
-   monitors. In most cases, the timeout value should be equal to three
-   times the interval value, plus one. For example, the default ratio
-   is 5/16 (three times 5 plus one equals 16). Verify that the ratio is
-   properly defined.
-
--  Transparent
-
-   A transparent monitor uses a path through the associated node to
-   monitor the aliased destination. Verify that the destination target
-   device is reachable and configured properly for the monitor.
-
-Use the tcpdump command to capture monitor traffic.
-
-If you are unable to determine the cause of a failing health monitor,
-you may have to perform packet captures on the BIG-IP system. This is
-discussed in Objective 2.14.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|

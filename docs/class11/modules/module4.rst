@@ -1,6 +1,5 @@
-Section 4 - Troubleshoot
-========================
-
+Section 4 - Operations and Support
+==================================
 
 Conclusion
 ----------

@@ -1,0 +1,284 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://support.f5.com/csp/article/K29900360)
+>> /Border [ 0 0 0 ] /Rect [ 316.8878 605.0236 531.0652 617.0236 ] /Subtype /Link /Type /Annot
+>>
+endobj
+5 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://support.f5.com/csp/article/K29900360)
+>> /Border [ 0 0 0 ] /Rect [ 62.69291 593.0236 103.2529 605.0236 ] /Subtype /Link /Type /Annot
+>>
+endobj
+6 0 obj
+<<
+/Annots [ 4 0 R 5 0 R ] /Contents 10 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 9 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+7 0 obj
+<<
+/Outlines 11 0 R /PageLabels 12 0 R /PageMode /UseNone /Pages 9 0 R /Type /Catalog
+>>
+endobj
+8 0 obj
+<<
+/Author () /CreationDate (D:20201222202332+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20201222202332+00'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (F5 201 - TMOS Administration Labs - Created 08/11/2020) /Trapped /False
+>>
+endobj
+9 0 obj
+<<
+/Count 1 /Kids [ 6 0 R ] /Type /Pages
+>>
+endobj
+10 0 obj
+<<
+/Length 3173
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 717.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 28 Tm /F2 20 Tf 24 TL 20.45488 0 Td (F5 201 - TMOS Administration Labs - Created) Tj T* 164.45 0 Td (08/11/2020) Tj T* -184.9049 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 701.0236 cm
+Q
+q
+1 0 0 1 62.69291 689.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL ( ) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 677.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL ( ) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 677.0236 cm
+Q
+q
+1 0 0 1 62.69291 623.0236 cm
+q
+BT 1 0 0 1 0 38 Tm 2.499982 Tw 12 TL /F1 10 Tf 0 0 0 rg (These exercises are design to reinforced the concepts outlined in the ) Tj /F2 10 Tf (TMOS Administration) Tj /F1 10 Tf ( exam) Tj T* 0 Tw .273318 Tw (blueprint. F5 certification exams are designed to required hands-on experience to pass the test and these) Tj T* 0 Tw .237984 Tw (exercises will help you deal with exam questions requiring you to interpret configuration and other outputs) Tj T* 0 Tw (from the ) Tj 1 0 0 rg (|bip|) Tj 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 593.0236 cm
+q
+BT 1 0 0 1 0 14 Tm 1.517485 Tw 12 TL /F1 10 Tf 0 0 0 rg (Exam blueprints can be found on the F5 Support site: ) Tj 0 0 .501961 rg (K29900360: F5 certification | Exams and study) Tj T* 0 Tw (materials) Tj  T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 575.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (This class covers the following topics:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 569.0236 cm
+Q
+q
+1 0 0 1 62.69291 569.0236 cm
+Q
+q
+1 0 0 1 62.69291 557.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Accessing the lab, networking and BIG-IP traffic flow) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 551.0236 cm
+Q
+q
+1 0 0 1 62.69291 539.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Virtual Server and Pool Behavior and Status) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 533.0236 cm
+Q
+q
+1 0 0 1 62.69291 521.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (System Configuration - Managing the BIG-IP) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 515.0236 cm
+Q
+q
+1 0 0 1 62.69291 503.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Challenge Labs) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 503.0236 cm
+Q
+q
+1 0 0 1 62.69291 485.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Expected time to complete: ) Tj /F2 10 Tf (4 hours) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 479.0236 cm
+Q
+q
+1 0 0 1 62.69291 467.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL ( ) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 455.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL ( ) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 455.0236 cm
+Q
+ 
+endstream
+endobj
+11 0 obj
+<<
+/Count 0 /Type /Outlines
+>>
+endobj
+12 0 obj
+<<
+/Nums [ 0 13 0 R ]
+>>
+endobj
+13 0 obj
+<<
+/S /D /St 1
+>>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000073 00000 n 
+0000000114 00000 n 
+0000000221 00000 n 
+0000000333 00000 n 
+0000000529 00000 n 
+0000000725 00000 n 
+0000000953 00000 n 
+0000001057 00000 n 
+0000001368 00000 n 
+0000001427 00000 n 
+0000004652 00000 n 
+0000004699 00000 n 
+0000004740 00000 n 
+trailer
+<<
+/ID 
+[<de2f5430b7529fc9adab8b38fdd07385><de2f5430b7529fc9adab8b38fdd07385>]
+% ReportLab generated PDF document -- digest (http://www.reportlab.com)
+
+/Info 8 0 R
+/Root 7 0 R
+/Size 14
+>>
+startxref
+4774
+%%EOF

@@ -1,24 +1,19 @@
-F5 201 - TMOS Administration Labs 11/01/19
-==========================================
+F5 201 - TMOS Administration Exam Study Guide - New One Not Created Yet
+=======================================================================
+
+|
+
+**You can find the current exam blueprint published here:**
+`https://support.f5.com/csp/article/K29900360 <https://support.f5.com/csp/article/K29900360>`__
 
 |
 |
 
-These exercises are design to reinforced the concepts outlined in the **TMOS Administration** exam blueprint.  F5 certification exams are designed to required hands-on experience to pass the test and these exercises will help you deal with exam questions requiring you to interpret configuration and other outputs from the |bip|.
+**This exam recently went through an update cycle and is now based on TMOS version 13.1.**
 
-Exam blueprints can be found on the F5 Support site at:
-https://support.f5.com/csp/article/K29900360#301a
+|
 
-This class covers the following topics:
-
-- Packet Processing and Virtual Server Processing Order
-- Virtual Server and Pool Behavior and Status
-- Administrative Troubleshooting of the |bip|
-- Support, Analytics and iApps
-- Managing the BIG-IP
-- Modifying and Managing Pools and Virtual Servers
-
-Expected time to complete: **4 hours**
+**Due the exam refresh changes to the Exam Plueprint and material covered on this exam, I have removed the content of my old study guide until I can complete the new guide.**
 
 |
 |
@@ -26,5 +21,5 @@ Expected time to complete: **4 hours**
 .. toctree::
    :maxdepth: 1
    :glob:
-
-   module*/module*
+   
+   modules/module*
