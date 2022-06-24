@@ -67,7 +67,7 @@ Offline (Enabled)?*
 
 .. WARNING::
 
-   Make sure all virtual servers, pools and pool members are **Available** before continuing.
+   Make sure all virtual servers, pools and pool members are **Enabled** before continuing.
 
 More on status and member specific monitors
 -------------------------------------------
