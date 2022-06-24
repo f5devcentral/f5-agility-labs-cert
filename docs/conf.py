@@ -219,6 +219,7 @@ html_theme_options = {
                         'site_name': 'Community Training Classes & Labs',
                         'next_prev_link': True
                      }
+html_codeblock_linenos_style = 'table'
 html_last_updated_fmt = '%Y-%m-%d %I:%M:%S'
 
 if on_rtd:
