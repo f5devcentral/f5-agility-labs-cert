@@ -23,7 +23,8 @@ import time
 import re
 import pkgutil
 import string
-sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('../.'))
+import sphinx_rtd_theme
 import f5_sphinx_theme
 
 year = time.strftime("%Y")
@@ -117,9 +118,9 @@ extensions = [
   #'sphinx.ext.autosectionlabel'
 ]
 
-if 'googleanalytics_id' in locals() and len(googleanalytics_id) > 0:
-  extensions += ['sphinxcontrib.googleanalytics']
-  googleanalytics_enabled = True
+# if 'googleanalytics_id' in locals() and len(googleanalytics_id) > 0:
+#   extensions += ['sphinxcontrib.googleanalytics']
+#   googleanalytics_enabled = True
 
 graphviz_output_format = 'svg'
 graphviz_font = 'DejaVu Sans:style=Book'
@@ -214,6 +215,8 @@ todo_include_todos = True
 
 html_theme = 'f5_sphinx_theme'
 html_theme_path = f5_sphinx_theme.get_html_theme_path()
+# html_theme = 'sphinx_rtd_theme'
+# html_theme_path = sphinx_rtd_theme.get_html_theme_path()
 html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html','relations.html']}
 html_theme_options = {
                         'site_name': 'Community Training Classes & Labs',

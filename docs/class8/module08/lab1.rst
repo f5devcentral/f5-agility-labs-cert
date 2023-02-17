@@ -1,50 +1,12 @@
-Self IP Port Lockdown and more
-==============================
-
-Effects of Port Lockdown
-------------------------
-
-In the exercise, you will do some basic configuration of DNS and NTP and
-work with port lockdown.
-
-Working with port lockdown on self IPs.
-
-Ping **10.1.10.245**
-
-*Q1. Was echo response received?*
-
-SSH to **10.1.10.245**
-
-*Q2. Was ssh successful? Why not?*
-
-Open **Network > Self IPs > 10.1.10.245** and change **Port Lockdown**
-to **Allow Defaults**
-
-SSH to **10.1.10.245**
-
-Browse to **https://10.1.10.245**
-
-*Q3. Did SSH work? Did browsing work?*
-
-*Q4. What other ports are opened when you select* **Allow Defaults**.
-
-Open **Network > Self IPs > 10.1.10.245** and change Port Lockdown to
-**Allow Custom** and add **TCP** port **22**
-
-SSH to **10.1.10.245**
-
-Browse to **https://10.1.10.245**
-
-*Q5. Did SSH work? Did browsing work?*
-
-Configure DNS and NTP 
----------------------
+2.03 - Determine how to perform basic device configuration
+==========================================================
 
 NTP is essential for a number of BIG-IP functions, in particular, when
 creating Device Service Clusters. DNS configured on the BIG-IP can also
 be of value.
 
-Configure DNS and NTP.
+Configure DNS and NTP
+---------------------
 
 .. NOTE::
 
@@ -62,8 +24,8 @@ TMSH enter::
 
 Now that you've configure DNS, configure NTP using **pool.ntp.org**.
 
-VLAN Tagging
-------------
+Configure VLAN tagging
+----------------------
 
 Here you will set up multiple VLANs on the same interface and assign IP
 addressing. You will be using one of these VLANs when you do the High
