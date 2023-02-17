@@ -8,7 +8,7 @@ Welcome to the |classbold| last updated on 10/20/20
 |
 
 .. caution::
-  The F5 Certification Program does not produce any educational materials to support their program.  All material in this repo is created and maintained by exam canidates, which work for F5 Networks, and are not officially supported by the F5 Certification Program.
+  The F5 Certification Program does not produce any educational materials to support their program.  All material in this repo is created and maintained by exam canidates, which work for F5, and are not officially supported by the F5 Certification Program.
 
 |
 
