@@ -1,219 +1,167 @@
-Building a DSC (Device Service Cluster)
-=======================================
+2.06 - Apply concepts required to use BIG-IP functionality to fulfill security requirements
+===========================================================================================
 
-Base Networking and HA VLAN
----------------------------
+Configure Audit Logging
+-----------------------
 
-You will be creating a high availability cluster using the second BIG-IP
-(bigip2.f5demo.com) in your lab.  You'll begin by prepping **bigip01.f5demo.com** ( your current BIG-IP by creating a high availability VLAN that you will use to pass network polling, configuration changes and mirroring information between the two BIG-IPs.
+Audit logging allows you to log changes made by BIG-IP administrators
+and other users.
 
-.. WARNING::
+Audit logging is disabled by default. **Go to System > Logs > Configuration**.
 
-   If you haven't already **archived** your work **DO IT NOW!**
+Notice you can determine by role who is allowed to view the audit logs.
 
-Begin by making sure the base network configuration is created on both
-devices.
+Audit Logging is toward the bottom of the page. **Enable** Audit Logging for the GUI.
 
-Prepare bigip01
-~~~~~~~~~~~~~~~
+In a private or incognito browser window, log on to the BIG-IP as **adminuser/password**.
 
-On **bigip01.f5demo.com** (10.1.1.245), this should already have been
-accomplished. You will be using interface 1.3 VLAN 30 and IP 10.1.30.245
-for Network Failover and ConfigSync and Mirroring.
+Make a change to the **Description** of the FTP virtual server **ftp\_vs**.
 
-High availability requires certain ports to be open on the Self IP; TCP port 4353 for
-ConfigSync and TCP port 1026 for Network Failover and TCP port 6699 for
-the Master Control Program.
+Review the audit log at **System > Logs > Audit**. In the **Search**
+box type **adminuser** and hit **Search**.
 
-Go to you **10.1.30.245** self IP and set **Port Lockdown** to **Allow
-Defaults**. This will ensure the ports we require are open.
+*Q1. Do you see when adminuser logged on? Do you see the change made in
+the audit log?*
 
-Go to **https://10.1.1.246** which is **bigip02.f5demo.com** and login with
-**admin/admin**.
+Limiting SSH access to the BIG-IP
+---------------------------------
 
-Prepare bigip01
-~~~~~~~~~~~~~~~
+The jumpbox has two IPs, 10.1.1.6 on the management network, 10.1.10.199
+on the client-side network.
 
-Your second BIG-IP, **bigip02,** has already been licensed and the basic
-setup completed. You need to make sure the BIG-IPs are provisioned the
-same **(LTM and AVR)** and set up the base networking on **bigip02**.
+Open **System > Platform** and in **SSH IP Allow** > **Specify Range**
+of **10.1.20.0/24**
 
-+-------------+----------------+------------------------+----------------+---------------+-----------------+------------------+----+
-| Interface   | VLAN name      | Tag (blank untagged)   | Self IP Name   | Self IP       | Mask            | Port Lockdown    |    |
-+=============+================+========================+================+===============+=================+==================+====+
-| 1.1         | client\_vlan   |                        | client\_ip     | 10.1.10.246   | 255.255.255.0   | None             |    |
-+-------------+----------------+------------------------+----------------+---------------+-----------------+------------------+----+
-| 1.2         | server\_vlan   |                        | server\_ip     | 10.1.20.246   | 255.255.255.0   | None             |    |
-+-------------+----------------+------------------------+----------------+---------------+-----------------+------------------+----+
-| 1.3         | vlan-30        | 30                     | HA\_IP         | 10.1.30.246   | 255.255.255.0   | Allow Defaults   |    |
-+-------------+----------------+------------------------+----------------+---------------+-----------------+------------------+----+
+*Q1. Does existing an SSH window still work? Does a new SSH work?*
 
-*Q1. What is the status your BIG-IPs?*
+Change the **Specify Range** to the management network only **10.1.1.0/24**.
 
-.. NOTE:: 
+Open new SSH sessions to **10.1.1.4** and **10.1.10.245**.
 
-   Check the upper left-hand corner next to the F5 ball.
+*Q2. Were new ssh sessions established?*
 
-Prepare each BIG-IP for High Availability
------------------------------------------
+Configuring a remote logging pool
+---------------------------------
 
-On each BIG-IP you will update the device and device trust certificate
-and configured the failover IPs for each device.
+Your customer would like to integrate BIG-IP system messages with
+their central logging system, to be processed by their correlation
+software. They would like you to send mcpd informational messages (to external logging server(s)).
 
-On **EACH** BIG-IP, prior to building the Device Trust it is
-recommended, but not mandatory, that you renew the BIG-IP self-signed
-certificate with valid information and re-generate the local Device
-Trust certificate.
+You will create a pool with the logging server(s). This will be the destination for
+high speed logging. You will be logging to **syslog\_ng** over TCP port **514**.
+You will be using a combination of an inband monitor and an active
+monitor to determine the log server's availability. This monitor will
+combination will reduce network activity and superfluous log messages to
+the syslog server.
 
-Under **System > Device Certificate > Device Certificate** select the
-**Renew** button.
+Because the syslog server is using the TCP protocol, we can use inband monitors.
 
-**Common Name:** <the Hostname of the BIG-IP in the upper left corner>
+Create an **inband** monitor named **syslog\_inband** and use the default configuration.
 
-**Country:** United States (or your country of preference)
+Create an active **TCP** monitor named **syslog\_active** and set the
+**Up Interval** to **180** seconds.
 
-**Lifetime:** 3650
-
-.. IMPORTANT::
-
-   Lifetime is important, when your certificate expires your HA setup will FAIL.
-   You should always make sure you device certificate has a long lifetime.
-
-Select **Finished**. Your browser will ask to exchange certs with the BIG-IP again.
-
-Under **Device Management > Device Trust > Local Domain** select **Reset Device Trust**
-
-In the **Certificate Signing Authority** select **Generate New Self-Signed Authority**.
-
-On each BIG-IP configure the device object failover parameters the
-BIG-IP will send to other BIG-IPs that want to be a part of a sync-only
-or sync-failover group.
-
-Under **Device Management > Device**, select the local BIG-IP. It will
-have the (Self) suffix.
-
-Under **Device Connectivity**:
-   - On the top bar select **ConfigSync** and use the **HA-IP** for your **Local Address**.
-
-Under **Network Failover**:
-   - In the **Failover Unicast Configuration** section select the **Add** button
-
-Use the Self IP address the **HA VLAN** for your Address and leave the **Port** at the default setting of **1026**.
-
-*Q1. If you were to add multiple IP address to the Failover Unicast, when
-would the BIG-IP failover?*
-
-.. NOTE:: 
-   Multicast is for Viprion chasses only.
-
-Under **Mirroring**:
-   - Primary Local Mirror Address: **<use the HA-IP>**
-   - Secondary Local Mirror Address: **None**
-
-.. IMPORTANT:: 
-
-   On each BIG-IP archive your work in a UCS called: **lab11\_ha\_prep**
-
-Build the Device Trust and Device Group
----------------------------------------
-
-In the task you will build a trust between bigip01 and bigip02. Once the
-trust between the devices is built you will be build a Sync-Failover
-device group and place the BIG-IPs in the new group. You will build this
-from bigip01 and sync its good configuration to bigip02.
-
-On **bigip01.f5demo.com**, under **Device Management > Device Trust >
-Peer List** and select **Add**
-
-**Device IP Address:** <management IP address of the BIG-IP to add>
-
-.. NOTE:: 
-   You could use any Self IP if the out-of-band management interface is not
-   configured and you have the appropriate ports (22 and 443) open as you build the trust.
-
-Enter the **Administrator** username and password of the BIG-IP you are
-trusting.
-
-Select **Retrieve Device Information**
-
-The certificate information and name from the other BIG-IP should appear
-
-On each BIG-IP check the other BIG-IP in the Peer Authorities list.
-
-*Q1. Is all the information there?*
-
-.. WARNING::
-
-   Occasionally some of the information is missing due to configuration errors or other failures.  If any of the information is missing delete the trust, correct the problem and try again.
-
-*Q2. What are the statuses of your BIG-IPs now?*
-
-They should be **In Sync**. ``But wait!`` We haven't even created a device
-group! Remember the Device Trust creates a **Sync-Only** group for the
-certificates under the covers (device-trust-group) for the trust.  It is the **device-trust-group** that is in sync.
-
-On **bigip01.f5demo.com** create a new **Sync-Failover** device group
-
-Under **Device Management > Device Group** create a new device group
-named **my\_device\_group** with a type of **Sync-Failover**
-
-Add the members of the group (bigip01 and bigip02) to the **Includes**
-box and check the **Network Failover** setting for the group.
-
-Check **Device Groups** on each BIG-IP.
-
-*Q3. Did you have to create the Device Group on the other BIG-IP?*
-
-*Q4. Is the full configuration synchronized yet?*
-
-*Q5. What is the status and sync status on the BIG-IPs?*
-
-On your configured BIG-IP (bigip01), click on the sync status
-(**Awaiting Initial Sync**) or go to **Device Management > Overview**.
-
-.. WARNING::
-
-   Click the device with the configuration you want to
-   synchronize to the other BIG-IPs (that would be bigip01). The Sync
-   Options should appear.
+This monitor will poll the syslog server every three minutes while the inband
+monitor is showing the server available. If the server goes down, it
+will be polled every 5 seconds.
 
 .. NOTE::
 
-   You can push or pull a configuration from the device the cluster or the cluster to a device.  The warning above applies.  **Always** understand what BIG-IP you are on and which direction you are syncing.
+   The purpose of the monitors is to reduce logging to the syslog server, which will
+   log the monitor request as they come in.  The inband monitor will use message traffic the monitor the syslog server without generating message traffic, but if the syslog server goes down the active monitor will return it to service much faster than the default inband timeout.
 
-**Sync Device to Group**. It could take up to 30 seconds for
-synchronization to complete.
+Create a logging pool named **logging_pool**, with the
+**syslog_inband**, **syslog_active** monitors and the member
+**10.1.20.252:514**.
 
-.. WARNING:: 
+Configure the logging destinations
+----------------------------------
 
-   During the **Awaiting Initial Sync** phase either BIG-IP can perform the synchronization and the other BIG-IP will be overwritten.
+Remember at least two log destinations need to be created. The first one
+will be the High Speed Logging (HSL) Destination where the messages will
+be sent (the Logging\_Pool you just created) and the protocol that will be
+used, TCP or UDP. The second Log Destination created will specify the
+message format and the HSL Destination where formatted messages go too.
 
-Check each BIG-IP **Device Management > Overview**.
+High Speed Logging (HSL) Log Destination
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Q6. Did the configuration synchronize? What, if any, errors do you see?*
+First you will create a Log Destination to tell the BIG-IP where to send
+the log messages and the protocol to use.
 
-You ended up with an error because of configuration dependencies with
-**avr2\_virtual**. This is why building you device service cluster early
-is a good idea, but you can't always do that. You could have a device
-cluster pair that you are adding a third BIG-IP. You are going to have
-to correct the error, synchronize and the re-add **avr\_virtual.**
+.. NOTE::
 
-On **bigip01** delete the virtual server **avr\_virtual2.**
+   The reason we have to define an HSL destination is because there is no way to assign a protocol to a pool.
 
-*Q7. Any issue with that?*
+Go to **System > Logs > Configurations > Log Destinations** and create a
+HSL destination named **hsl\_logging\_dest** of a type **Remote
+High-Speed Log** and the pool name is **logging\_pool**.
 
-Maybe the easier route is to remove the iRule from **avr\_virtual1**
-(which references **avr\_virtual2**), synchronize and then add it back.
+Formatted Log Destination
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Q8. What is the sync status of bigip02 once you made the change?*
+This log destination will be used to format the log output. You are
+sending the messages to a syslogng server, so you will want them in a
+syslog format. You will send the formatted log events to the HSL Log
+Destination you created earlier.
 
-Sync **bigip01** to the group.
+**In Logging Destinations** select **Create** and build a formatted
+destination named **formatted\_dest** with a type of **Remote Syslog**
+and with the **Syslog Format** of **Syslog** and **Forward To** set to **hsl\_logging\_dest**.
 
-*Q9. Are the BIG-IPs In Sync? Are the configurations the same?*
+Log Publisher and Filtering Messages
+------------------------------------
 
-Browse to **http://10.1.10.100**
+The log publisher is a way to associate individual or multiple log
+destinations to a logging profile. In this case, any messages through
+this publisher will go to local log files and the remote logs via
+formatted\_dest.
 
-*Q10. Could you access the site? Which BIG-IP passed the traffic?*
+Go to **System > Logs > Configurations > Log Publishers** and select
+**Create**.
 
-Place the **random\_client\_ip** iRule back on **avr\_virtual2** and
-synchronize the changes.
+Name: **logging\_pub**
+
+Destinations: Move **formatted\_dest** and **local-syslog** to the
+**Selected** box.
+
+Select **Finished** when done.
+
+This step created a log publisher that will send Syslog formatted events
+to a remote server, the local database, and the local syslog. Normally
+you wouldn't want to go to all three, but this is one way to show how BIG-IP can
+send to multiple destinations for demonstration purposes. And while you can log everything off the BIG-IP you will probably want some local logging available, so you can log on to the BIG-IP and check events without going through the syslog server.
+
+System Logging Filter
+~~~~~~~~~~~~~~~~~~~~~
+
+Now you will create a system logging filter. This will demonstrate how
+we can log systems events off box, as well as on box. We do NOT want to
+take the defaults as logging down to the debug level would cause the
+BIG-IP to drop log messages and could fill up the log files to the point
+where the BIG-IP runs out of disk space. You are going to send
+informational messages from the MCPd daemon to the published
+destinations.
+
+Go to **System > Log > Configuration > Log Filters** and select **Create**
+
+   - Name: **my-mcpd-filter**
+   - Severity: **Informational**
+   - Source: **mcpd**
+   - Log Publisher: **logging\_pub**
+
+Test your logging configuration
+-------------------------------
+
+Generate and view a **mcpd** event.
+
+SSH to the syslog-ng server at **10.1.1.252** (credentials are **root/default**)..
+
+Watch the **bigip.log** syslog file for your events::
+
+   tail -f /var/log/syslog | grep bigip
+
+Go to **Local Traffic > Pools** and select the **www\_pool**. Disable
+one of the pool members.
+
+*Q1. Did you see messages on the syslog servers?*

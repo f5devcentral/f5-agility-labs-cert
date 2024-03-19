@@ -1,16 +1,11 @@
-Lab 9 - Roles and Partitions
-===============================
+Lab 9 - High Availability
+=========================
 
-In this module you will learn more about user roles and how configuring partitions restricts
-access to portions of the configuration based on user role.
-
-301a Objectives covered: 
-   - 2.04-2.05
-       - Explain how to configure remote authentication and multiple administration
-         roles on the LTM device
-       - Explain the uses of administrative partitions 
+In this module you will configure BIG-IPs for high availability.  Device Service Clusters (DSCs) are a series of BIG-IPs (up to 8) that and support each other and failover applications.
 
 Estimated completion time: **30 minutes**
+
+301a Objectives covered:
 
 .. toctree::
    :maxdepth: 1

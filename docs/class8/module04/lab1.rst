@@ -1,117 +1,75 @@
-Basic Monitoring
-================
+1.06 - Determine how to architect and deploy multi-tier applications using LTM
+===============================================================================
+Multi-tier application configurations are scenarios where the path traverses the BIG-IP multiple times or goes through more than one BIG-IP.  The early versions of this were a Firewall Sandwich.  The idea of a firewall sandwich is traffic coming in from a client hits an external BIG-IP and traffic is SSL-Decrypted.  Traffic is then passed through a collection of firewalls for inspection, and then onto anothe BIG-IP for re-encryption and distribution to the application servers.  This is documented here: https://www.f5.com/services/resources/white-papers/load-balancing-101-firewall-sandwiches
 
-Default Monitors
-----------------
+A situation you may see more often is SNI Routing.  SNI stands for Server Name Indication.  In TLS the SNI value is sent clear text on an initial connection request, the BIG-IP uses a virtual server to distribute traffic to multiple virtual servers based on the SNI value.  An example of this is documented here: https://community.f5.com/t5/technical-articles/sni-routing-with-big-ip/ta-p/282018.
 
-You will be setting up a default monitor to test any node created. You
-can also choose to use custom monitors and monitor on a per node basis.
+Understand connection based architecture and when/how to apply
+--------------------------------------------------------------
+We will now create a multi-tier SNI routing configuration.  
 
-Go to **Local Traffic > Nodes**, note the status nodes.
+Start with creating 2 virtual servers with 1 pool each as follows:
 
-As you can see the nodes in this table, even though they were never
-specifically configured in the Node portion of the GUI. Each time a unique IP
-address is placed in a pool a corresponding node entry is added and
-assigned the default monitor, if configured.
+.. code-block:: tcl
 
-Also note, the node status is currently a blue square (**Unchecked**).
+    create ltm pool secure1_pool members add { 10.1.20.11:443 10.1.20.13:443} monitor https
+    create ltm pool secure2_pool members add { 10.1.20.12:443 10.1.20.14:443} monitor https
+    create ltm virtual secure1_vs destination 10.1.5.16:443 ip-protocol tcp persist replace-all-with { cookie } pool secure1_pool profiles add { clientssl serverssl tcp http } source-address-translation { type automap } translate-address enabled translate-port enabled
+    create ltm virtual secure2_vs destination 10.1.5.15:443 ip-protocol tcp persist replace-all-with { cookie } pool secure2_pool profiles add { clientssl serverssl tcp http } source-address-translation { type automap } translate-address enabled translate-port enabled
 
-*Q1. What would happen if a node failed?*
+Now we will create a traffic policy named **sni_routing** by going to **Local Traffic, Policies, Policy List**.  Click on **Create**.
 
-Select the **Default Monitors** tab.
+    .. image:: /_static/301a/p21.png
+        :scale: 80%
 
-Notice you have several options, for nodes you want a generic monitor,
-so we will choose *icmp*.
+Now click on **Create** in the Rules section and configure the first rule as below:
 
-Select **icmp** from **Available** and place it in **Active**.
+    .. image:: /_static/301a/p22.png
+        :scale: 80%
 
-Select **Node List** or **Statistics** from the top tab.
+Now click on **Create** again to create a 2nd rule as follows:
 
-*Q2. What are your node statuses?*
+    .. image:: /_static/301a/p23.png
+        :scale: 80%
 
-Select **Statistics > Module Statistics > Local Traffic**
+Now create a new virtual server that will be the entry point for the clients:
 
-*Q3. What are the statuses of your nodes, pool and virtual server?*
+ .. code-block:: tcl
 
-Content Monitors
-----------------
-
-The default monitor simply tells us the IP address is accessible, but we
-really don't know the status of the particular application the node
-supports. We are now going to create a monitor to specifically test the
-application we are interested in. We are going to check our web site and
-its basic authentication capabilities.
-
-Browse to **http://10.1.10.100** virtual server and select the **Basic
-Authentication** link under **Authentication Examples**. Log on with the
-credentials **user.1/password**.
+     create ltm virtual sni_vs destination 10.1.10.111:443 ip-protocol tcp persist replace-all-with { ssl } policies replace-all-with { sni_routing } profiles add { clientssl serverssl tcp }
 
 .. HINT::
+    Did you **Save and Publish** your new policy?
 
-   You may have to scroll down the page to find the link.
+Now go to the browser on the desktop and go to https://secure1.f5demo.com.
 
-You could use text from this page or text within the source code to test
-for availability. You could also use HTTP statuses or header
-information. You will be looking for the HTTP status **200 OK** as
-the receive string to determine availability.
+What Pool member did you get?  Why?
 
-Note the URI is **/basic/**. You will need this for your monitor.
+Now go to https://secure2.f5demo.com
 
-Select **Local Traffic > Monitor** on the side-bar and create and new
-HTTP monitor called **www_test**.
+What Pool member did you get?  Why?
 
-.. list-table::
-   :widths: 40 100
 
-   *  - Name 
-      - **www_test**
-   *  - Type
-      - **http**
-   *  - Send String
-      - **GET /basic/ \\r\\n**
-   *  - Receive String
-      - **200 OK**
-   *  - User Name
-      - **user.1**
-   *  - Password
-      - **password**
+SNAT/persistence/SSL settings in multi-tiered environment
+---------------------------------------------------------
 
-.. NOTE:: In case you were wondering, the receive string is NOT case sensitive.
- 
-   By default, in v11.x (which you are being tested on) the default HTTP monitor uses HTTP v1.0.  
-   If you application required HTTP 1.1 you would require a different send string, something like
-   **GET /basic/ HTTP/1.1 \\r\\n Host: <host name>\\r\\n\\r\\n**.
-   
-   An excellent reference for crafting HTTP monitors can be found on ASK F5 at https://support.f5.com/csp/article/K2167. 
-   
+On the BIG-IP configuration page go to **Local Traffic, Virtual Servers** and select **sni_vs** virtual server and then click on the **Resources** Tab.  Change *Default Persistence Profile* from **ssl** to **None** and click on **Update**.
+From your jumphost, browse to https://secure1.f5demo.com and refresh multiple times. Is persistence still in effect. Why?
 
-Click **Finish** and you will be taken back to **Local Traffic > Monitors**
+Now go to the **secure1_vs** *Resources* tab, and set **Default Persistence Profile** to **None**.  Start a new instance of Chrome and go to https://secure1.f5demo.com.  Refresh multiple times.  Does it ever change pool members?  Why?
 
-Do you see your new Monitor?
+Now go to the **secure1_vs** *Properties* tab and remove the ClientSSL and ServerSSL Profiles.  Hit the page again.  Why is it failing to load?
 
-.. HINT:: 
+Now put the **clientssl** and **serverssl** profiles back, and change *Source Address Translation* to **None**. Does the connection work now?  Go to the **sni_vs** Virtual Server and change *Source Address Translation* from **None** to **Auto Map**. Does https://secure1.f5demo.com work now?  Try https://secure2.f5demo.com which has source address translation enabled with **sni_vs** *source address translation* also enabled.  Does this site still work?  Why?
 
-   Check the lower right hand corner of the Monitors list, here you
-   can go to the next page or view all Monitors. You can change the number of records 
-   displayed per page in **System > Preferences**.
 
-Go to **www\_pool** and replace the default **http** monitor with your
-**www\_test** monitor.
+Idenity which device handles specific configuration objects in multi-tiered deployment
+--------------------------------------------------------------------------------------
 
-*Q1. What is the status of the pool and its members?*
+Which virtual server is handling the SNAT functions?  Does one have to?  
 
-*Q2. Go to* **Virtual Servers** *or* **Network Map** *, what is the status of
-your virtual server?*
+Which virtual server controls persistence?  Does it matter?
 
-Just for fun **Reverse** the monitor. Now when **200 OK** is returned it
-indicates the server is not responding successfully.
+Can the ClientSSL functions be on the sni_vs?  What about ServerSSL?  Can they be split between the virtual servers?
 
-*Q3. What is status of your pool and virtual server now?*
-
-You can see where this would be useful if you were looking for a 404
-(bad page) or 50x (server error) response and pulling the failed member
-out of the pool.
-
-.. WARNING::
-
-   Be sure to un-reverse your monitor before continuing.
+How does this change if the virtual servers are on 2 separate instances of BIG-IP?

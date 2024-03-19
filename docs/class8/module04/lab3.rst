@@ -1,95 +1,156 @@
-Pool Member and Virtual Servers
-===============================
+1.08 - Determine which configuration objects are necessary for applications that need the original client IP address
+====================================================================================================================
 
-Create a new monitor
-~~~~~~~~~~~~~~~~~~~~
+SNAT Pools
+----------
 
-In this task, you will determine the effects of monitors on the status
-of pools members.
+You will build a new FTP application, to take a closer look at SNATs and
+SNAT Pools using the **tcpdump** tool and view the connection table.
 
-Create **mysql** monitor for testing.
+When building the FTP application you will use the default
+**FTP** profile and use **Auto Map** for the Source Translation address.
 
-Go to **Local Traffic > Monitors** and select **Create**.
+Go to **Local Traffic > Pools** and create a new pool.
 
-+----------------------+------------------+
-| **Name**             | mysql\_monitor   |
-+======================+==================+
-| **Parent Monitor**   | mysql            |
-+----------------------+------------------+
-| **Interval**         | 15               |
-+----------------------+------------------+
-| **Timeout**          | 46               |
-+----------------------+------------------+
+.. list-table::
+   :widths: 40 30
 
-Effects of Monitors on Members, Pools and Virtual Servers
----------------------------------------------------------
+   *  - Name
+      - **ftp_pool**
+   *  - Health Monitor
+      - **tcp**
+   *  - Address
+      - **10.1.20.15**
+   *  - Service Port
+      - **21**
 
-Go to **Local Traffic > Pools > www\_pool** and assign **mysql\_monitor** to the pool.
+Go to **Local Traffic > Virtual Servers** and create a new virtual server.
 
-Observe Availability Status of **www\_pool.** The pool status
-momentarily changes to **Unknown**.
+.. list-table::
+   :widths: 40 30
 
-*Q1. Since the* **mysql\_monitor** *will fail, how long will it take to
-mark the pool offline?*
+   *  - Name
+      - **ftp_vs**
+   *  - Destination Address
+      - **10.1.10.100**
+   *  - Service Port
+      - **21**
+   *  - FTP Profile
+      - **ftp**
+   *  - Source Address Translation
+      - **Auto Map**
+   *  - Default Pool
+      - **ftp_pool**
 
-Go to **Local Traffic > Pool > www\_pool** and then **Member** from the
-top bar and open member **10.1.20.13:80** and note the status of the
-monitors.
+Verify your FTP virtual server and pool are **Available**.
 
-Open **Local Traffic > Network Map > Show Map**
+Open up a terminal window and SSH to the BIG-IP::
 
-*Q2. What is the icon and status of* **www\_vs**?
+   ssh root@10.1.1.4
+   Password: default.F5demo.com
 
-*Q3. What is the icon and status of* **www\_pool**?
+Or use PuTTY::
 
-*Q4. What is the icon and status of the* **www\_pool** *members?*
+   Username: root
+   Password: default.F5demo.com
 
-*Q5. How does the status of the pool configuration effect the virtual
-server status?*
+At the BIG-IP CLI prompt do a tcpdump of the server-side traffic and
+watch the FTP pool member::
 
-Clear the virtual server statistics.
+  tcpdump -nni server_vlan host 10.1.20.15
 
-Browse to **http://10.1.10.100** and note the browser results,
-statistics and tcpdump.
+From a command prompt on your Windows Jumpbox, FTP to 10.1.10.100. The logon credentials
+are **root/default**. It may take 15-20 seconds to connect.
 
-Disable **www\_vs** and clear the statistics and ping the virtual
-server.
+*Q1. Do you see traffic destined for the for the FTP server? What is the source IP?*
 
-*Q6. What is the icon and status of* **www\_vs**?
+Imagine a dozen virtual servers using Auto Map. It would be extremely difficult to watch for particular client traffic from a particular virtual server. Not to mention a SNAT IP address can only handle 65535. SNAT pools can make management and debugging a little easier and keep port exhaustion at bay.
 
-Browse to **http://10.1.10.100** and note the browser results,
-statistics and tcpdump.
+Create a SNAT pool and assign it to the FTP server.
 
-*Q7. Did traffic counters increment for* **www\_vs**?
+Go to **Local Traffic > Address Translation** on the sidebar and select **SNAT Pool List**
+and create a new SNAT pool named **SNATpool\_249** with **10.1.20.249**
+as a member.
 
-*Q8. What is the difference in the tcpdumps between Offline (Disabled) vs
-Offline (Enabled)?*
+*Q2. Why might you require more than one IP address in the SNAT pool?*
 
-.. WARNING::
+Go to the **ftp\_vs** and change the **Source Address Translation** to
+the **SNATpool\_249** pool.
 
-   Make sure all virtual servers, pools and pool members are **Enabled** before continuing.
+Let's try the tcpdump we did earlier, but have it limited to the pool
+member and SNAT pool IP::
 
-More on status and member specific monitors
--------------------------------------------
+   tcpdump -nni server_vlan host 10.1.20.15 and 10.1.20.249
 
-Go to **Local Traffic > Pool > www\_pool** and then **Member** from the
-top bar and open member **10.1.20.13:80.** Enable the **Configuration:
-Advanced** menus.
+Now there is no extraneous traffic being seen. From the command prompt, ftp to **10.1.10.100** and log on to the ftp server. User: **root**
+Password: **default**
 
-*Q1. What is the status of the Pool Member and the monitors assigned to
-it?*
+*Q3. What is the client IP that shows up in the tcpdump?*
 
-In **Health Monitors** select **Member Specific** and assign the
-**http** monitor and **Update.**
+Open up another SSH session to the BIG-IP, go into **TMSH** and dump the
+connection table::
 
-Go to the **Network Map**.
+   show sys connection
 
-*Q2. What is the status of* **www\_vs**, **www\_pool** *and the pool
-members? Why?*
+Find the connection with your client IP 10.1.10.199 and the SNAT pool IP 10.1.20.249.
 
-Browse to **http://10.1.10.100** and note results of browser and
-tcpdump.
+*Q4. What are the ephemeral port numbers on your client-side source IP
+and server-side source IP?*
 
-*Q3. Did the site work?*
+More SNATs and NATs
+-------------------
 
-*Q4. Which* **www\_pool** *members was traffic sent to?*
+Let's take a look at using SNATs to allow internal resources to access
+external resources more securely and the difference between a SNAT and
+a NAT.
+
+The **LAMP** server used for the internal server farm has a default gateway
+of **10.1.20.240** and has no external access at this time, but you can SSH
+to it via the out-of-band management network at **10.1.1.252**.
+
+On the BIG-IP, add a new self IP address named **server\_gw** to the VLAN
+**server\_vlan**, with an IP address of **10.1.20.240** and netmask of **255.255.255.0**
+
+From the jumpbox, SSH to the LAMP server at **10.1.1.252**. You can open PuTTY, load the LAMP (10.1.1.252) server profile and SSH to the LAMP server or open a terminal window and **ssh root@10.1.1.252**.  It may take up to 30 seconds for the prompt to become responsive when you attempt to login.
+
+Credntials::
+
+   Username: root
+   Password: default
+
+At the command prompt, attempt to hit the Google open DNS server::
+
+   dig @8.8.4.4
+
+*Q1. Did the command succeed?*
+
+On the BIG-IP, open the **Local Traffic > Address Translation > SNAT List** and select **Create**
+
+Create a new SNAT translation Name: **server\_snat,** used the IP
+address **10.1.10.248** for the Translation and limit the allowed
+ingress traffic to VLAN **VLAN \/ Tunnel Traffic: Enabled on...: server\_vlan**.
+
+In a BIG-IP terminal window, do a **tcpdump** on the **client\_vlan**,
+limited to the **10.1.10.248** and **8.8.4.4**.
+
+From the LAMP server try the **dig** command again and then try to **ping
+8.8.4.4** from the LAMP server.
+
+*Q2. Did the dig work? What was the source IP?. Did the ping work? What
+was the result?*
+
+From the Linux prompt attempt to FTP to **10.1.10.248**.
+
+*Q3. What happened when you try to FTP to the SNAT address?*
+
+Go to **Statistics >> Module Statistics >> Local Traffic** and select
+**Statistics Type: SNAT Translations** and review the information.
+
+Under **Local Traffic > Address Translation** go to the **NAT List** and create a NAT
+named **server\_15\_nat** with a **NAT Address** of **10.1.10.15** and
+an **Origin: Address List** with **Address/Prefix Lenght** set to **10.1.20.15/32** (don't forget to click **Add** before clicking **Finished**).
+
+Attempt to FTP to 10.1.10.15. Attempt to ping 10.1.10.15.
+
+*Q4. When you attempted to FTP and ping 10.1.10.15 and access 10.1.20.15
+behind the BIG-IP were you successful?*

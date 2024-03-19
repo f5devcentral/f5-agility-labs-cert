@@ -64,8 +64,8 @@ Yes, you should be able to FTP and ping to 10.1.20.15.
 Module - Profiles
 =================
 
-Working with Profiles
----------------------
+Profiles
+--------
 
 Working with profiles
 ~~~~~~~~~~~~~~~~~~~~~
@@ -500,8 +500,8 @@ Module - Virtual Servers and Packet Processing Review
 Lab Preparation and Packet Processing
 -------------------------------------
 
-Open BIG-IP TMSH and TCPDump session 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Open BIG-IP TMSH and TCPDump sessions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Q1. Why are ssh sessions not displayed in connection table?*
 
@@ -515,7 +515,7 @@ Establish ftp connection
 *Q1. In the tcpdump above, what is client IP address and port and the
 server IP address port?*
 
-10.1.10.51:60603 and 10.1.10.20:21 (FTP)
+10.1.10.199:60603 and 10.1.10.20:21 (FTP)
 
 .. NOTE::
 
@@ -870,7 +870,7 @@ a self IP on bigip01.
 
 *Q3. Did the site work? What was the client IP? Why?*
 
-Yes, 10.1.10.51 because SNAT Auto Map is not configured on this virtual server and the pool member uses the floating IP as a default gateway.
+Yes, 10.1.10.199 because SNAT Auto Map is not configured on this virtual server and the pool member uses the floating IP as a default gateway.
 
 *Q4. What was the client IP address that the server saw (under* **Request
 Details** *on the main page)? Why?*
@@ -883,7 +883,7 @@ SNAT connections on non-floating self IPs.
 
 *Q5. Does http://10.1.10.115 still work? What is the client IP?*
 
-Yes, 10.1.10.51 
+Yes, 10.1.10.199 
 
 Mirroring
 ~~~~~~~~~
@@ -955,8 +955,8 @@ the jumpbox source IPs.
 
 *Q2. Were new ssh sessions established?*
 
-Yes, to 10.1.1.245, No, to 10.1.10.245 (the source IP for that would be
-10.1.10.51)
+Yes, to 10.1.1.4, No, to 10.1.10.245 (the source IP for that would be
+10.1.10.199)
 
 BIG-IP Remote Logging
 ---------------------
