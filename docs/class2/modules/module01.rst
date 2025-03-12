@@ -17,7 +17,7 @@ You will need create two untagged VLANs, one client-side VLAN (**client_vlan**) 
 1. From the sidebar select **Network** **> VLANs** then select
    **Create**
 
-.. image:: /docs/_static/101/image10.png
+.. image:: /_static/101/image10.png
    :width: 3.29032in
    :height: 2.625in
 
