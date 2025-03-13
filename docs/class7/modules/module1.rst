@@ -2634,16 +2634,6 @@ HTTP monitor.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
 Objective - 1.09 - Given a set of parameters, predict an outcome of a monitor status on other LTM device objects
 ----------------------------------------------------------------------------------------------------------------
 
