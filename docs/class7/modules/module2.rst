@@ -426,15 +426,6 @@ network option, and enter 0.0.0.0 for the IP address.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.02 Given a network diagram, determine the appropriate network and system settings (i.e., VLANs, selfIPs, trunks, routes, NTP servers, DNS servers, SNMP receivers and syslog servers)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -758,16 +749,6 @@ define more advanced NTP configurations on the BIG-IP system.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
 Objective - 2.03 Explain how to configure remote authentication and multiple administration roles on the LTM device
 -------------------------------------------------------------------------------------------------------------------
 
@@ -849,15 +830,6 @@ commands.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.04 Explain the uses of administrative partitions
 --------------------------------------------------------------
@@ -988,15 +960,6 @@ commands.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.05 Given a scenario, determine an appropriate high availability configuration (i.e., failsafe, failover and timers)
 ---------------------------------------------------------------------------------------------------------------------------------
@@ -1233,15 +1196,6 @@ domain.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.06 Given a scenario, describe the steps necessary to set up a device group, traffic group and HA group
 --------------------------------------------------------------------------------------------------------------------
@@ -1658,15 +1612,6 @@ traffic groups, with each service having its own MAC masquerade address.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.07 Predict the behavior of an LTM device group or traffic groups in a given failure scenario
 ----------------------------------------------------------------------------------------------------------
@@ -1875,15 +1820,6 @@ management port for each VIPRION system.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.08 Determine the effect of LTM features and/or modules on LTM device performance and/or memory
 ------------------------------------------------------------------------------------------------------------
@@ -2355,15 +2291,6 @@ use the Configuration utility to provision the licensed modules.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.09 Determine the effect of traffic flow on LTM device performance and/or utilization
 --------------------------------------------------------------------------------------------------
@@ -2522,15 +2449,6 @@ devices in the device group.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.10 Determine the effect of virtual server settings on LTM device performance and/or utilization
 -------------------------------------------------------------------------------------------------------------
@@ -2635,15 +2553,6 @@ mirroring in the event of equipment or cable failure.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.11 Describe how to deploy vCMP guests and how the resources are distributed
 -----------------------------------------------------------------------------------------
@@ -3129,15 +3038,6 @@ staging, or environment consolidation.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 2.12 Determine the appropriate LTM device security configuration to protect against a security threat
 -----------------------------------------------------------------------------------------------------------------
@@ -4062,15 +3962,6 @@ traffic is being forwarded).
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Conclusion
 ==========
@@ -4087,11 +3978,6 @@ F5CertGuides@f5.com.
 Thank you for using this study guide to prepare the 301a – LTM
 Specialist exam and good luck with your certification goals.
 
-Thanks
 
-
-**Eric Mitchell**
-
-Sr. Systems Engineer - Global SI
 
 
