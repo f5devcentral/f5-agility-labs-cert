@@ -3,16 +3,6 @@ F5 301a Introduction
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
 **F5 - 301a Local Traffic Manager Specialist Exam**
 
 The F5 BIG-IP Local Traffic Manager (LTM) increases an application’s
@@ -376,16 +366,6 @@ data groups, and forward all other connections:
    }
    }
    }
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
 
 |
 
@@ -852,20 +832,10 @@ required for the virtual server.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 1.03 - Given an application configuration, determine which functions can be offloaded to the LTM device
 -------------------------------------------------------------------------------------------------------------------
 
-|
 |
 
 **1.03 – Explain how to offload HTTP servers for SSL, compression and caching**
@@ -1267,16 +1237,6 @@ server.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
 Objective - 1.04 - Given an iRule functionality, determine the profiles and configuration options necessary to implement the iRule
 ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -1409,15 +1369,6 @@ could not run.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 1.05 - Given application requirements, determine the appropriate profile and persistence settings
 -------------------------------------------------------------------------------------------------------------
@@ -1992,16 +1943,6 @@ profile, or create a custom profile.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
 Objective - 1.06 - Explain the steps necessary to configure AVR
 ---------------------------------------------------------------
 
@@ -2190,15 +2131,6 @@ server to ensure that the charts show accurate statistics.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 1.07 - Given a set of reporting requirements, determine the AVR metrics and entities to collect
 -----------------------------------------------------------------------------------------------------------
@@ -2325,16 +2257,6 @@ Collected Metrics
 +--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Methods                  | Saves HTTP methods in requests.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 +--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
 
 |
 
@@ -2712,16 +2634,6 @@ HTTP monitor.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
 Objective - 1.09 - Given a set of parameters, predict an outcome of a monitor status on other LTM device objects
 ----------------------------------------------------------------------------------------------------------------
 
@@ -2813,15 +2725,6 @@ potentially be slow to mark a pool member as up.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 1.10 - Given a health monitor configuration and pool member response predict the resulting status of the pool member
 --------------------------------------------------------------------------------------------------------------------------------
@@ -3027,16 +2930,6 @@ sending a TCP response with the RST flag set. For more information,
 refer to Internet Engineering Task Force (RFC 793), section Reset
 Generation. This link takes you to a resource outside of AskF5. The
 third party could remove the document without our knowledge.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
 
 |
 
@@ -3710,15 +3603,6 @@ have a negative impact on your system.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 1.12 - Given a scenario determine the steps required to maintain SSL certificates
 ---------------------------------------------------------------------------------------------
@@ -4206,15 +4090,6 @@ a negative impact on your system.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 1.13 - Given a set of application requirements, determine the appropriate virtual server type to use
 ----------------------------------------------------------------------------------------------------------------
@@ -4471,15 +4346,6 @@ the virtual server type options and defines each virtual server type:
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 1.14 - Given a set of application requirements, determine the appropriate virtual server configuration settings
 ---------------------------------------------------------------------------------------------------------------------------
@@ -4767,16 +4633,6 @@ perform.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
 Objective - 1.15 - Explain the matching order of multiple virtual servers
 -------------------------------------------------------------------------
 
@@ -4878,15 +4734,6 @@ listener destination 192.168.10.0/24 and source 192.168.20.1.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 1.16 - Given a scenario, determine the appropriate load balancing method(s)
 ---------------------------------------------------------------------------------------
@@ -5175,16 +5022,6 @@ will be load balanced to the best available pool member according to the
 algorithm but all additional calls by that user will be sent to that
 same pool member based on the persistence type’s criteria regardless of
 the algorithm.
-
-|
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
 
 |
 
@@ -5573,16 +5410,6 @@ The following table describes the available settings for this feature.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
-
 Objective - 1.18 - Explain the effect of configuration options and resource health on load balancing decisions
 --------------------------------------------------------------------------------------------------------------
 
@@ -5816,15 +5643,6 @@ system for load balancing traffic to pool members.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
 Objective - 1.19 - Describe how to deploy and modify applications using existing and/or updated iApp application templates
 --------------------------------------------------------------------------------------------------------------------------
@@ -6121,13 +5939,4 @@ ready to use.
 
 |
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3uDzuRZ47FA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-====
-
-|
 
