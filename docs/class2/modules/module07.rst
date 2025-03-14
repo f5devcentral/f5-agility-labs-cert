@@ -42,9 +42,11 @@ b. Fill out information for Username and Password
       :width: 5.01042in
       :height: 5.59576in
 
-b. Add user to partition, give user TMSH access for Terminal Access and select **Finished**
+c. Add user to partition, give user TMSH access for Terminal Access and select **Finished**
 
 ..
    .. image:: /_static/101/image73.png
       :width: 5.01042in
       :height: 5.59576in
+
+d. Log out of the F5 at the top right and log back in with the new credentials you created
