@@ -16,7 +16,7 @@ b. You will be able to see what modules are provisoned and the license state on 
 
 .. image:: /_static/101/image70.png
    :width: 5.01042in
-   :height: 2.59576in
+   :height: 4.59576in
 
 
 
