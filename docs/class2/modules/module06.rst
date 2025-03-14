@@ -23,9 +23,9 @@ be creating a high availability VLAN.
 1. On **bigip01.f5demo.com** archive your configuration in case you need
    to revert.
 
-j. Go to **System > Archives** and create a new archive.
+a. Go to **System > Archives** and create a new archive.
 
-k. You will be using your third interface (1.3) for Network Failover and
+b. You will be using your third interface (1.3) for Network Failover and
    ConfigSync. This requires certain ports to be open on the Self IP;
    TCP port 4353 for ConfigSync and TCP port 1026 for Network Failover
    and TCP port 6699 for the Master Control Program.
