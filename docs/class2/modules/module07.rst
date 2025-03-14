@@ -24,6 +24,7 @@ Creating User on BIG-IP
 1. On **bigip01.f5demo.com**
 
 a. Go to **System > Users**
+
    i. Click Create
 
 .. image:: /_static/101/image71.png
@@ -31,13 +32,14 @@ a. Go to **System > Users**
    :height: 4.59576in
 
 b. Fill out information for Username and Password
+
    i. For Role, please select **Administrator**
 
 .. image:: /_static/101/image72.png
    :width: 5.01042in
    :height: 5.59576in
 
-   ii. Add user to partition, give user TMSH access for Terminal Access and select **Finished**
+b. Add user to partition, give user TMSH access for Terminal Access and select **Finished**
 
 .. image:: /_static/101/image73.png
    :width: 5.01042in
