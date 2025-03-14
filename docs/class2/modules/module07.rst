@@ -15,8 +15,8 @@ a. Go to **System > Resource Provisioning**
 b. You will be able to see what modules are provisoned and the license state on this page per your license on the BIG-IP.
 
 .. image:: /_static/101/image70.png
-   :width: 5.01042in
-   :height: 4.59576in
+   :width: 7.01042in
+   :height: 6.59576in
 
 
 
