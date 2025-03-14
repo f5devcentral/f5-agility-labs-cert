@@ -27,8 +27,8 @@ a. Go to **System > Users**
    i. Click Create
 
 .. image:: /_static/101/image71.png
-   :width: 5.01042in
-   :height: 4.59576in
+   :width: 8.01042in
+   :height: 3.59576in
 
 b. Fill out information for Username and Password
    i. For Role, please select "Administrator"
