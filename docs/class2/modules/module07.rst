@@ -27,17 +27,17 @@ a. Go to **System > Users**
    i. Click Create
 
 .. image:: /_static/101/image71.png
-   :width: 5.01042in
-   :height: 5.59576in
+   :width: 8.01042in
+   :height: 4.59576in
 
 b. Fill out information for Username and Password
-   i. For Role, please select **Administrator
+   i. For Role, please select **Administrator**
 
 .. image:: /_static/101/image72.png
    :width: 5.01042in
    :height: 5.59576in
 
-   ii. Add user to partition, give user TMSH access for Terminal Access and select **Finished
+   ii. Add user to partition, give user TMSH access for Terminal Access and select **Finished**
 
 .. image:: /_static/101/image73.png
    :width: 5.01042in
