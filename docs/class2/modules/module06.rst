@@ -45,7 +45,8 @@ b. You will be using your third interface (1.3) for Network Failover and
    login with the credentials **admin/f5UDFrocks!**.
 
    a. **bigip02** has already been licensed and provisioned. You will
-      need to set up the base networking.
+      need to set up the base networking. 
+         i. If short on time, you can go to **System > Archives** and restore the networking configuration from the UCS Backup
 
 +----------------+----------------+-----------------+-----------------+
 | **Interface**  | **Untagged     | **Self IP**     | **Netmask**     |
