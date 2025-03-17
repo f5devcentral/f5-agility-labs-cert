@@ -29,7 +29,7 @@ a. Note: When we created the pool, we performed all our configuration on
    one page, but when we modify a pool the **Resource** information is
    under the **Members** tab
 
-5. Under **Load** **Balancing** section
+2. Under **Load** **Balancing** section
 
    a. Change the **Load** **Balancing** **Method** to **Ratio (Member)**
 
@@ -43,7 +43,7 @@ a. Note: When we created the pool, we performed all our configuration on
 
 c. Don’t forget the **Update** button
 
-a. Then under **Current Members**
+d. Then under **Current Members**
 
    i.  Select the first member in the pool **10.1.20.11:80**.
 
@@ -55,9 +55,9 @@ a. Then under **Current Members**
    :width: 4.26042in
    :height: 4.04175in
 
-b. Select the **Update** button
+e. Select the **Update** button
 
-2. Verification
+3. Verification
 
    a. Check the pool statics by selecting **Statistics** in the top bar,
       if you are still in **Local Traffic> Pools** or by going to
@@ -123,7 +123,7 @@ c. Select the pool members **10.1.20.11** and **10.1.20.12** and set
    :width: 4.49091in
    :height: 4.26042in
 
-6. Review your settings and let’s see how load balancing reacts now.
+2. Review your settings and let’s see how load balancing reacts now.
 
    a. Select the **Statistics** tab.
 
@@ -137,12 +137,12 @@ c. Select the pool members **10.1.20.11** and **10.1.20.12** and set
 
    f. Which member isn’t taking connections?
 
-7. Let’s simulate a maintenance window, or an outage, by disabling a
+3. Let’s simulate a maintenance window, or an outage, by disabling a
    pool member in the highest priority group. As this will drop the
    number of active members below 2, this should cause the low priority
    group to be activated.
 
-8. Select the member in the Priority Group 2 and Disable that pool
+4. Select the member in the Priority Group 2 and Disable that pool
    member.
 
    a. Select the **Disable** button
@@ -153,10 +153,10 @@ c. Select the pool members **10.1.20.11** and **10.1.20.12** and set
       :width: 6.9739in
       :height: 1.24444in
 
-b. The status indicator now goes to black, indicating the member has
+a. The status indicator now goes to black, indicating the member has
    been disabled
 
-1. Once again, select **Statistics**, reset the pool statistics, browse
+5. Once again, select **Statistics**, reset the pool statistics, browse
    to the virtual server and see which pool members are taking hits now.
 
 .. tip:: Once you are done testing re-enable your disabled pool member.
@@ -194,11 +194,11 @@ d. Select **icmp** from the **Available** box and hit the arrows button pointing
 
 e. Click on the **Update** button to finalize your changes.
 
-10. Select **Node List** or **Statistics** from the top tab.
+2. Select **Node List** or **Statistics** from the top tab.
 
     a. What is the Status of the Nodes?
 
-11. Select **Statistics>Module Statistics>Local Traffic**
+3. Select **Statistics>Module Statistics>Local Traffic**
 
     a. What is the Status of your Nodes, Pool and Virtual Server?
 
@@ -211,7 +211,7 @@ The default monitor simply tells us the IP address is accessible, but we really 
 
 2. We will be looking for the HTTP status “\ **200 OK**\ ” in the HTTP header infomration as our receive string to determine availability.
 
-1. Select **Local Traffic>Monitor** on the side-bar and select the plus
+3. Select **Local Traffic>Monitor** on the side-bar and select the plus
    (**+**) sign or the **Create**
 
 .. image:: /_static/101/image32.png
@@ -250,7 +250,7 @@ c. Click **Finish** and you will be taken back to **Local
       :width: 0.94444in
       :height: 0.55556in
 
-1.  Where is your new Monitor?
+4.  Where is your new Monitor?
 
     a. **Hint:** Check the lower right hand corner of the Monitors list,
        here you can go to the next page or view all Monitors
@@ -258,7 +258,7 @@ c. Click **Finish** and you will be taken back to **Local
     b. You can change the number of records displayed per page in
        **System>Preferences**
 
-2.  Go to **Local Traffic>Pools>www_pool** and choose **Properties**
+5.  Go to **Local Traffic>Pools>www_pool** and choose **Properties**
     from the top bar.
 
     a. Remove the **http** monitor from the Active box.
@@ -271,13 +271,13 @@ c. Click **Finish** and you will be taken back to **Local
    :width: 3.76042in
    :height: 3.10417in
 
-14. Hit **Update** to apply the change.
+6. Hit **Update** to apply the change.
 
     a. Select **Statistics** from the tabs.
 
     b. What is the status of the pool and its members?
 
-15. Go to **Local Traffic>Virtual Servers**, what is the status of your
+7. Go to **Local Traffic>Virtual Servers**, what is the status of your
     virtual server?
 
     a. Browse to your **www_vs** virtual server. Which members are
@@ -361,28 +361,28 @@ In this lab we will configure a couple types of persistence and view their behav
           i. Note the check box for your new custom profile isn’t grayed out
              and can be selected to allow you to delete the profile if desired.
        
-       1. Now let’s attach our new profile to the virtual server.
+       f. Now let’s attach our new profile to the virtual server.
        
-          a. Go to **Local Traffic>Virtual Server** and ….
+          i. Go to **Local Traffic>Virtual Server** and ….
        
-             i.  Select **www_vs** and the **Resources** tab or ….
+             1.   Select **www_vs** and the **Resources** tab or ….
        
-             ii. Take the shortcut directly to the **Resources** of the virtual server. (Can you find it?)
+             2. Take the shortcut directly to the **Resources** of the virtual server. (Can you find it?)
 
       .. note:: 
          When we created the Virtual Server everything was on a single page, we find when we return to modify the Virtual Server the Properties and Resources are on different pages.
       
       |
-       b. Set the **Default Persistence Profile** to **my-src-persist**.
+       g. Set the **Default Persistence Profile** to **my-src-persist**.
        
        .. image:: /_static/101/image39.png
           :width: 3.41667in
           :height: 1.90957in
        
-       c. Don’t forget to **Update** before leaving the page. *(Be careful,
+       h. Don’t forget to **Update** before leaving the page. *(Be careful,
           someday I will quit telling you that.)*
        
-       d. Testing Source Address Affinity
+       I. Testing Source Address Affinity
        
           i.   At this point you may want to open a second browser window to
                the management GUI.
@@ -396,15 +396,15 @@ In this lab we will configure a couple types of persistence and view their behav
           :width: 4.47075in
           :height: 2.22917in
        
-       1. At this point you will see that Persistence Records statistics
+       j. At this point you will see that Persistence Records statistics
           display has been disabled in version 12.1. A TMSH database command is
           required to activate it.
        
-          a. SSH to you BIG-IP.
+          i. SSH to you BIG-IP.
        
-          b. At the prompt enter: **tmsh**
+          ii. At the prompt enter: **tmsh**
        
-          c. At the TMSH prompt enter the command in the **Persistence Value** GUI.
+          iii. At the TMSH prompt enter the command in the **Persistence Value** GUI.
 
             .. admonition:: TMSH
 
@@ -412,14 +412,14 @@ In this lab we will configure a couple types of persistence and view their behav
                
 Tab completion will make this a little easier
             
-       1. Now, in this window you can watch you persistence records. You may
+       2. Now, in this window you can watch you persistence records. You may
           want to set **Auto Refresh** to 20 seconds.
        
        .. image:: /_static/101/image41.png
           :width: 4.8125in
           :height: 1.80366in
        
-       1. In your other management GUI window go to **www_pool** and clear the
+       3. In your other management GUI window go to **www_pool** and clear the
           member statistics.
        
           a. Open a browser session to your virtual server and refresh several
@@ -450,7 +450,7 @@ Tab completion will make this a little easier
           :width: 3.59403in
           :height: 3.15625in
        
-       1. As you can see the default **Cookie Method** is **HTTP** **Cookie**
+       2. As you can see the default **Cookie Method** is **HTTP** **Cookie**
           **Insert**, so we won’t have to modify the Cookie Method
        
        a. The BIG-IP will also create a cookie name for you using a combination
@@ -482,7 +482,7 @@ Tab completion will make this a little easier
           the cookie the prerequisite for the Cookie Profile is the HTTP
           profile.
        
-       1. We will have to go to the virtual server to add the HTTP profile,
+       3. We will have to go to the virtual server to add the HTTP profile,
           prior to adding the Cookie Persistence profile.
        
           a. Select the **Properties** tab on your virtual server
@@ -499,7 +499,7 @@ Tab completion will make this a little easier
        d. Now we can go back to the **Resource** tab and add our cookie
           persistence profile.
        
-       1. Testing cookie persistence.
+       4. Testing cookie persistence.
        
           a. If you wish you can watch the member statistics to validate your
              persistence.

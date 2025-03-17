@@ -20,11 +20,11 @@ Troubleshoot using TCPDump or Curl.
 
       i. Because BIG-IP is not the server’s default gateway the server's response goes around the BIG-IP.
 
-   a. The web administrator tells you everything is fine as far as he
+   b. The web administrator tells you everything is fine as far as he
       can see and thinks the issue is with the BIG-IP, because they
       ALWAYS think the issue is with the BIG-IP.
 
-   b. You begin by debugging the client connections to the web servers
+   c. You begin by debugging the client connections to the web servers
       through the BIG-IP using TCPDump.
 
 2. SSH to the management port of your BIG-IP. Remember the BIG-IP is a
@@ -70,14 +70,14 @@ Troubleshoot using TCPDump or Curl.
 c. From the dump you can see you are are hitting the virtual server.  Your original client IP is in the first line of
    the dump *16:44:58.801250 IP* **<client_ip>.41536** > **10.1.10.100.http:** going to the virtual server.  The dump clip shows the TCP three-way handshake between the client and the virtual server and the initial part of the request **GET/ HTTP/1.1 Host: 10.1.10.100**
 
-1. In the second SSH window we will do an expanded **tcpdump** for the
+3. In the second SSH window we will do an expanded **tcpdump** for the
    sake of interest.
 
    a. **tcpdump –i <server vlan name> -X –s128 host <client IP>**
 
    b. Hit your virtual server again. You see packets with your client IP heading for the servers. They just aren’t responding. So we could reasonably suspect a server issue.
 
-2. First, let’s check to see if the server is responding to HTTP on port 80. On the BIG-IP in an SSH window:
+4. First, let’s check to see if the server is responding to HTTP on port 80. On the BIG-IP in an SSH window:
 
    a. Do a **<ctrl-c>** to escape out of **tcpdump**, if you are still
       in it, and use **curl** to test the server.  You should get output akin to whats below.

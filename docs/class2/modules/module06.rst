@@ -94,14 +94,14 @@ a. Under **System > Device Certificate > Device Certificate** select the
 b. Under **Device Management > Device Trust > Local Domain** select
    **Reset Device Trust…**
 
-i. In the **Certificate Signing Authority** select **Generate New
+   i. In the **Certificate Signing Authority** select **Generate New
    Self-Signed Authority** and hit **Update**.
 
-2. **On each BIG-IP** configure the device object failover parameters
+   ii. **On each BIG-IP** configure the device object failover parameters
    the BIG-IP will send to other BIG-IPs that want to be a part of a
    sync-only or sync-failover group.
 
-   a. Under **Device Management>Device**, select the local BIG-IP. It
+c. Under **Device Management>Device**, select the local BIG-IP. It
       will have the **(Self)** suffix.
 
       i.  Under **Device Connectivity** on the top bar select:
@@ -122,14 +122,14 @@ i. In the **Certificate Signing Authority** select **Generate New
 
           4. **Note:** Multicast is for Viprion chasses only.
 
-      i. **Mirroring**
+      iii. **Mirroring**
 
          1. **Primary Local Mirror Address**: use the Self IP address of
             the HA VLAN for your
 
          2. **Secondary Local Mirror Address:** None
 
-7. On **bigip01.f5demo.com** build the Device Trust.
+2. On **bigip01.f5demo.com** build the Device Trust.
 
    a. Under **Device Management>Device Trust> Device Trust Members** and
       select **Add** to add other BIG-IP(s) you will trust.
@@ -161,7 +161,7 @@ i. In the **Certificate Signing Authority** select **Generate New
       :width: 4.5974in
       :height: 0.53243in
 
-v. If some information is missing delete the trust and try again.
+3. If some information is missing delete the trust and try again.
 
 ..
 
@@ -169,17 +169,17 @@ v. If some information is missing delete the trust and try again.
       :width: 4.51948in
       :height: 0.50506in
 
-vi. What are the statuses of your BIG-IPs now?
+4. What are the statuses of your BIG-IPs now?
 
-    1. They should be **In Sync**. But wait! We haven’t even created a
+    a. They should be **In Sync**. But wait! We haven’t even created a
        device group! But remember the **Device Trust** creates a
        **Sync-Only** group for the certificates under the covers
        (*device-trust-group*) and that should be in sync.
 
-    2. Click on **In Sync** in the upper right corner or **Device
+    b. Click on **In Sync** in the upper right corner or **Device
        Management>Overview** to see the **device_trust_group**.
 
-8. On bigip01.f5demo.com create a new **Sync-Failover** device group
+5. On bigip01.f5demo.com create a new **Sync-Failover** device group
 
    a. **Under Device Management>Device Groups** create a new device
       group.
@@ -217,7 +217,7 @@ vi. What are the statuses of your BIG-IPs now?
 
             2. Are the configurations the same?
 
-9. Now that you have created your HA environment. HA selections will
+6. Now that you have created your HA environment. HA selections will
    show up for SNAT addressed (not tied to your base network),
    persistence profiles and connection mirroring on virtual servers.
 
@@ -241,7 +241,7 @@ vi. What are the statuses of your BIG-IPs now?
       ii. Check the persistence records on each of your BIG-IPs, you
           should see the records are mirrored on each device.
 
-1. Go to **Device Management>Traffic Groups**. As you can see the
+7. Go to **Device Management>Traffic Groups**. As you can see the
    default traffic group “\ **traffic-group-1**\ ” already exists.
 
    a. Select **traffic-group-1**, check out the page information and
@@ -309,34 +309,34 @@ Building an HTTP application using an iApp template.
 
       iv.  Under **Template Options**
 
-1. Select the **Advanced – Configure advanced options** for the
+2. Select the **Advanced – Configure advanced options** for the
    configuration mode.
 
-   i. Under **Network**
+   a. Under **Network**
 
-1. **How have you configured routing on your web servers?:** Servers
+3. **How have you configured routing on your web servers?:** Servers
    have a route to the clients through the BIG-IP system.
 
    a. In other words, the BIG-IP is the default gateway for the servers.
 
    b. Otherwise the template would use SNAT by default.
 
-   i. Under **Virtual Server and Pools**
+   c. Under **Virtual Server and Pools**
 
-1. Your virtual server IP is **10.1.10.110**
+4. Your virtual server IP is **10.1.10.110**
 
-2. Your hostname will be `www.f5demo.com <http://www.f5agility.com>`__
+5. Your hostname will be `www.f5demo.com <http://www.f5agility.com>`__
    because you have to put one in.
 
-3. Create a new pool with the members **10.1.20.14:80** and
+6. Create a new pool with the members **10.1.20.14:80** and
    **10.1.20.15:80**
 
    a. **If you hit add after the last pool member and have a new row,
       you will need to delete the row prior to finishing.**
 
-   i. Hit **Finished** at the bottom of the page.
+   b. Hit **Finished** at the bottom of the page.
 
-2. Go to **iApp>Application Services** and select the new application
+7. Go to **iApp>Application Services** and select the new application
    you created.
 
    a. Select **Components** from the top bar.
@@ -346,17 +346,17 @@ Building an HTTP application using an iApp template.
 
       ii. Do you see anything created that you weren’t asked about?
 
-3. Remember the concept of strictness? Let’s test that out.
+8. Remember the concept of strictness? Let’s test that out.
 
 a. Go to Local Traffic>>Pools>>Pool List
 
-i.  Select the pool created by your iApp **my_new_iapp_pool**
+b.  Select the pool created by your iApp **my_new_iapp_pool**
 
-ii. Attempt to add **10.1.20.13:80** to your **my_new_iapp_pool**.
+c. Attempt to add **10.1.20.13:80** to your **my_new_iapp_pool**.
 
-    1. Did it fail?
+    i. Did it fail?
 
-b. Go to your iApp and select Reconfigure from the top bar.
+d. Go to your iApp and select Reconfigure from the top bar.
 
 i.  Now attempt to add your new pool member.
 
@@ -380,18 +380,18 @@ Active-Active Setup
              **bigip02.f5demo.com** and auto failback to **bigip02** if
              **bigip02** should go down and come back up later.
 
-          1. Is this normally a good idea?
+          2. Is this normally a good idea?
 
-      i.   **Failover Method:** HA Order
+      iii.   **Failover Method:** HA Order
 
-      ii.  **Auto Failback:** <checked>
+      iv.  **Auto Failback:** <checked>
 
-      iii. **Failover Order:** **bigip02.f5demo.com**\ then
+      v. **Failover Order:** **bigip02.f5demo.com**\ then
            **bigip01.f5demo.com**
 
-      iv.  Ensure you synchronized the change to the other BIG-IP.
+      vi.  Ensure you synchronized the change to the other BIG-IP.
 
-10. If the traffic group is active on the wrong BIG-IP initially you
+2. If the traffic group is active on the wrong BIG-IP initially you
     will have to do a Force to Standby on the traffic group to make it
     active on BIG-IP you want it on by default.
 

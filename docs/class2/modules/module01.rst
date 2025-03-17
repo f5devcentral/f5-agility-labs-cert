@@ -48,7 +48,7 @@ c. Under **Resources** in the **Interfaces** section:
    :width: 2.39187in
    :height: 1.66681in
 
-iv. When you have completed your VLAN configuration, hit the
+d. When you have completed your VLAN configuration, hit the
     **Finished** button
 
 .. important::
@@ -125,9 +125,9 @@ b. Under **Properties**
    vi.  When you have completed defining your default gateway, hit the
         **Finished** button
 
-1. Verify your network configuration
+2. Verify your network configuration
 
-   b. Use SSH or WebShell (UDF Only) to access your BIG-IP.
+   a. Use SSH or WebShell (UDF Only) to access your BIG-IP.
 
       i.  Ping your default gateway, 10.1.10.1
 
@@ -173,9 +173,9 @@ b. Under **Resources**
 | 10.1.20.13  | 80               |
 +-------------+------------------+
 
-1. As you enter each IP address and port combination hit **Add** button
+2. As you enter each IP address and port combination hit **Add** button
 
-c. When you have complete your pool configuration, hit the **Finished**
+a. When you have complete your pool configuration, hit the **Finished**
    button
 
 .. image:: /_static/101/image17.png
@@ -242,10 +242,10 @@ c. Under **Resources**
 
    v.   **Fallback Persistence Profile**: None
 
-1. When you have complete your pool configuration, hit the **Finished**
+d. When you have complete your pool configuration, hit the **Finished**
    button
 
-2. You have now created a Virtual Server
+e. You have now created a Virtual Server
 
 .. image:: /_static/101/image20.png
    :width: 6.75892in
@@ -253,9 +253,8 @@ c. Under **Resources**
 
 .. note:: Items in the GUI that are blue are links ie. shortcuts
 
-3. Now let’s see if our virtual server works!
+2. Now let’s see if our virtual server works!
      - **UDF** - from the ubu-jumpbox go to http://10.1.10.100
-     - **AWS** - from your PC go to http://<Bigip1VipEipTo100> in your stack Output tab
 
    a. Open the browser to the Virtual Server you just created
 
@@ -265,10 +264,10 @@ c. Under **Resources**
    :width: 2.65963in
    :height: 1.40625in
 
-a. Go to your BIG-IP and view the statistics for the **www_vs** virtual
+c. Go to your BIG-IP and view the statistics for the **www_vs** virtual
    server and the **www_pool** pool and its associated members
 
-c. Go to **Statistics > Module Statistics > Local Traffic**
+d. Go to **Statistics > Module Statistics > Local Traffic**
 
    i. Choose **Virtual Servers** from drop down
 
@@ -276,9 +275,9 @@ c. Go to **Statistics > Module Statistics > Local Traffic**
    :width: 2.98593in
    :height: 1.44792in
 
-a. Go to **Local** **Traffic>Virtual Servers>Statistics**
+e. Go to **Local** **Traffic>Virtual Servers>Statistics**
 
-d. Go to **Local** **Traffic>Pools>Statistics**
+f. Go to **Local** **Traffic>Pools>Statistics**
 
    i.   Did each pool member receive the same number of connections?
 
@@ -288,7 +287,7 @@ d. Go to **Local** **Traffic>Pools>Statistics**
    iii. Note the Source and Destination address when you go to directly
         and through the virtual server
 
-1. Let’s archive our configuration in case we have to fall back later.
+3. Let’s archive our configuration in case we have to fall back later.
 
    a. Go to **System >> Archives** and select **Create**.
 
@@ -305,11 +304,11 @@ Diagram for the IP address.
 
    a. Review the information of the following command:
 
-      iii. **bigtop –n**
+      i. **bigtop –n**
 
            1. Type **q** to quit.
 
-   a. Take a look at the TMOS CLI, type “\ **tmsh**\ ” to enter the
+   b. Take a look at the TMOS CLI, type “\ **tmsh**\ ” to enter the
       Traffic Management Shell.
 
       i.   (tmos)# **show ltm pool**
@@ -333,8 +332,8 @@ Diagram for the IP address.
    :width: 3.13542in
    :height: 1.81755in
 
-2. Click the Big Red F5 ball. This will take you to the Welcome page.
+b. Click the Big Red F5 ball. This will take you to the Welcome page.
    Here you can find links to:
 
-   a. User Documentation, Running the Setup Utility, Support, Plug-ins,
+   i. User Documentation, Running the Setup Utility, Support, Plug-ins,
       SNMP MIBs
