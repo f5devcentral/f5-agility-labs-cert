@@ -34,8 +34,8 @@ servers.
          pool image_pool
       }
    }
-
-   c. Note the highlighted content, hover the pointer over HTTP_REQUEST and HTTP::uri to
+   
+c. Note the highlighted content, hover the pointer over HTTP_REQUEST and HTTP::uri to
    get information on the event and command.
 
 3. Go to **Local Traffic > Virtual Servers** and open the **secure_vs**
