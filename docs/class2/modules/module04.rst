@@ -107,7 +107,7 @@ use a BIG-IP policy.
 
 d. **Save**
 
-1. The policy is saved in **Draft** form and is not available/update
+4. The policy is saved in **Draft** form and is not available/update
    until **Published**. To publish the policy:
 
 a. Select the **Save Draft Policy** drop-down menu and select **Save and
@@ -117,7 +117,7 @@ a. Select the **Save Draft Policy** drop-down menu and select **Save and
       :width: 2.47917in
       :height: 1.75529in
 
-1. Go to the **Resources** section of your **secure_vs** virtual server.
+5. Go to the **Resources** section of your **secure_vs** virtual server.
 
 a. For **iRules**, select **Manage** and REMOVE the **retrieves_images** iRule from the virtual server.
 
@@ -129,7 +129,7 @@ b. For **Policies**, select **Manage** and move **access_image_pool** from the *
    :align: center
    :width: 400
 
-1. Test your policy.  If you browse at your unsecured virtual server you will see there are multiple colors to the images, but browser the secure virtual server and all the image colors are the same because all the images were pulled from the same server (10.1.20.14).  You can also use pools statistics to determine results. 
+6. Test your policy.  If you browse at your unsecured virtual server you will see there are multiple colors to the images, but browser the secure virtual server and all the image colors are the same because all the images were pulled from the same server (10.1.20.14).  You can also use pools statistics to determine results. 
 
 .. image:: /_static/101/image57.png
    :align: center
