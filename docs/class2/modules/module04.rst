@@ -129,7 +129,7 @@ b. For **Policies**, select **Manage** and move **access_image_pool** from the *
    :align: center
    :width: 400
 
-6. Test your policy.  If you browse at your unsecured virtual server you will see there are multiple colors to the images, but browser the secure virtual server and all the image colors are the same because all the images were pulled from the same server (10.1.20.14).  You can also use pools statistics to determine results. 
+. Test your policy.  If you browse at your unsecured virtual server you will see there are multiple colors to the images, but browser the secure virtual server and all the image colors are the same because all the images were pulled from the same server (10.1.20.14).  You can also use pools statistics to determine results. 
 
 .. image:: /_static/101/image57.png
    :align: center
