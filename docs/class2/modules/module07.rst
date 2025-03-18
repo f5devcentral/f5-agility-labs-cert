@@ -102,11 +102,12 @@ In this section of the lab we will explore methods for managing software images 
 
 1. On **bigip01.f5demo.com** 
 
-   a. Go to **System > Software Management**
-   b. Select **Import**
+a. Go to **System > Software Management**
+b. Select **Import**
+
 .. image:: /_static/101/image82.png
-   :width: 4.2837in
-   :height: 3.86685in
-   
-   c. Select **Choose File** and choose the software image, point release, or hotfix, and the corresponding MD5 file to import.
-   d. Select **Import**
+   :width: 7.5in
+   :height: 2.19576in
+
+c. Select **Choose File** and choose the software image, point release, or hotfix, and the corresponding MD5 file to import.
+d. Select **Import**
