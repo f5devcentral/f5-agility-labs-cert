@@ -332,3 +332,52 @@ Using tmsh
 
 Determine Disk and Memory Utilization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Viewing Memory Statistics
+-------------------------
+
+1. On **bigip01.f5demo.com** log into the configuration utility.
+2. Go to **Statistics > Analytics > Memory**.
+
+The Memory TMM statistics chart opens showing the average total RAM used per slot over a period of time. 
+
+.. image:: /_static/101/image91.png
+   :width: 15.910in
+   :height: 4.888in   
+
+In addition, the tabs at the top of this screen can be used to show additional memory utilization.
+
+- For other usage, such as management, click **Other**.
+- For operating system usage, click **System**.
+- To see how much swwap is being used, click **Swap**.
+
+.. image:: /_static/101/image92.png
+   :width: 4.159in
+   :height: 2.215in    
+
+Viewing Disk Activity
+---------------------
+
+1. On **bigip01.f5demo.com** log into the configuration utility.
+2. Go to **Statistics > Analytics > Disk**.
+
+The Disk Activity chart opens showing Total I/O per slot over a period of time.
+
+.. image:: /_static/101/image93.png
+   :width: 15.958in
+   :height: 4.847in
+
+3. Using the **Measurement** dropdown, we can view additional disk activity metrics.
+
+.. image:: /_static/101/image94.png
+   :width: 3.465in
+   :height: 1.979in
+
+In addition, the tabs at the top of this screen can be used to show disk activity metrics. 
+
+- To see read or write bytes over time, click **Disk Sizes**.
+- To see disk read latency, click **Disk Latency**.
+
+.. image:: /_static/101/image95.png
+   :width: 3.506in
+   :height: 2.618in  
