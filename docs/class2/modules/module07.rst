@@ -198,7 +198,7 @@ For example, if you type **2** for the volume set name, the BIG-IP system create
 Using tmsh
 ----------
 1. Log into **tmsh** by issuing the following command:
-   ``tmsh11``
+   ``tmsh``
 
 2. To install a software image, point release, or software fix, use the following command syntax:
 
@@ -228,3 +228,107 @@ Using tmsh
                HD1.2    BIG-IP    17.5.0  0.0.15      no installing 10.000 pct              yes
                HD1.3    BIG-IP  17.1.2.1   0.0.2     yes              complete              yes
 
+Determine Resource Utilization
+==============================
+In this portion of the lab, we will be viewing different system-level statistics. 
+
+   .. note:: The Application Visibility and Reporting module has been provisoned and is **required** to veiw some of the system analytical charts here. 
+
+Identify CPU Statistics per Virtual Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using the Configuration Utility
+-------------------------------
+
+1. On **bigip01.f5demo.com** log into the configuration utility.
+2. Go to **Statistics > Module Statistics > Local Traffic**.
+
+.. image:: /_static/101/image86.png
+   :width: 3.159in
+   :height: 2.104in
+
+3. Click the **Statistics Type** dropdown and select **Virtual Servers**.
+
+.. image:: /_static/101/image87.png
+   :width: 4.861in
+   :height: 1.576in
+
+4. From this screen, you can view CPU utilization for each Virtual Server. 
+
+.. image:: /_static/101/image88.png
+   :width: 15.854in
+   :height: 2.215in
+
+Using tmsh
+----------
+
+1. Log into **tmsh** by issuing the following command:
+
+   ``tmsh``
+
+2. The below is an *example* **tmsh** command that shows filtered output yielding CPU statistics for each virtual server.
+
+   ``show /ltm virtual | grep -e "Ltm::" -e "Last 5 Min"``
+
+   Below is example output for this command:
+
+      .. code-block:: bash
+
+         root@(bigip01)(cfg-sync Standalone)(Active)(/Common)(tmos)# show /ltm virtual | grep -e "Ltm::" -e "Last 5 Min" 
+         Ltm::Virtual Server: f5demo    
+            Last 5 Minutes                             0
+         Ltm::Virtual Server: hackazon  
+            Last 5 Minutes                             0
+         Ltm::Virtual Server: j-shop    
+            Last 5 Minutes                             0
+
+
+Interpret Statistics for Interfaces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using the Configuration Utility
+-------------------------------
+
+1. On **bigip01.f5demo.com** log into the configuration utility.
+2. Go to **Statistics > Module Statistics > Network**.
+
+.. image:: /_static/101/image89.png
+   :width: 3.034in
+   :height: 2.111in
+
+3. Ensure the statistics type is set to **Interfaces**. From this screen, you can view statistics for each interface on the BIG-IP.
+
+.. image:: /_static/101/image90.png
+   :width: 15.909in
+   :height: 2.159in
+
+Using tmsh
+----------
+
+1. Log into **tmsh** by issuing the following command:
+
+   ``tmsh``
+
+2. Issues the following command to view statistics for each interface on the BIG-IP.
+
+   ``show net interface``
+
+   Below is example output for this command:
+
+      .. code-block:: bash
+
+         root@(bigip01)(cfg-sync Standalone)(Active)(/Common)(tmos)# show net interface
+
+         ------------------------------------------------------------------
+         Net::Interface
+         Name  Status    Bits    Bits   Pkts   Pkts  Drops  Errs      Media
+                           In     Out     In    Out                        
+         ------------------------------------------------------------------
+         1.1       up    3.5G  167.1G   6.1M   5.8M      0     0  10000T-FD
+         1.2       up  167.5G    3.0G   4.3M   5.2M      0     0  10000T-FD
+         1.3   uninit       0       0      0      0      0     0       none
+         mgmt      up  113.5M  360.5M  22.0K  19.3K      0     0   100TX-FD
+
+
+Determine Disk and Memory Utilization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
