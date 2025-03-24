@@ -1,4 +1,4 @@
-Securing BIG-IP Self IPs Lab Guide
+Lab 10:Securing your BIG-IP
 ==================================
 
 **Objectives:**
