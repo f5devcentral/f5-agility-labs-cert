@@ -160,4 +160,3 @@ d. Attach your new HTTP Profile to your secure (HTTPS) virtual server
 .. note:: 
    Even though the data is encrypted between your browser and the virtual server, the LTM can still modify the data (i.e. resource cloaking) because the data is unencrypted and decompressed within TMOS.
 
-Archive your work in a file called: **lab3_save4later**
