@@ -1,4 +1,4 @@
-Lab 7: Extra Lab Content
+Lab 7: Common Configuration Items
 ====================================
 
 
