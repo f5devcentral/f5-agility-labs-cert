@@ -256,7 +256,7 @@ c. Under **Device Management>Device**, select the local BIG-IP. It
    d. Archive your work.
 
 Bonus Lab – Traffic groups, iApps and Active-Active
-===================================================
+------------------------------------------------------------------------
 
 If you have time this is a bonus lab. Here you will create a new traffic
 group. You will use iApps to an create a new HTTP application that

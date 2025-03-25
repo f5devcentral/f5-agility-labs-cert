@@ -229,7 +229,7 @@ Closing
 This guide provides clear steps to configure and secure BIG-IP self IPs using port lockdown and packet filtering. By restricting access to essential services and managing traffic at a granular level, administrators can enhance the security and control of their BIG-IP systems. These practices ensure only authorized connections are allowed while protecting against unwanted or malicious traffic.
 
 Lab Overview: Monitoring and Mitigating DoS/DDoS Attacks on BIG-IP LTM
-===================================================================
+------------------------------------------------------------------------
 
 This lab demonstrates two key techniques for mitigating Denial-of-Service (DoS) and Distributed Denial-of-Service (DDoS) attacks on a BIG-IP LTM: SYN cookie protection and adjusting the ``tm.maxrejectrate``. Students will simulate attacks and observe how the BIG-IP LTM responds and protects the virtual server.
 

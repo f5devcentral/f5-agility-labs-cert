@@ -97,7 +97,7 @@ Execute a UCS Backup and UCS Restore
    :height: 3.86685in
 
 Managing Software Images on the BIG-IP System
-=============================================
+------------------------
 In this section of the lab we will explore methods for managing software images on the BIG-IP.
 
 **Before starting,** ensure you have located and downloaded the software image, point release, or hotfix and corresponding image verification file(s) from the F5 `Downloads <https://my.f5.com/manage/s/downloads>`_ site. 
@@ -230,7 +230,7 @@ Using tmsh
                HD1.3    BIG-IP  17.1.2.1   0.0.2     yes              complete              yes
 
 Determine Resource Utilization
-==============================
+------------------------
 In this portion of the lab, we will be viewing different system-level statistics. 
 
    .. note:: The Application Visibility and Reporting module has been provisoned and is **required** to veiw some of the system analytical charts here. 
