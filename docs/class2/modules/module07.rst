@@ -127,27 +127,28 @@ Upload using the configuration utility
 
       .. code-block:: bash
 
-         [root@bigip01:Active:Standalone] images # md5sum --check BIGIP-17.1.2.1-0.0.2.iso.md5
+         [root@bigip01:Active:Standalone] images # md5sum --check BIGIP-17.5.0-0.0.15.iso.md5
          BIGIP-17.1.2.1-0.0.2.iso: OK
          [root@bigip01:Active:Standalone] images #
 
 Upload using SCP from the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       
-1. Secure copy (SCP) the **.iso** file and corresponding **.md5** file from your desktop computer to the **/shared/images** directory on the BIG-IP system.
+1. Secure copy (SCP) the **.iso** file and corresponding **.md5** file from BIG-IP-01 to the **/shared/images** directory on the BIG-IP 02 device.
 
 **Example:**
 
-   ``scp BIGIP-17.5.0-0.0.15.iso* admin@<BIG-IP_MGMT_IP>:/shared/images/``
+   ``scp /shared/images/BIGIP-17.5.0-0.0.15.iso root@10.1.1.5:/shared/images/``
 
-2. Log into a **bash** session on the BIG-IP.
-3. Change directories to the **/shared/images** directory by typing the following command:
+2. Use the same password to trasnfer the file to the 02 device
+3. Log into a **bash** session on the BIG-IP.
+4. Change directories to the **/shared/images** directory by typing the following command:
 
       .. code-block:: bash
 
          cd /shared/images
 
-4. Verify the software image file integrity using either the MD5 checksum, SIG, or PEM files. For this lab we will use the MD5 checksum.
+5. Verify the software image file integrity using either the MD5 checksum, SIG, or PEM files. For this lab we will use the MD5 checksum.
 
       .. code-block:: bash
 
@@ -192,7 +193,7 @@ For example, if you type **2** for the volume set name, the BIG-IP system create
    :width: 3.173in
    :height: 2.174in
 
-6. Once complete, select **Install** 
+6. For this lab, no need to complete the software upgrade, but when running through a software install you would select **Install** 
 7. You can monitor the installation status in the Installed Images section of the **System > Software Management** page.
 
 Using tmsh

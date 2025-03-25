@@ -1,4 +1,4 @@
-Lab 10:Securing your BIG-IP
+Lab 10: Securing your BIG-IP
 ==================================
 
 **Objectives:**
@@ -63,7 +63,7 @@ Step 2: Test Initial Access
 
    .. code-block:: bash
 
-      curl -k https://10.1.20.4
+      curl -k https://10.1.10.105
 
 2. Run a port scan using `nmap` from the Jumpbox to identify open ports:
 

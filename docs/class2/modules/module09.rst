@@ -81,9 +81,11 @@ Objective 2: SSHD ACLs (Access Control Lists)
 
 4. **Cleanup**
 
-        tmsh modify /sys sshd allow replace-all-with { ALL } 
+   .. code-block:: bash
 
-    .. image::  /_static/101/ssh-restore-allow.png
+        tmsh modify /sys sshd allow replace-all-with { ALL }
+
+   .. image::  /_static/101/ssh-restore-allow.png
        :width: 400   
 
 Objective 3: HTTPD ACLs
@@ -91,14 +93,16 @@ Objective 3: HTTPD ACLs
 
 1. **Check Current HTTP Access Control**:
 
-   tmsh list /sys httpd allow
+   .. code-block:: bash
+
+         tmsh list /sys httpd allow
    
    .. image::  /_static/101/http-allow.png
       :width: 400   
 
 2. **Modify HTTP Access Control Settings to allow access from 10.1.1.1(UDF IP Address)**:
 
-      .. code-block:: bash
+   .. code-block:: bash
 
          tmsh modify /sys httpd allow replace-all-with { 10.1.1.1/32 }
          tmsh save /sys config
@@ -112,6 +116,8 @@ Objective 3: HTTPD ACLs
 
    - Verify that HTTP connections from other IPs are denied.
 
+   .. code-block:: bash
+
         tailf /var/log/secure
 
    .. image::  /_static/101/sshd-connection-refused.png
@@ -120,6 +126,7 @@ Objective 3: HTTPD ACLs
 4. **Cleanup**
    
    .. code-block:: bash
+      
         tmsh modify /sys httpd allow replace-all-with { ALL }
         tmsh list /sys httpd allow
 
