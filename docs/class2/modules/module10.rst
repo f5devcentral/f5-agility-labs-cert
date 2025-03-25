@@ -63,7 +63,7 @@ Step 2: Test Initial Access
 
    .. code-block:: bash
 
-      curl -k https://10.1.10.105
+      curl -k https://10.1.20.4
 
 2. Run a port scan using `nmap` from the Jumpbox to identify open ports:
 
@@ -108,8 +108,8 @@ Step 4: Customize Port Lockdown
 
    .. code-block:: bash
 
-      tmsh modify net self 10.1.20.4 allow-service replace { tcp:443 }
-      save sys config
+      tmsh modify net self Internal-self-IP allow-service replace { tcp:443 }
+      tmsh save sys config
 
 3. **Validate Configuration**:
 
@@ -166,7 +166,7 @@ Step 5: Test Packet Filter Rules for Self-IPs
      .. code-block:: bash
 
         tmsh create /net packet-filter my_https_filter order 10 action discard  rule "( ( ip proto TCP or ip6 proto TCP )  ) and ( src host 10.1.20.6 ) and ( dst port 443 )"
-        save sys config
+        tmsh save sys config
 
 2. **Verify Packet Filter Rules**:
 
@@ -190,9 +190,9 @@ Step 5: Test Packet Filter Rules for Self-IPs
    .. image:: /_static/101//enable-filter.png
       :width: 400
 
-   .. code-block:: bash
-
    **TMSH**
+
+   .. code-block:: bash
 
       tmsh modify /sys db packetfilter value enable
 
