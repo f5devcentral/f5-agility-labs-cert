@@ -133,8 +133,6 @@ Objective 3: HTTPD ACLs
 
    .. image::  /_static/101/http-restore-allow.png
       :width: 400   
-.
-
 
 Objective 4: Explain Management IP Connectivity Issue
 -----------------------------------------------------

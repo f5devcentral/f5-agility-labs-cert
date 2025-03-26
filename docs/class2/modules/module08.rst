@@ -43,7 +43,7 @@ DNS configuration allows the BIG-IP LTM to resolve domain names to IP addresses.
 1. Navigate to: ``System > Device > Configuration > DNS``
 2. Click **Add** and enter the following details:
    - **DNS Server**: ``10.1.1.1`` (or your DNS server IP)
-3. Click **Udpate** to apply the changes.
+3. Click **Update** to apply the changes.
 
 .. image:: /_static/101//dns.png
    :width: 400

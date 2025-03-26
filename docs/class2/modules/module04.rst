@@ -2,8 +2,8 @@ Lab 4: BIG-IP Policies and iRules
 =================================
 
 In your customers environment the web servers retrieve images from a
-different set of servers. In the lab you will write and iRule and create
-a BIG-IP policies so you can compare and contrast the to methods. iRules
+different set of servers. In the lab you will write an iRule and create
+BIG-IP policies so you can compare and contrast the to two methods. iRules
 are more flexible and customizable, while BIG-IP policies are easier to
 use, require no coding skills and are a little more efficient when
 performing the same task.
@@ -12,7 +12,7 @@ Write an iRule to retrieve images when an HTTP request is received
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When HTTP request is received, look at the HTTP URI. If the URI ends
-with **jpg** or **png** send the request to an alternate pool of image
+with **jpg** or **svg** send the request to an alternate pool of image
 servers.
 
 1. **Create** a new pool named **image_pool**, use the **http** monitor
@@ -35,7 +35,9 @@ servers.
       }
    }
    
-c. Note the highlighted content, hover the pointer over HTTP_REQUEST and HTTP::uri to
+c. Select **FINISHED**
+
+d. Note the highlighted content, hover the pointer over HTTP_REQUEST and HTTP::uri to
    get information on the event and command.
 
 3. Go to **Local Traffic > Virtual Servers** and open the **secure_vs**
@@ -47,10 +49,10 @@ c. Note the highlighted content, hover the pointer over HTTP_REQUEST and HTTP::u
 
       i. What other profile did this iRule require to work?
 
-4. Test your policy by going to https://10.1.10.105, you will want to
+4. Test your iRule by going to https://10.1.10.105, you will want to
    use an incognito/private browsing window to avoid cached content.
 
-a. Test your policy.  If you browse at your unsecured virtual server you will see there are multiple colors to the images, but browser the secure virtual server and all the image colors are the same because all the images were pulled from the same server (10.1.20.14) 
+a. Test your iRule.  If you browse at your unsecured virtual server (10.1.10.100) you will see there are multiple colors to the images, but browser the secure virtual server and all the image colors are the same because all the images were pulled from the same server (10.1.20.14) 
 
 .. image:: /_static/101/image57.png
    :align: center
@@ -129,7 +131,7 @@ b. For **Policies**, select **Manage** and move **access_image_pool** from the *
    :align: center
    :width: 400
 
-. Test your policy.  If you browse at your unsecured virtual server you will see there are multiple colors to the images, but browser the secure virtual server and all the image colors are the same because all the images were pulled from the same server (10.1.20.14).  You can also use pools statistics to determine results. 
+6. Test your policy.  If you browse at your unsecured virtual server (10.1.10.100) you will see there are multiple colors to the images, but browser the secure virtual server and all the image colors are the same because all the images were pulled from the same server (10.1.20.14).  You can also use pools statistics to determine results. 
 
 .. image:: /_static/101/image57.png
    :align: center

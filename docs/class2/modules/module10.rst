@@ -198,7 +198,7 @@ Step 5: Test Packet Filter Rules for Self-IPs
 
 4. **Test Packet Filter Behavior Using curl and ping**:
 
-   **From the Jumpbox (e.g., within 10.1.20.0/24):**
+   From the Jumpbox (e.g., within 10.1.20.0/24):
 
    - Access HTTPS port ``443``:
 
@@ -256,7 +256,7 @@ Tasks:
         tmsh create net self internal_self address 10.1.20.245/24 vlan internal allow-service none
         tmsh create net self external_self address 10.1.10.245/24 vlan external allow-service none
 
-    This creates self IP addresses for the "internal" and "external" VLANs. The "internal_self" IP does not allow any services, while "external_self" allows node services.
+    This creates self IP addresses for the "internal" and "external" VLANs. The "internal_self" and "external_self" IP do not allow any services. 
 
 3.  **Create a Pool:**
 

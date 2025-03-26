@@ -11,7 +11,7 @@ Resource Utilization and Provisioned Modules
 
 a. Go to **System > Resource Provisioning**
 
-b. You will be able to see what modules are provisoned and the license state on this page per your license on the BIG-IP.
+b. On this page, you can view the provisioned modules and their license status based on your BIG-IP license.
 
 .. image:: /_static/101/image70.png
    :width: 5.01042in
@@ -115,7 +115,7 @@ Upload using the configuration utility
    :height: 3.013in
 
 4. Select **Choose File** and choose the software image, point release, or hotfix, and the corresponding MD5 file to import.
-5. Select **Import**
+5. **For the purpose of the lab, you do NOT need to import the image as it's already there, but when doing an upgrade you would** Select **Import**
 6. Log into a **bash** session on the BIG-IP.
 7. Change directories to the **/shared/images** directory by typing the following command:
 
@@ -140,8 +140,8 @@ Upload using SCP from the command line
 
    ``scp /shared/images/BIGIP-17.5.0-0.0.15.iso root@10.1.1.5:/shared/images/``
 
-2. Use the same password to trasnfer the file to the 02 device
-3. Log into a **bash** session on the BIG-IP.
+2. Use the same password to transfer the file to the 02 device
+3. Log into the BIG-IP web shell and type **bash** in the command line session on the BIG-IP.
 4. Change directories to the **/shared/images** directory by typing the following command:
 
       .. code-block:: bash
@@ -193,7 +193,7 @@ For example, if you type **2** for the volume set name, the BIG-IP system create
    :width: 3.173in
    :height: 2.174in
 
-6. For this lab, no need to complete the software upgrade, but when running through a software install you would select **Install** 
+6. **For this lab, no need to complete the software upgrade, but when running through a software install you would** select **Install** 
 7. You can monitor the installation status in the Installed Images section of the **System > Software Management** page.
 
 Using tmsh
@@ -207,9 +207,9 @@ Using tmsh
 
    .. note:: You can use tab completion in **tmsh**. To see the available images for installation, press the Tab key after you type the **install sys software image** command. 
    
-   In our lab, we will use the example below:
+   In our lab, we will use the example below: When installing a big IP image, below is the syntax you would use. **For the purpose of the lab, DO NOT INSTALL IMAGE SOFTWARE!**
 
-   ``install /sys software image BIGIP-17.5.0-0.0.15.iso volume HD1.2 create-volume``
+   ``install /sys software image BIGIP-17.5.0-0.0.X.iso volume HD1.2 create-volume``
 
 3. To verify the software installation progress, type the following command:
 
@@ -350,7 +350,7 @@ In addition, the tabs at the top of this screen can be used to show additional m
 
 - For other usage, such as management, click **Other**.
 - For operating system usage, click **System**.
-- To see how much swwap is being used, click **Swap**.
+- To see how much swap is being used, click **Swap**.
 
 .. image:: /_static/101/image92.png
    :width: 4.159in

@@ -11,7 +11,7 @@ Objectives:
 -  Build a content monitor that looks for a receive string
 
 -  Build and review simple (source IP) persistence and cookie
-   persistence.
+   persistence
 
 Ratio Load Balancing
 --------------------
@@ -524,5 +524,5 @@ Tab completion will make this a little easier
    :alt: Inspect page window
    :scale: 50
    :align: center
-       
-Archive your work in the file: **lab3_lb_monitor_and_persist**
+
+         g. Before proceeding to the next lab **please** remove the persistence profile from the virtual server. 
