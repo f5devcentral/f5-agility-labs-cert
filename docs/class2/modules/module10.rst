@@ -39,7 +39,7 @@ Step 1: Setup Environment
    - Provide the following details:
      
      - **Name**: ``Internal-self-IP``
-     - **IP Address**: ``10.1.20.4``
+     - **IP Address**: ``10.1.20.245``
      - **Netmask/Subnet**: ``255.255.255.0`` (adjust based on your network setup)
      - **VLAN**: Select the VLAN ``internal`` created earlier.
      - **Port Lockdown**: Set to ``Allow All``.
@@ -63,7 +63,7 @@ Step 2: Test Initial Access
 
    .. code-block:: bash
 
-      curl -k https://10.1.20.4
+      curl -k https://10.1.20.245
 
 2. Run a port scan using `nmap` from the Jumpbox to identify open ports:
 
@@ -117,9 +117,9 @@ Step 4: Customize Port Lockdown
 
      .. code-block:: bash
 
-      nmap -p 22,443 10.1.20.4
-      curl https://10.1.20.4
-      ssh admin@10.1.20.4
+      nmap -p 22,443 10.1.20.245
+      curl -k https://10.1.20.245
+      ssh admin@10.1.20.245
 
 Step 5: Test Packet Filter Rules for Self-IPs
 ---------------------------------------------
@@ -204,13 +204,13 @@ Step 5: Test Packet Filter Rules for Self-IPs
 
      .. code-block:: bash
 
-        curl -v https://10.1.20.4
+        curl -v https://10.1.20.245
 
    - Attempt to send ICMP packets. They should be dropped:
 
      .. code-block:: bash
 
-        ping 10.1.20.4
+        ping 10.1.20.245
 
 
 5. **Clean Up**:
@@ -229,7 +229,7 @@ Closing
 This guide provides clear steps to configure and secure BIG-IP self IPs using port lockdown and packet filtering. By restricting access to essential services and managing traffic at a granular level, administrators can enhance the security and control of their BIG-IP systems. These practices ensure only authorized connections are allowed while protecting against unwanted or malicious traffic.
 
 Lab Overview: Monitoring and Mitigating DoS/DDoS Attacks on BIG-IP LTM
-------------------------------------------------------------------------
+---------------------------------------------------------------------
 
 This lab demonstrates two key techniques for mitigating Denial-of-Service (DoS) and Distributed Denial-of-Service (DDoS) attacks on a BIG-IP LTM: SYN cookie protection and adjusting the ``tm.maxrejectrate``. Students will simulate attacks and observe how the BIG-IP LTM responds and protects the virtual server.
 
@@ -253,8 +253,8 @@ Tasks:
 
     .. code-block:: bash
 
-        tmsh create net self internal_self address 10.1.20.4/24 vlan internal allow-service none
-        tmsh create net self external_self address 10.1.10.4/24 vlan external allow-service none
+        tmsh create net self internal_self address 10.1.20.245/24 vlan internal allow-service none
+        tmsh create net self external_self address 10.1.10.245/24 vlan external allow-service none
 
     This creates self IP addresses for the "internal" and "external" VLANs. The "internal_self" IP does not allow any services, while "external_self" allows node services.
 
