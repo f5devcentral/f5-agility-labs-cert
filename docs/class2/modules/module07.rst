@@ -207,7 +207,7 @@ Using tmsh
 
    .. note:: You can use tab completion in **tmsh**. To see the available images for installation, press the Tab key after you type the **install sys software image** command. 
    
-   In our lab, we will use the example below: When installing a big IP image, below is the syntax you would use. **For the purpose of the lab, DO NOT INSTALL IMAGE SOFTWARE!**
+   In our lab, we will use the example below: When installing a BIG-IP image, below is the syntax you would use. **For the purpose of the lab, DO NOT INSTALL IMAGE SOFTWARE!**
 
    ``install /sys software image BIGIP-17.5.0-0.0.X.iso volume HD1.2 create-volume``
 
