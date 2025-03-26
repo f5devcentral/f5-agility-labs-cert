@@ -8,8 +8,7 @@ Objectives:
 
 -  Build and test priority groups
 
--  Build a content monitor that looks for a receive string and requires
-   authentication
+-  Build a content monitor that looks for a receive string
 
 -  Build and review simple (source IP) persistence and cookie
    persistence.
@@ -207,9 +206,9 @@ Content Monitors
 
 The default monitor simply tells us the IP address is accessible, but we really don’t know the status of the particular application the node supports. We are now going to create a monitor to specifically test the application we are interested in. We are going to basic contnet check of our web site to determine it the servers are responding properly.
 
-1. Browse to **http://10.1.10.100**.  You have an number of content items you could use to check the site status.  You could check for text on this page. You could view the source code and check for a text string not normally visible to the user. You can also look in the HTTP header information being returned. 
+1. Browse to **http://10.1.10.100**. A number of content items you could use to check the site status.  You could check for text on this page. You could view the source code and check for a text string not normally visible to the user. You can also look in the HTTP header information being returned. 
 
-2. We will be looking for the HTTP status “\ **200 OK**\ ” in the HTTP header infomration as our receive string to determine availability.
+2. We will be looking for the HTTP status “\ **200 OK**\ ” in the HTTP header information as our receive string to determine availability.
 
 3. Select **Local Traffic>Monitor** on the side-bar and select the plus
    (**+**) sign or the **Create**
@@ -286,7 +285,7 @@ c. Click **Finish** and you will be taken back to **Local
     b. Just for fun reverse the monitor. Now when **200 OK** is returned
        it indicates the server is not responding successfully. You can
        see where this would be useful if you were looking for a 404 (bad
-       page) response.
+       page) response. Once completed, please go back and undo your changes to the monitor. 
 
 
 
@@ -408,7 +407,7 @@ In this lab we will configure a couple types of persistence and view their behav
 
             .. admonition:: TMSH
 
-               modify sys db ui.statistics.modulestatistics.localtraffic.persistencerecords value true**
+               modify sys db ui.statistics.modulestatistics.localtraffic.persistencerecords value true
                
 Tab completion will make this a little easier
             
@@ -487,7 +486,7 @@ Tab completion will make this a little easier
        
           a. Select the **Properties** tab on your virtual server
        
-          b. Go to **HTTP Profile** in the **Configuration** section and select
+          b. Go to **HTTP Profile (client)** in the **Configuration** section and select
              the default HTTP (**http**) profile.
        
        .. image:: /_static/101/image44.png

@@ -1,12 +1,12 @@
 Lab 1: The Basics (Networking, Pools and Virtual Servers)
 =========================================================
 
-In this lab we will access the Management Graphical User Interface GUI. We will then create the
+In this lab we will access the Management Graphical User Interface (GUI). We will then create the
 VLANs, and assign self IP addresses to our VLAN. As mentioned during
 our lecture portion, BIG-IPs may be put in-line or one-armed depending
 on your customer’s requirements and topology.
 
-Log on to the BIG-IP01 TMUI (GUI) Interface:
+Log on to the bigip01 TMUI (GUI) Interface:
   - **UDF** - Under Components, select the **Access** drop-down and then **TMUI**
 
 Creating VLANs
