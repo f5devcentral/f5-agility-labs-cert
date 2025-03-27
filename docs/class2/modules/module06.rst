@@ -1,17 +1,7 @@
 Lab 6: Device Service Clusters (DSC) 
 ====================================
 
-.. important::
-
-   To save costs this lab is NOT available in the AWS lab environment.  It may be added in the future.
-   
-To familiarize you with the concept of Device and Traffic Groups as well
-as the building of Active-Standby, Active-Active BIG-IP pairs. While
-there is a wizard, for this lab configuration will be done manually. The
-wizard will only build A/S HA groups, to build Active-Active and beyond
-a pair you will need to know the four steps to add a device object to a
-cluster. This lab is based on the Device/Traffic Group lab in the V11
-update course.
+This lab is designed to help you understand Device and Traffic Groups, as well as the process of building Active-Standby and Active-Active BIG-IP pairs. While a wizard is available, this lab will focus on manual configuration. 
 
 Base Networking and HA VLAN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,7 +36,7 @@ b. You will be using your third interface (1.3) for Network Failover and
 
    a. **bigip02** has already been licensed and provisioned. You will
       need to set up the base networking. 
-         i. If short on time, you can go to **System > Archives** and restore the networking configuration from the UCS Backup
+
 
 +----------------+----------------+-----------------+-----------------+
 | **Interface**  | **Untagged     | **Self IP**     | **Netmask**     |

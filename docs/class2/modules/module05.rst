@@ -1,8 +1,7 @@
 Lab 5: Support and Troubleshooting
 ==================================
 
-In this lab you will review your BIG-IP using iHealth and perform some
-basic troubleshooting commands
+In this lab you will review basic troubleshooting commands on the BIG-IP
 
 Objective:
 
@@ -80,13 +79,13 @@ c. From the dump you can see you are are hitting the virtual server.  Your origi
 4. First, let’s check to see if the server is responding to HTTP on port 80. On the BIG-IP in an SSH window:
 
    a. Do a **<ctrl-c>** to escape out of **tcpdump**, if you are still
-      in it, and use **curl** to test the server.  You should get output akin to whats below.
+      in it, and use **curl** to test the server.  You should get output similar to to whats below.
 
 .. code::
    
    curl –i <server ip of a pool member
 
-You should get output akin to what is below. The **-i** switch tells **curl** to output the HTTP header information also.
+You should get output similar to what is below. The **-i** switch tells **curl** to output the HTTP header information also.
 
 .. code::
 
