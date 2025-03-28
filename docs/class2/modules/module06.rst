@@ -1,7 +1,7 @@
 Lab 6: Device Service Clusters (DSC) 
 ====================================
 
-This lab is designed to help you understand Device and Traffic Groups, as well as the process of building Active-Standby and Active-Active BIG-IP pairs. While a wizard is available, this lab will focus on manual configuration. 
+This lab is designed to help you understand Device and Traffic Groups, as well as the process of building an Active-Standby HA pair. While there is a wizard, we will configuring this manually. 
 
 Base Networking and HA VLAN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,15 +91,15 @@ b. Under **Device Management > Device Trust > Local Domain** select
    the BIG-IP will send to other BIG-IPs that want to be a part of a
    sync-only or sync-failover group.
 
-c. Under **Device Management>Device**, select the local BIG-IP. It
-      will have the **(Self)** suffix.
+c. Click **Device Management > Device** and select the local BIG-IP. It will have the self suffix. 
 
       i.  Under **Device Connectivity** on the top bar select:
 
           1. **ConfigSync**
 
-          2. Use the Self IP address of the HA VLAN for your **Local
-             Address**.
+          2. Use the Self IP address of the HA VLAN for your **Local Address**.
+
+          3. Hit **Update**
 
       ii. **Network Failover**
 
@@ -112,6 +112,8 @@ c. Under **Device Management>Device**, select the local BIG-IP. It
 
           4. **Note:** Multicast is for Viprion chasses only.
 
+          5. Select **Finished**
+
       iii. **Mirroring**
 
          1. **Primary Local Mirror Address**: use the Self IP address of
@@ -119,9 +121,11 @@ c. Under **Device Management>Device**, select the local BIG-IP. It
 
          2. **Secondary Local Mirror Address:** None
 
+         3. Select **Update**
+
 2. On **bigip01.f5demo.com** build the Device Trust.
 
-   a. Under **Device Management>Device Trust> Device Trust Members** and
+   a. Under **Device Management > Device Trust > Device Trust Members** and
       select **Add** to add other BIG-IP(s) you will trust.
 
       i.   **Device IP Address**: <management IP address of the BIG-IP
@@ -167,11 +171,11 @@ c. Under **Device Management>Device**, select the local BIG-IP. It
        (*device-trust-group*) and that should be in sync.
 
     b. Click on **In Sync** in the upper right corner or **Device
-       Management>Overview** to see the **device_trust_group**.
+       Management > Overview** to see the **device_trust_group**.
 
 5. On bigip01.f5demo.com create a new **Sync-Failover** device group
 
-   a. **Under Device Management>Device Groups** create a new device
+   a. **Under Device Management > Device Groups** create a new device
       group.
 
       i.    **Name:** my-device-group
@@ -193,7 +197,7 @@ c. Under **Device Management>Device**, select the local BIG-IP. It
             1. It should be **Awaiting Initial Sync**
 
       vii.  Click on the sync status or go to **Device
-            Management>Overview** (or click on **Awaiting Initial**
+            Management > Overview** (or click on **Awaiting Initial**
             Sync) of the BIG-IP with the **good/current** configuration.
 
       viii. Click the device with the configuration you want to
@@ -231,7 +235,7 @@ c. Under **Device Management>Device**, select the local BIG-IP. It
       ii. Check the persistence records on each of your BIG-IPs, you
           should see the records are mirrored on each device.
 
-7. Go to **Device Management>Traffic Groups**. As you can see the
+7. Go to **Device Management > Traffic Groups**. As you can see the
    default traffic group “\ **traffic-group-1**\ ” already exists.
 
    a. Select **traffic-group-1**, check out the page information and
@@ -244,153 +248,3 @@ c. Under **Device Management>Device**, select the local BIG-IP. It
       does it mean?
 
    d. Archive your work.
-
-Bonus Lab – Traffic groups, iApps and Active-Active
-------------------------------------------------------------------------
-
-If you have time this is a bonus lab. Here you will create a new traffic
-group. You will use iApps to an create a new HTTP application that
-resides in that address group and you will create a floating IP address
-that will be used as the default gateway that also resides in that
-traffic group.
-
-Building a new traffic group and floating IP.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. On you **Active** BIG-IP, go to **Device Management>Traffic Groups**
-   and hit Create.
-
-   a. Use the f5.http template, which was designed for general web
-      services
-
-      i.  **Name**: iapp_tg
-
-      ii. Take the defaults for the rest.
-
-2. Add a floating SelfIP to the **server_vlan**. Go to **Network>Self
-   IP**
-
-   a. **Name:** server_gateway
-
-   b. **IP Address:**\ 10.1.20.240
-
-   c. **Netmask:** 255.255.255.0
-
-   d. **VLAN/Tunnel:** server_vlan
-
-   e. **Traffic Group:** iapp_tg (floating)
-
-Building an HTTP application using an iApp template.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. Go to **iApp>Application** **Services** and hit **Create**.
-
-   a. Use the f5.http template, which was designed for general web
-      services
-
-      i.   Set the **Template Selection** to **Advanced.**
-
-      ii.  **Name**: my_new_iapp
-
-      iii. **Traffic Group:** iapp_tg (floating)
-
-           1. You will have to uncheck the **Inherit traffic group from
-              current partition / path**.
-
-      iv.  Under **Template Options**
-
-2. Select the **Advanced – Configure advanced options** for the
-   configuration mode.
-
-   a. Under **Network**
-
-3. **How have you configured routing on your web servers?:** Servers
-   have a route to the clients through the BIG-IP system.
-
-   a. In other words, the BIG-IP is the default gateway for the servers.
-
-   b. Otherwise the template would use SNAT by default.
-
-   c. Under **Virtual Server and Pools**
-
-4. Your virtual server IP is **10.1.10.110**
-
-5. Your hostname will be `www.f5demo.com <http://www.f5agility.com>`__
-   because you have to put one in.
-
-6. Create a new pool with the members **10.1.20.14:80** and
-   **10.1.20.15:80**
-
-   a. **If you hit add after the last pool member and have a new row,
-      you will need to delete the row prior to finishing.**
-
-   b. Hit **Finished** at the bottom of the page.
-
-7. Go to **iApp>Application Services** and select the new application
-   you created.
-
-   a. Select **Components** from the top bar.
-
-      i.  Here you will see all the configuration items created by the
-          iApp
-
-      ii. Do you see anything created that you weren’t asked about?
-
-8. Remember the concept of strictness? Let’s test that out.
-
-a. Go to Local Traffic>>Pools>>Pool List
-
-b.  Select the pool created by your iApp **my_new_iapp_pool**
-
-c. Attempt to add **10.1.20.13:80** to your **my_new_iapp_pool**.
-
-    i. Did it fail?
-
-d. Go to your iApp and select Reconfigure from the top bar.
-
-i.  Now attempt to add your new pool member.
-
-ii. You can check the Components tab to verify your success.
-
-**SYNCHRONIZE YOUR CHANGES**
-
-Active-Active Setup
-~~~~~~~~~~~~~~~~~~~
-
-1. Now, let’s make our sync-failover group active-active. On the
-   **Active** BIG-IP:
-
-   a. Go to **Device Management > Traffic Groups**
-
-      i.  Go to you **iapp_tg** traffic group.
-
-      ii. Under **Advanced Setup Options**
-
-          1. You are going to set up **iapp_tg** to prefer to run on
-             **bigip02.f5demo.com** and auto failback to **bigip02** if
-             **bigip02** should go down and come back up later.
-
-          2. Is this normally a good idea?
-
-      iii.   **Failover Method:** HA Order
-
-      iv.  **Auto Failback:** <checked>
-
-      v. **Failover Order:** **bigip02.f5demo.com**\ then
-           **bigip01.f5demo.com**
-
-      vi.  Ensure you synchronized the change to the other BIG-IP.
-
-2. If the traffic group is active on the wrong BIG-IP initially you
-    will have to do a Force to Standby on the traffic group to make it
-    active on BIG-IP you want it on by default.
-
-    a. What is the ONLINE status of each of your BIG-IPs
-
-    b. Reboot the BIG-IP with your second traffic group on it. Watch to
-       see if the becomes active on other BIG-IP during the reboot and
-       if it falls back to the Default Device once the BIG-IP has come
-       back up.
-
-    c. You can verify this by checking your traffic groups or going to
-       the web server and looking at the client IP.
