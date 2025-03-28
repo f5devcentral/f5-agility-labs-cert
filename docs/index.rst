@@ -38,24 +38,11 @@ Welcome to the |classbold| last updated on 10/20/20
 
 .. toctree::
    :maxdepth: 1
-   :caption: Unofficial - 201 Certification Exam Resources:
+   :caption: Unofficial - BIG-IP Administrator:
    :glob:
 
-   class3/class3
+   class2/class2
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Unofficial - 201 Certification Lab:
-   :glob:
-
-   class4/class4
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Unofficial - 202 Certification Exam Resources:
-   :glob:
-
-   class5/class5
 
 .. toctree::
    :maxdepth: 1
@@ -74,36 +61,9 @@ Welcome to the |classbold| last updated on 10/20/20
 
 .. toctree::
    :maxdepth: 1
-   :caption: Unofficial - 302 Certification Exam Resources:
-   :glob:
-
-   class11/class11
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Unofficial - 303 Certification Exam Resources:
-   :glob:
-
-   class13/class13
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Unofficial - 304 Certification Exam Resources:
-   :glob:
-
-   class15/class15
-
-.. toctree::
-   :maxdepth: 1
    :caption: Unofficial - 401 Certification Exam Resources:
    :glob:
 
    class17/class17
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Unofficial - 402 Certification Exam Resources:
-   :glob:
-
-   class19/class19
 
