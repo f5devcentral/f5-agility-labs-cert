@@ -1,8 +1,7 @@
 Lab 5: Support and Troubleshooting
 ==================================
 
-In this lab you will review your BIG-IP using iHealth and perform some
-basic troubleshooting commands
+In this lab you will review basic troubleshooting commands on the BIG-IP
 
 Objective:
 
@@ -20,11 +19,11 @@ Troubleshoot using TCPDump or Curl.
 
       i. Because BIG-IP is not the server’s default gateway the server's response goes around the BIG-IP.
 
-   a. The web administrator tells you everything is fine as far as he
+   b. The web administrator tells you everything is fine as far as he
       can see and thinks the issue is with the BIG-IP, because they
       ALWAYS think the issue is with the BIG-IP.
 
-   b. You begin by debugging the client connections to the web servers
+   c. You begin by debugging the client connections to the web servers
       through the BIG-IP using TCPDump.
 
 2. SSH to the management port of your BIG-IP. Remember the BIG-IP is a
@@ -70,23 +69,23 @@ Troubleshoot using TCPDump or Curl.
 c. From the dump you can see you are are hitting the virtual server.  Your original client IP is in the first line of
    the dump *16:44:58.801250 IP* **<client_ip>.41536** > **10.1.10.100.http:** going to the virtual server.  The dump clip shows the TCP three-way handshake between the client and the virtual server and the initial part of the request **GET/ HTTP/1.1 Host: 10.1.10.100**
 
-1. In the second SSH window we will do an expanded **tcpdump** for the
+3. In the second SSH window we will do an expanded **tcpdump** for the
    sake of interest.
 
    a. **tcpdump –i <server vlan name> -X –s128 host <client IP>**
 
    b. Hit your virtual server again. You see packets with your client IP heading for the servers. They just aren’t responding. So we could reasonably suspect a server issue.
 
-2. First, let’s check to see if the server is responding to HTTP on port 80. On the BIG-IP in an SSH window:
+4. First, let’s check to see if the server is responding to HTTP on port 80. On the BIG-IP in an SSH window:
 
    a. Do a **<ctrl-c>** to escape out of **tcpdump**, if you are still
-      in it, and use **curl** to test the server.  You should get output akin to whats below.
+      in it, and use **curl** to test the server.  You should get output similar to to whats below.
 
 .. code::
    
    curl –i <server ip of a pool member
 
-You should get output akin to what is below. The **-i** switch tells **curl** to output the HTTP header information also.
+You should get output similar to what is below. The **-i** switch tells **curl** to output the HTTP header information also.
 
 .. code::
 
@@ -116,4 +115,3 @@ b. The server is responding to the BIG-IP when directly connected, but
    around the BIG-IP, which means the BIG-IP is not the default gateway.
 
 Turn **SNAT Automap** back on the **www_vs** virtual server
-
