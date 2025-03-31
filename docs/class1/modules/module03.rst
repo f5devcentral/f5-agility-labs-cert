@@ -105,14 +105,13 @@ Building our New Secure Virtual Server
 
 2. Testing our secure server. 
       - **UDF** - Go to you **secure_vs** at **https://10.1.10.105**
-      - **AWS** - Go to Go to you **secure_vs** at **https://<Bigip1VipEipTo105>**
 
    a. If you want to watch member traffic, go to the **www_pool** and
       reset the statistics.
 
    b. Browse to your secure virtual server
 
-   c. What port did you pool members see traffic on?
+   c. What port did your pool members see traffic on?
 
 Securing web applications with the HTTP profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,7 +141,9 @@ Securing web applications with the HTTP profile
    :width: 3.25in
    :height: 3.44635in
 
-d. Attach your new HTTP Profile to your secure (HTTPS) virtual server
+   v. Select **Finish**
+
+   vi. Attach your new HTTP Profile to your secure_vs (HTTPS) virtual server
 
 1. Browse to your secure virtual server.
 
@@ -150,15 +151,10 @@ d. Attach your new HTTP Profile to your secure (HTTPS) virtual server
 
    b. Now browse to a bad page.
 
-   c. For example,
+   c. Using your browser Inspect window check the server response.  Altenately you can to the **Request and Response Headers** from the **Demo** drop-down menu to view the headers. You should see your sanitized server response and the original client IP address in the **x-forward-for** header, which is itself new.
 
-      i. What is the result?
-
-   d. Using your browser Inspect window check the server response.  Altenately you can to the **Request and Response Headers** from the **Demo** drop-down menu to view the headers. You should see your sanitized server response and the original client IP address in the **x-forward-for** header, which is itself new.
-
-   a. You can compare the headers by accessing your HTTP virtual server your unsecure **www_vs** and looking at the responses.
+   d. You can compare the headers by accessing your HTTP virtual server your unsecure **www_vs** and looking at the responses.
 
 .. note:: 
    Even though the data is encrypted between your browser and the virtual server, the LTM can still modify the data (i.e. resource cloaking) because the data is unencrypted and decompressed within TMOS.
 
-Archive your work in a file called: **lab5_security**

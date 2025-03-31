@@ -309,7 +309,7 @@ Diagram for the IP address.
            1. Type **q** to quit.
 
    b. Take a look at the TMOS CLI, type “\ **tmsh**\ ” to enter the
-      Traffic Management Shell.
+      Traffic Management Shell
 
       i.   (tmos)# **show ltm pool**
 
