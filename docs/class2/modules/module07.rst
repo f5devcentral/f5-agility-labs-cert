@@ -51,7 +51,7 @@ d. Log out of the F5 at the top right and log back in with the new credentials y
 
 
 Execute a UCS Backup and UCS Restore
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. **System > Archives**
 
@@ -97,13 +97,13 @@ Execute a UCS Backup and UCS Restore
    :height: 3.86685in
 
 Managing Software Images on the BIG-IP System
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In this section of the lab we will explore methods for managing software images on the BIG-IP.
 
 **Before starting,** ensure you have located and downloaded the software image, point release, or hotfix and corresponding image verification file(s) from the F5 `Downloads <https://my.f5.com/manage/s/downloads>`_ site. 
 
 Upload using the configuration utility
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------------
 
 1. On **bigip01.f5demo.com** log into the configuration utility. 
 
@@ -132,7 +132,7 @@ Upload using the configuration utility
          [root@bigip01:Active:Standalone] images #
 
 Upload using SCP from the command line
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
       
 1. Secure copy (SCP) the **.iso** file and corresponding **.md5** file from BIG-IP-01 to the **/shared/images** directory on the BIG-IP 02 device.
 
@@ -157,7 +157,7 @@ Upload using SCP from the command line
          [root@bigip01:Active:Standalone] images #
 
 Show currently configured boot location
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
 
 #. On **bigip01.f5demo.com:** log into the configuration utility.
 
@@ -230,13 +230,13 @@ Using tmsh
                HD1.3    BIG-IP  17.1.2.1   0.0.2     yes              complete              yes
 
 Determine Resource Utilization
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In this portion of the lab, we will be viewing different system-level statistics. 
 
    .. note:: The Application Visibility and Reporting module has been provisoned and is **required** to veiw some of the system analytical charts here. 
 
 Identify CPU Statistics per Virtual Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 Using the Configuration Utility
 -------------------------------
