@@ -10,7 +10,7 @@ codes returned, scrub the response headers of extraneous and potentially
 dangerous information and encrypt the persistence cookie to prevent
 tampering.
 
-#. Obtain the cookie name and information by browsing to **https://10.1.10.115/** and open the **Display Cookie**. The cookie name is everything in front of the **=** sign. How BIG-IP creates cookies for
+#. Obtain the cookie name and information by opening the Developer tools on Chrome (press F12) and then browsing to **https://10.1.10.115/**.  Select the Network Tab on Developer Tools and Then Cookies. The cookie name starts with BIGip****. How BIG-IP creates cookies for
    Cookie Insert persistence can be found at https://support.f5.com/csp/article/K6917. After reading this article you could craft a cookie to hit a particular server.
 
       *Q1. What is the cookie name? Note the information after the cookie.*

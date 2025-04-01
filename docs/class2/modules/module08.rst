@@ -115,6 +115,7 @@ Syslog enables the BIG-IP LTM to send operational and system logs to an external
 #. Verify the configuration:
 
    .. code-block:: bash   
+
       tmsh list /sys syslog
 
 .. image:: /_static/101//tmsh-syslog-setting.png
@@ -204,7 +205,7 @@ Step 3: Add BIG-IP to LibreNMS
    :width: 400
 
 Step 4: Verify Monitoring
-------------------------
+-------------------------
 
 Verify that logs and metrics are collected correctly.
 
