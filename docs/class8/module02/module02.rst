@@ -1,8 +1,6 @@
 Lab 2 - Profiles
 ===================
 
-<enter description>
-
 301 Objectives covered: 
    - 1.02 - 1.05
        - Given a scenario, determine the minimum profiles for an application
