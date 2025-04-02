@@ -179,7 +179,7 @@ When building the FTP application you will use the default **FTP** profile and u
 
       show sys connection
 
-   Find the connection with your client IP 10.1.10.51 and the SNAT pool IP.
+   Find the connection with your client IP 10.1.10.199 and the SNAT pool IP.
 
       *Q4. What are the ephemeral port numbers on your client-side source IP and server-side source IP?*
 
