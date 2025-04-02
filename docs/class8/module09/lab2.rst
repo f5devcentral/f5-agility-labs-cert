@@ -27,8 +27,8 @@ Authenticate against LDAP
 
 #. Open a new private browser window to **bigip01** at **https://10.1.1.4** and logon using the LDAP account **adminuser/password**.
 
-   *Q1. Were you successful?*
+      *Q1. Were you successful?*
 
 #. Try logging with the local account **testuser/testpass**.
 
-   *Q2. Were you successful?*
+      *Q2. Were you successful?*

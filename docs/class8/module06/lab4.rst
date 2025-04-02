@@ -10,9 +10,9 @@ IP Forwarding Virtual Server
 #. Create a new **Forward (IP)** type of virtual server named **forward-to-servernet** that only allows **Source** IPs from the **10.1.10.0/24**, to the destination **Network** **10.1.20.0/24**, all
    ports should be allowed and all protocols should be allowed.
 
-   *Q1. What happens if we don't change the Protocol from TCP?*
+      *Q1. What happens if we don't change the Protocol from TCP?*
 
-   *Q2. What is the status of your new virtual server? Why?*
+      *Q2. What is the status of your new virtual server? Why?*
 
 #. Of course we are not going anywhere unless we install a route to the **10.1.20.0/24** network. From a command/terminal window on your jumpbox enter the add route command.  
 
@@ -47,7 +47,7 @@ Build your transparent pool and virtual server
 
 #. Create a new pool called **transparent-pool**, use the **gateway\_icmp** monitor with the member **10.1.20.14:**\ ***** and **10.1.20.15:**\ *****, wildcard ``*`` for the port.
 
-   *Q1. Why did we use gateway\_icmp? What other kind of monitor could we have used?*
+      *Q1. Why did we use gateway\_icmp? What other kind of monitor could we have used?*
 
 #. Create a virtual server called **transparent-vs** with a IP address of **10.1.10.95** with with the wildcard port ``*``, since we can't put any L7 profiles on this virtual server a virtual server type of **Performance (Layer 4)** will
    be more efficient, Finally configure **transparent-pool** as the virtual server pool.
@@ -60,14 +60,14 @@ Build your transparent pool and virtual server
 
 #. Browse to **http://10.1.10.95**.
 
-   *Q2. Did it work? What were the image results?*
+      *Q2. Did it work? What were the image results?*
 
 #. Browse to **https://10.1.10.95**.
 
-   *Q3. Did it work?*
+      *Q3. Did it work?*
 
 #. DNS is running to the LAMP server.  SSH or PuTTY to 10.1.1.252 (LAMP server). In the LAMP terminal window::
  
       dig @10.1.10.95 hackazon.f5demo.com
 
-   *Q4. Did it work? Why not and how would you fix it?*
+      *Q4. Did it work? Why not and how would you fix it?*

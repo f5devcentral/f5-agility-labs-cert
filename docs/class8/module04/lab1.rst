@@ -13,7 +13,7 @@ You will be setting up a default monitor to test any node created. You can also 
 
    Also note, the node status is currently a blue square (**Unchecked**).
 
-   *Q1. What would happen if a node failed?*
+      *Q1. What would happen if a node failed?*
 
 #. Select the **Default Monitors** tab.
 
@@ -80,13 +80,13 @@ application we are interested in. We are going to check our web site and its bas
 
 #. Go to **www\_pool** and replace the default **http** monitor with your **www\_test** monitor.
 
-   *Q2. What is the status of the pool and its members?*
+      *Q2. What is the status of the pool and its members?*
 
-   *Q3. Go to* **Virtual Servers** *or* **Network Map** *, what is the status of your virtual server?*
+      *Q3. Go to* **Virtual Servers** *or* **Network Map** *, what is the status of your virtual server?*
 
 #. Just for fun **Reverse** the monitor. Now when **200 OK** is returned it indicates the server is not responding successfully.
 
-   *Q4. What is status of your pool and virtual server now?*
+      *Q4. What is status of your pool and virtual server now?*
 
    You can see where this would be useful if you were looking for a 404 (bad page) or 50x (server error) response and pulling the failed member out of the pool.
 

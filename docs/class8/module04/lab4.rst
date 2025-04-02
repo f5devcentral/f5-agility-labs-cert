@@ -16,7 +16,7 @@ Create an EAV monitor
 
 #. The first two parameters of an EAV are always IP address and Port. When using an External monitor on a pool, the pool supplies these. Here you have to supply them.
 
-   *Q1. What was the stdout output? Did this indicate the member was Available?*
+      *Q1. What was the stdout output? Did this indicate the member was Available?*
 
 #. Go to **System > File Management > External Monitor Program File List** and select **Import**
 
@@ -26,4 +26,4 @@ Create an EAV monitor
 
 #. Apply the **eav-http-monitor** monitor to **www\_pool**. Remove all other monitors.
 
-   *Q2. Are your members up? What would happen if the external monitor returned* **DOWN**\ *?*
+      *Q2. Are your members up? What would happen if the external monitor returned* **DOWN**\ *?*

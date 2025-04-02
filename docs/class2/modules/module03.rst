@@ -136,10 +136,10 @@ Securing web applications with the HTTP profile
 
       iv.  **Insert XForwarded For**: Enabled *(to save the original client ip)*
 
-.. image:: /_static/101/image56.png
-   :alt: C:\Users\RASMUS~1\AppData\Local\Temp\SNAGHTML566674e6.PNG
-   :width: 3.25in
-   :height: 3.44635in
+         .. image:: /_static/101/image56.png
+            :alt: C:\Users\RASMUS~1\AppData\Local\Temp\SNAGHTML566674e6.PNG
+            :width: 3.25in
+            :height: 3.44635in
 
    v. Select **Finish**
 

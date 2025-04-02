@@ -2,9 +2,6 @@ Lab 8: BIG-IP Monitoring
 ====================================
 
 
-
-
-===============
 Monitoring BIG-IP LTM Using Syslog and SNMP v3 with LibreNMS
 ==================================================================
 

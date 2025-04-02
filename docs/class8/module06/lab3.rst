@@ -53,15 +53,15 @@ Many of your virtual servers have the same virtual address. You will now test va
 
 #. Browse to http://10.1.10.100:8080
 
-   *Q1. Which VS is used for web traffic over port 8080?*
+      *Q1. Which VS is used for web traffic over port 8080?*
 
 #. FTP to 10.1.10.100
 
-   *Q2. Which VS is used for FTP traffic?*
+      *Q2. Which VS is used for FTP traffic?*
 
 #. Browse to http://10.1.10.100
 
-   *Q3. Which VS is used for this web traffic the default HTTP port? What port was used?*
+      *Q3. Which VS is used for this web traffic the default HTTP port? What port was used?*
 
 #. Clear virtual server stats.
 
@@ -74,7 +74,7 @@ Many of your virtual servers have the same virtual address. You will now test va
 
 #. Observe connection statistics (VS stats)
 
-   *Q4. Which VS is used for web traffic?*
+      *Q4. Which VS is used for web traffic?*
 
 #. Clean up your modifications
 

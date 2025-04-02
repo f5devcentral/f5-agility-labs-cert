@@ -10,11 +10,11 @@ Working with port lockdown on self IPs.
 
 #. From the Jumpbox: Ping **10.1.10.245**
 
-   *Q1. Was echo response received?*
+      *Q1. Was echo response received?*
 
 #. From the Jumpbox: SSH to **10.1.10.245**
 
-   *Q2. Was ssh successful? Why not?*
+      *Q2. Was ssh successful? Why not?*
 
 #. Open **Network > Self IPs > 10.1.10.245** and change **Port Lockdown** to **Allow Defaults**
 
@@ -22,9 +22,9 @@ Working with port lockdown on self IPs.
 
 #. Browse to **https://10.1.10.245**
 
-   *Q3. Did SSH work? Did browsing work?*
+      *Q3. Did SSH work? Did browsing work?*
 
-   *Q4. What other ports are opened when you select* **Allow Defaults**.
+      *Q4. What other ports are opened when you select* **Allow Defaults**.
 
 #. Open **Network > Self IPs > 10.1.10.245** and change Port Lockdown to **Allow Custom** and add **TCP** port **22**
 
@@ -32,7 +32,7 @@ Working with port lockdown on self IPs.
 
 #. Browse to **https://10.1.10.245**
 
-   *Q5. Did SSH work? Did browsing work?*
+      *Q5. Did SSH work? Did browsing work?*
 
 Configure DNS and NTP 
 ---------------------

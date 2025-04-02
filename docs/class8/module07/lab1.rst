@@ -14,7 +14,7 @@ Ratio Load Balancing
 
 #. In drop-down menu, notice most load balancing methods have two options, **(Node)** or **(Member)**.
 
-   *Q1. What is the difference between Node and Member?*
+      *Q1. What is the difference between Node and Member?*
 
 #. Select the first member in the pool **10.1.20.11:80** and change the **Ratio** of the member to **3**
 
@@ -22,13 +22,13 @@ Ratio Load Balancing
 
 #. Browse to **http://10.1.10.100** and refresh the browser screen several times.
 
-   *Q2. How many Total connections has each member taken? Is the ratio of connections correct?*
+      *Q2. How many Total connections has each member taken? Is the ratio of connections correct?*
 
 #. Now go back and put the pool back to **Round Robin** Load Balancing Method
 
 #. Reset the pool statistics and refresh the virtual server page several times.
 
-   *Q3. Does the ratio setting have any impact now?*
+      *Q3. Does the ratio setting have any impact now?*
 
 Priority Groups Lab
 -------------------
@@ -50,12 +50,12 @@ redundancy and load.  You would traffic to be distributed t0 10.1.20.13 only dur
 
 #. Select the **Statistics** tab, reset the pool statistics, browse to **http://10.1.10.100** and refresh several times.
 
-   *Q1. Are all members taking connections? Which member isn't taking connections?*
+      *Q1. Are all members taking connections? Which member isn't taking connections?*
 
 #. Let's simulate a maintenance window or an outage by disabling a pool member **10.1.20.11:80** in the highest priority group. This should cause low priority group to be activated, since number of active members
    in our high priority group has dropped below 2.
 
-   *Q2. Is the lower priority group activated and taking connections?*
+      *Q2. Is the lower priority group activated and taking connections?*
 
 #. Select a member in the **Priority Group** 10 and **Disable** that pool member.
 
@@ -102,19 +102,19 @@ You have already seen cookie persistence at work, but if the client or applicati
 
 #. Browse to **http://10.1.10.100** and refresh several times.
 
-   *Q1. How many members are taking traffic?*
+      *Q1. How many members are taking traffic?*
 
-   *Q2. Check you Persists Records window, are the any persistence records?*
+      *Q2. Check you Persists Records window, are the any persistence records?*
 
-   *Q3. Refresh you web page prior to the Age column reaching 120. What happens?*
+      *Q3. Refresh you web page prior to the Age column reaching 120. What happens?*
 
 #. While the persistence recorded is still active **Disable** the member you are persisted too and refresh the browser page.
 
-   *Q4. Could you access the web site? Why?*
+      *Q4. Could you access the web site? Why?*
 
 #. While the persistence recorded is still active, go the member specific menu of the member you are persisted too and do a **Force Offline** and refresh the browser page.
 
-   *Q5. Could you access the web site? Why?*
+      *Q5. Could you access the web site? Why?*
 
    .. IMPORTANT::
 

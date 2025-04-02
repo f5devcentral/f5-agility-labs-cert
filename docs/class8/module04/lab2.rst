@@ -16,24 +16,24 @@ In this task, you will disable and enable various virtual servers and note the b
 
 #. From window 2 (TMSH) type::
 
-      show ltm virtual
-      show ltm virtual www_vs
+         show ltm virtual
+         show ltm virtual www_vs
 
-   *Q1. What is the Availability of* **www\_vs**\ *? What is the State?*
+      *Q1. What is the Availability of* **www\_vs**\ *? What is the State?*
 
-   *Q2. What symbol is used to represent* **www\_vs** *status?*
+      *Q2. What symbol is used to represent* **www\_vs** *status?*
 
-   *Q3. Would you expect browsing to* **http://10.1.10.100** *to work?*
+      *Q3. Would you expect browsing to* **http://10.1.10.100** *to work?*
 
-   *Q4. Can you ping the virtual IP?*
+      *Q4. Can you ping the virtual IP?*
 
 #. Clear virtual server stats and browse to **http://10.1.10.100**
 
 #. Observe the tcpdump (window 1) and connection statistics in the Virtual Server statics GUI interface.
 
-   *Q5. Did the site work? What did the tcpdump show?*
+      *Q5. Did the site work? What did the tcpdump show?*
 
-   *Q6. Did statistics counters for any virtual server increment?*
+      *Q6. Did statistics counters for any virtual server increment?*
 
 #. Establish ftp connection to **10.1.10.100** and ensure successful login.
 
@@ -41,11 +41,11 @@ In this task, you will disable and enable various virtual servers and note the b
 
 #. Disable **ftp\_vs**.
 
-   *Q10. Does ftp session still work? Why?*
+      *Q10. Does ftp session still work? Why?*
 
 #. Open another window and establish ftp connection to **10.1.10.100**.
 
-   *Q11. Did new ftp session establish connection? Why not?*
+      *Q11. Did new ftp session establish connection? Why not?*
 
    .. WARNING::
 
@@ -60,14 +60,14 @@ In this task, you will set the connection limit for the FTP virtual server to 1 
 
 #. Establish ftp connection to **10.1.10.100** and hold the logon open.
 
-   *Q1. Does FTP session work?*
+      *Q1. Does FTP session work?*
 
-   *Q2. What is the virtual server symbol and status of* **ftp\_vs**\ **?**
+      *Q2. What is the virtual server symbol and status of* **ftp\_vs**\ **?**
 
 #. Open another window and establish a second ftp connection to **10.1.10.100**.
 
-   *Q3. Did new ftp session establish connection? Why not?*
+      *Q3. Did new ftp session establish connection? Why not?*
 
-   *Q4. Did tcpdump capture a connection reset?*
+      *Q4. Did tcpdump capture a connection reset?*
 
-   *Q5 Quit all FTP sessions and note* **ftp\_vs** *status.*
+      *Q5 Quit all FTP sessions and note* **ftp\_vs** *status.*

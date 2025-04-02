@@ -312,8 +312,8 @@ In this lab we will configure a couple types of persistence and view their behav
           -  Hit your virtual server several times, you should see all 3
              servers respond.
        
-       Simple (Source Address) Persistence
-       -----------------------------------
+Simple (Source Address) Persistence
+-----------------------------------
        
        1. Go to **Local** **Traffic>Profiles** and select the **Persistence**
           tab.
@@ -434,8 +434,8 @@ Tab completion will make this a little easier
           d. Refresh your web page prior to the Age column reaching 60. What
              happens?
        
-       Cookie Persistence (Cookie Insert)
-       ----------------------------------
+Cookie Persistence (Cookie Insert)
+----------------------------------
        
        1. Go to **Local Traffic>Profiles>Persistence** tab and hit **Create**
        
@@ -520,9 +520,9 @@ Tab completion will make this a little easier
              .. tip::
                **Inspect** is your friend.  Learn to use it.  It will aid in debugging, iRules, monitors and more.
        
-.. image:: /_static/101/image45.png
-   :alt: Inspect page window
-   :scale: 50
-   :align: center
+            .. image:: /_static/101/image45.png
+               :alt: Inspect page window
+               :scale: 50
+               :align: center
 
          g. Before proceeding to the next lab **please** remove the persistence profile from the virtual server. 

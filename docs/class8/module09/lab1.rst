@@ -20,7 +20,7 @@ Create and place a user in a partition
 
 #. Open a new private browser to the BIG-IP, or log out and log back in under your current browser as the new user **testuser/testpass**.
 
-   *Q1. In the upper right of the BIG-IP WebUI what partition are you in?*
+      *Q1. In the upper right of the BIG-IP WebUI what partition are you in?*
 
 #. Look at the virtual servers. You can see these because they were all built in the Common partition, but you cannot modify them. If you go into a virtual server you will see the selections greyed out.
 
@@ -34,7 +34,7 @@ Create and place a user in a partition
 
 #. Go to the **Virtual Server List**.
 
-   *Q2. Do you see the* **test\_vs** *just created?*
+      *Q2. Do you see the* **test\_vs** *just created?*
 
 #. Go to the upper right-hand corner and select **test\_partition**. You can now see the **test\_vs** virtual server. Since you are an admin you can also modify the virtual server as necessary
 
@@ -48,7 +48,7 @@ Create and place a user in a partition
 
 #. In the BIG-IP WebUI go to your **test_vs** virtual server.
 
-   *Q3. Do you see your change? Is your change permanent?*
+      *Q3. Do you see your change? Is your change permanent?*
 
    .. NOTE::
 
@@ -59,7 +59,7 @@ Create and place a user in a partition
       cat bigip.conf
       more bigip.conf
 
-   *Q4. Did you find it in /config/bigip.conf?*
+      *Q4. Did you find it in /config/bigip.conf?*
 
 #. Each partition gets its own "folder" where its configuration is stored under the **partitions** directory in the **/config** directory. At the BIG-IP CLI prompt::
 
@@ -67,14 +67,14 @@ Create and place a user in a partition
       ls
       cat bigip.conf
 
-   *Q5. Did you find your virtual server? Is the tmsh change you made in there?*
+      *Q5. Did you find your virtual server? Is the tmsh change you made in there?*
 
 #. As **testuser** at the tmsh prompt type: **save sys config**
 
 #. Look at your **bigip.conf** in the **test_partition**.**
 
-   *Q6. Do you see the change now?*
+      *Q6. Do you see the change now?*
 
 #. Attempt to exit tmsh to get to the Linux CLI.
 
-   *Q7. Where you able to?*
+      *Q7. Where you able to?*

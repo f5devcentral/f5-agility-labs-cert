@@ -20,11 +20,11 @@ Assign the Inband monitor to a pool and test
 
 #. Go to the **www\_pool** and remove all monitors and **Update**. Your pool members show now be **Unchecked**.
 
-   *Q1. What is the status of the* **www\_pool** *and* **www\_vs** configuration objects? Is the web site accessible? Why?*
+      *Q1. What is the status of the* **www\_pool** *and* **www\_vs** configuration objects? Is the web site accessible? Why?*
 
 #. Add the **my\_inband** monitor to the **www\_pool**.
 
-   *Q2. What are the status of* **www\_pool** *and* **www\_vs**? *Can you access the web site?*
+      *Q2. What are the status of* **www\_pool** *and* **www\_vs**? *Can you access the web site?*
 
 #. Let's simulate a failure. Open a new browser tab to **https://10.1.1.252:10000** this will bring you to **Webmin** on the back-end server::
 
@@ -35,17 +35,17 @@ Assign the Inband monitor to a pool and test
 
 #. Go to your pool statistics. After 30 seconds what is the status of the **secure\_pool** and **www\_pool?**
 
-   *Q3. Why is the* **www\_pool** *still showing up?*
+      *Q3. Why is the* **www\_pool** *still showing up?*
 
 #. Attempt to access **http://10.1.10.100** and refresh several times.
 
-   *Q4. What is the status of the* **www\_pool** *now?*
+      *Q4. What is the status of the* **www\_pool** *now?*
 
 #. In the **Webmin** tab, in the upper right corner, select **Start Apache**.
 
 #. Once Apache is started, refresh you pool statistics page. Then try to browse to **http://10.1.10.100/**
 
-   *Q5. What are the pool statuses and why?*
+      *Q5. What are the pool statuses and why?*
 
 #. It will be 300 seconds before the BIG-IP attempts to send any traffic to the offline pool members.
 
@@ -53,14 +53,14 @@ Assign the Inband monitor to a pool and test
 
 #. Open a terminal window to BIG-IP and run the following tcpdump::
 
-      tcpdump -nni server_vlan -X -s0 port 80
+         tcpdump -nni server_vlan -X -s0 port 80
 
-   *Q6. How often to you see monitor traffic to the* **www\_pool**?
+      *Q6. How often to you see monitor traffic to the* **www\_pool**?
 
 #. In the **Webmin** tab, **Stop Apache** again and attempt to browse **http://10.1.10.100** and refresh several times. Check the status of your pools. The **secure\_pool** and **www\_pool** should be offline.
 
-   *Q7. How often to you see monitor traffic to the* **www\_pool**?
+      *Q7. How often to you see monitor traffic to the* **www\_pool**?
 
 #. In the **Webmin** tab **Start Apache**.
 
-   *Q8. Did the www\_pool come up within 30 seconds without client traffic?  What did the tcpdump show?*
+      *Q8. Did the www\_pool come up within 30 seconds without client traffic?  What did the tcpdump show?*

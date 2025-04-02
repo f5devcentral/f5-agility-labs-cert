@@ -82,7 +82,7 @@ Prepare each BIG-IP for High Availability
 
 #. Use the Self IP address the **HA VLAN** for your Address and leave the **Port** at the default setting of **1026**.
 
-   *Q1. If you were to add multiple IP address to the Failover Unicast, when would the BIG-IP failover?*
+      *Q1. If you were to add multiple IP address to the Failover Unicast, when would the BIG-IP failover?*
 
    .. NOTE:: 
       
@@ -117,13 +117,13 @@ In the task you will build a trust between bigip01 and bigip02. Once the trust b
 
 #. On each BIG-IP check the other BIG-IP in the Peer Authorities list.
 
-   *Q1. Is all the information there?*
+      *Q1. Is all the information there?*
 
    .. WARNING::
 
       Occasionally some of the information is missing due to configuration errors or other failures.  If any of the information is missing delete the trust, correct the problem and try again.
 
-   *Q2. What are the statuses of your BIG-IPs now?*
+      *Q2. What are the statuses of your BIG-IPs now?*
 
 #. They should be **In Sync**. ``But wait!`` We haven't even created a device group! Remember the Device Trust creates a **Sync-Only** group for the certificates under the covers (device-trust-group) for the trust.  It is the **device-trust-group** that is in sync.
 
@@ -135,11 +135,11 @@ In the task you will build a trust between bigip01 and bigip02. Once the trust b
 
 #. Check **Device Groups** on each BIG-IP.
 
-   *Q3. Did you have to create the Device Group on the other BIG-IP?*
+      *Q3. Did you have to create the Device Group on the other BIG-IP?*
 
-   *Q4. Is the full configuration synchronized yet?*
+      *Q4. Is the full configuration synchronized yet?*
 
-   *Q5. What is the status and sync status on the BIG-IPs?*
+      *Q5. What is the status and sync status on the BIG-IPs?*
 
 #. On your configured BIG-IP (bigip01), click on the sync status (**Awaiting Initial Sync**) or go to **Device Management > Overview**.
 
@@ -159,24 +159,24 @@ In the task you will build a trust between bigip01 and bigip02. Once the trust b
 
 #. Check each BIG-IP **Device Management > Overview**.
 
-   *Q6. Did the configuration synchronize? What, if any, errors do you see?*
+      *Q6. Did the configuration synchronize? What, if any, errors do you see?*
 
 #. You ended up with an error because of configuration dependencies with **avr2\_virtual**. This is why building you device service cluster early is a good idea, but you can't always do that. You could have a device cluster pair that you are adding a third BIG-IP. You are going to have to correct the error, synchronize and the re-add **avr\_virtual.**
 
 #. On **bigip01** delete the virtual server **avr\_virtual2.**
 
-   *Q7. Any issue with that?*
+      *Q7. Any issue with that?*
 
 #. Maybe the easier route is to remove the iRule from **avr\_virtual1** (which references **avr\_virtual2**), synchronize and then add it back.
 
-   *Q8. What is the sync status of bigip02 once you made the change?*
+      *Q8. What is the sync status of bigip02 once you made the change?*
 
 #. Sync **bigip01** to the group.
 
-   *Q9. Are the BIG-IPs In Sync? Are the configurations the same?*
+      *Q9. Are the BIG-IPs In Sync? Are the configurations the same?*
 
 #. Browse to **http://10.1.10.100**
 
-   *Q10. Could you access the site? Which BIG-IP passed the traffic?*
+      *Q10. Could you access the site? Which BIG-IP passed the traffic?*
 
 #. Place the **random\_client\_ip** iRule back on **avr\_virtual2** and synchronize the changes.

@@ -36,7 +36,7 @@ Open BIG-IP TMSH and TCPDump session
 
 #. Do you see any connections from the jumpbox 10.1.10.199 to 10.1.1.4:22?
 
-   *Q1. Why are the ssh management sessions not displayed in connection table?*
+      *Q1. Why are the ssh management sessions not displayed in connection table?*
 
 Establish ftp connection
 ------------------------
@@ -53,7 +53,7 @@ In this task you will open a third terminal window and establish an FTP session 
 
 #. In window 1 you should see something similar to the tcpdump captured below.
 
-   .. image:: /_static/201L/201ex211t2a-tcpdump.png
+      .. image:: /_static/201L/201ex211t2a-tcpdump.png
 
    *Q1. In the tcpdump above, what is client IP address and port and the server IP address port?*
 
@@ -65,7 +65,7 @@ In this task you will open a third terminal window and establish an FTP session 
 
 #. The connection table on window2 will show the client-side and server-side connection similar to below:
 
-   .. image:: /_static/201L/201ex211t2b-shsysconn.png
+      .. image:: /_static/201L/201ex211t2b-shsysconn.png
 
    *Q2. What is source ip and port as seen by ftp server in the example above?*
 

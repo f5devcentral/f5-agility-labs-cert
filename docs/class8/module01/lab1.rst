@@ -79,11 +79,9 @@ Write your configuration to disk and create an archive::
 
 Log on to the BIG-IP WebUI and verify your virtual server is **Available** (green circle).
 
-Using a new browser window (preferably a private browser window) access
-the web site at http://10.1.10.100
+Using a new browser window (preferably a private browser window) access the web site at http://10.1.10.100
 
-*Q1. In* **Request Detail** *at the top of the page, what is the client
-IP address and why?*
+   *Q1. In* **Request Detail** *at the top of the page, what is the client IP address and why?*
 
 SNATs and NATs
 ==============
@@ -155,9 +153,7 @@ When building the FTP application you will use the default **FTP** profile and u
 
 #. Create a SNAT pool and assign it to the FTP server.
 
-      Go to **Address Translation** on the sidebar and select **SNAT Pool List**
-      and create a new SNAT pool named **SNATpool\_249** with **10.1.20.249**
-      as a member.
+#. Go to **Address Translation** on the sidebar and select **SNAT Pool List** and create a new SNAT pool named **SNATpool\_249** with **10.1.20.249** as a member.
 
       *Q2. Why might you require more than one IP address in the SNAT pool?*
 
@@ -179,7 +175,7 @@ When building the FTP application you will use the default **FTP** profile and u
 
       show sys connection
 
-   Find the connection with your client IP 10.1.10.199 and the SNAT pool IP.
+#. Find the connection with your client IP 10.1.10.199 and the SNAT pool IP.
 
       *Q4. What are the ephemeral port numbers on your client-side source IP and server-side source IP?*
 
@@ -204,9 +200,9 @@ to it via the out-of-band management network at **10.1.1.252**.
 
 #. At the command prompt, attempt to hit the Google open DNS server::
 
-     dig @8.8.4.4
+         dig @8.8.4.4
 
-   *Q1. Did the command succeed?*
+      *Q1. Did the command succeed?*
 
 #. On the BIG-IP, open the **SNAT List** and select **Create**
 
@@ -216,8 +212,7 @@ to it via the out-of-band management network at **10.1.1.252**.
 
 #. From the LAMP server try the **dig** command again and the try to **ping 8.8.4.4** from the LAMP server.
 
-      *Q2. Did the dig work? What was the source IP?. Did the ping work? What
-      was the result?*
+      *Q2. Did the dig work? What was the source IP?. Did the ping work? What was the result?*
 
 #. From the Linux prompt attempt to FTP to **10.1.10.248**.
 
