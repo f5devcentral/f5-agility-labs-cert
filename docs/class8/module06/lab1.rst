@@ -41,7 +41,7 @@ Open BIG-IP TMSH and TCPDump session
 Establish ftp connection
 ------------------------
 
-In this task you will open a third terminal window and establish an FTP session through the **ftp\_vs** virtual server. With the connection remaining open you will view the results in window1 (tcpdump) and window2 (tmsh).
+In this task you will open a command prompt window and establish an FTP session through the **ftp\_vs** virtual server. With the connection remaining open you will view the results in window1 (tcpdump) and window2 (tmsh).
 
 #. Open a third command/terminal window (window3).  Use a Command Prompt from the JumpBox for this step.
 
@@ -69,7 +69,7 @@ In this task you will open a third terminal window and establish an FTP session 
 
    *Q2. What is source ip and port as seen by ftp server in the example above?*
 
-   *Q3. What happened to the original client IP address and where did 10.1.20.249 come from?*
+   *Q3. What happened to the original client IP address and where did 10.1.10.249 come from?*
 
 .. HINT::
    You may have to review the configuration of **ftp\_vs** to determine
