@@ -45,7 +45,7 @@ Test the FTP packet filter
 
     *Q5. Prioritize the packet processing order below from 1-7:*
 
-#. Virtual Server\_\_\_ SNAT\_\_\_ AFM/Pkt Filter\_\_\_ NAT\_\_\_ Existing Connections\_\_\_ Self IP\_\_\_ Drop \_\_\_
+    Virtual Server\_\_\_ SNAT\_\_\_ AFM/Pkt Filter\_\_\_ NAT\_\_\_ Existing Connections\_\_\_ Self IP\_\_\_ Drop \_\_\_
 
 #. Review the Packet Filter Logs and Packet Filter Statistics, then disable the Packet Filters.
 

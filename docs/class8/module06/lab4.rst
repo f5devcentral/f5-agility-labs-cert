@@ -20,21 +20,15 @@ IP Forwarding Virtual Server
 
       route add 10.1.20.0 mask 255.255.255.0 10.1.10.245
    
-#. Linux (enter the user password when prompted)::
-
-      sudo route add -net 10.1.20.0/24 gw 10.1.10.245
-
-#. Enter **f5DEMOs4u** if prompted for a password.
-
-#. Verifiy your route has been added (works for Windows and Linux)::
+#. Verifiy your route has been added::
 
       netstat -r
    
 #. Open up statistics for **forward-to-servernet** and from the jumpbox terminal window test access to the 10.1.20.0/24 subnet:
 
    - ping 10.1.20.11
-   - nslookup hackzon.f5demo.com 10.1.20.12 (windows) or dig @10.1.20.12 hackazon.f5demo.com (linux)
-   - http://10.1.20.13 (from a browser) or curl 10.1.20.13 (linux)
+   - nslookup hackazon.f5demo.com 10.1.20.12 (windows)
+   - http://10.1.20.13 (from a browser)
 
 By the way, if you take a look at the iApp templates you will find one for building IP Forwarding virtual servers.
 
@@ -49,8 +43,8 @@ Build your transparent pool and virtual server
 
       *Q1. Why did we use gateway\_icmp? What other kind of monitor could we have used?*
 
-#. Create a virtual server called **transparent-vs** with a IP address of **10.1.10.95** with with the wildcard port ``*``, since we can't put any L7 profiles on this virtual server a virtual server type of **Performance (Layer 4)** will
-   be more efficient, Finally configure **transparent-pool** as the virtual server pool.
+#. Create a virtual server called **transparent-vs** with a IP address of **10.1.10.95** with the wildcard port ``*``, since we can't put any L7 profiles on this virtual server a virtual server type of **Performance (Layer 4)** will
+   be more efficient, Finally configure **transparent-pool** as the virtual server pool.  Don't forget to set SNAT Automap.
 
    .. NOTE::
       Open the Advanced menu and notice that Address Translation is still enabled, but
