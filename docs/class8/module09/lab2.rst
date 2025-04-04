@@ -1,10 +1,7 @@
 Remote Authentication
 =====================
 
-   .. NOTE::
-
-      Due to the lab environment this will no longer work, but it does give
-      you the general concept of how remote authentication is set up.
+We will setup a LDAP authentication on the BIG-IP for user authentication to perform BIG-IP tasks.
 
 Authenticate against LDAP
 -------------------------
@@ -15,7 +12,9 @@ Authenticate against LDAP
 
    +-------------------------+------------------------+
    | Host                    | 10.1.20.252            |
-   +-------------------------++-----------------------+
+   +-------------------------+------------------------+
+   | Port                    | 389                    |
+   +-------------------------+------------------------+
    | Remote Directory Tree   | dc=f5demo,dc=com       |
    +-------------------------+------------------------+
    | Bind DN:                | cn=Directory Manager   |
@@ -23,6 +22,8 @@ Authenticate against LDAP
    | Bind Password/Confirm   | default                |
    +-------------------------+------------------------+
    | Role                    | Administrator          |
+   +-------------------------+------------------------+
+   | SSL                     | Disabled               |
    +-------------------------+------------------------+
 
 #. Open a new private browser window to **bigip01** at **https://10.1.1.4** and logon using the LDAP account **adminuser/password**.
@@ -32,3 +33,5 @@ Authenticate against LDAP
 #. Try logging with the local account **testuser/testpass**.
 
       *Q2. Were you successful?*
+
+#. Set Authentication back to Local (**System > Users > Authentication** and select **Local** under **User Directory**)

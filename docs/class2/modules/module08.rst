@@ -3,7 +3,7 @@ Lab 8: BIG-IP Monitoring
 
 
 Monitoring BIG-IP LTM Using Syslog and SNMP v3 with LibreNMS
-==================================================================
+--------------------------------------------------------------------
 
 This guide demonstrates how to configure Syslog and SNMP v3 on a BIG-IP LTM device
 and integrate it with LibreNMS for monitoring.

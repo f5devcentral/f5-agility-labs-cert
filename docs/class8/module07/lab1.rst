@@ -30,6 +30,10 @@ Ratio Load Balancing
 
       *Q3. Does the ratio setting have any impact now?*
 
+.. NOTE::
+   
+   Remember that if you have a browser open already connected to http://10.1.10.100 the connection will continue to use the settings from before you modified the pool.  Make sure to close chrome and open a new instance or open an incognito instance to start a completely new session.
+
 Priority Groups Lab
 -------------------
 
