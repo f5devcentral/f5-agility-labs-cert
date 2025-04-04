@@ -136,9 +136,11 @@ Upload using SCP from the command line
       
 1. Secure copy (SCP) the **.iso** file and corresponding **.md5** file from BIG-IP-01 to the **/shared/images** directory on the BIG-IP 02 device.
 
-**Example:**
+**Examples:**
 
    ``scp /shared/images/BIGIP-17.5.0-0.0.15.iso root@10.1.1.5:/shared/images/``
+
+   ``scp /shared/images/BIGIP-17.5.0-0.0.15.iso.md5 root@10.1.1.5:/shared/images/``
 
 2. Use the same password to transfer the file to the 02 device
 3. Log into the BIG-IP web shell and type **bash** in the command line session on the BIG-IP.
