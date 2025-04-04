@@ -21,7 +21,7 @@ Prepare bigip01
 
 #. Go to you **10.1.30.245** self IP and set **Port Lockdown** to **Allow Defaults**. This will ensure the ports we require are open.
 
-#. Go to **https://10.1.1.246** which is **bigip02.f5demo.com** and login with **admin/admin**.
+#. Go to **https://10.1.1.246** which is **bigip02.f5demo.com** and login with **admin/admin.F5demo.com**.
 
 Prepare bigip02
 ~~~~~~~~~~~~~~~

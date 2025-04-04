@@ -9,7 +9,7 @@ the common partition.
 
 #. To create a new partition, go to **System > Users > Partition List** and select create
 
-#. Create a new partition named **my\_partition**. There is really not a whole lot to it.
+#. Create a new partition named **test\_partition**. There is really not a whole lot to it.
 
 Create and place a user in a partition
 --------------------------------------
@@ -59,7 +59,7 @@ Create and place a user in a partition
       cat bigip.conf
       more bigip.conf
 
-      *Q4. Did you find it in /config/bigip.conf?*
+            *Q4. Did you find it in /config/bigip.conf?*
 
 #. Each partition gets its own "folder" where its configuration is stored under the **partitions** directory in the **/config** directory. At the BIG-IP CLI prompt::
 
@@ -67,7 +67,7 @@ Create and place a user in a partition
       ls
       cat bigip.conf
 
-      *Q5. Did you find your virtual server? Is the tmsh change you made in there?*
+            *Q5. Did you find your virtual server? Is the tmsh change you made in there?*
 
 #. As **testuser** at the tmsh prompt type: **save sys config**
 
