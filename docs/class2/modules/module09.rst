@@ -175,6 +175,6 @@ Cleanup Tasks
 
     tmsh modify /sys sshd allow replace-all-with { ALL }
     tmsh modify /sys httpd allow replace-all-with { ALL }
-    save /sys config
+    tmsh save /sys config
 
 - Validate that the Management IP is accessible as per the lab’s original configuration.
