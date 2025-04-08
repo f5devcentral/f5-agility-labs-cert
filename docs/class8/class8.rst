@@ -8,7 +8,7 @@ test and these exercises will help you deal with exam questions requiring you
 to interpret configuration and other outputs from the |bip|.
 
 Exam blueprints and study guides can be found on the F5 Support site at:
-https://support.f5.com/csp/article/K29900360
+https://support.f5.com/csp/article/K29900360.  You can also get the PDF of slides here: https://clouddocs.f5.com/training/community/f5cert/html/_static/301a/301a-slides.pdf
 
 This class covers the following topics:
 - Basic Setup, TMSH and SNATs

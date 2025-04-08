@@ -72,10 +72,9 @@ Prepare each BIG-IP for High Availability
 
 #. On each BIG-IP configure the device object failover parameters the BIG-IP will send to other BIG-IPs that want to be a part of a sync-only or sync-failover group.
 
-#. Under **Device Management > Device**, select the local BIG-IP. It will have the (Self) suffix.
+#. Under **Device Management > Devices**, select the local BIG-IP. It will have the (Self) suffix.
 
-#. Under **Device Connectivity**:
-   - On the top bar select **ConfigSync** and use the **HA-IP** for your **Local Address**.
+#. On the top bar select **ConfigSync** and use the **HA-IP** for your **Local Address**.
 
 #. Under **Network Failover**:
    - In the **Failover Unicast Configuration** section select the **Add** button
@@ -101,7 +100,7 @@ Build the Device Trust and Device Group
 
 In the task you will build a trust between bigip01 and bigip02. Once the trust between the devices is built you will be build a Sync-Failover device group and place the BIG-IPs in the new group. You will build this from bigip01 and sync its good configuration to bigip02.
 
-#. On **bigip01.f5demo.com**, under **Device Management > Device Trust > Peer List** and select **Add**
+#. On **bigip01.f5demo.com**, under **Device Management > Device Trust > Device Trust Members** and select **Add**
 
    **Device IP Address:** <management IP address of the BIG-IP to add>
 
@@ -179,4 +178,4 @@ In the task you will build a trust between bigip01 and bigip02. Once the trust b
 
       *Q10. Could you access the site? Which BIG-IP passed the traffic?*
 
-#. Place the **random\_client\_ip** iRule back on **avr\_virtual2** and synchronize the changes.
+#. Place the **random\_client\_ip** iRule on **avr\_virtual2** and synchronize the changes.

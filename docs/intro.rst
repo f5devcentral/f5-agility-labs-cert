@@ -1,4 +1,4 @@
-Getting Started with the F5 Certification Program - Created 03/29/19
+Getting Started with the F5 Certification Program 
 ====================================================================
 
 |
