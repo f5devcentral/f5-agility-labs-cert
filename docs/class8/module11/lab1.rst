@@ -25,7 +25,7 @@ Limiting SSH access to the BIG-IP
 
 #. The jumpbox has two IPs, 10.1.1.6 on the management network, 10.1.10.199 on the client-side network.
 
-#. Open **System > Platform** and in **SSH IP Allow** > **Specify Range** of **10.1.20.0/24**
+#. Open **System > Platform** and in **SSH IP Allow** > **Specify Range** of **10.1.10.0/24**
 
     *Q1. Does existing an SSH window still work? Does a new SSH work?*
 
