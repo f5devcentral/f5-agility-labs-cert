@@ -44,7 +44,7 @@ Once you place a BIG-IP in a device group, mirroring selections will show up for
 
 #. Go to your **Active** BIG-IP.
 
-#. Open your **www\_vs** virtual server and add **my-src-persist** as your **Persistence Profile**.
+#. Open your **www\_vs** virtual server and add **src-persist** as your **Persistence Profile**.
 
 #. On each BIG-IP go to **Module Statistics > Local Traffic** and bring up the **Persistence Record** statistics.
 
