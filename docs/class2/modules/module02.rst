@@ -204,14 +204,14 @@ e. Click on the **Update** button to finalize your changes.
 Content Monitors
 ----------------
 
-The default monitor simply tells us the IP address is accessible, but we really don’t know the status of the particular application the node supports. We are now going to create a monitor to specifically test the application we are interested in. We are going to basic contnet check of our web site to determine it the servers are responding properly.
+The default monitor simply tells us the IP address is accessible, but we really don’t know the status of the particular application the node supports. We are now going to create a monitor to specifically test the application we are interested in. We are going to perform a basic content check of our web site to determine it the servers are responding properly.
 
-1. Browse to **http://10.1.10.100**. A number of content items you could use to check the site status.  You could check for text on this page. You could view the source code and check for a text string not normally visible to the user. You can also look in the HTTP header information being returned. 
+1. Browse to **http://10.1.10.100**. There are a number of content items you could use to check the site status.  You could check for text on this page. You could view the source code and check for a text string not normally visible to the user. You can also look in the HTTP header information being returned. 
 
 2. We will be looking for the HTTP status “\ **200 OK**\ ” in the HTTP header information as our receive string to determine availability.
 
-3. Select **Local Traffic>Monitor** on the side-bar and select the plus
-   (**+**) sign or the **Create**
+3. Select **Local Traffic>Monitors** on the side-bar and select the plus
+   (**+**) sign, or the **Create** button. 
 
 .. image:: /_static/101/image32.png
    :width: 3.78002in

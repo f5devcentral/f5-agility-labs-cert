@@ -12,7 +12,7 @@ Log on to the bigip01 TMUI (GUI) Interface:
 Creating VLANs
 --------------
 
-First, you will need to log into **bigip01**. You will need create two untagged VLANs, one client-side VLAN (**client_vlan**) and one server-side VLAN (**server_vlan)** for the devices in your network.
+First, you will need to log into **bigip01**. You will create two untagged VLANs, one client-side VLAN (**client_vlan**) and one server-side VLAN (**server_vlan)** for the devices in your network.
 
 1. From the sidebar select **Network** **> VLANs** then select
    **Create**
