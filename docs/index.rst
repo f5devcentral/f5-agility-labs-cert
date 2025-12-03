@@ -10,7 +10,7 @@ Welcome to the |classbold| last updated on 10/20/20
 .. caution::
   The F5 Certification Program does not produce any educational materials to support their program.  All material in this repo is created and maintained by exam canidates, which work for F5 Networks, and are not officially supported by the F5 Certification Program.
 
-  Official exam preparation materials can be found here: `Resources for Exam Preparation<https://support.education.f5.com/hc/en-us/articles/4404740929819-Resources-for-Exam-Preparation>`.
+  Official exam preparation materials can be found here: Resources for Exam Preparation `link <https://support.education.f5.com/hc/en-us/articles/4404740929819-Resources-for-Exam-Preparation>`.
 
 |
 
