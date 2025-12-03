@@ -136,7 +136,7 @@ Step 5: Test Packet Filter Rules for Self-IPs
 
       - **Name**: ``imcpdrop``
       - **Action**: ``Discard``
-      - **Protocol**: ``TCP``
+      - **Protocol**: ``ICMP``
       - **Source Hosts and Network**: 10.1.20.0/24
    
    .. image:: /_static/101//icmp-filter.png
