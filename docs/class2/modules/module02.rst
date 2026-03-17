@@ -68,7 +68,7 @@ e. Select the **Update** button
 
       i.   Browse to your **www_vs** **(10.1.10.100)** virtual server
 
-      ii.  Refresh the browser screen several times (use “<ctrl>” F5)
+      ii.  Refresh the browser screen several times (use “<CTRL>” F5)
 
       iii. Select the **Refresh** button on the **Statistics** screen
 
