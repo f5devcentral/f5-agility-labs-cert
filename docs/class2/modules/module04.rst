@@ -127,7 +127,6 @@ b. For **Policies**, select **Manage** and move **access_image_pool** from the *
    **Enabled** box and hit **Finished**
 
 .. image:: /_static/101/image62.png
-   :alt: Virtual Server - Resource Management - Policy screen
    :align: center
    :width: 400
 

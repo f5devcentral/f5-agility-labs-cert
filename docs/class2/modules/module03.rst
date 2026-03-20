@@ -53,7 +53,6 @@ Creating SSL Client Profile
    **Create**.
 
 .. image:: /_static/101/image54.png
-   :alt: C:\Users\RASMUS~1\AppData\Local\Temp\SNAGHTMLf292a2.PNG
    :width: 2.15302in
    :height: 1.94805in
 
@@ -137,7 +136,6 @@ Securing web applications with the HTTP profile
       iv.  **Insert XForwarded For**: Enabled *(to save the original client ip)*
 
          .. image:: /_static/101/image56.png
-            :alt: C:\Users\RASMUS~1\AppData\Local\Temp\SNAGHTML566674e6.PNG
             :width: 3.25in
             :height: 3.44635in
 
