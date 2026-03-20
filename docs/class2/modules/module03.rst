@@ -109,7 +109,7 @@ Building our New Secure Virtual Server
    a. If you want to watch member traffic, go to the **www_pool** and
       reset the statistics.
 
-   b. Browse to your secure virtual server
+   b. Open up Super Jump Host and go to Guacamole, then Login and use Firefox and Browse to your secure virtual server
 
    c. What port did your pool members see traffic on?
 
@@ -145,13 +145,13 @@ Securing web applications with the HTTP profile
 
    vi. Attach your new HTTP Profile to your secure_vs (HTTPS) virtual server
 
-1. Browse to your secure virtual server.
+1. Open up Super Jump Host and go to Guacamole, then Login and use Firefox to Browse to your secure virtual server
 
    a. Do web pages appear normal?
 
    b. Now browse to a bad page.
 
-   c. Using your browser Inspect window check the server response.  Altenately you can to the **Request and Response Headers** from the **Demo** drop-down menu to view the headers. You should see your sanitized server response and the original client IP address in the **x-forward-for** header, which is itself new.
+   c. In Firefox, right-click and choose Inspect and go to network and check the server response.  Altenately you can to the **Request and Response Headers** from the **Demo** drop-down menu to view the headers. You should see your sanitized server response and the original client IP address in the **x-forward-for** header, which is itself new.
 
    d. You can compare the headers by accessing your HTTP virtual server your unsecure **www_vs** and looking at the responses.
 

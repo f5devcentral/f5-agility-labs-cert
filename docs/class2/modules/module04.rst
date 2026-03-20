@@ -49,7 +49,7 @@ d. Note the highlighted content, hover the pointer over HTTP_REQUEST and HTTP::u
 
       i. What other profile did this iRule require to work?
 
-4. Test your iRule by going to https://10.1.10.105, you will want to
+4. Test your iRule by Open up Super Jump Host and go to Guacamole, then Login and use Firefox to Browse to https://10.1.10.105, you will want to
    use an incognito/private browsing window to avoid cached content.
 
 a. Test your iRule.  If you browse at your unsecured virtual server (10.1.10.100) you will see there are multiple colors to the images, but browser the secure virtual server and all the image colors are the same because all the images were pulled from the same server (10.1.20.14) 
