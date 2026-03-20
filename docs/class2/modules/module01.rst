@@ -300,16 +300,18 @@ You can also review statistics via the CLI, simply SSH to the management
 IP of your BIG-IP. Refer to your Student Information page and Network
 Diagram for the IP address.
 
-1. Check out the Linux CLI and TMSH
+1. Check out the Linux CLI and TMSH interface:
 
-   a. Review the information of the following command:
+   a. on bigip01 click on Access and then Web Shell Run the following TMSH commands at the **config #** prompt:
 
-      i. **bigtop –n**
+      i. **tmsh run /util bash**
+      ii. **bigtop –n** (review what is displayed on the screen)
 
-           1. Type **q** to quit.
+         1. Type **q** to quit.
 
-   b. Take a look at the TMOS CLI, type “\ **tmsh**\ ” to enter the
-      Traffic Management Shell
+   b. on bigip01 to see the Traffic Management Shell (TMOS), click on Access and then Web Shell and type “\ **tmsh**\” and press enter
+      
+      Then type in the following commands at the (tmos)# prompt:
 
       i.   (tmos)# **show ltm pool**
 
