@@ -191,7 +191,6 @@ Now let’s build our virtual server
    **Create**.
 
 .. image:: /_static/101/image18.png
-   :alt: C:\Users\RASMUS~1\AppData\Local\Temp\SNAGHTML5118b969.PNG
    :width: 3.71994in
    :height: 3.08333in
 
@@ -225,7 +224,6 @@ b. Under **Configurations**
    ii. **Source Address Translation**: Auto Map
 
   .. image:: /_static/101/image19.png
-      :alt: C:\Users\RASMUS~1\AppData\Local\Temp\SNAGHTML58387b2.PNG
       :width: 2.97587in
       :height: 0.99517in
 
@@ -300,16 +298,18 @@ You can also review statistics via the CLI, simply SSH to the management
 IP of your BIG-IP. Refer to your Student Information page and Network
 Diagram for the IP address.
 
-1. Check out the Linux CLI and TMSH
+1. Check out the TMSH Advanced Shell interface:
 
-   a. Review the information of the following command:
+   a. on bigip01 click on Access and then Web Shell and then Run the following TMSH commands at the **config #** prompt:
 
-      i. **bigtop –n**
+      i. **tmsh run /util bash**
+      ii. **bigtop –n** (review what is displayed on the screen)
 
-           1. Type **q** to quit.
+         1. Type **q** to quit.
 
-   b. Take a look at the TMOS CLI, type “\ **tmsh**\ ” to enter the
-      Traffic Management Shell
+   b. on bigip01 to see the Traffic Management Shell (TMOS), click on Access and then Web Shell and then type “\ **tmsh**\” and press enter
+      
+      Then type in the following commands at the (tmos)# prompt:
 
       i.   (tmos)# **show ltm pool**
 
@@ -328,7 +328,6 @@ Diagram for the IP address.
    a. Go to **Statistics>Dashboard**
 
 .. image:: /_static/101/image23.png
-   :alt: C:\Users\RASMUS~1\AppData\Local\Temp\SNAGHTML59e5bf2.PNG
    :width: 3.13542in
    :height: 1.81755in
 

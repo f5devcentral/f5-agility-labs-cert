@@ -7,7 +7,7 @@ Lab 7: Common Configuration Items
 Resource Utilization and Provisioned Modules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. On **bigip01.f5demo.com** 
+1. On **bigip01** 
 
 a. Go to **System > Resource Provisioning**
 
@@ -19,7 +19,7 @@ b. On this page, you can view the provisioned modules and their license status b
 
 Creating User on BIG-IP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-1. On **bigip01.f5demo.com**
+1. On **bigip01**
 
 a. Go to **System > Users**
 
@@ -105,7 +105,7 @@ In this section of the lab we will explore methods for managing software images 
 Upload using the configuration utility
 ------------------------------------------------
 
-1. On **bigip01.f5demo.com** log into the configuration utility. 
+1. On **bigip01** log into the configuration utility. 
 
 2. Go to **System > Software Management**
 3. Select **Import**
@@ -127,8 +127,8 @@ Upload using the configuration utility
 
       .. code-block:: bash
 
-         [root@bigip01:Active:Standalone] images # md5sum --check BIGIP-17.5.0-0.0.15.iso.md5
-         BIGIP-17.1.2.1-0.0.2.iso: OK
+         [root@bigip01:Active:Standalone] images # md5sum --check BIGIP-17.5.1.5-0.0.6.iso.md5
+         BIGIP-17.5.1.5-0.0.6.iso: OK
          [root@bigip01:Active:Standalone] images #
 
 Upload using SCP from the command line
@@ -138,9 +138,9 @@ Upload using SCP from the command line
 
 **Examples:**
 
-   ``scp /shared/images/BIGIP-17.5.0-0.0.15.iso root@10.1.1.5:/shared/images/``
+   ``scp /shared/images/BIGIP-17.5.1.5-0.0.6.iso root@10.1.1.5:/shared/images/``
 
-   ``scp /shared/images/BIGIP-17.5.0-0.0.15.iso.md5 root@10.1.1.5:/shared/images/``
+   ``scp /shared/images/BIGIP-17.5.1.5-0.0.6.iso.md5 root@10.1.1.5:/shared/images/``
 
 2. Use the same password to transfer the file to the 02 device
 3. Log into the BIG-IP web shell and type **bash** in the command line session on the BIG-IP.
@@ -154,14 +154,14 @@ Upload using SCP from the command line
 
       .. code-block:: bash
 
-         [root@bigip01:Active:Standalone] images # md5sum --check BIGIP-17.1.2.1-0.0.2.iso.md5
-         BIGIP-17.1.2.1-0.0.2.iso: OK
+         [root@bigip01:Active:Standalone] images # md5sum --check BIGIP-17.5.1.5-0.0.6.iso.md5
+         BIGIP-17.5.1.5-0.0.6.iso: OK
          [root@bigip01:Active:Standalone] images #
 
 Show currently configured boot location
 ----------------------------------------
 
-#. On **bigip01.f5demo.com:** log into the configuration utility.
+#. On **bigip01:** log into the configuration utility.
 
 #. Go to **System > Software Management > Boot Locations**
 
@@ -178,7 +178,7 @@ After the software image has been uploaded and verified, you can install it to a
 Using the Configuration Utility
 -------------------------------
 
-1. On **bigip01.f5demo.com** log into the configuration utility. 
+1. On **bigip01** log into the configuration utility. 
 2. Go to **System > Software Management**
 3. For **Available Images**, select the box next to the software you want to install.
 4. Select **Install**
@@ -223,13 +223,21 @@ Using tmsh
 
                root@(bigip02)(cfg-sync Standalone)(Active)(/Common)(tmos)# show sys software
 
-               --------------------------------------------------------------------------------
+               -------------------------------------------------------------------
                Sys::Software Status
-               Volume  Product   Version   Build  Active                Status  Allowed Version
-               --------------------------------------------------------------------------------
-               HD1.1    BIG-IP  15.1.2.1  0.0.10      no              complete              yes
-               HD1.2    BIG-IP    17.5.0  0.0.15      no installing 10.000 pct              yes
-               HD1.3    BIG-IP  17.1.2.1   0.0.2     yes              complete              yes
+               Volume  Product   Version  Build  Active    Status  Allowed Version
+               -------------------------------------------------------------------
+               HD1.1    BIG-IP  17.5.1.5  0.0.6     yes  complete              yes
+               HD1.3    BIG-IP  17.1.2.1  0.0.2      no  complete              yes
+
+---------------------------
+Sys::Software Update Check
+---------------------------
+  Check Enabled        true
+  Phonehome Enabled    true
+  Frequency          weekly
+  Status               none
+  Errors                  0
 
 Determine Resource Utilization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -243,7 +251,7 @@ Identify CPU Statistics per Virtual Server
 Using the Configuration Utility
 -------------------------------
 
-1. On **bigip01.f5demo.com** log into the configuration utility.
+1. On **bigip01** log into the configuration utility.
 2. Go to **Statistics > Module Statistics > Local Traffic**.
 
 .. image:: /_static/101/image86.png
@@ -292,7 +300,7 @@ Interpret Statistics for Interfaces
 Using the Configuration Utility
 -------------------------------
 
-1. On **bigip01.f5demo.com** log into the configuration utility.
+1. On **bigip01** log into the configuration utility.
 2. Go to **Statistics > Module Statistics > Network**.
 
 .. image:: /_static/101/image89.png
@@ -339,7 +347,7 @@ Determine Disk and Memory Utilization
 Viewing Memory Statistics
 -------------------------
 
-1. On **bigip01.f5demo.com** log into the configuration utility.
+1. On **bigip01** log into the configuration utility.
 2. Go to **Statistics > Analytics > Memory**.
 
 The Memory TMM statistics chart opens showing the average total RAM used per slot over a period of time. 
@@ -361,7 +369,7 @@ In addition, the tabs at the top of this screen can be used to show additional m
 Viewing Disk Activity
 ---------------------
 
-1. On **bigip01.f5demo.com** log into the configuration utility.
+1. On **bigip01** log into the configuration utility.
 2. Go to **Statistics > Analytics > Disk**.
 
 The Disk Activity chart opens showing Total I/O per slot over a period of time.

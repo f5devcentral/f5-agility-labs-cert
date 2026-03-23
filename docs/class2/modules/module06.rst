@@ -117,7 +117,7 @@ c. Click **Device Management > Device** and select the local BIG-IP. It will hav
       iii. **Mirroring**
 
          1. **Primary Local Mirror Address**: use the Self IP address of
-            the HA VLAN for your
+            the HA VLAN of this bigip
 
          2. **Secondary Local Mirror Address:** None
 
@@ -217,7 +217,7 @@ c. Click **Device Management > Device** and select the local BIG-IP. It will hav
 
    a. Go to your **Active** BIG-IP.
 
-   b. Go to your persistence profile **my-src-persistence** and check
+   b. Go to your persistence profile **my-src-persist** and check
       the **Mirror Persistence** box.
 
    c. Go to your **www_vs** virtual server and set the **Default
