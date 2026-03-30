@@ -170,7 +170,7 @@ c. Click **Device Management > Device** and select the local BIG-IP. It will hav
        **Sync-Only** group for the certificates under the covers
        (*device-trust-group*) and that should be in sync.
 
-    b. Click on **In Sync** in the upper right corner or **Device
+    b. Click on **In Sync** in the upper Left corner or **Device
        Management > Overview** to see the **device_trust_group**.
 
 5. On bigip01.f5demo.com create a new **Sync-Failover** device group

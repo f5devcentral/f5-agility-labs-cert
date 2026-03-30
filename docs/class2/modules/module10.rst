@@ -10,14 +10,14 @@ Lab 10: Securing your BIG-IP
 Step 1: Setup Environment
 --------------------------
 
-#. **Create VLAN (Named internal)**:
+#. **Create VLAN (Named: server_ip)**: Note this step was already done in LAB1
 
    - Log in to the **TMUI** (BIG-IP web-based GUI) 
    - Navigate to **Network** -> **VLANs**.
-   - Click **Create** to define a new VLAN.
+   - Click **Create** to define a new VLAN. 
    - Provide the following details:
    
-      - **Name**: ``internal``
+      - **Name**: ``server_vlan`` 
       - **Tag**: Leave blank for an untagged VLAN
       - **Interfaces**: Select the interface(s) to associate with the VLAN (e.g., ``1.2``).
 
@@ -30,19 +30,19 @@ Step 1: Setup Environment
 
    .. code-block:: bash
 
-      tmsh create net vlan internal interfaces add { 1.2 }
+      tmsh create net vlan server_vlan interfaces add { 1.2 }
 
 #. **Create a Self IP**:
 
    - Navigate to ``Network`` -> ``Self IPs``.
-   - Click **Create** to add a new self IP.
+   - Click **Create** to add a new self IP.  Note this step was already created in LAB1
    - Provide the following details:
      
-     - **Name**: ``Internal-self-IP``
-     - **IP Address**: ``10.1.20.245``
+     - **Name**: ``server_ip`` 
+     - **IP Address**: ``10.1.20.245`` 
      - **Netmask/Subnet**: ``255.255.255.0`` (adjust based on your network setup)
-     - **VLAN**: Select the VLAN ``internal`` created earlier.
-     - **Port Lockdown**: Set to ``Allow All``.
+     - **VLAN**: Select the VLAN ``server_vlan`` 
+     - **Port Lockdown**: Set to ``Allow All``.  
 
    - Click **Finished** to apply the configuration.
 
@@ -53,7 +53,7 @@ Step 1: Setup Environment
 
    .. code-block:: bash
 
-      tmsh create /net self Internal-self-IP address 10.1.20.4/24 allow-service all vlan internal
+      tmsh create /net self server_ip address 10.1.20.245/24 allow-service all vlan server_vlan
 
 
 Step 2: Test Initial Access
@@ -69,7 +69,7 @@ Step 2: Test Initial Access
 
    .. code-block:: bash
 
-      nmap 10.1.20.4 --max-retries 0
+      nmap 10.1.20.245 --max-retries 0
 
 Step 3: List Current Port Lockdown Settings
 -------------------------------------------
@@ -89,7 +89,7 @@ Step 3: List Current Port Lockdown Settings
 
    .. code-block:: bash
 
-      tmsh list net self Internal-self-IP
+      tmsh list net self server_ip
 
 
 Step 4: Customize Port Lockdown
@@ -97,7 +97,7 @@ Step 4: Customize Port Lockdown
 
 1. **TMUI Method**:
 
-   Edit the self IP, change Port Lockdown to ``Allow Custom``, and manually specify ports/protocols to allow 443. Click Network > Self IPs > Internal-self-IP.
+   Edit the self IP, change Port Lockdown to ``Allow Custom``, and manually specify ports/protocols to allow 443. Click Network > Self IPs > server_ip
 
    - Add Port 443
 
@@ -108,7 +108,7 @@ Step 4: Customize Port Lockdown
 
    .. code-block:: bash
 
-      tmsh modify net self Internal-self-IP allow-service replace { tcp:443 }
+      tmsh modify net self server_ip allow-service replace { tcp:443 }
       tmsh save sys config
 
 3. **Validate Configuration**:
@@ -126,7 +126,7 @@ Step 5: Test Packet Filter Rules for Self-IPs
 
 1. **Add Packet Filter Rules**:
 
-   Configure a packet filter rule that drops ICMP traffic and allows traffic to TCP port ``443`` for a specific IP range (e.g., ``10.1.20/24``).
+   Configure a packet filter rule that drops ICMP traffic and allows traffic to TCP port ``443`` for a specific IP range (e.g., ``10.1.20.0/24``).
 
    **TMUI**
    
@@ -236,7 +236,7 @@ This lab demonstrates two key techniques for mitigating Denial-of-Service (DoS) 
 Pre-Lab Section: BIG-IP LTM Configuration
 ------------------------------------------
 
-In this section, students will configure the BIG-IP LTM with the necessary network settings, pool, and virtual server.
+In this section, students will configure the BIG-IP LTM with the necessary network settings, pool, and virtual server.  Note the VLAN and Self IP steps were already done in LAB1
 
 Tasks:
 
@@ -244,19 +244,19 @@ Tasks:
 
     .. code-block:: bash
 
-        tmsh create net vlan internal tag 100 interfaces add { 1.2 }
-        tmsh create net vlan external tag 200 interfaces add { 1.1 }
+        tmsh create net vlan server_vlan tag 100 interfaces add { 1.2 }  
+        tmsh create net vlan client_vlan tag 200 interfaces add { 1.1 }   
 
-    This creates two VLANs: "internal" (tagged with VLAN ID 100) and "external" (tagged with VLAN ID 200), assigning interfaces 1.2 and 1.1 respectively.
+    This creates two VLANs: "server_vlan" (tagged with VLAN ID 100) and "client_vlan" (tagged with VLAN ID 200), assigning interfaces 1.2 and 1.1 respectively.
 
 2.  **Create Self IPs:**
 
     .. code-block:: bash
 
-        tmsh create net self internal_self address 10.1.20.245/24 vlan internal allow-service none
-        tmsh create net self external_self address 10.1.10.245/24 vlan external allow-service none
+        tmsh create net self server_ip address 10.1.20.245/24 vlan server_vlan allow-service none
+        tmsh create net self client_ip address 10.1.10.245/24 vlan client_vlan allow-service none
 
-    This creates self IP addresses for the "internal" and "external" VLANs. The "internal_self" and "external_self" IP do not allow any services. 
+    This creates self IP addresses for the "server_vlan" and "client_vlan" VLANs. The "server_ip" and "client_ip" IP do not allow any services. 
 
 3.  **Create a Pool:**
 
