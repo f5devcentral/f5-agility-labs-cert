@@ -142,7 +142,7 @@ When building the FTP application you will use the default **FTP** profile and u
 
       tcpdump -nni server_vlan host 10.1.20.15
 
-#. From a Linux terminal window FTP to 10.1.10.100. The logon credentials are **root/default**. It may take 15-20 to connect.
+#. From the Windows 10 jumpbox, open a command line and FTP to 10.1.10.100. The logon credentials are **root/default**. It may take 15-20 to connect.
 
       *Q1. Do you see traffic destined for the for the FTP server? What is the source IP?*
 
@@ -220,8 +220,8 @@ to it via the out-of-band management network at **10.1.1.252**.
 
 #. Go to **Statistics >> Module Statistics >> Local Traffic** and select **Statistics Type: SNAT Translations** and review the information.
 
-#. Under **Address Translation** go to the **NAT List** and create a NAT named **server\_15\_nat** with a **NAT Address** of **10.1.10.15** and an **Origin Address** of **10.1.20.15**.
+#. Under **Address Translation** go to the **NAT List** and create a NAT named **server\_15\_nat** with a **NAT Address** of **10.1.10.15** and an **Origin Address** of **10.1.20.252**.
 
-#. Attempt to FTP to 10.1.10.15. Attempt to ping 10.1.10.15.
+#. Attempt to FTP from the LAMP server to 10.1.10.100. Attempt to ping 10.1.10.100.
 
       *Q4. When you attempted to FTP and ping 10.1.10.15 and access 10.1.20.15 behind the BIG-IP were you successful?*

@@ -1,7 +1,7 @@
 Working with Profiles
 =====================
 
-#. Create a new pool called **secure\_pool**, using the **https** default monitor and add the following members, **10.1.20.11:443, 10.1.20.12:443** and **10.1.20.13.443.**
+#. Create a new pool called **secure\_pool**, using the **https** default monitor and add the following members, **10.1.20.11:443, 10.1.20.12:443** and **10.1.20.13:443.**
 
 #. Create new virtual server **secure\_vs** at **10.1.10.115:443** with **TCP** the profile using your new **secure\_pool**.
 
@@ -37,7 +37,7 @@ Working with Profiles
 
       *Q5. Did it work? What was needed to add cookie persistence?*
 
-#. Browse to **https://10.1.10.115/** scroll and select **Display Cookie** in the **HTTP Request and Response Information** section on the web page.
+#. Browse to **https://10.1.10.115/** scroll and select **Request and Response Headers** in the **HTTP Request and Response Information** section on the web page.
 
       *Q6. What nodes do the pictures come from? What is the name of the cookie inserted begin with?*
 
