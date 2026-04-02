@@ -10,7 +10,7 @@ Lab 10: Securing your BIG-IP
 Step 1: Setup Environment
 --------------------------
 
-#. **Create VLAN (Named: server_ip)**: Note this step was already done in LAB1
+#. **Create VLAN (Named: server_vlan)**:   **Note this step was already done in LAB1**
 
    - Log in to the **TMUI** (BIG-IP web-based GUI) 
    - Navigate to **Network** -> **VLANs**.
@@ -252,6 +252,8 @@ Tasks:
 2.  **Create Self IPs:**
 
     .. code-block:: bash
+
+
 
         tmsh create net self server_ip address 10.1.20.245/24 vlan server_vlan allow-service none
         tmsh create net self client_ip address 10.1.10.245/24 vlan client_vlan allow-service none
