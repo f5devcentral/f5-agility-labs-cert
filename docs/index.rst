@@ -51,7 +51,6 @@ Welcome to the |classbold| last updated on 10/20/20
    :caption: Unofficial - 301A Certification Exam Resources:
    :glob:
 
-   class7/class7
    class8/class8
 
 .. toctree::
