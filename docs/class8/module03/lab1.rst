@@ -61,7 +61,7 @@ prepopulated on the BIG-IP.
             HTTP::header replace user-Agent $user_agent
       }
 
-      *Q2. Review the iRule, what profiles are required on the virtual server?*
+   *Q2. Review the iRule, what profiles are required on the virtual server?*
 
 #. **delay_server** - introduces delay into server-side traffic::
 
@@ -73,7 +73,7 @@ prepopulated on the BIG-IP.
          if {[LB::server addr] equals "10.1.20.13"} {after 20}
       }
 
-      *Q3. Review the iRule, what profiles are required on the virtual server?*
+   *Q3. Review the iRule, what profiles are required on the virtual server?*
 
 Create an Analytics Profile
 ---------------------------

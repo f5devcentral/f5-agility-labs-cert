@@ -22,7 +22,7 @@ properties.
 HTTP Optimization - RamCache Lab
 --------------------------------
 
-#. Go to your virtual server and refresh server times. Note the Source Node for the pictures of the BIG-IPs. They change depending on where the connection is coming from. The Source Node information is part of the picture.
+#. Go to your virtual server and refresh serveral times. Note the Source Node for the pictures of the BIG-IPs. They change depending on where the connection is coming from. The Source Node information is part of the picture.
 
 #. Go to **Local Traffic > Profiles > Services > Web Acceleration** or **Acceleration > Profiles > Web Acceleration**
 

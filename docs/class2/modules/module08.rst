@@ -57,7 +57,7 @@ Configure Using the GUI
 
 1. Navigate to: ``System > Device > Configuration > NTP``
 2. Click **Add** and enter the following details:
-   - **NTP Server**: ``10.1.1.1`` (or your NTP server IP)
+   - **NTP Server**: ``time.nist.gov`` (or your NTP server IP)
 3. Click **Update** to apply the changes.
 
 .. image:: /_static/101//ntp.png
@@ -67,7 +67,7 @@ Configure Using TMSH
 ---------------------
 .. code-block:: bash
 
-   tmsh modify sys ntp servers add { 10.1.1.1 }
+   tmsh modify sys ntp servers add { time.nist.gov }
    tmsh save /sys config  
 
 Configuration Steps

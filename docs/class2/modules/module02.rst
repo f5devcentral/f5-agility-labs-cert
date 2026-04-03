@@ -66,9 +66,9 @@ e. Select the **Update** button
    b. Reset the statistics for your **www_pool** pool by checking the
       boxes next to the pool members and hitting the **Reset** button
 
-      i.   Browse to your **www_vs** **(10.1.10.100)** virtual server
+      i.   Open up Super Jump Host and go to Guacamole, then Login and use Firefox to Browse to your **www_vs** **(10.1.10.100)** virtual server
 
-      ii.  Refresh the browser screen several times (use “<ctrl>” F5)
+      ii.  Refresh the browser screen several times (use “<CTRL>” F5)
 
       iii. Select the **Refresh** button on the **Statistics** screen
 
@@ -128,7 +128,7 @@ c. Select the pool members **10.1.20.11** and **10.1.20.12** and set
 
    b. Reset the pool statistics.
 
-   c. Browse to your virtual server and refresh several times.
+   c. Open up Super Jump Host and go to Guacamole, then Login and use Firefox to browse to your virtual server and refresh several times.
 
    d. Refresh you statistics.
 
@@ -206,7 +206,7 @@ Content Monitors
 
 The default monitor simply tells us the IP address is accessible, but we really don’t know the status of the particular application the node supports. We are now going to create a monitor to specifically test the application we are interested in. We are going to perform a basic content check of our web site to determine it the servers are responding properly.
 
-1. Browse to **http://10.1.10.100**. There are a number of content items you could use to check the site status.  You could check for text on this page. You could view the source code and check for a text string not normally visible to the user. You can also look in the HTTP header information being returned. 
+1. Open up Super Jump Host and go to Guacamole, then Login and use Firefox to browse to **http://10.1.10.100**. There are a number of content items you could use to check the site status.  You could check for text on this page. You could view the source code and check for a text string not normally visible to the user. You can also look in the HTTP header information being returned. 
 
 2. We will be looking for the HTTP status “\ **200 OK**\ ” in the HTTP header information as our receive string to determine availability.
 
@@ -279,7 +279,7 @@ c. Click **Finish** and you will be taken back to **Local
 7. Go to **Local Traffic>Virtual Servers**, what is the status of your
     virtual server?
 
-    a. Browse to your **www_vs** virtual server. Which members are
+    a. Open up Super Jump Host and go to Guacamole, then Login and use Firefox to browse your **www_vs** virtual server. Which members are
        taking traffic?
 
     b. Just for fun reverse the monitor. Now when **200 OK** is returned
@@ -396,19 +396,16 @@ Simple (Source Address) Persistence
           :height: 2.22917in
        
        j. At this point you will see that Persistence Records statistics
-          display has been disabled in version 12.1. A TMSH database command is
+          display has been disabled in version 17.5.1. A TMSH database command is
           required to activate it.
        
-          i. SSH to you BIG-IP.
-       
-          ii. At the prompt enter: **tmsh**
-       
-          iii. At the TMSH prompt enter the command in the **Persistence Value** GUI.
 
-            .. admonition:: TMSH
+            on bigip01 click on Access and then Web Shell
 
-               modify sys db ui.statistics.modulestatistics.localtraffic.persistencerecords value true
-               
+               i. **tmsh run /util bash** and press **enter**
+               ii. **tmsh** and press **enter**           
+               iii. **modify sys db ui.statistics.modulestatistics.localtraffic.persistencerecords value true** and press **enter**
+
 Tab completion will make this a little easier
             
        2. Now, in this window you can watch you persistence records. You may
@@ -421,7 +418,7 @@ Tab completion will make this a little easier
        3. In your other management GUI window go to **www_pool** and clear the
           member statistics.
        
-          a. Open a browser session to your virtual server and refresh several
+          a. Open up Super Jump Host and go to Guacamole, then Login and use Firefox and browse to your virtual server and refresh several
              times.
        
           b. How many members are taking traffic?
@@ -503,7 +500,7 @@ Cookie Persistence (Cookie Insert)
           a. If you wish you can watch the member statistics to validate your
              persistence.
        
-          b. Open a new browser session to your virtual server and refresh
+          b. Open up Super Jump Host and go to Guacamole, then Login and use Firefox and Open a new browser session to your virtual server and refresh
              several times.
        
           c. Does the page ever change?

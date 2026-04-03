@@ -117,7 +117,7 @@ c. Click **Device Management > Device** and select the local BIG-IP. It will hav
       iii. **Mirroring**
 
          1. **Primary Local Mirror Address**: use the Self IP address of
-            the HA VLAN for your
+            the HA VLAN of this bigip
 
          2. **Secondary Local Mirror Address:** None
 
@@ -170,7 +170,7 @@ c. Click **Device Management > Device** and select the local BIG-IP. It will hav
        **Sync-Only** group for the certificates under the covers
        (*device-trust-group*) and that should be in sync.
 
-    b. Click on **In Sync** in the upper right corner or **Device
+    b. Click on **In Sync** in the upper Left corner or **Device
        Management > Overview** to see the **device_trust_group**.
 
 5. On bigip01.f5demo.com create a new **Sync-Failover** device group
@@ -217,7 +217,7 @@ c. Click **Device Management > Device** and select the local BIG-IP. It will hav
 
    a. Go to your **Active** BIG-IP.
 
-   b. Go to your persistence profile **my-src-persistence** and check
+   b. Go to your persistence profile **my-src-persist** and check
       the **Mirror Persistence** box.
 
    c. Go to your **www_vs** virtual server and set the **Default
